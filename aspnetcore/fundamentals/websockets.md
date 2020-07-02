@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: da713f22582cf17f60a4deda1b689662a4e4ae06
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: e2aff39db621ea6e71dce1f1560b1aa70fa865f0
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775439"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404092"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>WebSockets-Unterstützung in ASP.NET Core
 
@@ -28,11 +30,11 @@ In diesem Artikel erfahren Sie, wie Sie mit WebSockets in ASP.NET beginnen. Bei 
 
 [Zeigen Sie Beispielcode an, oder laden Sie diesen herunter](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([Vorgehensweise zum Herunterladen](xref:index#how-to-download-a-sample)). [Laufvergleich](#sample-app).
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction) ist eine Bibliothek, die das Hinzufügen von Echtzeitwebfunktionalität zu Apps erleichtert. Sie verwendet wenn möglich immer WebSockets.
+[ASP.NET Core SignalR](xref:signalr/introduction) ist eine Bibliothek, die das Hinzufügen von Echtzeit-Webfunktionalität zu Apps erleichtert. Sie verwendet wenn möglich immer WebSockets.
 
-Für die meisten Anwendungen empfehlen wir die SignalR über RAW-WebSockets. SignalR stellt ein Transportfallback für Umgebungen bereit, in denen WebSockets nicht verfügbar ist. Darüber hinaus bietet es ein einfaches App-Modell für Remoteprozeduraufrufe. Und in den meisten Szenarien hat SignalR keinen signifikanten Leistungsnachteil gegenüber der Verwendung von RAW-WebSockets.
+Für die meisten Anwendungen empfehlen wir SignalR über RAW-WebSockets. SignalR stellt ein Transportfallback für Umgebungen bereit, in denen WebSockets nicht verfügbar ist. Darüber hinaus bietet es ein einfaches App-Modell für Remoteprozeduraufrufe. In den meisten Szenarien hat SignalR außerdem keinen signifikanten Leistungsnachteil gegenüber der Verwendung von RAW-WebSockets.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,37 +1,39 @@
 ---
-title: 'title: author: description: monikerRange: ms.author: ms.date: no-loc:'
+title: gRPC-Integration von Clientfactory in .NET Core
 author: jamesnk
-description: "'Blazor'"
+description: Hier erfahren Sie, wie Sie gRPC-Clients mithilfe der Clientfactory erstellen.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/clientfactory
-ms.openlocfilehash: ecf2e4ce4375f9e5292f317a15f3b8016ac7daec
-ms.sourcegitcommit: 58722eb309767e462bdbf3082bd38737a4ef168f
+ms.openlocfilehash: 00ec2b6268d27143972f9cb663be19a3ed14ebea
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84106220"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408525"
 ---
-# <a name="grpc-client-factory-integration-in-net-core"></a>'Identity'
+# <a name="grpc-client-factory-integration-in-net-core"></a>gRPC-Integration von Clientfactory in .NET Core
 
-'Let's Encrypt' 'Razor' 'SignalR' uid:
+Die gRPC-Integration mit `HttpClientFactory` bietet eine zentralisierte Möglichkeit, gRPC-Clients zu erstellen. Diese Möglichkeit kann als Alternative zum [Konfigurieren eigenständiger gRPC-Clientinstanzen](xref:grpc/client) verwendet werden. Die Factoryintegration ist im NuGet-Paket [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) verfügbar.
 
-gRPC-Integration von Clientfactory in .NET Core
+Die Factory bietet die folgenden Vorteile:
 
-* Die gRPC-Integration mit `HttpClientFactory` bietet eine zentralisierte Möglichkeit, gRPC-Clients zu erstellen.
-* Diese Möglichkeit kann als Alternative zum [Konfigurieren eigenständiger gRPC-Clientinstanzen](xref:grpc/client) verwendet werden.
-* Die Factoryintegration ist im NuGet-Paket [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) verfügbar.
+* Ein zentraler Ort für das Konfigurieren logischer gRPC-Clientinstanzen
+* Optionen für die Verwaltung der Lebensdauer des zugrunde liegenden `HttpClientMessageHandler`
+* Automatische Weitergabe von Stichtagen und Absagen in einem ASP.NET Core-gRPC-Dienst
 
-## <a name="register-grpc-clients"></a>Die Factory bietet die folgenden Vorteile:
+## <a name="register-grpc-clients"></a>Registrierung von gRPC-Clients
 
-Ein zentraler Ort für das Konfigurieren logischer gRPC-Clientinstanzen
+Zum Registrieren eines gRPC-Clients kann die generische Erweiterungsmethode `AddGrpcClient` innerhalb von `Startup.ConfigureServices` verwendet werden, die die typisierte Klasse des gRPC-Clients und die Dienstadresse angibt:
 
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
@@ -40,7 +42,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-Optionen für die Verwaltung der Lebensdauer des zugrunde liegenden `HttpClientMessageHandler` Automatische Weitergabe von Stichtagen und Absagen in einem ASP.NET Core-gRPC-Dienst Registrierung von gRPC-Clients
+Der gRPC-Clienttyp wird als vorübergehender Typ mit einer Abhängigkeitsinjektion (Dependency Injection, DI) registriert. Der Client kann nun injiziert und direkt in von der DI erstellten Typen genutzt werden. Bei ASP.NET Core-MVC-Controllern, SignalR-Hubs und gRPC-Diensten handelt es sich um Orte, an denen gRPC-Clients direkt injiziert werden können:
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase
@@ -67,9 +69,9 @@ public class AggregatorService : Aggregator.AggregatorBase
 }
 ```
 
-## <a name="configure-httpclient"></a>Zum Registrieren eines gRPC-Clients kann die generische Erweiterungsmethode `AddGrpcClient` innerhalb von `Startup.ConfigureServices` verwendet werden, die die typisierte Klasse des gRPC-Clients und die Dienstadresse angibt:
+## <a name="configure-httpclient"></a>Konfigurieren von HttpClient
 
-Der gRPC-Clienttyp wird als vorübergehender Typ mit einer Abhängigkeitsinjektion (Dependency Injection, DI) registriert. Der Client kann nun injiziert und direkt in von der DI erstellten Typen genutzt werden.
+`HttpClientFactory` erstellt die `HttpClient`-Klasse, die vom gRPC-Client verwendet wird. `HttpClientFactory`-Standardmethoden können verwendet werden ,um Middleware für ausgehende Anforderungen hinzuzufügen oder den zugrunde liegenden `HttpClientHandler` der `HttpClient`-Klasse zu konfigurieren:
 
 ```csharp
 services
@@ -85,14 +87,14 @@ services
     });
 ```
 
-Bei ASP.NET Core-MVC-Controllern, SignalR-Hubs und gRPC-Diensten handelt es sich um Orte, an denen gRPC-Clients direkt injiziert werden können:
+Weitere Informationen erhalten Sie unter [Stellen von HTTP-Anforderungen mithilfe von IHttpClientFactory in ASP.NET Core](xref:fundamentals/http-requests).
 
-## <a name="configure-channel-and-interceptors"></a>Konfigurieren von HttpClient
+## <a name="configure-channel-and-interceptors"></a>Konfigurieren von Kanal und Interceptoren
 
-`HttpClientFactory` erstellt die `HttpClient`-Klasse, die vom gRPC-Client verwendet wird.
+Für Folgendes sind gRPC-spezifische Methoden verfügbar:
 
-* `HttpClientFactory`-Standardmethoden können verwendet werden ,um Middleware für ausgehende Anforderungen hinzuzufügen oder den zugrunde liegenden `HttpClientHandler` der `HttpClient`-Klasse zu konfigurieren:
-* Weitere Informationen erhalten Sie unter [Stellen von HTTP-Anforderungen mithilfe von IHttpClientFactory in ASP.NET Core](xref:fundamentals/http-requests).
+* Konfigurieren des einem gRPC-Client zugrunde liegenden Kanals
+* Hinzufügen von `Interceptor`-Instanzen, die der Client für gRPC-Aufrufe verwendet
 
 ```csharp
 services
@@ -107,11 +109,11 @@ services
     });
 ```
 
-## <a name="deadline-and-cancellation-propagation"></a>Konfigurieren von Kanal und Interceptoren
+## <a name="deadline-and-cancellation-propagation"></a>Weitergabe von Stichtagen und Absagen
 
-Für Folgendes sind gRPC-spezifische Methoden verfügbar: Konfigurieren des einem gRPC-Client zugrunde liegenden Kanals
+gRPC-Clients, die von der Factory in einem gRPC-Dienst erstellt wurden, können mit `EnableCallContextPropagation()` so konfiguriert werden, dass sie die Tokens für Stichtage und Absagen automatisch an untergeordnete Aufrufe weitergeben. Die Erweiterungsmethode `EnableCallContextPropagation()` ist im NuGet-Paket [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) verfügbar.
 
-Hinzufügen von `Interceptor`-Instanzen, die der Client für gRPC-Aufrufe verwendet Weitergabe von Stichtagen und Absagen
+Die Weitergabe von Aufrufkontext funktioniert, in dem die Tokens für Stichtage und Absagen aus dem aktuellen gRPC-Anforderungskontext gelesen und automatisch an ausgehende Aufrufe weitergegeben werden, die vom gRPC-Client ausgeführt werden. Die Weitergabe von Aufrufkontext ist eine sehr gute Möglichkeit, sicherzustellen, dass komplexe und verschachtelte gRPC-Szenarios immer den Stichtag und die Absage weitergeben.
 
 ```csharp
 services
@@ -122,7 +124,7 @@ services
     .EnableCallContextPropagation();
 ```
 
-gRPC-Clients, die von der Factory in einem gRPC-Dienst erstellt wurden, können mit `EnableCallContextPropagation()` so konfiguriert werden, dass sie die Tokens für Stichtage und Absagen automatisch an untergeordnete Aufrufe weitergeben. Die Erweiterungsmethode `EnableCallContextPropagation()` ist im NuGet-Paket [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) verfügbar. Die Weitergabe von Aufrufkontext funktioniert, in dem die Tokens für Stichtage und Absagen aus dem aktuellen gRPC-Anforderungskontext gelesen und automatisch an ausgehende Aufrufe weitergegeben werden, die vom gRPC-Client ausgeführt werden.
+`EnableCallContextPropagation` löst standardmäßig einen Fehler aus, wenn der Client außerhalb von gRPC-Aufrufen verwendet wird. Der Fehler ist dazu konzipiert, Sie darüber zu informieren, dass kein Aufrufkontext zum Übertragen vorhanden ist. Wenn Sie den Client außerhalb eines Aufrufkontexts verwenden möchten, unterdrücken Sie den Fehler, wenn der Client mit `SuppressContextNotFoundErrors` konfiguriert ist:
 
 ```csharp
 services
@@ -133,9 +135,9 @@ services
     .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
 ```
 
-Die Weitergabe von Aufrufkontext ist eine sehr gute Möglichkeit, sicherzustellen, dass komplexe und verschachtelte gRPC-Szenarios immer den Stichtag und die Absage weitergeben.
+Weitere Informationen zu Stichtagen und der RPC-Absage finden Sie unter [RPC-Lebenszyklus](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).
 
-## <a name="additional-resources"></a>`EnableCallContextPropagation` löst standardmäßig einen Fehler aus, wenn der Client außerhalb von gRPC-Aufrufen verwendet wird.
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * <xref:grpc/client>
 * <xref:fundamentals/http-requests>

@@ -1,126 +1,128 @@
 ---
-title: 'title: author: description: monikerRange: ms.author: ms.date: no-loc:'
+title: Vergleich von gRPC-Diensten mit HTTP-APIs
 author: jamesnk
-description: "'Blazor'"
+description: Erfahren Sie, wie gRPC im Vergleich zu HTTP-APIs abschneidet und wie die empfohlenen Szenarien aussehen.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: f622a1518781c255d36762dc651f975625dabf7c
-ms.sourcegitcommit: 58722eb309767e462bdbf3082bd38737a4ef168f
+ms.openlocfilehash: 08efb79f5085acff455744e46ca411777b2641e5
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84106129"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406159"
 ---
-# <a name="compare-grpc-services-with-http-apis"></a>'Identity'
+# <a name="compare-grpc-services-with-http-apis"></a>Vergleich von gRPC-Diensten mit HTTP-APIs
 
-'Let's Encrypt'
+Von [James Newton-King](https://twitter.com/jamesnk)
 
-'Razor' 'SignalR' uid: Vergleich von gRPC-Diensten mit HTTP-APIs
+In diesem Artikel wird der Vergleich von [gRPC-Diensten](https://grpc.io/docs/guides/) mit HTTP-APIs mit JSON (einschließlich ASP.NET Core-[Web-APIs](xref:web-api/index)) erläutert. Die Technologie, mit der eine API für Ihre App bereitgestellt wird, ist eine wichtige Wahl, und gRPC bietet im Vergleich zu HTTP-APIs besondere Vorteile. In diesem Artikel werden die Stärken und Schwächen von gRPC erläutert und Szenarien empfohlen, in denen gRPC gegenüber anderen Technologien bevorzugt zu verwenden ist.
 
-## <a name="high-level-comparison"></a>Von [James Newton-King](https://twitter.com/jamesnk)
+## <a name="high-level-comparison"></a>Allgemeiner Vergleich
 
-In diesem Artikel wird der Vergleich von [gRPC-Diensten](https://grpc.io/docs/guides/) mit HTTP-APIs mit JSON (einschließlich ASP.NET Core-[Web-APIs](xref:web-api/index)) erläutert.
+Die folgende Tabelle bietet einen allgemeinen Vergleich der Features von gRPC und HTTP-APIs mit JSON.
 
-| Die Technologie, mit der eine API für Ihre App bereitgestellt wird, ist eine wichtige Wahl, und gRPC bietet im Vergleich zu HTTP-APIs besondere Vorteile.          | In diesem Artikel werden die Stärken und Schwächen von gRPC erläutert und Szenarien empfohlen, in denen gRPC gegenüber anderen Technologien bevorzugt zu verwenden ist.                                               | Allgemeiner Vergleich           |
+| Feature          | gRPC                                               | HTTP-APIs mit JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
-| Die folgende Tabelle bietet einen allgemeinen Vergleich der Features von gRPC und HTTP-APIs mit JSON.         | Feature                                | gRPC            |
-| HTTP-APIs mit JSON         | title: author: description: monikerRange: ms.author: ms.date: no-loc:                                             | 'Blazor'                          |
-| 'Identity'          | 'Let's Encrypt'           | 'Razor'  |
-| 'SignalR' uid: | title: author: description: monikerRange: ms.author: ms.date: no-loc:      | 'Blazor' 'Identity'     |
-| 'Let's Encrypt'        | 'Razor'       | 'SignalR' uid:                |
-| title: author: description: monikerRange: ms.author: ms.date: no-loc:  | 'Blazor' | 'Identity'                           |
-| 'Let's Encrypt'         | 'Razor'                                    | 'SignalR' uid:               |
-| title: author: description: monikerRange: ms.author: ms.date: no-loc: | 'Blazor'                      | 'Identity' |
+| Vertrag         | Erforderlich ( *.proto*)                                | Optional (OpenAPI)            |
+| Protokoll         | HTTP/2                                             | HTTP                          |
+| Payload          | [Protobuf (klein, binär)](#performance)           | JSON (groß, für Menschen lesbar)  |
+| Präskriptivität | [Strikte Spezifikation](#strict-specification)      | Locker. Jedes HTTP ist gültig.     |
+| Streaming        | [Client, Server, bidirektional](#streaming)       | Client, Server                |
+| Browserunterstützung  | [Nein (erfordert grpc-web)](#limited-browser-support) | Ja                           |
+| Sicherheit         | Transport (TLS)                                    | Transport (TLS)               |
+| Clientcodegenerierung | [Ja](#code-generation)                      | OpenAPI + Tools von Drittanbietern |
 
-## <a name="grpc-strengths"></a>'Let's Encrypt'
+## <a name="grpc-strengths"></a>gRPC-Stärken
 
-### <a name="performance"></a>'Razor'
+### <a name="performance"></a>Leistung
 
-'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor'
+gRPC-Nachrichten werden mit [Protobuf](https://developers.google.com/protocol-buffers/docs/overview) serialisiert, einem effizienten binären Nachrichtenformat. Protobuf wird sehr schnell auf dem Server und dem Client serialisiert. Die Protobuf-Serialisierung führt zu kleinen Nachrichtennutzlasten, was in Szenarien mit begrenzter Bandbreite wichtig ist, z. B. bei mobilen Apps.
 
-'Identity'
+gRPC wurde für HTTP/2 konzipiert, eine umfassende Überarbeitung von HTTP, die erhebliche Leistungsvorteile gegenüber HTTP 1.x bietet:
 
-* 'Let's Encrypt' 'Razor'
-* 'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc:
+* Binäre Rahmen und Komprimierung. Das HTTP/2-Protokoll ist sowohl beim Senden als auch beim Empfangen kompakt und effizient.
+* Multiplexing mehrerer HTTP/2-Aufrufe über eine einzelne TCP-Verbindung. Durch Multiplexing werden [Head-of-Line-Blockierungen](https://en.wikipedia.org/wiki/Head-of-line_blocking) beseitigt.
 
-'Blazor' 'Identity'
+HTTP/2 ist nicht exklusiv für GrpC. Viele Anforderungstypen, einschließlich HTTP-APIs mit JSON, können HTTP/2 verwenden und von dessen Leistungsverbesserungen profitieren.
 
-### <a name="code-generation"></a>'Let's Encrypt'
+### <a name="code-generation"></a>Codeerzeugung
 
-'Razor' 'SignalR' uid: -------- | --- title: author: description: monikerRange: ms.author: ms.date: no-loc:
+Alle gRPC-Frameworks bieten erstklassige Unterstützung für die Codegenerierung. Eine Kerndatei zur gRPC-Entwicklung ist die [.proto-Datei](https://developers.google.com/protocol-buffers/docs/proto3), die den Vertrag der gRPC-Dienste und -Nachrichten definiert. Aus dieser Datei generieren die gRPC-Frameworks im Code eine Dienstbasisklasse, Nachrichten und einen vollständigen Client.
 
-'Blazor' 'Identity' 'Let's Encrypt'
+Durch die Freigabe der *.proto*-Datei zwischen dem Server und dem Client können Nachrichten und Clientcode von Ende zu Ende generiert werden. Die Codegenerierung des Clients verhindert die Duplizierung von Nachrichten auf dem Client und dem Server und erstellt einen stark typisierten Client für Sie. Wenn Sie keinen Client schreiben müssen, sparen Sie bei Anwendungen mit vielen Diensten erheblich an Entwicklungszeit.
 
-### <a name="strict-specification"></a>'Razor'
+### <a name="strict-specification"></a>Strikte Spezifikation
 
-'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc:
+Eine formale Spezifikation für die HTTP-API mit JSON existiert nicht. Entwickler diskutieren über das beste Format für URLs, HTTP-Verben und Antwortcodes.
 
-'Blazor' 'Identity'
+Die [gRPC-Spezifikation](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) gibt vor, welchem Format ein gRPC-Dienst folgen muss. gRPC macht Diskussionen überflüssig und spart Entwicklern Zeit, da gRPC über Plattformen und Implementierungen hinweg konsistent ist.
 
-### <a name="streaming"></a>'Let's Encrypt'
+### <a name="streaming"></a>Streaming
 
-'Razor' 'SignalR' uid:
+HTTP/2 bietet eine Grundlage für langlebige Echtzeitkommunikationsdatenströme. gRPC bietet erstklassige Unterstützung für das Streaming über HTTP/2.
 
-title: author: description: monikerRange: ms.author: ms.date: no-loc:
+Ein gRPC-Dienst unterstützt alle Streamingkombinationen:
 
-* 'Blazor'
-* 'Identity'
-* 'Let's Encrypt'
-* 'Razor'
+* Unär (kein Streaming)
+* Streaming vom Server zum Client
+* Streaming vom Client zum Server
+* Bidirektionales Streaming
 
-### <a name="deadlinetimeouts-and-cancellation"></a>'SignalR' uid:
+### <a name="deadlinetimeouts-and-cancellation"></a>Stichtag/Zeitlimits und Abbruch
 
-title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor' 'Identity'
+Mit gRPC können Clients angeben, wie lange sie bereit sind, auf den RPC-Abschluss zu warten. Der [Stichtag](https://grpc.io/blog/deadlines) wird an den Server gesendet, und der Server kann entscheiden, welche Aktion bei einer Überschreitung der Frist durchgeführt werden soll. Der Server kann z. B. in Bearbeitung befindliche gRPC-/HTTP-/Datenbankanforderungen bei einem Timeout abbrechen.
 
-'Let's Encrypt'
+Die Weitergabe des Stichtags und des Abbruchs durch untergeordnete gRPC-Aufrufe hilft bei der Durchsetzung der Ressourcennutzungslimits.
 
-## <a name="grpc-recommended-scenarios"></a>'Razor'
+## <a name="grpc-recommended-scenarios"></a>Für gRPC empfohlene Szenarien
 
-'SignalR' uid:
+gRPC ist für die folgenden Szenarien besonders geeignet:
 
-* title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor'
-* 'Identity' 'Let's Encrypt'
-* 'Razor'
-* 'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc:
+* **Microservices:** gRPC ist für kurze Wartezeiten und Kommunikation mit hohem Durchsatz konzipiert. gRPC eignet sich hervorragend für einfache Microservices, bei denen die Effizienz entscheidend ist.
+* **Punkt-zu-Punkt-Echtzeitkommunikation:** gRPC weist eine ausgezeichnete Unterstützung für bidirektionales Streaming auf. gRPC-Dienste können Nachrichten in Echtzeit und ohne Abrufen bereitstellen.
+* **Mehrsprachige Umgebungen:** gRPC-Tools unterstützen alle gängigen Entwicklungssprachen, was gRPC zu einer guten Wahl für mehrsprachige Umgebungen macht.
+* **Umgebungen mit Netzwerkbeschränkungen:** gRPC-Nachrichten werden mit Protobuf serialisiert, einem einfachen Nachrichtenformat. Eine gRPC-Nachricht ist immer kleiner als eine entsprechende JSON-Nachricht.
 
-## <a name="grpc-weaknesses"></a>'Blazor'
+## <a name="grpc-weaknesses"></a>Schwächen von gRPC
 
-### <a name="limited-browser-support"></a>'Identity'
+### <a name="limited-browser-support"></a>Eingeschränkte Browserunterstützung
 
-'Let's Encrypt' 'Razor' 'SignalR' uid:
+Es ist heute unmöglich, einen gRPC-Dienst direkt von einem Browser aus aufzurufen. gRPC nutzt in hohem Maße HTTP/2-Features, und kein Browser bietet das für die Unterstützung eines gRPC-Clients erforderliche Maß an Kontrolle über Webanforderungen. Browser gestatten es einem Aufrufer z. B. nicht, die Verwendung von HTTP/2 zu erfordern oder den Zugriff auf zugrunde liegende HTTP/2-Frames zu ermöglichen.
 
-title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor' 'Identity'
+[gRPC-Web](https://grpc.io/docs/tutorials/basic/web.html) ist eine zusätzliche Technologie des gRPC-Teams, die eine begrenzte gRPC-Unterstützung im Browser bietet. gRPC-Web besteht aus zwei Teilen: einem JavaScript-Client, der alle modernen Browser unterstützt, und einem gRPC-Webproxy auf dem Server. Der gRPC-Webclient ruft den Proxy auf, und der Proxy leitet die gRPC-Anforderungen an den gRPC-Server weiter.
 
-'Let's Encrypt' 'Razor'
+Nicht alle Features von gRPC werden von gRPC-Web unterstützt. Client- und bidirektionales Streaming wird nicht unterstützt, und es gibt nur begrenzte Unterstützung für Serverstreaming.
 
 > [!TIP]
-> 'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc:
+> .NET Core verfügt über experimentelle Unterstützung für gRPC-Web. Weitere Informationen finden Sie unter <xref:grpc/browser>.
 
-### <a name="not-human-readable"></a>'Blazor'
+### <a name="not-human-readable"></a>Nicht für Menschen lesbar
 
-'Identity'
+HTTP-API-Anforderungen werden als Text gesendet und können von Menschen gelesen und erstellt werden.
 
-'Let's Encrypt' 'Razor' 'SignalR' uid: title: author: description: monikerRange: ms.author: ms.date: no-loc:
+gRPC-Nachrichten werden standardmäßig mit Protobuf codiert. Obwohl Protobuf effizient zu senden und zu empfangen ist, ist sein binäres Format nicht für Menschen lesbar. Protobuf benötigt die in der *.proto*-Datei angegebene Schnittstellenbeschreibung der Nachricht, um sie ordnungsgemäß zu deserialisieren. Zusätzliche Tools sind erforderlich, um die Protobuf-Nutzlasten im Netzwerk zu analysieren und Anforderungen manuell zusammenzustellen.
 
-'Blazor' 'Identity' 'Let's Encrypt'
+Es gibt Features wie [Serverreflexion](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md) und das [gRPC-Befehlszeilentool](https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md), die bei binären Protobuf-Nachrichten helfen. Außerdem unterstützen Protobuf-Nachrichten die [Konvertierung zu und von JSON](https://developers.google.com/protocol-buffers/docs/proto3#json). Die integrierte JSON-Konvertierung bietet eine effiziente Möglichkeit, Protobuf-Nachrichten beim Debuggen in und aus der für Menschen lesbaren Form zu konvertieren.
 
-## <a name="alternative-framework-scenarios"></a>'Razor'
+## <a name="alternative-framework-scenarios"></a>Alternative Frameworkszenarien
 
-'SignalR' uid:
+In den folgenden Szenarien werden andere Frameworks als gRPC empfohlen:
 
-* title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor'
-* 'Identity' 'Let's Encrypt' 'Razor' 'SignalR' uid:
-* title: author: description: monikerRange: ms.author: ms.date: no-loc: 'Blazor'
+* **Über Browser zugängliche APIs:** gRPC wird im Browser nicht vollständig unterstützt. gRPC-Web kann eine Browserunterstützung bieten, hat aber Einschränkungen und führt einen Serverproxy ein.
+* **Übertragung von Echtzeitkommunikation:** gRPC unterstützt Echtzeitkommunikation per Streaming, das Konzept der Übertragung einer Nachricht an registrierte Verbindungen existiert allerdings nicht. In einem Chatraum-Szenario, in dem z. B. neue Chatnachrichten an alle Clients im Chatraum gesendet werden sollen, ist jeder gRPC-Aufruf erforderlich, um neue Chatnachrichten einzeln an den Client zu senden. [SignalR](xref:signalr/introduction) ist ein hilfreiches Framework für dieses Szenario. SignalR weist das Konzept der dauerhaften Verbindungen und der integrierten Unterstützung für das Senden von Nachrichten auf.
+* **Prozessübergreifende Kommunikation:** Ein Prozess muss zum Akzeptieren eingehender gRPC-Aufrufe einen HTTP/2-Server hosten. Für Windows sind [Pipes](/dotnet/standard/io/pipe-operations) für die prozessübergreifende Kommunikation eine schnelle, einfache Kommunikationsmethode.
 
-## <a name="additional-resources"></a>'Identity'
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * <xref:tutorials/grpc/grpc-start>
 * <xref:grpc/index>

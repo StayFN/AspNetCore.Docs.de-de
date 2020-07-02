@@ -1,11 +1,26 @@
 ---
-title: author: description: monikerRange: ms.author: ms.custom: ms.date: no-loc:
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- 'SignalR' uid: 
-
+title: Schreiben von benutzerdefinierter ASP.NET Core-Middleware
+author: rick-anderson
+description: Erfahren Sie, wie benutzerdefinierte ASP.NET Core-Middleware geschrieben wird.
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 5/18/2020
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/middleware/write
+ms.openlocfilehash: aeebc7d5a7cbfaaab6d48b8da76d35c47c2c552b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407849"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>Schreiben von benutzerdefinierter ASP.NET Core-Middleware
 
