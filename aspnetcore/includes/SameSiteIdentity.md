@@ -1,0 +1,3 @@
+Die ASP.net Core [Identität](xref:security/authentication/identity) ist größtenteils von [SameSite-Cookies](xref:security/samesite) ausgenommen, ausgenommen Erweiterte Szenarien wie oder die `IFrames` `OpenIdConnect` Integration.
+
+Wenn Sie verwenden `Identity` , ***können Sie*** keine Cookie-Anbieter oder-Aufrufe hinzufügen ` services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)` `Identity` .
