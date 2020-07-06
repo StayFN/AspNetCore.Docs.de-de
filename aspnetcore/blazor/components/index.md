@@ -15,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d25dc3441c2373655558dfc101b899252a280814
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 0a8335461b4c9cd628d9c65b97f7ab6a74487fca
+ms.sourcegitcommit: 7f423602a1475736f61fc361327d4de0976c9649
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944444"
+ms.locfileid: "85950902"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Erstellen und Verwenden von ASP.NET Core-Razor-Komponenten
 
 Von [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) und [Tobias Bartsch](https://www.aveo-solutions.com/)
 
-[Anzeigen oder Herunterladen von Beispielcode](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/../common/samples/) ([Vorgehensweise zum Herunterladen](xref:index#how-to-download-a-sample))
+[Anzeigen oder Herunterladen von Beispielcode](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([Vorgehensweise zum Herunterladen](xref:index#how-to-download-a-sample))
 
 Blazor-Apps werden mithilfe von *Komponenten* erstellt. Eine Komponente ist ein eigenständiges Element einer Benutzeroberfläche, z. B. eine Seite, ein Dialogfeld oder ein Formular. Eine Komponente enthält HTML-Markup und die Verarbeitungslogik, die zum Einfügen von Daten oder zum Reagieren auf Benutzeroberflächenereignisse erforderlich ist. Komponenten sind flexibel und kompakt. Sie können geschachtelt, wiederverwendet und für mehrere Projekte freigegeben werden.
 
