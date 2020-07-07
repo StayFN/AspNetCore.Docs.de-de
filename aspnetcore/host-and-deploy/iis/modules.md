@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 7262b9ea18e4cf6acd278d087fcc44262f8f9c80
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: 124f2a629ebd14210cb21351a720e007bba48f02
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775946"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404014"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>IIS-Module mit ASP.NET Core
 
@@ -60,7 +61,7 @@ Die Tabelle enthält native IIS-Module, die mit ASP.NET Core-Apps und dem ASP.NE
 | **Statischer Inhalt**<br>`StaticFileModule`                                                         | Nein  | [Middleware für statische Dateien](xref:fundamentals/static-files) |
 | **Token-Zwischenspeicherung**<br>`TokenCacheModule`                                                          | Ja | |
 | **URI-Zwischenspeicherung**<br>`UriCacheModule`                                                              | Ja | |
-| **URL-Autorisierung**<br>`UrlAuthorizationModule`                                                | Ja | [ASP.NET Core-Identität](xref:security/authentication/identity) |
+| **URL-Autorisierung**<br>`UrlAuthorizationModule`                                                | Ja | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | **Windows-Authentifizierung**<br>`WindowsAuthenticationModule`                                      | Ja | |
 
 &#8224;Die Übereinstimmungstypen `isFile` und `isDirectory` des URL-Rewrite-Moduls können aufgrund der Änderungen in der [Verzeichnisstruktur](xref:host-and-deploy/directory-structure) nicht in ASP.NET Core-Apps ausgeführt werden.
@@ -174,4 +175,4 @@ Das HTTP-Zwischenspeicherungsmodul (`HttpCacheModule`) implementiert den IIS-Aus
 * [Introduction to IIS Architectures: Modules in IIS (Einführung in IIS-Architekturen: Module in IIS)](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Übersicht über IIS-Module](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Anpassen von IIS 7.0-Rollen und -Modulen](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS \<system.webServer>](/iis/configuration/system.webServer/)
+* [IIS\<system.webServer>](/iis/configuration/system.webServer/)

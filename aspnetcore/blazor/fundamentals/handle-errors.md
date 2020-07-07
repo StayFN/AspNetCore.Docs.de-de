@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 04/23/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: e777991f4cbfd22b441fb198144bbdf023b4df6b
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 23118193ec3829fddce392123210856839471058
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242783"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402844"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Fehlerbehandlung in ASP.NET Core Blazor-Apps
 
@@ -83,7 +84,7 @@ Das `blazor-error-ui`-Element wird von den Formatvorlagen, die in den Blazor-Vor
 }
 ```
 
-## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Reaktion eine Blazor Server-App auf Ausnahmefehler
+## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Reaktion einer Blazor Server-App auf Ausnahmefehler
 
 Blazor Server ist ein zustandsbehaftetes Framework. Während Benutzer mit einer App interagieren, besteht eine Verbindung mit dem Server, die als *Leitung* bezeichnet wird. Die Leitung enthält aktive Instanzen von Komponenten und weist zahlreiche andere Aspekte zum Zustand auf wie:
 
@@ -204,7 +205,7 @@ Mit <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWith
 Die folgenden Bedingungen gelten für die Fehlerbehandlung mit <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>:
 
 * Wenn ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> synchron fehlschlägt, tritt eine .NET-Ausnahme auf. Ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> kann beispielsweise fehlschlagen, wenn die bereitgestellten Argumente nicht serialisiert werden können. Die Ausnahme muss vom Entwicklercode abgefangen werden. Wenn eine Ausnahme nicht von App-Code in einem Ereignishandler oder in der Lebenszyklusmethode einer Komponente behandelt wird, ist die resultierende Ausnahme für eine Blazor Server-Leitung schwerwiegend.
-* Wenn ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> asynchron fehlschlägt, schlägt die .NET <xref:System.Threading.Tasks.Task> fehl. Ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> kann beispielsweise fehlschlagen, wenn der JavaScript-Code eine Ausnahme auslöst oder eine `Promise` zurückgibt, die als `rejected` abgeschlossen wird. Die Ausnahme muss vom Entwicklercode abgefangen werden. Wenn Sie den [`await`](/dotnet/csharp/language-reference/keywords/await)-Operator verwenden, sollten Sie in Erwägung ziehen, den Methodenaufruf mithilfe einer [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch)-Anweisung mit Fehlerbehandlung und Fehlerprotokollierung zu umschließen. Tun Sie dies nicht, führt der fehlgeschlagene Code zu einem Ausnahmefehler, der für eine Blazor Server-Leitung schwerwiegend ist.
+* Wenn ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> asynchron fehlschlägt, schlägt die .NET <xref:System.Threading.Tasks.Task> fehl. Ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> kann beispielsweise fehlschlagen, wenn der JavaScript-Code eine Ausnahme auslöst oder eine `Promise` zurückgibt, die als `rejected` abgeschlossen wird. Die Ausnahme muss vom Entwicklercode abgefangen werden. Wenn Sie den [`await`](/dotnet/csharp/language-reference/keywords/await)-Operator verwenden, sollten Sie in Erwägung ziehen, den Methodenaufruf mithilfe einer [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch)-Anweisung mit Fehlerbehandlung und Fehlerprotokollierung zu umschließen. Tun Sie dies nicht, führt der fehlerhafte Code zu einem Ausnahmefehler, der für eine Blazor Server-Leitung schwerwiegend ist.
 * Ein Aufruf von <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> muss standardmäßig innerhalb eines bestimmten Zeitraums abgeschlossen werden, da ansonsten für den Aufruf ein Timeout auftritt. Die Standardwert für das Zeitlimit beträgt eine Minute. Mit dem Zeitlimit wird der Code vor dem Verlust der Netzwerkkonnektivität oder vor JavaScript-Code geschützt, der keine Abschlussmeldung sendet. Wenn beim Aufruf ein Timeout auftritt, schlägt die resultierende <xref:System.Threading.Tasks> mit einer <xref:System.OperationCanceledException>fehl. Die Ausnahme wird abgefangen und mit Protokollierung verarbeitet.
 
 Ähnlich kann JavaScript-Code Aufrufe von .NET-Methoden initiieren, die durch das [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript)-Attribut angegeben werden. Wenn diese .NET-Methoden einen Ausnahmefehler auslösen:
@@ -253,7 +254,7 @@ Endlosschleifen durch Rendering:
 * sorgt dafür, dass der Renderingprozess unendlich fortgesetzt wird.
 * entspricht dem Erstellen einer nicht abgeschlossenen Schleife.
 
-In diesen Szenarios schlägt eine betroffene Blazor Server-Leitung fehl, und der Thread versucht in der Regel Folgendes:
+In diesen Szenarios tritt ein Fehler bei einer betroffenen Blazor Server-Leitung auf, und der Thread versucht in der Regel Folgendes:
 
 * Unbegrenzt so viel CPU-Zeit wie vom Betriebssystem zulässig zu nutzen.
 * Eine unbegrenzte Menge an Serverarbeitsspeicher zu nutzen. Das Belegen einer unbegrenzte Menge an Arbeitsspeicher entspricht einem Szenario, bei dem eine nicht beendete Schleife einer Auflistung bei jeder Iteration Einträge hinzufügt.

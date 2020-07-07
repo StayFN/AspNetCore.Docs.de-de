@@ -7,17 +7,18 @@ ms.author: riande
 ms.date: 07/04/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 58f7aa30d3e916307437d56c61e80765ac0c21cf
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766471"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405600"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -62,7 +63,7 @@ Der auszuführende Codegenerator. Folgende Generatoren sind verfügbar:
 | ----------------- | ------------ | 
 | area      | [Gerüstbau für einen Bereich](/aspnet/core/mvc/controllers/areas) |
   Controller| [Gerüstbau für einen Controller](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  Identität  | [Gerüstbau für eine Identität](/aspnet/core/security/authentication/scaffold-identity) |
+  Identität  | [Gerüstbau Identity](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [Gerüstbau für Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   Sicht      | [Gerüstbau für eine Ansicht](/aspnet/core/mvc/views/overview) |
 
@@ -102,7 +103,7 @@ In den folgenden Abschnitte werden die verfügbaren Optionen für die unterstüt
 
 * Bereich
 * Controller
-* Identität  
+* Identity  
 * Razor Pages
 * Ansicht
 

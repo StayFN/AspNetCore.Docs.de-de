@@ -1,24 +1,25 @@
 ---
 title: Blazor-Zustandsverwaltung in ASP.NET Core
 author: guardrex
-description: Erfahren Sie, wie Sie den Zustand in Blazor-Server-Apps beibehalten.
+description: Erfahren Sie, wie Sie den Zustand in Blazor Server-Apps beibehalten.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 59adcce972b503a6aa6e596bc9bff63225961f84
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: a6c646425145855538f408ec6cafdb151cd24b86
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243199"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401947"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>Blazor-Zustandsverwaltung in ASP.NET Core
 
@@ -33,7 +34,7 @@ Beispiele für den Zustand einer Benutzerverbindung sind:
 * Daten, die in [-Abhängigkeitsinjektion (DI)](xref:fundamentals/dependency-injection)-Dienstinstanzen gespeichert sind, die auf die Verbindung beschränkt sind.
 
 > [!NOTE]
-> In diesem Artikel wird die Zustandspersistenz in Blazor Server-Apps behandelt. Blazor-Webassemblyanwendungen können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.
+> In diesem Artikel wird die Zustandspersistenz in Blazor Server-Apps behandelt. Blazor WebAssembly-Apps können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.
 
 ## <a name="blazor-circuits"></a>Blazor-Verbindungen
 
@@ -106,7 +107,7 @@ Weitere Informationen zum Definieren von URL-Mustern mit der `@page`-Direktive f
 Für vorübergehende Daten, die der Benutzer aktiv erstellt, sind die `localStorage`- und `sessionStorage`-Sammlungen des Browsers ein häufig verwendeter Sicherungsspeicher. Die App muss den gespeicherten Zustand nicht verwalten oder löschen, wenn die Verbindung abgebrochen wird. Dies ist ein Vorteil gegenüber serverseitigem Speicher.
 
 > [!NOTE]
-> „Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [Blazor-Webassembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly). `localStorage` und `sessionStorage` können in Blazor-Webassembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.
+> „Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [Blazor WebAssembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly). `localStorage` und `sessionStorage` können in Blazor WebAssembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.
 
 `localStorage` und `sessionStorage` unterscheiden sich wie folgt:
 

@@ -5,20 +5,21 @@ description: In diesem Artikel erhalten Sie Tipps für das Steigern der Leistung
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/08/2020
+ms.date: 06/25/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 2b6d4e706856cb28f26c2502feca4f959ca4abac
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: f7bd0d356030e6ddb95c77d7376995320e3ec40e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243030"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401882"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Best Practices zur Blazor WebAssembly-Leistung in ASP.NET Core
 
@@ -38,7 +39,7 @@ Wenn eine nur auf die Benutzeroberfläche bezogene Komponente erstellt wird, die
 }
 ```
 
-Für die meisten Apps ist eine genaue Kontrolle nicht erforderlich, aber <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> kann auch verwendet werden, um eine Komponente, die auf ein Benutzeroberflächenereignis antwortet, selektiv zu rendern.
+Für die meisten Apps ist eine genaue Kontrolle nicht erforderlich, aber <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> kann verwendet werden, um eine Komponente, die auf ein Benutzeroberflächenereignis antwortet, selektiv zu rendern. Die Verwendung von <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> könnte auch für Szenarien wichtig sein, in denen eine große Anzahl von Komponenten gerendert wird. Stellen Sie sich ein Raster vor, bei dem die Verwendung von <xref:Microsoft.AspNetCore.Components.EventCallback> in einer Komponente in einer Zelle des Rasters <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> im Raster aufruft. Das Aufrufen von <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> bewirkt, dass alle untergeordneten Komponenten erneut gerendert werden. Wenn nur eine kleine Anzahl von Zellen erneut gerendert werden muss, vermeiden Sie mit <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> Leistungseinbußen durch unnötige Renderings.
 
 Im folgenden Beispiel:
 
@@ -93,7 +94,7 @@ Eine Anleitung zur Migration finden Sie unter [Migration von `Newtonsoft.Json` z
 
 ## <a name="use-synchronous-and-unmarshalled-js-interop-apis-where-appropriate"></a>Verwenden von synchronen und nicht gemarshallten JS-Interop-APIs (wenn möglich)
 
-Blazor WebAssembly bietet zwei zusätzliche Versionen von <xref:Microsoft.JSInterop.IJSRuntime> zusätzlich zur einzelnen für BlazorServer-Apps verfügbaren Version:
+Blazor WebAssembly bietet zwei zusätzliche Versionen von <xref:Microsoft.JSInterop.IJSRuntime> zusätzlich zur einzelnen für Blazor Server-Apps verfügbaren Version:
 
 * <xref:Microsoft.JSInterop.IJSInProcessRuntime> ermöglicht das synchrone Aufrufen von JS-Interop-Aufrufen, was im Vergleich zu asynchronen Versionen zu weniger Aufwand führt:
 
@@ -146,7 +147,7 @@ dotnet publish -c Release
 
 ### <a name="compression"></a>Komprimierung
 
-Wenn eine Blazor-WebAssembly-App veröffentlicht wird, wird die Ausgabe bei der Veröffentlichung statisch komprimiert, um die App-Größe zu verringern und den Aufwand für eine Laufzeitkomprimierung zu beseitigen. Blazor basiert darauf, dass der Server eine Inhaltsaushandlung ausführt und statisch komprimierte Dateien bereitstellt.
+Wenn eine Blazor WebAssembly-App veröffentlicht wird, wird die Ausgabe bei der Veröffentlichung statisch komprimiert, um die App-Größe zu verringern und den Aufwand für eine Laufzeitkomprimierung zu beseitigen. Blazor basiert darauf, dass der Server eine Inhaltsaushandlung ausführt und statisch komprimierte Dateien bereitstellt.
 
 Nach der Bereitstellung einer App überprüfen Sie, ob die App komprimierte Dateien bereitstellt. Sehen Sie sich die Netzwerkregisterkarte der Entwicklertools eines Browsers an, und überprüfen Sie, ob die Dateien mit `Content-Encoding: br` oder `Content-Encoding: gz` bereitgestellt werden. Wenn der Host keine komprimierten Dateien bereitstellt, befolgen Sie die Anweisungen in <xref:blazor/host-and-deploy/webassembly#compression>.
 

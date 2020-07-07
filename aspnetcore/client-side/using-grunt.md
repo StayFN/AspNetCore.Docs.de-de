@@ -6,17 +6,18 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/using-grunt
-ms.openlocfilehash: b51973e82bb1bd382be68a501c40ba613217fb03
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: fc871e22f9bd5a9c137008f1d87019542c45b5d2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773639"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401765"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Verwenden von Grunt in ASP.NET Core
 
@@ -100,7 +101,7 @@ Als nächstes konfigurieren Sie NPM zum Herunterladen von „grunt“ und „gru
     ![grunt Intellisense](using-grunt/_static/devdependencies-grunt.png)
 
     > [!NOTE]
-    > NPM verwendet die [semantische Versionsverwaltung](https://semver.org/), um Abhängigkeiten zu organisieren. Die semantische Versionsverwaltung, auch als SemVer bezeichnet, identifiziert Pakete mit dem Nummerierungsschema \<Hauptversion>.\<Nebenversion>.\<Patch>. Intellisense vereinfacht die semantische Versionsverwaltung, indem es nur einige wenige gemeinsame Optionen anzeigt. Der oberste Punkt in der Intellisense-Liste (0.4.5 im obigen Beispiel) gilt als die aktuellste stabile Version des Pakets. Das Caretzeichen (^) entspricht der aktuellsten Hauptversion und die Tilde (~) entspricht der aktuellsten Nebenversion. Eine Anleitung für die volle Ausdrucksfähigkeit, die SemVer bietet, finden Sie in der [NPM SemVer Version-Parserreferenz](https://www.npmjs.com/package/semver).
+    > NPM verwendet die [semantische Versionsverwaltung](https://semver.org/), um Abhängigkeiten zu organisieren. Die semantische Versionsverwaltung, auch als SemVer bezeichnet, identifiziert Pakete mit dem Nummerierungsschema \<major>.\<minor>.\<patch>. Intellisense vereinfacht die semantische Versionsverwaltung, indem es nur einige wenige gemeinsame Optionen anzeigt. Der oberste Punkt in der Intellisense-Liste (0.4.5 im obigen Beispiel) gilt als die aktuellste stabile Version des Pakets. Das Caretzeichen (^) entspricht der aktuellsten Hauptversion und die Tilde (~) entspricht der aktuellsten Nebenversion. Eine Anleitung für die volle Ausdrucksfähigkeit, die SemVer bietet, finden Sie in der [NPM SemVer Version-Parserreferenz](https://www.npmjs.com/package/semver).
 
 3. Fügen Sie weitere Abhängigkeiten hinzu, um grunt-contrib-\*-Pakete für *clean*, *jshint*, *concat*, *uglify* und *watch* zu laden, wie im Beispiel unten gezeigt. Die Versionen müssen nicht mit dem Beispiel übereinstimmen.
 
@@ -210,7 +211,7 @@ Grunt wird mithilfe eines Manifests namens *Gruntfile.js* konfiguriert, das Aufg
 
 1. Fügen Sie die Aufgabe `uglify` mit dem folgenden Code hinzu.
 
-    Die Aufgabe verkleinert die Datei *combined.js*, die sich im Verzeichnis „temp“ befindet, und erstellt die Ergebnisdatei in „wwwroot/lib“ gemäß der Standardnamenskonvention *\<Dateiname\>.min.js*.
+    Die Aufgabe verkleinert die Datei *combined.js*, die sich im Verzeichnis „temp“ befindet, und erstellt die Ergebnisdatei in „wwwroot/lib“ gemäß der Standardnamenskonvention *\<file name\>.min.js*.
 
     ```javascript
     uglify: {

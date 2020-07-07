@@ -1,5 +1,5 @@
 ---
-title: Erstellen progressiver Webanwendungen mit der Blazor WebAssembly für ASP.NET Core
+title: Erstellen progressiver Webanwendungen mit Blazor WebAssembly für ASP.NET Core
 author: guardrex
 description: Erfahren Sie, wie Sie eine Blazor-basierte progressive Web-App (PWA) erstellen, die moderne Browserfeatures verwendet, um das Verhalten von Desktop-Apps anzunehmen.
 monikerRange: '>= aspnetcore-3.1'
@@ -8,19 +8,20 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: f56fb0f09845ded6ef6907221a27f71621a155d1
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 237a8fceb75ba724625f018cf94c8d5bc5acfdad
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242809"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402584"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Erstellen progressiver Webanwendungen mit der Blazor WebAssembly für ASP.NET Core
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Erstellen progressiver Webanwendungen mit Blazor WebAssembly für ASP.NET Core
 
 Von [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -65,7 +66,7 @@ Die PWA kann optional für eine App konfiguriert werden, die über die gehostete
 
 ## <a name="installation-and-app-manifest"></a>Installation und App-Manifest
 
-Wenn Benutzer eine App aufrufen, die mithilfe der PWA-Vorlage erstellt wurde, können sie die App im Startmenü, Dock oder Startbildschirm des Betriebssystems installieren. Die Darstellung dieser Option hängt vom Browser des Benutzers ab. Bei Verwendung eines Chromium-basierten Desktopbrowsers wie Edge oder Chrome wird die Schaltfläche **Hinzufügen** in der URL-Leiste angezeigt. Wenn der Benutzer auf **Hinzufügen** klickt, wird ein Dialogfeld zum Bestätigen angezeigt:
+Wenn Benutzer eine App aufrufen, die mithilfe der PWA-Vorlage erstellt wurde, können sie die App im Startmenü, Dock oder Startbildschirm des Betriebssystems installieren. Die Darstellung dieser Option hängt vom Browser des Benutzers ab. Bei Verwendung eines Chromium-basierten Desktopbrowsers wie Microsoft Edge oder Chrome wird die Schaltfläche **Hinzufügen** in der URL-Leiste angezeigt. Wenn der Benutzer auf **Hinzufügen** klickt, wird ein Dialogfeld zum Bestätigen angezeigt:
 
 ![Dialogfeld zum Bestätigen in Google Chrome zeigt eine Schaltfläche zum Installieren für den Benutzer der MyBlazorPwa-App an](progressive-web-app/_static/image2.png)
 
@@ -192,7 +193,7 @@ Standardmäßig wird in diesem Manifest Folgendes aufgeführt:
 * Alle von Blazor verwalteten Ressourcen, z. B. .NET-Assemblys und die .NET-WebAssembly-Runtimedateien, die für die Offlineausführung erforderlich sind
 * Alle Ressourcen für die Veröffentlichung im `wwwroot`-Verzeichnis, z. B. Bilder, Stylesheets und JavaScript-Dateien, einschließlich der statischen Webressourcen, die von externen Projekten und NuGet-Paketen bereitgestellt werden.
 
-Sie können steuern, welche dieser Ressourcen vom Service Worker abgerufen und zwischengespeichert werden, indem Sie die Logik in `onInstall` in `service-worker.published.js` bearbeiten. Der Service Worker ruft Dateien standardmäßig entsprechend der üblichen Erweiterungen für Webdateinamen ab und speichert diese zwischen, z. B. `.html`, `.css`, `.js` und `.wasm`, zuzüglich Dateitypen, die für die Blazor-WebAssembly (`.dll`, `.pdb`) typisch sind.
+Sie können steuern, welche dieser Ressourcen vom Service Worker abgerufen und zwischengespeichert werden, indem Sie die Logik in `onInstall` in `service-worker.published.js` bearbeiten. Der Service Worker ruft Dateien standardmäßig entsprechend der üblichen Erweiterungen für Webdateinamen ab und speichert diese zwischen, z. B. `.html`, `.css`, `.js` und `.wasm`, zuzüglich Dateitypen, die für die Blazor WebAssembly (`.dll`, `.pdb`) typisch sind.
 
 Definieren Sie zusätzliche `ItemGroup`-MSBuild-Einträge wie im folgenden Beispiel gezeigt, um zusätzliche Ressourcen einzufügen, die nicht im `wwwroot`-Verzeichnis der App vorhanden sind:
 

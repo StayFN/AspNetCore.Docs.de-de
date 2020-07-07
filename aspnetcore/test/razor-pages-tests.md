@@ -6,13 +6,20 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2019
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: 0e217b6b7f15519a3da44f5d074cf80fa96a3b3a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
-ms.translationtype: HT
+ms.openlocfilehash: 756af7f2b14512bd43aefd1a4e63e195c2daa138
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78649573"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407758"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Komponententests für Razor Pages in ASP.NET Core
 
@@ -25,7 +32,7 @@ ASP.NET Core unterstützt Komponententests von Razor Pages-Apps. Tests der Daten
 * Es gibt zusätzliche Dokumentation zum Verhalten der App.
 * Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.
 
-In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und-Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
+In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -209,7 +216,7 @@ ASP.NET Core unterstützt Komponententests von Razor Pages-Apps. Tests der Daten
 * Es gibt zusätzliche Dokumentation zum Verhalten der App.
 * Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.
 
-In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und-Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
+In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>

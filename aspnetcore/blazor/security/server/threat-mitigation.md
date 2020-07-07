@@ -1,34 +1,35 @@
 ---
 title: Leitfaden zur Bedrohungsabwehr für Blazor Server in ASP.NET Core
 author: guardrex
-description: In diesem Artikel erfahren Sie, wie Sie Sicherheitsbedrohungen für Blazor-Server-Apps vermeiden.
+description: In diesem Artikel erfahren Sie, wie Sie Sicherheitsbedrohungen für Blazor Server-Apps vermeiden.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/05/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: a94dcd818c3f4e19ace57fad6390a84e704192bd
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 4477b16d0d35fb90c35d17852f4639676d76aa02
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242965"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402285"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Leitfaden zur Bedrohungsabwehr für Blazor Server in ASP.NET Core
 
 Von [Javier Calvarro Nelson](https://github.com/javiercn)
 
-Blazor-Server-Apps basieren auf einem *zustandsbehafteten* Datenverarbeitungsmodell, in dem die Beziehung zwischen Server und Client sehr langlebig ist. Der persistente Zustand wird durch einen [Circuit](xref:blazor/state-management) aufrechterhalten, der mehrere potenziell langlebige Verbindungen umfassen kann.
+Blazor Server-Server-Apps basieren auf einem *zustandsbehafteten* Datenverarbeitungsmodell, in dem die Beziehung zwischen Server und Client sehr langlebig ist. Der persistente Zustand wird durch einen [Circuit](xref:blazor/state-management) aufrechterhalten, der mehrere potenziell langlebige Verbindungen umfassen kann.
 
 Wenn ein Benutzer eine Blazor Server-Website besucht, erstellt der Server einen Circuit im Arbeitsspeicher des Servers. Der Circuit meldet dem Browser, welche Inhalte dieser rendern und wie dieser auf Ereignisse antworten soll, z. B. wenn der Benutzer in der Benutzeroberfläche auf eine Schaltfläche klickt. Für die Ausführung dieser Aktionen ruft ein Circuit JavaScript-Funktionen in den Browser- und .NET-Methoden des Benutzers auf dem Server auf. Diese bidirektionale JavaScript-basierte Interaktion wird als [JavaScript-Interop (JS-Interop)](xref:blazor/call-javascript-from-dotnet) bezeichnet.
 
-Da JS-Interop eine Internetverbindung erfordert und der Client einen Remotebrowser verwendet, betreffen die meisten Web-App-Sicherheitsprobleme alle Blazor-Server-Apps. In diesem Artikel werden häufige Bedrohungen für Blazor-Server-Apps beschrieben. Außerdem enthält er Anleitungen zur Bedrohungsminderung, die auf internetseitige Apps ausgerichtet sind.
+Da JS-Interop eine Internetverbindung erfordert und der Client einen Remotebrowser verwendet, betreffen die meisten Web-App-Sicherheitsprobleme alle Blazor Server-Apps. In diesem Artikel werden häufige Bedrohungen für Blazor Server-Apps beschrieben. Außerdem enthält er Anleitungen zur Bedrohungsminderung, die auf internetseitige Apps ausgerichtet sind.
 
 In eingeschränkten Umgebungen wie Unternehmensnetzwerken oder Intranets:
 
@@ -55,9 +56,9 @@ Blazor-externe Ressourcen wie Datenbanken und Dateihandles (für den Lese- und S
 
 CPU-Erschöpfung kann auftreten, wenn mindestens ein Client den Server zu CPU-intensiven Prozessen zwingt.
 
-Ein Beispiel wäre eine Blazor-Server-App, die eine *Fibonacci-Zahl* berechnet. Fibonacci-Zahlen sind die Bestandteile einer Fibonnacci-Reihe, in der jede Zahl die Summe der beiden vorherigen Zahlen darstellt. Der für die Lösung erforderliche Arbeitsaufwand hängt von der Länge der Reihe und der Größe des ersten Wertes ab. Wenn die App die Clientanforderung nicht einschränkt, dominieren die CPU-intensiven Berechnungen unter Umständen die CPU-Zeit und schmälern die Leistung von anderen Tasks. Exzessiver Ressourcenverbrauch ist ein Sicherheitsproblem, das sich auf die Verfügbarkeit auswirkt.
+Ein Beispiel wäre eine Blazor Server-App, die eine *Fibonacci-Zahl* berechnet. Fibonacci-Zahlen sind die Bestandteile einer Fibonnacci-Reihe, in der jede Zahl die Summe der beiden vorherigen Zahlen darstellt. Der für die Lösung erforderliche Arbeitsaufwand hängt von der Länge der Reihe und der Größe des ersten Wertes ab. Wenn die App die Clientanforderung nicht einschränkt, dominieren die CPU-intensiven Berechnungen unter Umständen die CPU-Zeit und schmälern die Leistung von anderen Tasks. Exzessiver Ressourcenverbrauch ist ein Sicherheitsproblem, das sich auf die Verfügbarkeit auswirkt.
 
-CPU-Erschöpfung ist ein Problem, das alle öffentlich zugänglichen Apps betrifft. In regulären Web-Apps wird für Anforderungen und Verbindungen als Schutzvorkehrung ein Timeoutzeitraum festgelegt. In Blazor-Server-Apps sind diese Schutzmaßnahmen jedoch nicht vorgesehen. Blazor-Server-Apps müssen die richtigen Überprüfungen und Grenzwerte enthalten, bevor potenziell CPU-intensive Prozesse ausgeführt werden.
+CPU-Erschöpfung ist ein Problem, das alle öffentlich zugänglichen Apps betrifft. In regulären Web-Apps wird für Anforderungen und Verbindungen als Schutzvorkehrung ein Timeoutzeitraum festgelegt. In Blazor Server-Apps sind diese Schutzmaßnahmen jedoch nicht vorgesehen. Blazor Server-Apps müssen die richtigen Überprüfungen und Grenzwerte enthalten, bevor potenziell CPU-intensive Prozesse ausgeführt werden.
 
 ### <a name="memory"></a>Arbeitsspeicher
 
@@ -73,9 +74,9 @@ Stellen Sie sich das folgende Szenario vor, in dem eine Elementliste gewartet un
   * Anzeigen der ersten 100 bis 1.000 Elemente und Durchsetzen, dass Benutzer Suchkriterien eingeben, um andere Elemente als die angezeigten zu finden
   * In einem fortgeschrittenen Renderingszenario können Sie Listen oder Raster implementieren, die *Virtualisierung* unterstützen. Wenn Virtualisierung eingesetzt wird, rendern Listen nur eine Teilmenge der Elemente, die für den Benutzer aktuell sichtbar sind. Interagiert der Benutzer in der Benutzeroberfläche mit der Scrollleiste, rendert die Komponente nur diejenigen Elemente, die angezeigt werden sollen. Aktuell nicht angezeigte Elemente werden idealerweise im sekundären Speicher aufbewahrt. Sie können auch im Speicher abgelegt werden, was jedoch weniger empfehlenswert ist.
 
-Blazor-Server-Apps bieten ein ähnliches Programmiermodell wie andere Benutzeroberflächenframeworks für zustandsbehaftete Apps wie WPF, Windows Forms oder Blazor WebAssembly. Der Hauptunterschied besteht darin, dass der von der App benutzte Arbeitsspeicher in vielen Benutzeroberflächenframeworks dem Client gehört und sich die Auswirkungen daher auf den einzelnen Client beschränken. Eine Blazor WebAssembly-App wird vollständig auf dem Client ausgeführt und verwendet ausschließlich die Arbeitsspeicherressourcen des Clients. Im Blazor Server-Szenario gehört der von der App verbrauchte Arbeitsspeicher dem Server und wird von den Clients auf der Serverinstanz gemeinsam genutzt.
+Blazor Server-Apps bieten ein ähnliches Programmiermodell wie andere Benutzeroberflächenframeworks für zustandsbehaftete Apps wie WPF, Windows Forms oder Blazor WebAssembly. Der Hauptunterschied besteht darin, dass der von der App benutzte Arbeitsspeicher in vielen Benutzeroberflächenframeworks dem Client gehört und sich die Auswirkungen daher auf den einzelnen Client beschränken. Eine Blazor WebAssembly-App wird z. B. vollständig auf dem Client ausgeführt und verwendet ausschließlich die Arbeitsspeicherressourcen des Clients. Im Blazor Server-Szenario gehört der von der App verbrauchte Arbeitsspeicher dem Server und wird von den Clients auf der Serverinstanz gemeinsam genutzt.
 
-Der serverseitige Arbeitsspeicherbedarf muss bei allen Blazor-Server-Apps bedacht werden. Die meisten Web-Apps sind jedoch zustandslos, und der für die Verarbeitung einer Anforderung belegte Arbeitsspeicher wird wieder freigegeben, nachdem die Antwort zurückgegeben wurde. Es ist allgemein empfehlenswert, es Clients nicht zu erlauben, den Arbeitsspeicher uneingeschränkt zu belegen, so wie bei anderen serverseitigen Apps mit dauerhaften Clientverbindungen auch. Der von einer Blazor-Server-App verbrauchte Arbeitsspeicher bleibt auch nach der Verarbeitung einer einzelnen Anforderung belegt.
+Der serverseitige Arbeitsspeicherbedarf muss bei allen Blazor Server-Apps bedacht werden. Die meisten Web-Apps sind jedoch zustandslos, und der für die Verarbeitung einer Anforderung belegte Arbeitsspeicher wird wieder freigegeben, nachdem die Antwort zurückgegeben wurde. Es ist allgemein empfehlenswert, es Clients nicht zu erlauben, den Arbeitsspeicher uneingeschränkt zu belegen, so wie bei anderen serverseitigen Apps mit dauerhaften Clientverbindungen auch. Der von einer Blazor Server-App verbrauchte Arbeitsspeicher bleibt auch nach der Verarbeitung einer einzelnen Anforderung belegt.
 
 > [!NOTE]
 > Während der Entwicklung kann mithilfe eines Profilers oder einer Überwachung der Arbeitsspeicherbedarf von Clients bewertet werden. Ein Profiler oder eine Überwachung erfassen jedoch nicht den von einem bestimmten Client belegten Arbeitsspeicher. Wenn Sie den Arbeitsspeicherverbrauch eines bestimmten Clients während der Entwicklung bestimmen möchten, müssen Sie eine Sicherungskopie erfassen und den Arbeitsspeicherbedarf aller Objekte untersuchen, die sich im Circuit eines Benutzers befinden.
@@ -84,9 +85,9 @@ Der serverseitige Arbeitsspeicherbedarf muss bei allen Blazor-Server-Apps bedach
 
 Verbindungserschöpfung kann auftreten, wenn mindestens ein Client zu viele gleichzeitige Verbindungen zum Server geöffnet hat und so andere Clients daran hindert, neue Verbindungen herzustellen.
 
-Blazor-Clients stellen eine Verbindung pro Sitzung her und halten diese so lange offen, wie auch das Browserfenster geöffnet ist. Die Anforderung an den Server, alle Verbindungen aufrechtzuerhalten, ist nicht charakteristisch für Blazor-Apps. Da die Verbindungen dauerhaft und Blazor-Server-Apps zustandsbehaftet sind, stellt Verbindungserschöpfung ein größeres Risiko für die Verfügbarkeit der App dar.
+Blazor-Clients stellen eine Verbindung pro Sitzung her und halten diese so lange offen, wie auch das Browserfenster geöffnet ist. Die Anforderung an den Server, alle Verbindungen aufrechtzuerhalten, ist nicht charakteristisch für Blazor-Apps. Da die Verbindungen dauerhaft und Blazor Server-Apps zustandsbehaftet sind, stellt Verbindungserschöpfung ein größeres Risiko für die Verfügbarkeit der App dar.
 
-In Blazor-Server-Apps wird die Anzahl der Verbindungen pro Benutzer nicht automatisch beschränkt. Wenn die App eine Verbindungsobergrenze erfordert, sollten Sie mindestens eine der folgenden Maßnahmen ergreifen:
+In Blazor Server-Apps wird die Anzahl der Verbindungen pro Benutzer nicht automatisch beschränkt. Wenn die App eine Verbindungsobergrenze erfordert, sollten Sie mindestens eine der folgenden Maßnahmen ergreifen:
 
 * Erzwingen der Authentifizierung, wodurch nicht autorisierten Benutzern automatisch die Möglichkeit genommen wird, eine Verbindung zur App herzustellen. Damit dieses Szenario eintritt, müssen Sie verhindern, dass Benutzer willkürlich neue Benutzer bereitstellen.
 * Beschränken der pro Benutzer zulässigen Anzahl von Verbindungen. Verbindungen lassen sich mithilfe der folgenden Maßnahmen beschränken. Wägen Sie sorgfältig ab, bevor Sie legitimen Benutzern Zugriff auf die App erteilen (z. B., wenn eine Verbindungsobergrenze für die IP-Adresse eines Clients festgelegt wird).
@@ -99,9 +100,9 @@ In Blazor-Server-Apps wird die Anzahl der Verbindungen pro Benutzer nicht automa
 
 ## <a name="denial-of-service-dos-attacks"></a>Denial-of-Service-Angriffe (DoS)
 
-Bei DoS-Angriffen verursacht ein Client die Erschöpfung von mindestens einer Serverressource, sodass die App nicht mehr verfügbar ist. Blazor-Server-Apps enthalten einige Standardgrenzwerte und nutzen andere Grenzwerte aus ASP.NET Core und SignalR, um sich gegen DoS-Angriffe auf <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>-Objekte zu schützen.
+Bei DoS-Angriffen verursacht ein Client die Erschöpfung von mindestens einer Serverressource, sodass die App nicht mehr verfügbar ist. Blazor Server-Apps enthalten einige Standardgrenzwerte und nutzen andere Grenzwerte aus ASP.NET Core und SignalR, um sich gegen DoS-Angriffe auf <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>-Objekte zu schützen.
 
-| Obergrenze für Blazor-Server-Apps | Beschreibung | Standard |
+| Blazor Server-App-Grenze | Beschreibung | Standard |
 | --- | --- | --- |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | Maximale Anzahl der getrennten Circuits, die sich gleichzeitig im Arbeitsspeicher eines bestimmten Servers befinden | 100 |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | Maximale Zeitspanne, die ein getrennter Circuit im Arbeitsspeicher aufbewahrt wird, bevor er entfernt wird | 3 Minuten |
@@ -147,14 +148,14 @@ Vertrauen Sie keinen von JavaScript aus aufgerufenen .NET-Methoden. Wenn eine .N
     * Stellen Sie sicher, dass der Benutzer dazu berechtigt ist, die angeforderte Aktion auszuführen.
   * Belegen Sie durch den Aufruf der .NET-Methode nicht übermäßig viele Ressourcen. Führen Sie zum Beispiel Überprüfungen aus, und legen Sie Obergrenzen für die CPU- und Arbeitsspeicherauslastung fest.
   * Beachten Sie, dass statische Methoden und Instanzmethoden für JavaScript-Clients verfügbar gemacht werden können. Zustände sollten nicht sitzungsübergreifend verwendet werden, es sei denn, das Design gibt dies vor, und es sind angemessene Beschränkungen vorgesehen.
-    * Für Instanzmethoden, die über `DotNetReference`-Objekte verfügbar gemacht werden, die ursprünglich per Dependency Injection (DI) erstellt wurden, sollten die Objekte als bereichsbezogen registriert werden. Dies gilt für alle DI-Dienste, die die Blazor-Server-App nutzt.
+    * Für Instanzmethoden, die über `DotNetReference`-Objekte verfügbar gemacht werden, die ursprünglich per Dependency Injection (DI) erstellt wurden, sollten die Objekte als bereichsbezogen registriert werden. Dies gilt für alle DI-Dienste, die die Blazor Server-App nutzt.
     * Bei statischen Methoden sollten Sie vermeiden, einen Zustand herzustellen, der sich auf den Client festlegen lässt. Die einzige Ausnahme stellen Apps dar, in denen Zustände absichtlich für alle Benutzer auf einer Serverinstanz verwendet.
   * Von Benutzern bereitgestellte Daten sollten nicht als Parameter für JavaScript-Aufrufe genutzt werden. Wenn das Übergeben von Daten in Parametern absolut notwendig ist, sollten Sie sicherstellen, dass der JavaScript-Code bei der Datenübergabe keine Gelegenheit für [Cross-Site-Scripting (XSS)](#cross-site-scripting-xss) bietet. Schreiben Sie beispielsweise keine von Benutzern bereitgestellten Daten in das Dokumentobjektmodell (DOM), indem Sie die Eigenschaft `innerHTML` eines Elements festlegen. Außerdem können Sie mit [Content Security Policy](https://developer.mozilla.org/docs/Web/HTTP/CSP) (zu Deutsch: „Richtlinie für Inhaltssicherheit“) ggf. `eval` und andere unsichere primitive JavaScript-Datentypen deaktivieren.
 * Implementieren Sie keine benutzerdefinierte Sendung von .NET-Aufrufen zusätzlich zur Sendungsimplementierung des Frameworks. Das Verfügbarmachen von .NET-Methoden für den Browser ist ein fortgeschrittenes Szenario, das sich nicht als allgemeine Blazor-Entwicklungstechnik empfiehlt.
 
 ### <a name="events"></a>Ereignisse
 
-Ereignisse stellen einen Einstiegspunkt in eine Blazor-Server-App dar. Für das Ereignishandling in Blazor-Server-Apps gelten dieselben Regeln wie für das Schützen von Endpunkten in Web-Apps. Ein böswilliger Client kann beliebige Daten als Nutzlast für ein Ereignis senden.
+Ereignisse stellen einen Einstiegspunkt in eine Blazor Server-App dar. Für das Ereignishandling in Blazor Server-Apps gelten dieselben Regeln wie für das Schützen von Endpunkten in Web-Apps. Ein böswilliger Client kann beliebige Daten als Nutzlast für ein Ereignis senden.
 
 Zum Beispiel:
 
@@ -282,7 +283,7 @@ Einige DOM-Ereignisse wie `oninput` oder `onscroll` können eine große Menge vo
 
 ## <a name="additional-security-guidance"></a>Zusätzlicher Sicherheitsleitfaden
 
-Der Leitfaden zur Sicherung von ASP.NET Core-Apps gilt für Blazor-Server-Apps und enthält die folgenden Abschnitte:
+Der Leitfaden zur Sicherung von ASP.NET Core-Apps gilt für Blazor Server-Apps und enthält die folgenden Abschnitte:
 
 * [Protokollierung und vertrauliche Daten](#logging-and-sensitive-data)
 * [Schützen von Informationen während der Übertragung mit HTTPS](#protect-information-in-transit-with-https)
@@ -360,9 +361,9 @@ Weitere Informationen finden Sie unter <xref:security/cross-site-scripting>.
 
 ### <a name="cross-origin-protection"></a>Ursprungsübergreifender Schutz
 
-Bei ursprungsübergreifenden Angriffen führt ein Client, der einen anderen Ursprung hat, eine Aktion für den Server aus. Bei der böswilligen Aktion handelt es sich üblicherweise um eine GET-Anforderung oder eine Art von POST-Methode (Cross-Site Request Forgery, CSRF). Es ist jedoch ebenso möglich, dass eine böswillige WebSocket-Verbindung geöffnet wird. Blazor-Server-Apps bieten [dieselben Garantien wie jede andere SignalR-App, die das angebotene Hubprotokoll verwendet](xref:signalr/security):
+Bei ursprungsübergreifenden Angriffen führt ein Client, der einen anderen Ursprung hat, eine Aktion für den Server aus. Bei der böswilligen Aktion handelt es sich üblicherweise um eine GET-Anforderung oder eine Art von POST-Methode (Cross-Site Request Forgery, CSRF). Es ist jedoch ebenso möglich, dass eine böswillige WebSocket-Verbindung geöffnet wird. Blazor Server-Apps bieten [dieselben Garantien wie jede andere SignalR-App, die das angebotene Hubprotokoll verwendet](xref:signalr/security):
 
-* Es besteht ursprungsübergreifender Zugriff auf Blazor-Server-Apps, es sei denn, dies wird durch zusätzliche Schutzmaßnahmen verhindert. Wenn Sie den ursprungsübergreifenden Zugriff deaktivieren möchten, müssen Sie entweder Cross-Origin Resource Sharing (CORS) im Endpunkt deaktivieren, indem Sie die CORS-Middleware der Pipeline und das <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute>-Objekt den Metadaten des Blazor-Endpunkts hinzufügen oder die zulässigen Ursprünge eingrenzen, indem Sie [SignalR für Cross-Origin Resource Sharing konfigurieren](xref:signalr/security#cross-origin-resource-sharing).
+* Es besteht ursprungsübergreifender Zugriff auf Blazor Server-Apps, es sei denn, dies wird durch zusätzliche Schutzmaßnahmen verhindert. Wenn Sie den ursprungsübergreifenden Zugriff deaktivieren möchten, müssen Sie entweder Cross-Origin Resource Sharing (CORS) im Endpunkt deaktivieren, indem Sie die CORS-Middleware der Pipeline und das <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute>-Objekt den Metadaten des Blazor-Endpunkts hinzufügen oder die zulässigen Ursprünge eingrenzen, indem Sie [SignalR für Cross-Origin Resource Sharing konfigurieren](xref:signalr/security#cross-origin-resource-sharing).
 * Wenn CORS aktiviert ist, sind je nach CORS-Konfiguration unter Umständen weitere Schritte erforderlich, um die App zu schützen. Ist CORS global aktiviert, lässt sich der Mechanismus für den Blazor Server-Hub deaktivieren, indem die <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute>-Metadaten den Endpunktmetadaten hinzugefügt werden, nachdem <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> im Endpunktroutengenerator aufgerufen wurde.
 
 Weitere Informationen finden Sie unter <xref:security/anti-request-forgery>.
@@ -375,7 +376,7 @@ Mithilfe von [Content Security Policy (CSP)](https://developer.mozilla.org/docs/
 
 ### <a name="open-redirects"></a>Open Redirects
 
-Wenn eine Blazor-Server-App-Sitzung beginnt, überprüft der Server grundlegend die URLs, die beim Sitzungsstart gesendet wurden. Das Framework überprüft, ob es sich bei der Basis-URL um eine übergeordnete URL der aktuellen handelt, bevor der Circuit hergestellt wird. Weitere Überprüfungen führt das Framework nicht aus.
+Wenn eine Blazor Server-App-Sitzung beginnt, überprüft der Server grundlegend die URLs, die beim Sitzungsstart gesendet wurden. Das Framework überprüft, ob es sich bei der Basis-URL um eine übergeordnete URL der aktuellen handelt, bevor der Circuit hergestellt wird. Weitere Überprüfungen führt das Framework nicht aus.
 
 Wenn ein Benutzer auf dem Client auf einen Link klickt, wird die Link-URL an den Server gesendet. Dieser entscheidet wiederum, welche Aktion anschließend ausgeführt wird. Die App kann beispielsweise eine clientseitige Navigation ausführen oder den Browser anweisen, einen neuen Inhalt aufzurufen.
 

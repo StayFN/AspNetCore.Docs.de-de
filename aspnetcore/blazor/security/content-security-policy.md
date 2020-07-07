@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 360fff9383e25a6b5b9308cfebd397f7f4ee31a6
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 5c53ac64d3ae1b365b40c519eb119f913d58cad1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242978"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402441"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Erzwingen einer Content Security Policy für ASP.NET Core Blazor
 
@@ -50,17 +51,17 @@ Geben Sie mindestens die folgenden Anweisungen und Quellen für Blazor-Apps an. 
 * [script-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src): Diese Anweisung gibt gültige Quellen für Skripts an.
   * Geben Sie die Hostquelle `https://stackpath.bootstrapcdn.com/` für Bootstrapskripts an.
   * Geben Sie `self` an, um anzugeben, dass der Ursprung der App, einschließlich des Schemas und der Portnummer, eine gültige Quelle ist.
-  * Gehen Sie in einer Blazor WebAssembly-App wie folgt vor:
+  * In einer Blazor WebAssembly-App:
     * Geben Sie die folgenden Hashes an, damit die erforderlichen Blazor WebAssembly-Inlineskripts geladen werden können:
       * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
       * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
       * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
     * Geben Sie `unsafe-eval` an, um `eval()` und Methoden zum Erstellen von Code aus Zeichenfolgen zu verwenden.
-  * Geben Sie in einer Blazor-Server-App den Hash `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` für das Inlineskript an, das die Fallback-Erkennung für Stylesheets durchführt.
+  * Geben Sie in einer Blazor Server-App den Hash `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` für das Inlineskript an, das die Fallback-Erkennung für Stylesheets durchführt.
 * [style-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src): Diese Anweisung gibt gültige Quellen für Stylesheets an.
   * Geben Sie die Hostquelle `https://stackpath.bootstrapcdn.com/` für Bootstrapstylesheets an.
   * Geben Sie `self` an, um anzugeben, dass der Ursprung der App, einschließlich des Schemas und der Portnummer, eine gültige Quelle ist.
-  * Geben Sie `unsafe-inline` an, um die Verwendung von Inlineformatvorlagen zuzulassen. Die Inlinedeklaration ist für die Benutzeroberfläche in Blazor-Server-Apps für die erneute Verbindung zwischen Client und Server nach der ursprünglichen Anforderung erforderlich. In einem zukünftigen Release wird die Inlineformatierung möglicherweise entfernt, sodass `unsafe-inline` nicht mehr benötigt wird.
+  * Geben Sie `unsafe-inline` an, um die Verwendung von Inlineformatvorlagen zuzulassen. Die Inlinedeklaration ist für die Benutzeroberfläche in Blazor Server-Apps für die erneute Verbindung zwischen Client und Server nach der ursprünglichen Anforderung erforderlich. In einem zukünftigen Release wird die Inlineformatierung möglicherweise entfernt, sodass `unsafe-inline` nicht mehr benötigt wird.
 * [upgrade-insecure-requests](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests): Diese Anweisung gibt an, dass Inhalts-URLs aus unsicheren (HTTP-) Quellen sicher über HTTPS aufgerufen werden sollen.
 
 Die vorangehenden Anweisungen werden mit Ausnahme von Microsoft Internet Explorer von allen Browsern unterstützt.
@@ -81,9 +82,9 @@ Verwenden Sie ein `<meta>`-Tag, um die Richtlinie anzuwenden:
 * Platzieren Sie die Anweisungen im Wert des `content`-Attributs. Trennen Sie Anweisungen durch ein Semikolon (`;`).
 * Platzieren Sie das `meta`-Tag immer im `<head>`-Inhalt.
 
-In den folgenden Abschnitten werden Beispielrichtlinien für Blazor Webassembly und Blazor Server aufgezeigt. Diese Beispiele werden für jedes Release von Blazor mit diesem Artikel versioniert. Wenn Sie eine für Ihr Release geeignete Version verwenden möchten, wählen Sie die Dokumentversion mithilfe der Dropdownauswahl **Version** auf dieser Webseite aus.
+In den folgenden Abschnitten werden Beispielrichtlinien für Blazor WebAssembly und Blazor Server aufgezeigt. Diese Beispiele werden für jedes Release von Blazor mit diesem Artikel versioniert. Wenn Sie eine für Ihr Release geeignete Version verwenden möchten, wählen Sie die Dokumentversion mithilfe der Dropdownauswahl **Version** auf dieser Webseite aus.
 
-### <a name="blazor-webassembly"></a>Blazor WebAssembly
+### Blazor WebAssembly
 
 Wenden Sie im `<head>`-Inhalt der Hostseite `wwwroot/index.html` die im Abschnitt [Richtlinienanweisungen](#policy-directives) beschriebenen Anweisungen an:
 
@@ -106,7 +107,7 @@ Wenden Sie im `<head>`-Inhalt der Hostseite `wwwroot/index.html` die im Abschnit
                upgrade-insecure-requests;">
 ```
 
-### <a name="blazor-server"></a>Blazor Server
+### Blazor Server
 
 Wenden Sie im `<head>`-Inhalt der Hostseite `Pages/_Host.cshtml` die im Abschnitt [Richtlinienanweisungen](#policy-directives) beschriebenen Anweisungen an:
 

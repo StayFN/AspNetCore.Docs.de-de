@@ -1,44 +1,45 @@
 ---
 title: Blazor-Hostingmodelle in ASP.NET Core
 author: guardrex
-description: Erfahren Sie mehr über Hostingmodelle mit Blazor WebAssembly und Blazor Server.
+description: Grundlegendes zu den Blazor WebAssembly- und Blazor Server-Hostingmodellen.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a54f92d1c951792e599992b82e6b6d5c85549292
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: ba43ff052fbd290412fa27cf57ace3ee3491f8d0
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243498"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402558"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>Blazor-Hostingmodelle in ASP.NET Core
 
 Von [Daniel Roth](https://github.com/danroth27)
 
-Das Webframework Blazor kann auf Clientseite im Browser in einer auf [WebAssembly](https://webassembly.org/) basierenden .NET-Runtime ( *Blazor WebAssembly*) oder auf Serverseite in ASP.NET Core ( *Blazor Server*) ausgeführt werden. Die App und die Komponentenmodelle sind für alle Hostingmodelle *identisch*.
+Das Webframework Blazor kann auf Clientseite im Browser in einer auf [WebAssembly](https://webassembly.org/) basierenden .NET-Runtime ( *Blazor WebAssembly* ) oder auf Serverseite in ASP.NET Core ( *Blazor Server* ) ausgeführt werden. Die App und die Komponentenmodelle sind für alle Hostingmodelle *identisch*.
 
 Informationen zum Erstellen eines Projekts für die in diesem Artikel beschriebenen Hostingmodelle finden Sie unter <xref:blazor/get-started>.
 
 Informationen zu erweiterten Konfigurationen finden Sie unter <xref:blazor/fundamentals/configuration>.
 
-## <a name="blazor-webassembly"></a>Blazor WebAssembly
+## Blazor WebAssembly
 
 Das wichtigste Hostingmodell für Blazor wird clientseitig im Browser in WebAssembly ausgeführt. Die Blazor-App, die jeweiligen Abhängigkeiten und die .NET-Runtime werden im Browser heruntergeladen. Die App wird direkt im UI-Thread des Browsers ausgeführt. Die Aktualisierung der Benutzeroberfläche und die Ereignisbehandlung erfolgen im selben Prozess. Die Ressourcen der App werden als statische Dateien auf einem Webserver oder für einen Dienst bereitgestellt, die geeignet sind, statische Inhalte für Clients bereitzustellen.
 
 ![Blazor WebAssembly: Die Blazor-App wird in einem Benutzeroberflächenthread im Browser ausgeführt.](hosting-models/_static/blazor-webassembly.png)
 
-Verwenden Sie zum Erstellen einer Blazor-App mithilfe des clientseitigen Hostingmodells die Vorlage **Blazor WebAssembly-App** ([`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
+Verwenden Sie zum Erstellen einer Blazor-App mithilfe des clientseitigen Hostingmodells die **Blazor WebAssembly-App**-Vorlage ([`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
 
-Nachdem Sie die Vorlage **Blazor WebAssembly-App** ausgewählt haben, können Sie die App so konfigurieren, dass sie ein ASP.NET Core-Back-End verwendet. Aktivieren Sie hierzu das Kontrollkästchen **In ASP.NET Core gehostet** ([`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). Die ASP.NET Core-App stellt Clients die Blazor-App bereit. Die Blazor WebAssembly-App kann mit dem Server über das Netzwerk mithilfe von API-Aufrufen oder [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>) interagieren.
+Nachdem Sie die **Blazor WebAssembly-App**-Vorlage ausgewählt haben, können Sie die App so konfigurieren, dass sie ein ASP.NET Core-Back-End verwendet. Aktivieren Sie hierzu das Kontrollkästchen **In ASP.NET Core gehostet** ([`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). Die ASP.NET Core-App stellt Clients die Blazor-App bereit. Die Blazor WebAssembly-App kann mit dem Server über das Netzwerk mithilfe von API-Aufrufen oder [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>) interagieren.
 
 Die Vorlagen umfassen das Skript `blazor.webassembly.js`, mit dem folgende Aktionen ausgeführt werden können:
 
@@ -61,13 +62,13 @@ Das Blazor WebAssembly-Hostingmodell besitzt folgende Nachteile:
 
 Das Blazor-Modell für gehostete Apps unterstützt [Docker-Container](/dotnet/standard/microservices-architecture/container-docker-introduction/index). Klicken Sie mit der rechten Maustaste auf das Serverprojekt in Visual Studio, und klicken Sie dann auf **Hinzufügen** > **Docker-Unterstützung**.
 
-## <a name="blazor-server"></a>Blazor Server
+## Blazor Server
 
 Mit dem Blazor Server-Hostingmodell wird die App über eine ASP.NET Core-App auf dem Server ausgeführt. Benutzeroberflächenupdates, Ereignisbehandlung und JavaScript-Aufrufe werden über eine [SignalR](xref:signalr/introduction)-Verbindung verarbeitet.
 
 ![Der Browser interagiert mit der (in einer ASP.NET Core-App gehosteten) App über eine SignalR-Verbindung auf dem Server.](hosting-models/_static/blazor-server.png)
 
-Verwenden Sie zum Erstellen einer Blazor-App mithilfe des Blazor Server-Hostingmodells die ASP.NET Core-Vorlage **Blazor Server-App** ([`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). Die ASP.NET Core-App hostet die Blazor Server-App und erstellt den SignalR-Endpunkt für Clientverbindungen.
+Verwenden Sie zum Erstellen einer Blazor-App mithilfe des Blazor Server-Hostingmodells die ASP.NET Core- **Blazor Server-App**-Vorlage ([`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). Die ASP.NET Core-App hostet die Blazor Server-App und erstellt den SignalR-Endpunkt für Clientverbindungen.
 
 Die ASP.NET Core-App verweist auf die `Startup`-Klasse der App, um folgende Aktionen durchzuführen:
 
@@ -81,7 +82,7 @@ Das Blazor Server-Hostingmodell besitzt folgende Vorteile:
 * Die Downloadgröße ist im Vergleich zu einer Blazor WebAssembly-App deutlich kleiner und die Ladezeit der App wesentlich kürzer.
 * Die Serverfunktionen werden in vollem Umfang genutzt, einschließlich aller mit .NET Core kompatiblen APIs.
 * Da auf dem Server .NET Core zum Ausführen der App verwendet wird, funktionieren vorhandene .NET-Tools, wie das Debuggen, erwartungsgemäß.
-* Thin Clients werden unterstützt. So funktionieren Blazor Server-Apps auch mit Browsern, die WebAssembly nicht unterstützen sowie auf Geräten mit eingeschränkten Ressourcen.
+* Thin Clients werden unterstützt. So funktionieren Blazor Server-Apps auch mit Browsern, die WebAssembly nicht unterstützen, sowie auf Geräten mit eingeschränkten Ressourcen.
 * Die .NET-/C#-Codebasis der App, einschließlich des Komponentencodes, werden nicht für Clients bereitgestellt.
 
 Das Blazor Server-Hostingmodell besitzt folgende Nachteile:
@@ -91,11 +92,11 @@ Das Blazor Server-Hostingmodell besitzt folgende Nachteile:
 * Die Skalierbarkeit ist bei Apps mit vielen Benutzern schwierig. Der Server muss eine Vielzahl von Clientverbindungen verwalten und Clientzustände verarbeiten.
 * Zum Bereitstellen der App ist ein ASP.NET Core-Server erforderlich. Serverlose Bereitstellungsszenarios sind nicht möglich (z. B. das Bereitstellen der App aus einem CDN).
 
-Das Blazor-Server-App-Modell unterstützt [Docker-Container](/dotnet/standard/microservices-architecture/container-docker-introduction/index). Klicken Sie mit der rechten Maustaste auf das Projekt in Visual Studio, und klicken Sie dann auf **Hinzufügen** > **Docker-Unterstützung**.
+Das Blazor Server-App-Modell unterstützt [Docker-Container](/dotnet/standard/microservices-architecture/container-docker-introduction/index). Klicken Sie mit der rechten Maustaste auf das Projekt in Visual Studio, und klicken Sie dann auf **Hinzufügen** > **Docker-Unterstützung**.
 
 ### <a name="comparison-to-server-rendered-ui"></a>Vergleich mit einer auf dem Server gerenderten Benutzeroberfläche
 
-Das Wissen um die Unterschiede zu traditionellen Modellen zum Rendern von Benutzeroberflächen in ASP.NET Core-Apps mit Razor-Ansichten oder Razor Pages trägt zu einem besseren Verständnis von Blazor-Server-Apps bei. Bei beiden Modellen wird zum Beschreiben von HTML-Inhalt die Razor-Syntax verwendet. Deutliche Unterschiede bestehen hingegen im Rendern von Markup.
+Die Unterschiede zwischen Blazor Server-Apps und traditionellen Modellen beim Rendern von Benutzeroberflächen in ASP.NET Core-Apps mit Razor-Ansichten oder Razor Pages zu kennen ist entscheidend. Bei beiden Modellen wird zum Beschreiben von HTML-Inhalt die Razor-Syntax verwendet. Deutliche Unterschiede bestehen hingegen im Rendern von Markup.
 
 Beim Rendern einer Razor-Seite oder -Ansicht gibt jede Razor-Codezeile HTML in Textform aus. Nach dem Rendern verwirft der Server die Instanz der Seite oder Ansicht, einschließlich aller produzierten Zustände. Tritt eine weitere Anforderung für die Seite auf, wenn etwa bei der Serverüberprüfung ein Fehler auftritt und die Zusammenfassung der Überprüfung angezeigt wird, werden folgende Aktionen ausgeführt:
 
@@ -147,7 +148,7 @@ Blazor Server-Apps erfordern eine aktive SignalR-Verbindung mit dem Server. Wird
 
 Als Reaktion auf die erste Clientanforderung führt die Blazor Server-App ein Prerendering aus, das den Zustand der Benutzeroberfläche auf dem Server festlegt. Versucht der Client, eine SignalR-Verbindung zu erstellen, muss er noch mal mit demselben Server eine Verbindung herstellen. Blazor Server-Apps mit mehr als einem Back-End-Server sollten für SignalR-Verbindungen *persistente Sitzungen* implementieren.
 
-Sie sollten [Azure SignalR Service](/azure/azure-signalr) für Blazor Server-Apps verwenden. Der Dienst ermöglicht das zentrale Hochskalieren einer Blazor Server-App auf eine große Anzahl gleichzeitiger SignalR-Verbindungen. Bei Azure SignalR Service werden persistente Sitzungen aktiviert, indem die Option `ServerStickyMode` des Diensts oder dessen Konfigurationswert auf `Required` festgelegt wird. Weitere Informationen finden Sie unter <xref:blazor/host-and-deploy/server#signalr-configuration>.
+Sie sollten [Azure SignalR Service](/azure/azure-signalr) für Blazor Server-Apps verwenden. Der Dienst ermöglicht das Hochskalieren einer Blazor Server-App auf eine große Anzahl gleichzeitiger SignalR-Verbindungen. Bei Azure SignalR Service werden persistente Sitzungen aktiviert, indem die Option `ServerStickyMode` des Diensts oder dessen Konfigurationswert auf `Required` festgelegt wird. Weitere Informationen finden Sie unter <xref:blazor/host-and-deploy/server#signalr-configuration>.
 
 Bei der Verwendung von IIS sind persistente Sitzungen mit Routing von Anwendungsanforderungen aktiviert. Weitere Informationen finden Sie unter [HTTP-Lastenausgleiche mithilfe von Routing von Anwendungsanforderungen](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 

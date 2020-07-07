@@ -8,27 +8,28 @@ ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 7f92f82d6e78771494b9f2358ee19153502f8dcb
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 46de9a22dec540b8dfda7583b7a3c5c2dcbbc549
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243043"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402324"
 ---
 # <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>Zusätzliche Sicherheitsszenarios für ASP.NET Core Blazor Server
 
 Von [Javier Calvarro Nelson](https://github.com/javiercn)
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a>Übergeben von Token an eine Blazor-Server-App
+## <a name="pass-tokens-to-a-blazor-server-app"></a>Übergeben von Token an eine Blazor Server-App
 
-Token, die außerhalb der Razor-Komponenten in einer Blazor-Server-App verfügbar sind, können mit dem in diesem Abschnitt beschriebenen Ansatz an Komponenten übergeben werden. Beispielcode, einschließlich eines umfassenden `Startup.ConfigureServices`-Beispiels, finden Sie unter [Übergeben von Token an eine serverseitige Blazor-Anwendung](https://github.com/javiercn/blazor-server-aad-sample).
+Token, die außerhalb der Razor-Komponenten in einer Blazor Server-App verfügbar sind, können mit dem in diesem Abschnitt beschriebenen Ansatz an Komponenten übergeben werden. Beispielcode, einschließlich eines umfassenden `Startup.ConfigureServices`-Beispiels, finden Sie unter [Übergeben von Token an eine serverseitige Blazor-Anwendung](https://github.com/javiercn/blazor-server-aad-sample).
 
-Authentifizieren Sie die Blazor-Server-App genauso wie eine reguläre Razor Pages- oder MVC-App. Stellen Sie die Token für das Authentifizierungscookie bereit, und speichern Sie diese. Zum Beispiel:
+Authentifizieren Sie die Blazor Server-App genauso wie eine reguläre Razor Pages- oder MVC-App. Stellen Sie die Token für das Authentifizierungscookie bereit, und speichern Sie diese. Zum Beispiel:
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;

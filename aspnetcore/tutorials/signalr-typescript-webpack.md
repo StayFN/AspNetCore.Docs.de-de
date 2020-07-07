@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 67a6217055db69fe540412f42411dd3a33bbbe73
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: 49d185ce941d5f8e841224e7de3b72b8350a1c47
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775504"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407901"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Verwenden von ASP.NET Core SignalR mit TypeScript und Webpack
 
@@ -153,7 +154,7 @@ In den folgenden Schritten wird die Konvertierung von TypeScript zu JavaScript u
     Die vorangehende Datei konfiguriert die Webpack-Kompilierung. Zu beachtende Konfigurationsdetails:
 
     * Die Eigenschaft `output` überschreibt den Standardwert von *dist*. Das Bündel wird stattdessen an das Verzeichnis *wwwroot* ausgegeben.
-    * Das `resolve.extensions`-Array enthält *.js*, um den JavaScript-Code des SignalR-Clients zu importieren.
+    * Das `resolve.extensions`-Array schließt *.js* ein, um den JavaScript-Code des SignalR-Clients zu importieren.
 
 1. Erstellen Sie ein neues *src*-Verzeichnis im Projektstamm, um die clientseitigen Ressourcen des Projekts zu speichern.
 
@@ -224,7 +225,7 @@ Die App stellt zurzeit ein Basisformular zum Senden von Nachrichten bereit, ist 
 
     Mit dem vorangestellten Komma wird Folgendes installiert:
 
-     * Der [SignalR-TypeScript-Client](https://www.npmjs.com/package/@microsoft/signalr), mit dem der Client Nachrichten an den Server senden kann
+     * Der [SignalR-TypeScript-Client](https://www.npmjs.com/package/@microsoft/signalr), mit dem der Client Nachrichten an den Server senden kann.
      * Die TypeScript-Typdefinitionen für Node.js, die die Überprüfung zur Kompilierzeit von Node.js-Typen ermöglichen
 
 1. Fügen Sie den hervorgehobenen Code in die Datei *src/index.ts* ein:
@@ -393,7 +394,7 @@ In den folgenden Schritten wird die Konvertierung von TypeScript zu JavaScript u
     Die vorangehende Datei konfiguriert die Webpack-Kompilierung. Zu beachtende Konfigurationsdetails:
 
     * Die Eigenschaft `output` überschreibt den Standardwert von *dist*. Das Bündel wird stattdessen an das Verzeichnis *wwwroot* ausgegeben.
-    * Das `resolve.extensions`-Array enthält *.js*, um den JavaScript-Code des SignalR-Clients zu importieren.
+    * Das `resolve.extensions`-Array schließt *.js* ein, um den JavaScript-Code des SignalR-Clients zu importieren.
 
 1. Erstellen Sie ein neues *src*-Verzeichnis im Projektstamm, um die clientseitigen Ressourcen des Projekts zu speichern.
 

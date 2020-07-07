@@ -6,17 +6,18 @@ ms.author: riande
 ms.date: 11/30/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: e3b73a7a559d2f4a0803dc26dd42257c60fab884
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
-ms.translationtype: HT
+ms.openlocfilehash: 412cd7a39a0eed6800e15d235102ed367da5f746
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84356959"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793472"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisierung und Lokalisierung in ASP.NET Core
 
@@ -50,7 +51,8 @@ Verwenden Sie die Implementierung von `IHtmlLocalizer<T>` für Ressourcen, die H
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Auf der untersten Ebene können Sie `IStringLocalizerFactory` aus [Dependency Injection](dependency-injection.md) abrufen:
 
@@ -81,12 +83,13 @@ Die Standardimplementierung von `IViewLocalizer` sucht die Ressourcendatei über
 Eine französische Ressourcendatei könnte Folgendes beinhalten:
 
 | Key | Wert |
-| ----- | ------ |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 Die gerenderte Ansicht würde das HTML-Markup der Ressourcendatei enthalten.
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Fügen Sie `IHtmlLocalizer<T>` ein, um eine freigegebene Ressourcendatei in einer Ansicht zu verwenden:
 
@@ -134,19 +137,19 @@ Eine Ressourcendatei ist ein nützlicher Mechanismus für das Trennen von lokali
 
 1. Führen Sie im **Projektmappen-Explorer** einen Rechtsklick auf den Ordner aus, der die Ressourcendatei enthalten soll, und klicken Sie dann auf **Hinzufügen** > **Neues Element**.
 
-    ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
+   ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
 
-2. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
+1. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
 
-    ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
+   ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
 
-3. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
+1. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
 
-    ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
+   ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
 
-    Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
+   Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
 
-    ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
+   ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Benennung von Ressourcendateien
 
@@ -158,7 +161,6 @@ Im Beispielprojekt legt die Methode `ConfigureServices` die `ResourcesPath`-Eige
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | Punkt  |
 | Resources/Controllers/HomeController.fr.resx  | Pfad |
-|    |     |
 
 Ressourcendateien, die `@inject IViewLocalizer` in Razor-Ansichten verwenden, folgen einem ähnlichen Muster. Die Ressourcendatei für eine Ansicht kann mit der Punkt- oder Pfadbenennung benannt werden. Ressourcendateien der Razor-Ansicht imitieren den Pfad ihrer zugehörigen Ansichtsdatei. Wenn `ResourcesPath` zum Beispiel auf „Resources“ festgelegt wird, ist die französische Ressourcendatei, die der Ansicht *Views/Home/About.cshtml* zugeordnet ist, eine der folgenden zwei:
 
@@ -220,9 +222,9 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer zu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
+* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer hinzu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
 
-* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien zu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
+* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien hinzu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` fügt Unterstützung für lokalisierte `DataAnnotations`-Validierungsmeldungen durch Abstraktionen von `IStringLocalizer` hinzu.
 
@@ -231,13 +233,14 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 Die aktuell angefragte Kultur wird in der [Middleware](xref:fundamentals/middleware/index) für die Lokalisierung festgelegt. Die Middleware für die Lokalisierung wird in der `Startup.Configure`-Methode aktiviert. Die Lokalisierungsmiddleware muss vor Middleware konfiguriert werden, die möglicherweise die Anforderungskultur prüft (z.B. `app.UseMvcWithDefaultRoute()`).
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` initialisiert ein `RequestLocalizationOptions`-Objekt. Bei jeder Anforderung wird die Liste von `RequestCultureProvider` in `RequestLocalizationOptions` aufgelistet und der erste Anbieter, der erfolgreich die Anforderungskultur bestimmen kann, wird verwendet. Die Standardanbieter stammen aus der Klasse `RequestLocalizationOptions`:
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 Die Reihenfolge der Standardliste fängt bei den spezifischsten Anbietern an und endet mit den allgemeinsten. Im Verlauf des Artikels erfahren Sie, wie Sie die Reihenfolge ändern und einen benutzerdefinierten Kulturanbieter hinzufügen. Wenn kein Anbieter die Anforderungskultur bestimmen kann, wird `DefaultRequestCulture` verwendet.
 
@@ -249,7 +252,9 @@ Einige Apps verwenden eine Abfragezeichenfolge, um die [Kultur und Benutzeroberf
 
 Wenn Sie nur eine der beiden Abfragezeichenfolgen (`culture` oder `ui-culture`) übergeben, setzt der Anbieter für Abfragezeichenfolgen beide Werte entsprechend der übergebenen Abfrage fest. Wenn beispielsweise nur die Kultur festgelegt wird, werden sowohl `Culture` als auch `UICulture` wie folgt festgelegt:
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -259,7 +264,9 @@ Produktions-Apps bieten oft einen Mechanismus zum Festlegen der Kultur mithilfe 
 
 Das Cookieformat ist `c=%LANGCODE%|uic=%LANGCODE%`, wobei `c` für `Culture` steht und `uic` für `UICulture`, zum Beispiel:
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 Wenn Sie nur eine Kulturinformation und eine Benutzeroberflächenkultur angeben, wird die angegebene Kultur sowohl für die Kulturinformation als auch die Benutzeroberflächenkultur verwendet.
 
@@ -271,17 +278,17 @@ Der [Accept-Language-Header](https://www.w3.org/International/questions/qa-accep
 
 1. Klicken Sie auf das Zahnradsymbol und dann auf **Internetoptionen**.
 
-2. Klicken Sie auf **Sprachen**.
+1. Klicken Sie auf **Sprachen**.
 
-    ![Internetoptionen](localization/_static/lang.png)
+   ![Internetoptionen](localization/_static/lang.png)
 
-3. Klicken Sie auf **Spracheinstellungen festlegen**.
+1. Klicken Sie auf **Spracheinstellungen festlegen**.
 
-4. Klicken Sie auf **Sprache hinzufügen**.
+1. Klicken Sie auf **Sprache hinzufügen**.
 
-5. Fügen Sie die Sprache hinzu.
+1. Fügen Sie die Sprache hinzu.
 
-6. Klicken Sie auf die Sprache und dann auf **Nach oben**.
+1. Klicken Sie auf die Sprache und dann auf **Nach oben**.
 
 ### <a name="use-a-custom-provider"></a>Verwenden eines benutzerdefinierten Anbieters
 
@@ -398,7 +405,8 @@ Verwenden Sie die Implementierung von `IHtmlLocalizer<T>` für Ressourcen, die H
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Auf der untersten Ebene können Sie `IStringLocalizerFactory` aus [Dependency Injection](dependency-injection.md) abrufen:
 
@@ -429,12 +437,13 @@ Die Standardimplementierung von `IViewLocalizer` sucht die Ressourcendatei über
 Eine französische Ressourcendatei könnte Folgendes beinhalten:
 
 | Key | Wert |
-| ----- | ------ |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 Die gerenderte Ansicht würde das HTML-Markup der Ressourcendatei enthalten.
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Fügen Sie `IHtmlLocalizer<T>` ein, um eine freigegebene Ressourcendatei in einer Ansicht zu verwenden:
 
@@ -482,19 +491,19 @@ Eine Ressourcendatei ist ein nützlicher Mechanismus für das Trennen von lokali
 
 1. Führen Sie im **Projektmappen-Explorer** einen Rechtsklick auf den Ordner aus, der die Ressourcendatei enthalten soll, und klicken Sie dann auf **Hinzufügen** > **Neues Element**.
 
-    ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
+   ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
 
-2. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
+1. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
 
-    ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
+   ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
 
-3. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
+1. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
 
-    ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
+   ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
 
-    Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
+   Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
 
-    ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
+   ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Benennung von Ressourcendateien
 
@@ -506,7 +515,6 @@ Im Beispielprojekt legt die Methode `ConfigureServices` die `ResourcesPath`-Eige
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | Punkt  |
 | Resources/Controllers/HomeController.fr.resx  | Pfad |
-|    |     |
 
 Ressourcendateien, die `@inject IViewLocalizer` in Razor-Ansichten verwenden, folgen einem ähnlichen Muster. Die Ressourcendatei für eine Ansicht kann mit der Punkt- oder Pfadbenennung benannt werden. Ressourcendateien der Razor-Ansicht imitieren den Pfad ihrer zugehörigen Ansichtsdatei. Wenn `ResourcesPath` zum Beispiel auf „Resources“ festgelegt wird, ist die französische Ressourcendatei, die der Ansicht *Views/Home/About.cshtml* zugeordnet ist, eine der folgenden zwei:
 
@@ -568,9 +576,9 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer zu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
+* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer hinzu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
 
-* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien zu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
+* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien hinzu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` fügt Unterstützung für lokalisierte `DataAnnotations`-Validierungsmeldungen durch Abstraktionen von `IStringLocalizer` hinzu.
 
@@ -579,13 +587,14 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 Die aktuell angefragte Kultur wird in der [Middleware](xref:fundamentals/middleware/index) für die Lokalisierung festgelegt. Die Middleware für die Lokalisierung wird in der `Startup.Configure`-Methode aktiviert. Die Lokalisierungsmiddleware muss vor Middleware konfiguriert werden, die möglicherweise die Anforderungskultur prüft (z.B. `app.UseMvcWithDefaultRoute()`).
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` initialisiert ein `RequestLocalizationOptions`-Objekt. Bei jeder Anforderung wird die Liste von `RequestCultureProvider` in `RequestLocalizationOptions` aufgelistet und der erste Anbieter, der erfolgreich die Anforderungskultur bestimmen kann, wird verwendet. Die Standardanbieter stammen aus der Klasse `RequestLocalizationOptions`:
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 Die Reihenfolge der Standardliste fängt bei den spezifischsten Anbietern an und endet mit den allgemeinsten. Im Verlauf des Artikels erfahren Sie, wie Sie die Reihenfolge ändern und einen benutzerdefinierten Kulturanbieter hinzufügen. Wenn kein Anbieter die Anforderungskultur bestimmen kann, wird `DefaultRequestCulture` verwendet.
 
@@ -593,11 +602,15 @@ Die Reihenfolge der Standardliste fängt bei den spezifischsten Anbietern an und
 
 Einige Apps verwenden eine Abfragezeichenfolge, um die [Kultur und Benutzeroberflächenkultur](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx) festzulegen. Bei Apps, die die Ansätze „Cookie“ oder „Accept-Language-Header“ verwenden, ist das Hinzufügen einer Abfragezeichenfolge zur URL für das Debuggen und Testen von Code nützlich. Standardmäßig ist `QueryStringRequestCultureProvider` als erster Lokalisierungsanbieter in der Liste `RequestCultureProvider` registriert. Sie übergeben die Abfragezeichenfolge-Parameter `culture` und `ui-culture`. Im folgenden Beispiel ist die spezifische Kultur (Sprache und Region) auf Spanisch/Mexiko festgelegt:
 
-   `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX&ui-culture=es-MX
+```
 
 Wenn Sie nur eine der beiden Abfragezeichenfolgen (`culture` oder `ui-culture`) übergeben, setzt der Anbieter für Abfragezeichenfolgen beide Werte entsprechend der übergebenen Abfrage fest. Wenn beispielsweise nur die Kultur festgelegt wird, werden sowohl `Culture` als auch `UICulture` wie folgt festgelegt:
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -607,7 +620,9 @@ Produktions-Apps bieten oft einen Mechanismus zum Festlegen der Kultur mithilfe 
 
 Das Cookieformat ist `c=%LANGCODE%|uic=%LANGCODE%`, wobei `c` für `Culture` steht und `uic` für `UICulture`, zum Beispiel:
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 Wenn Sie nur eine Kulturinformation und eine Benutzeroberflächenkultur angeben, wird die angegebene Kultur sowohl für die Kulturinformation als auch die Benutzeroberflächenkultur verwendet.
 
@@ -619,17 +634,17 @@ Der [Accept-Language-Header](https://www.w3.org/International/questions/qa-accep
 
 1. Klicken Sie auf das Zahnradsymbol und dann auf **Internetoptionen**.
 
-2. Klicken Sie auf **Sprachen**.
+1. Klicken Sie auf **Sprachen**.
 
-    ![Internetoptionen](localization/_static/lang.png)
+   ![Internetoptionen](localization/_static/lang.png)
 
-3. Klicken Sie auf **Spracheinstellungen festlegen**.
+1. Klicken Sie auf **Spracheinstellungen festlegen**.
 
-4. Klicken Sie auf **Sprache hinzufügen**.
+1. Klicken Sie auf **Sprache hinzufügen**.
 
-5. Fügen Sie die Sprache hinzu.
+1. Fügen Sie die Sprache hinzu.
 
-6. Klicken Sie auf die Sprache und dann auf **Nach oben**.
+1. Klicken Sie auf die Sprache und dann auf **Nach oben**.
 
 ### <a name="use-a-custom-provider"></a>Verwenden eines benutzerdefinierten Anbieters
 
@@ -745,7 +760,8 @@ Verwenden Sie die Implementierung von `IHtmlLocalizer<T>` für Ressourcen, die H
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Auf der untersten Ebene können Sie `IStringLocalizerFactory` aus [Dependency Injection](dependency-injection.md) abrufen:
 
@@ -776,12 +792,13 @@ Die Standardimplementierung von `IViewLocalizer` sucht die Ressourcendatei über
 Eine französische Ressourcendatei könnte Folgendes beinhalten:
 
 | Key | Wert |
-| ----- | ------ |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 Die gerenderte Ansicht würde das HTML-Markup der Ressourcendatei enthalten.
 
-**Hinweis**: Normalerweise sollten Sie nur den Text lokalisieren, nicht den HTML-Code.
+> [!NOTE]
+> Im Allgemeinen wird nur Text lokalisiert, nicht HTML.
 
 Fügen Sie `IHtmlLocalizer<T>` ein, um eine freigegebene Ressourcendatei in einer Ansicht zu verwenden:
 
@@ -829,19 +846,19 @@ Eine Ressourcendatei ist ein nützlicher Mechanismus für das Trennen von lokali
 
 1. Führen Sie im **Projektmappen-Explorer** einen Rechtsklick auf den Ordner aus, der die Ressourcendatei enthalten soll, und klicken Sie dann auf **Hinzufügen** > **Neues Element**.
 
-    ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
+   ![Geschachteltes Kontextmenü: Im Projektmappen-Explorer ist ein Kontextmenü für Ressourcen geöffnet. Ein zweites Kontextmenü ist unter „Hinzufügen“ geöffnet, der Befehl „Neues Element“ wird angezeigt und hervorgehoben.](localization/_static/newi.png)
 
-2. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
+1. Geben Sie „resource“ (Ressource) im Feld **Search installed templates** (Installierte Vorlagen durchsuchen) ein, und benennen Sie die Datei.
 
-    ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
+   ![Dialogfeld „Neues Element hinzufügen“](localization/_static/res.png)
 
-3. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
+1. Geben Sie den Schlüsselwert (native Zeichenfolge) in der Spalte **Name** und die übersetzte Zeichenfolge in der Spalte **Wert** ein.
 
-    ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
+   ![Welcome.es.resx-Datei (die Willkommensressourcendatei für Spanisch) mit dem Wort „Hello“ in der Spalte „Name“ und dem Wort „Hola“ (Hallo in Spanisch) in der Spalte „Wert“](localization/_static/hola.png)
 
-    Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
+   Die Datei *Welcome.es.resx* wird in Visual Studio angezeigt.
 
-    ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
+   ![Die Ressourcendatei „Welcome Spanish (es)“ im Projektmappen-Explorer](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Benennung von Ressourcendateien
 
@@ -853,7 +870,6 @@ Im Beispielprojekt legt die Methode `ConfigureServices` die `ResourcesPath`-Eige
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | Punkt  |
 | Resources/Controllers/HomeController.fr.resx  | Pfad |
-|    |     |
 
 Ressourcendateien, die `@inject IViewLocalizer` in Razor-Ansichten verwenden, folgen einem ähnlichen Muster. Die Ressourcendatei für eine Ansicht kann mit der Punkt- oder Pfadbenennung benannt werden. Ressourcendateien der Razor-Ansicht imitieren den Pfad ihrer zugehörigen Ansichtsdatei. Wenn `ResourcesPath` zum Beispiel auf „Resources“ festgelegt wird, ist die französische Ressourcendatei, die der Ansicht *Views/Home/About.cshtml* zugeordnet ist, eine der folgenden zwei:
 
@@ -915,9 +931,9 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer zu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
+* `AddLocalization` fügt die Lokalisierungsdienste dem Dienstcontainer hinzu. Im obigen Codebeispiel wird der Ressourcenpfad auf „Resources“ festgelegt.
 
-* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien zu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
+* `AddViewLocalization` fügt Unterstützung für lokalisierte Ansichtsdateien hinzu. In diesem Beispiel basiert die Lokalisierung der Ansicht auf dem Suffix der Ansichtsdatei. Zum Beispiel „fr“ in der Datei *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` fügt Unterstützung für lokalisierte `DataAnnotations`-Validierungsmeldungen durch Abstraktionen von `IStringLocalizer` hinzu.
 
@@ -926,13 +942,14 @@ Die Lokalisierung wird über die Methode `Startup.ConfigureServices` konfigurier
 Die aktuell angefragte Kultur wird in der [Middleware](xref:fundamentals/middleware/index) für die Lokalisierung festgelegt. Die Middleware für die Lokalisierung wird in der `Startup.Configure`-Methode aktiviert. Die Lokalisierungsmiddleware muss vor Middleware konfiguriert werden, die möglicherweise die Anforderungskultur prüft (z.B. `app.UseMvcWithDefaultRoute()`).
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` initialisiert ein `RequestLocalizationOptions`-Objekt. Bei jeder Anforderung wird die Liste von `RequestCultureProvider` in `RequestLocalizationOptions` aufgelistet und der erste Anbieter, der erfolgreich die Anforderungskultur bestimmen kann, wird verwendet. Die Standardanbieter stammen aus der Klasse `RequestLocalizationOptions`:
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 Die Reihenfolge der Standardliste fängt bei den spezifischsten Anbietern an und endet mit den allgemeinsten. Im Verlauf des Artikels erfahren Sie, wie Sie die Reihenfolge ändern und einen benutzerdefinierten Kulturanbieter hinzufügen. Wenn kein Anbieter die Anforderungskultur bestimmen kann, wird `DefaultRequestCulture` verwendet.
 
@@ -940,11 +957,15 @@ Die Reihenfolge der Standardliste fängt bei den spezifischsten Anbietern an und
 
 Einige Apps verwenden eine Abfragezeichenfolge, um die [Kultur und Benutzeroberflächenkultur](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx) festzulegen. Bei Apps, die die Ansätze „Cookie“ oder „Accept-Language-Header“ verwenden, ist das Hinzufügen einer Abfragezeichenfolge zur URL für das Debuggen und Testen von Code nützlich. Standardmäßig ist `QueryStringRequestCultureProvider` als erster Lokalisierungsanbieter in der Liste `RequestCultureProvider` registriert. Sie übergeben die Abfragezeichenfolge-Parameter `culture` und `ui-culture`. Im folgenden Beispiel ist die spezifische Kultur (Sprache und Region) auf Spanisch/Mexiko festgelegt:
 
-   `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX&ui-culture=es-MX
+```
 
 Wenn Sie nur eine der beiden Abfragezeichenfolgen (`culture` oder `ui-culture`) übergeben, setzt der Anbieter für Abfragezeichenfolgen beide Werte entsprechend der übergebenen Abfrage fest. Wenn beispielsweise nur die Kultur festgelegt wird, werden sowohl `Culture` als auch `UICulture` wie folgt festgelegt:
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -954,7 +975,9 @@ Produktions-Apps bieten oft einen Mechanismus zum Festlegen der Kultur mithilfe 
 
 Das Cookieformat ist `c=%LANGCODE%|uic=%LANGCODE%`, wobei `c` für `Culture` steht und `uic` für `UICulture`, zum Beispiel:
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 Wenn Sie nur eine Kulturinformation und eine Benutzeroberflächenkultur angeben, wird die angegebene Kultur sowohl für die Kulturinformation als auch die Benutzeroberflächenkultur verwendet.
 
@@ -966,24 +989,24 @@ Der [Accept-Language-Header](https://www.w3.org/International/questions/qa-accep
 
 1. Klicken Sie auf das Zahnradsymbol und dann auf **Internetoptionen**.
 
-2. Klicken Sie auf **Sprachen**.
+1. Klicken Sie auf **Sprachen**.
 
-    ![Internetoptionen](localization/_static/lang.png)
+   ![Internetoptionen](localization/_static/lang.png)
 
-3. Klicken Sie auf **Spracheinstellungen festlegen**.
+1. Klicken Sie auf **Spracheinstellungen festlegen**.
 
-4. Klicken Sie auf **Sprache hinzufügen**.
+1. Klicken Sie auf **Sprache hinzufügen**.
 
-5. Fügen Sie die Sprache hinzu.
+1. Fügen Sie die Sprache hinzu.
 
-6. Klicken Sie auf die Sprache und dann auf **Nach oben**.
+1. Klicken Sie auf die Sprache und dann auf **Nach oben**.
 
 ### <a name="the-content-language-http-header"></a>Der Content-Language-HTTP-Header
 
 Der [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language)-Entitätsheader:
 
- - Wird verwendet, um die für die Zielgruppe vorgesehenen Sprachen zu beschreiben.
- - Ermöglicht einem Benutzer, gemäß seiner bevorzugten Sprache zu differenzieren.
+* Wird verwendet, um die für die Zielgruppe vorgesehenen Sprachen zu beschreiben.
+* Ermöglicht einem Benutzer, gemäß seiner bevorzugten Sprache zu differenzieren.
 
 Entitätsheader werden in HTTP-Anforderungen und -Antworten verwendet.
 
@@ -991,8 +1014,8 @@ Der `Content-Language`-Header kann durch Festlegen der Eigenschaft `ApplyCurrent
 
 Hinzufügen des `Content-Language`-Headers:
 
- - Ermöglicht RequestLocalizationMiddleware, den `Content-Language`-Header mit der `CurrentUICulture` festzulegen.
- - Macht das explizite Festlegen des `Content-Language`-Antwortheaders überflüssig.
+* Ermöglicht RequestLocalizationMiddleware, den `Content-Language`-Header mit der `CurrentUICulture` festzulegen.
+* Macht das explizite Festlegen des `Content-Language`-Antwortheaders überflüssig.
 
 ```csharp
 app.UseRequestLocalization(new RequestLocalizationOptions

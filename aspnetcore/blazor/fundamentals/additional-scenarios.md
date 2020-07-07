@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 72a8b59b06e40f6f85abe41217ae564f82c8d89c
-ms.sourcegitcommit: 1833870ad0845326fb764fef1b530a07b9b5b099
-ms.translationtype: HT
+ms.openlocfilehash: 236dffd829bcd7c30ae1145242ce07cd8e9857e6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85347072"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402948"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>Hostingmodellkonfiguration für ASP.NET Core Blazor
 
@@ -61,7 +62,7 @@ Weitere Informationen finden Sie unter <xref:signalr/configuration#configure-add
 
 ## <a name="reflect-the-connection-state-in-the-ui"></a>Reflektieren des Verbindungszustands auf der Benutzeroberfläche
 
-*Dieser Abschnitt gilt für Blazor-Server.*
+*Dieser Abschnitt gilt für Blazor Server.*
 
 Wenn der Client erkennt, dass keine Verbindung mehr besteht, wird dem Benutzer eine Standardbenutzeroberfläche angezeigt, während der Client versucht, eine neue Verbindung herzustellen. Wenn die Wiederherstellung der Verbindung fehlschlägt, wird dem Benutzer die Option angezeigt, es noch mal zu versuchen.
 
@@ -84,7 +85,7 @@ In der folgenden Tabelle werden die CSS-Klassen beschrieben, die auf das `compon
 
 ## <a name="render-mode"></a>Rendermodus
 
-*Dieser Abschnitt gilt für Blazor-Server.*
+*Dieser Abschnitt gilt für Blazor Server.*
 
 Blazor Server-Apps werden standardmäßig eingerichtet, um die Benutzeroberfläche auf dem Server schon vor der Einrichtung der Clientverbindung auf dem Server zu rendern. Diese Einrichtung erfolgt auf der Razor-Seite von `_Host.cshtml`:
 
@@ -105,17 +106,17 @@ Blazor Server-Apps werden standardmäßig eingerichtet, um die Benutzeroberfläc
 
 | <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | Beschreibung |
 | --- | --- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Rendert die Komponente in statische HTML und fügt einen Marker für eine Blazor Server-App hinzu. Wenn der Benutzer-Agent gestartet wird, wird der Marker zum Bootstrapping einer Blazor-App verwendet. |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Rendert die Komponente in statisches HTML und fügt einen Marker für eine Blazor Server-App hinzu. Wenn der Benutzer-Agent gestartet wird, wird der Marker zum Bootstrapping einer Blazor-App verwendet. |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Rendert einen Marker für eine Blazor Server-App. Die Ausgabe der Komponente ist nicht enthalten. Wenn der Benutzer-Agent gestartet wird, wird der Marker zum Bootstrapping einer Blazor-App verwendet. |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | Rendert die Komponente in statischen HTML-Code. |
 
 Das Rendern von Serverkomponenten über eine statische HTML-Seite wird nicht unterstützt.
 
-## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Konfigurieren des SignalR-Clients für Blazor Server-Apps
+## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Konfigurieren Sie den SignalR-Client für Blazor Server-Apps.
 
-*Dieser Abschnitt gilt für Blazor-Server.*
+*Dieser Abschnitt gilt für Blazor Server.*
 
-In einigen Fällen müssen Sie den von den SignalR Server-Apps verwendeten Blazor-Client konfigurieren. Beispielsweise können Sie die Protokollierung auf dem SignalR-Client konfigurieren, um ein Verbindungsproblem zu diagnostizieren.
+In einigen Fällen müssen Sie den von den Blazor Server-Apps verwendeten SignalR-Client konfigurieren. Beispielsweise können Sie die Protokollierung auf dem SignalR-Client konfigurieren, um ein Verbindungsproblem zu diagnostizieren.
 
 So konfigurieren Sie den SignalR-Client in der Datei `Pages/_Host.cshtml`:
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden von ASP.net Core SignalR mit Blazor WebAssembly
+title: Verwenden von ASP.NET Core SignalR mit Blazor WebAssembly
 author: guardrex
 description: Erstellen Sie eine Chat-App, die ASP.NET Core SignalR mit Blazor WebAssembly verwendet.
 monikerRange: '>= aspnetcore-3.1'
@@ -8,26 +8,27 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 3f8aeec1e0471bab5034d1dcc8a42023f6b13c0d
-ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
-ms.translationtype: HT
+ms.openlocfilehash: 5a58e7ae28842e2e8a0f3bae8f47e252839903fe
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85122099"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408876"
 ---
-# <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Verwenden von ASP.net Core SignalR mit Blazor WebAssembly
+# <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Verwenden von ASP.NET Core SignalR mit Blazor WebAssembly
 
 Von [Daniel Roth](https://github.com/danroth27) und [Luke Latham](https://github.com/guardrex)
 
-In diesem Tutorial werden die Grundlagen zur Erstellung einer Echtzeit-App mithilfe von SignalR mit Blazor WebAssembly beschrieben. Sie lernen Folgendes:
+In diesem Tutorial werden die Grundlagen zur Erstellung einer Echtzeit-App mit SignalR mit Blazor WebAssembly beschrieben. Sie lernen Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines von Blazor WebAssembly gehosteten App-Projekts
+> * Erstellen eines gehosteten Blazor WebAssembly-App-Projekts
 > * Hinzufügen der SignalR-Clientbibliothek
 > * Hinzufügen eines SignalR-Hubs
 > * Hinzufügen von SignalR-Diensten und eines Endpunkts zum SignalR-Hub
@@ -59,7 +60,7 @@ Am Ende dieses Tutorials verfügen Sie über eine funktionierende Chat-App.
 
 ---
 
-## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Erstellen eines gehosteten Blazor-WebAssembly-App-Projekts
+## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Erstellen eines gehosteten Blazor WebAssembly-App-Projekts
 
 Befolgen Sie die Anleitungen für die Auswahl der Tools:
 
@@ -74,7 +75,7 @@ Befolgen Sie die Anleitungen für die Auswahl der Tools:
 
 1. Geben Sie im Feld **Projektname** `BlazorSignalRApp` ein. Vergewissern Sie sich, dass der Eintrag für den **Speicherort** korrekt ist, oder geben Sie einen Speicherort für das Projekt an. Wählen Sie **Erstellen** aus.
 
-1. Wählen Sie die Vorlage **Blazor-WebAssembly-App** aus.
+1. Wählen Sie die **Blazor WebAssembly App**-Vorlage aus.
 
 1. Aktivieren Sie unter **Erweitert** das Kontrollkästchen **Von ASP.net Core gehostet**.
 
@@ -100,7 +101,7 @@ Befolgen Sie die Anleitungen für die Auswahl der Tools:
 
 1. Klicken Sie auf der Randleiste auf **Web and Console** > **App** (Web und Konsole).
 
-1. Wählen Sie die Vorlage **Blazor-WebAssembly-App** aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie die **Blazor WebAssembly App**-Vorlage aus. Klicken Sie auf **Weiter**.
 
    Bestätigen Sie die folgenden Konfigurationen:
 
@@ -279,7 +280,7 @@ Erstellen Sie im `BlazorSignalRApp.Server`-Projekt einen `Hubs`-Ordner (Plural),
 In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
-> * Erstellen eines von Blazor WebAssembly gehosteten App-Projekts
+> * Erstellen eines gehosteten Blazor WebAssembly-App-Projekts
 > * Hinzufügen der SignalR-Clientbibliothek
 > * Hinzufügen eines SignalR-Hubs
 > * Hinzufügen von SignalR-Diensten und eines Endpunkts zum SignalR-Hub

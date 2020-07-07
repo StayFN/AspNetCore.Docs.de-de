@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: e1367fe284c4d51a341da01c6415284f6f3e7a9c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
-ms.translationtype: HT
+ms.openlocfilehash: c936ff9a7aadd21ce99a0c37184ae8cf911c3070
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102898"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403975"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Hosten von ASP.NET Core unter Linux mit Nginx
 
@@ -156,7 +157,7 @@ server {
 }
 ```
 
-Wenn es sich bei der App um eine Blazor-Server-App handelt, die auf SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen, wie Sie den `Connection`-Header festlegen.
+Wenn es sich bei der App um eine Blazor Server-App handelt, die auf SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen dazu, wie Sie den `Connection`-Header festlegen.
 
 Wenn keine Übereinstimmung mit `server_name` gefunden wird, verwendet Nginx den Standardserver. Wenn kein Server definiert ist, ist der erste Server in der Konfigurationsdatei der Standardserver. Als bewährte Methode gilt, einen bestimmten Standardserver hinzuzufügen, der den Statuscode 444 in Ihrer Konfigurationsdatei zurückgibt. Im Folgenden wird ein Beispiel für eine Standardserverkonfiguration aufgeführt:
 
@@ -262,7 +263,7 @@ Starten Sie den Dienst, und überprüfen Sie, ob er ausgeführt wird.
 sudo systemctl start kestrel-helloapp.service
 sudo systemctl status kestrel-helloapp.service
 
-● kestrel-helloapp.service - Example .NET Web API App running on Ubuntu
+◝ kestrel-helloapp.service - Example .NET Web API App running on Ubuntu
     Loaded: loaded (/etc/systemd/system/kestrel-helloapp.service; enabled)
     Active: active (running) since Thu 2016-10-18 04:09:35 NZDT; 35s ago
 Main PID: 9021 (dotnet)
