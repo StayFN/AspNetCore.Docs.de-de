@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: f039772f4276d0e8bcec2629350eba2ec0e7418c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: afad542a18a357a77f4542511a3d2c3108dbfb31
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399685"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059772"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Migrieren von der ASP.net-Mitgliedschafts Authentifizierung zu ASP.net Core 2,0Identity
 
@@ -44,7 +44,7 @@ ASP.net Core 2,0 befolgt das [Identity](/aspnet/identity/index) in ASP.NET 4,5 e
 
 Die schnellste Möglichkeit, das Schema für ASP.net Core 2,0 anzuzeigen Identity , besteht darin, eine neue ASP.net Core 2,0-App zu erstellen. Führen Sie diese Schritte in Visual Studio 2017 aus:
 
-1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+1. Wählen Sie **Datei** > **Neu** > **Projekt** aus.
 1. Erstellen Sie ein neues **ASP.net Core Webanwendungs** Projekt mit dem Namen *coreidentitysample*.
 1. Wählen Sie in der Dropdown Liste **ASP.net Core 2,0** aus, und wählen Sie dann **Webanwendung**. Diese Vorlage erzeugt eine [ Razor pages](xref:razor-pages/index) -app. Bevor Sie auf **OK**klicken, klicken Sie auf **Authentifizierung ändern**.
 1. Wählen Sie **einzelne Benutzerkonten** für die Identity Vorlagen aus. Klicken Sie abschließend auf **OK**und dann auf **OK**. Visual Studio erstellt mithilfe der ASP.net Core Vorlage ein Projekt Identity .
@@ -75,36 +75,33 @@ Es gibt feine Unterschiede in den Tabellenstrukturen und-Feldern sowohl für Mit
 
 ### <a name="users"></a>Benutzer
 
-|*Identity<br>dbo. AspNetUsers*        ||*Mitgliedschaft <br> (dbo. aspnet_Users/dbo. aspnet_Membership)*||
-|----------------------------------------|-----------------------------------------------------------|
-|**Feldname**                 |**Type**|**Feldname**                                    |**Type**|
-|`Id`                           |Zeichenfolge  |`aspnet_Users.UserId`                             |Zeichenfolge  |
-|`UserName`                     |Zeichenfolge  |`aspnet_Users.UserName`                           |Zeichenfolge  |
-|`Email`                        |Zeichenfolge  |`aspnet_Membership.Email`                         |Zeichenfolge  |
-|`NormalizedUserName`           |Zeichenfolge  |`aspnet_Users.LoweredUserName`                    |Zeichenfolge  |
-|`NormalizedEmail`              |Zeichenfolge  |`aspnet_Membership.LoweredEmail`                  |Zeichenfolge  |
-|`PhoneNumber`                  |Zeichenfolge  |`aspnet_Users.MobileAlias`                        |Zeichenfolge  |
-|`LockoutEnabled`               |bit     |`aspnet_Membership.IsLockedOut`                   |bit     |
+|Identity<br>( `dbo.AspNetUsers` )-Spalte  |Typ     |Membership<br>( `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` )-Spalte|Typ      |
+|-------------------------------------------|-----------------------------------------------------------------------|
+| `Id`                            | `string`| `aspnet_Users.UserId`                                      | `string` |
+| `UserName`                      | `string`| `aspnet_Users.UserName`                                    | `string` |
+| `Email`                         | `string`| `aspnet_Membership.Email`                                  | `string` |
+| `NormalizedUserName`            | `string`| `aspnet_Users.LoweredUserName`                             | `string` |
+| `NormalizedEmail`               | `string`| `aspnet_Membership.LoweredEmail`                           | `string` |
+| `PhoneNumber`                   | `string`| `aspnet_Users.MobileAlias`                                 | `string` |
+| `LockoutEnabled`                | `bit`   | `aspnet_Membership.IsLockedOut`                            | `bit`    |
 
 > [!NOTE]
 > Nicht alle Feld Zuordnungen ähneln eins-zu-eins-Beziehungen von der Mitgliedschaft zum ASP.net Core Identity . In der vorangehenden Tabelle wird das Standardschema für Mitgliedschafts Benutzer und das Schema der ASP.net Core Identity Schema zugeordnet. Alle anderen benutzerdefinierten Felder, die für die Mitgliedschaft verwendet wurden, müssen manuell zugeordnet werden. In dieser Zuordnung gibt es keine Zuordnung für Kenn Wörter, da sowohl Kenn Wort Kriterien als auch Kenn Wort Salze nicht zwischen den beiden migriert werden. **Es wird empfohlen, das Kennwort als Null zu belassen und Benutzer aufzufordern, ihre Kenn Wörter zurückzusetzen.** In ASP.net Core Identity `LockoutEnd` sollte in der Zukunft auf ein Datum festgelegt werden, wenn der Benutzer gesperrt ist. Dies wird im Migrations Skript gezeigt.
 
 ### <a name="roles"></a>Rollen
 
-|*Identity<br>dbo. Aspnettroles)*        ||*Mitgliedschaft <br> (dbo. aspnet_Roles)*||
+|Identity<br>( `dbo.AspNetRoles` )-Spalte|Typ|Membership<br>( `dbo.aspnet_Roles` )-Spalte|Typ|
 |----------------------------------------|-----------------------------------|
-|**Feldname**                 |**Type**|**Feldname**   |**Type**         |
-|`Id`                           |Zeichenfolge  |`RoleId`         | Zeichenfolge          |
-|`Name`                         |Zeichenfolge  |`RoleName`       | Zeichenfolge          |
-|`NormalizedName`               |Zeichenfolge  |`LoweredRoleName`| Zeichenfolge          |
+|`Id`                           |`string`|`RoleId`         | `string`        |
+|`Name`                         |`string`|`RoleName`       | `string`        |
+|`NormalizedName`               |`string`|`LoweredRoleName`| `string`        |
 
 ### <a name="user-roles"></a>Benutzerrollen
 
-|*Identity<br>dbo. AspNetUserRoles*||*Mitgliedschaft <br> (dbo. aspnet_UsersInRoles)*||
-|------------------------------------|------------------------------------------|
-|**Feldname**           |**Type**  |**Feldname**|**Type**                   |
-|`RoleId`                 |Zeichenfolge    |`RoleId`      |Zeichenfolge                     |
-|`UserId`                 |Zeichenfolge    |`UserId`      |Zeichenfolge                     |
+|Identity<br>( `dbo.AspNetUserRoles` )-Spalte|Typ|Membership<br>( `dbo.aspnet_UsersInRoles` )-Spalte|Typ|
+|-------------------------|----------|--------------|---------------------------|
+|`RoleId`                 |`string`  |`RoleId`      |`string`                   |
+|`UserId`                 |`string`  |`UserId`      |`string`                   |
 
 Verweisen Sie auf die vorangehenden Mapping-Tabellen, wenn Sie ein Migrations Skript für *Benutzer* und *Rollen*erstellen. Im folgenden Beispiel wird davon ausgegangen, dass Sie zwei Datenbanken auf einem Datenbankserver haben. Eine Datenbank enthält das vorhandene ASP.net-Mitgliedschafts Schema und die Daten. Die andere *coreidentitysample* -Datenbank wurde mithilfe der zuvor beschriebenen Schritte erstellt. Kommentare sind Inline enthalten, um weitere Informationen zu erhalten.
 

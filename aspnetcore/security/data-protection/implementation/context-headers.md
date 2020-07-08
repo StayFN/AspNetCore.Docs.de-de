@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 078392662281253b8b6cfc0d50fddc8d66482b63
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0995cd80c10f638c90a60630378518988ffb89ed
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406893"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060097"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Kontext Header in ASP.net Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "85406893"
 
 ## <a name="background-and-theory"></a>Hintergrund und Theorie
 
-Im Datenschutzsystem bedeutet ein "Schlüssel" ein Objekt, das authentifizierte Verschlüsselungsdienste bereitstellen kann. Jeder Schlüssel wird durch eine eindeutige ID (eine GUID) identifiziert, und er enthält algorithmische Informationen und Entropie Material. Es ist beabsichtigt, dass jeder Schlüssel eine eindeutige Entropie trägt, aber das System kann dies nicht erzwingen. Außerdem müssen Entwickler, die den Schlüsselbund manuell ändern können, die algorithmischen Informationen eines vorhandenen Schlüssels im Schlüsselbund ändern. Um unsere Sicherheitsanforderungen in diesen Fällen zu erfüllen, verfügt das Datenschutzsystem über ein Konzept der [kryptografischen Agilität](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/), das eine sichere Verwendung eines einzelnen Entropie Werts in mehreren Kryptografiealgorithmen ermöglicht.
+Im Datenschutzsystem bedeutet ein "Schlüssel" ein Objekt, das authentifizierte Verschlüsselungsdienste bereitstellen kann. Jeder Schlüssel wird durch eine eindeutige ID (eine GUID) identifiziert, und er enthält algorithmische Informationen und Entropie Material. Es ist beabsichtigt, dass jeder Schlüssel eine eindeutige Entropie trägt, aber das System kann dies nicht erzwingen. Außerdem müssen Entwickler, die den Schlüsselbund manuell ändern können, die algorithmischen Informationen eines vorhandenen Schlüssels im Schlüsselbund ändern. Um unsere Sicherheitsanforderungen in diesen Fällen zu erfüllen, verfügt das Datenschutzsystem über ein Konzept der [kryptografischen Agilität](https://www.microsoft.com/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption), das eine sichere Verwendung eines einzelnen Entropie Werts in mehreren Kryptografiealgorithmen ermöglicht.
 
 Bei den meisten Systemen, die kryptografische Agilität unterstützen, werden in der Nutzlast einige identifizierende Informationen über den Algorithmus eingeschlossen. Die OID des Algorithmus ist im Allgemeinen ein guter Kandidat dafür. Allerdings besteht ein Problem darin, dass es mehrere Möglichkeiten gibt, denselben Algorithmus anzugeben: "die Klassen AES (CNG) und Managed AES, AesManaged, AesCryptoServiceProvider, aescng und RijndaelManaged (mit bestimmten Parametern) sind tatsächlich identisch, und wir müssten eine Zuordnung all dieser Elemente zur richtigen OID beibehalten. Wenn ein Entwickler einen benutzerdefinierten Algorithmus (oder sogar eine andere Implementierung von AES!) bereitstellen möchte, muss er uns seine OID mitteilen. Durch diesen zusätzlichen Registrierungs Schritt ist die Systemkonfiguration besonders mühsam.
 
@@ -50,21 +50,21 @@ Der Kontext Header besteht aus den folgenden Komponenten:
 
 * [32 Bits] Die Digest-Größe (in Byte, Big-Endian) des HMAC-Algorithmus.
 
-* Enccbc (K_E, IV, ""), bei dem es sich um die Ausgabe des symmetrischen Blockchiffre Algorithmus handelt, wenn eine leere Zeichenfolge eingegeben wird und wobei der Wert für "IV" ein Vektor mit allen NULL ist. Die Erstellung von K_E wird unten beschrieben.
+* `EncCBC(K_E, IV, "")`, bei der es sich um die Ausgabe des symmetrischen Block Verschlüsselungsalgorithmus handelt, bei der eine leere Zeichen folgen Eingabe angegeben ist und wobei der Wert von "IV" ein Vektor ist. Die Erstellung von `K_E` wird nachfolgend beschrieben.
 
-* Mac (K_H, ""). Dies ist die Ausgabe des HMAC-Algorithmus, wenn eine leere Zeichenfolge eingegeben wird. Die Erstellung von K_H wird unten beschrieben.
+* `MAC(K_H, "")`, bei dem es sich um die Ausgabe des HMAC-Algorithmus handelt, wenn eine leere Zeichenfolge eingegeben wird. Die Erstellung von `K_H` wird nachfolgend beschrieben.
 
-Im Idealfall könnten alle Vektoren für K_E und K_H übergeben werden. Wir möchten jedoch vermeiden, dass die Situation, in der der zugrunde liegende Algorithmus vor dem Ausführen von Vorgängen (insbesondere der und 3DES) das vorhanden sein von schwachen Schlüsseln prüft, die Verwendung eines einfachen oder wiederholbaren Musters, wie z. b. eines Vektor mit allen Nullen, verhindert.
+Im Idealfall könnten wir alle Vektoren mit allen Nullen für `K_E` und übergeben `K_H` . Wir möchten jedoch vermeiden, dass die Situation, in der der zugrunde liegende Algorithmus vor dem Ausführen von Vorgängen (insbesondere der und 3DES) das vorhanden sein von schwachen Schlüsseln prüft, die Verwendung eines einfachen oder wiederholbaren Musters, wie z. b. eines Vektor mit allen Nullen, verhindert.
 
-Stattdessen verwenden wir die NIST SP800-108 KDF im Counter-Modus (siehe [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), sec. 5,1) mit einem Schlüssel, einer Bezeichnung und einem Kontext der Länge 0 (null) und HMACSHA512 als zugrunde liegende PRF. Wir leiten | K_E | + | K_H | Byte der Ausgabe, zerlegen Sie das Ergebnis in K_E, und K_H Sie sich selbst. Dies wird mathematisch wie folgt dargestellt.
+Stattdessen verwenden wir die NIST SP800-108 KDF im Counter-Modus (siehe [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), sec. 5,1) mit einem Schlüssel, einer Bezeichnung und einem Kontext der Länge 0 (null) und HMACSHA512 als zugrunde liegende PRF. Wir leiten `| K_E | + | K_H |` Bytes der Ausgabe ab und zerlegen das Ergebnis dann in `K_E` und `K_H` selbst. Dies wird mathematisch wie folgt dargestellt.
 
-(K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", Context = "")
+`( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-192-cbc--hmacsha256"></a>Beispiel: AES-192-CBC + HMACSHA256
 
 Nehmen Sie als Beispiel den Fall, in dem der symmetrische Blockchiffre Algorithmus AES-192-CBC und der Validierungs Algorithmus HMACSHA256 ist. Das System generiert den Kontext Header mithilfe der folgenden Schritte.
 
-First, Let (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", Context = ""), wobei | K_E | = 192 Bits und | K_H | = 256 Bits pro angegebenen Algorithmen. Dies führt zu K_E = 5bb6.. 21dd und K_H = A04A.. 00a9 im folgenden Beispiel:
+First, Let `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` , where `| K_E | = 192 bits` und `| K_H | = 256 bits` pro angegebenen Algorithmen. Dies führt zu `K_E = 5BB6..21DD` und `K_H = A04A..00A9` im folgenden Beispiel:
 
 ```
 5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
@@ -73,13 +73,13 @@ First, Let (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = ""
 B7 92 3D BF 59 90 00 A9
 ```
 
-Als Nächstes berechnen Sie Enc_CBC (K_E, IV, "") für "AES-192-CBC", wobei "IV = 0 *" angegeben ist, und K_E wie oben beschrieben.
+Berechnen Sie als nächstes Compute `Enc_CBC (K_E, IV, "")` für AES-192-CBC, `IV = 0*` `K_E` wie oben angegeben.
 
-Ergebnis: = F474B1872B3B53E4721DE19C0841DB6F
+`result := F474B1872B3B53E4721DE19C0841DB6F`
 
-Als Nächstes berechnen Sie den Mac (K_H, "") für HMACSHA256, der K_H wie oben angegeben wurde.
+Als Nächstes berechnen Sie `MAC(K_H, "")` für HMACSHA256, `K_H` wie oben angegeben.
 
-Ergebnis: = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+`result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C`
 
 Dies erzeugt den vollständigen Kontext Header unten:
 
@@ -93,26 +93,26 @@ DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
 
 Diese Kontext Kopfzeile ist der Fingerabdruck des authentifizierten Verschlüsselungsalgorithmus-Paars (AES-192-CBC-Verschlüsselung + HMACSHA256-Überprüfung). Die Komponenten, wie [oben](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components) beschrieben, lauten wie folgt:
 
-* der Marker (00 00)
+* der Marker`(00 00)`
 
-* die Länge des Blockchiffre Schlüssels (00 00 00 18).
+* die Länge des Blockchiffre Schlüssels`(00 00 00 18)`
 
-* Blockgröße für Blockchiffre (00 00 00 10)
+* Blockgröße für Blockchiffre`(00 00 00 10)`
 
-* die HMAC-Schlüssellänge (00 00 00 20)
+* die Länge des HMAC-Schlüssels`(00 00 00 20)`
 
-* HMAC Digest Size (00 00 00 20)
+* die HMAC-Digest-Größe`(00 00 00 20)`
 
-* die Blockchiffre PRP-Ausgabe (F4 74-DB 6f) und
+* die Blockchiffre-PRP `(F4 74 - DB 6F)` -Ausgabe und
 
-* die HMAC PRF-Ausgabe (D4 79-End).
+* die HMAC-PRF-Ausgabe `(D4 79 - end)` .
 
 > [!NOTE]
 > Der Kontext Header "Verschlüsselung im CBC-Modus + HMAC-Authentifizierung" wird auf dieselbe Weise erstellt, unabhängig davon, ob die Algorithmen Implementierungen von Windows CNG oder von verwalteten SymmetricAlgorithm-und KeyedHashAlgorithm-Typen bereitgestellt werden. Dadurch können Anwendungen, die unter verschiedenen Betriebssystemen ausgeführt werden, zuverlässig denselben Kontext Header entwickeln, auch wenn sich die Implementierungen der Algorithmen zwischen den Betriebssystemen unterscheiden. (In der Praxis muss KeyedHashAlgorithm nicht der richtige HMAC sein. Dabei kann es sich um einen beliebigen Hash Algorithmustyp handeln.)
 
 ### <a name="example-3des-192-cbc--hmacsha1"></a>Beispiel: 3DES-192-CBC + HMACSHA1
 
-First, Let (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", Context = ""), wobei | K_E | = 192 Bits und | K_H | = 160 Bits pro angegebenen Algorithmen. Dies führt zu K_E = A219.. E2BB und K_H = DC4A.. B464 im folgenden Beispiel:
+First, Let `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` , where `| K_E | = 192 bits` und `| K_H | = 160 bits` pro angegebenen Algorithmen. Dies führt zu `K_E = A219..E2BB` und `K_H = DC4A..B464` im folgenden Beispiel:
 
 ```
 A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
@@ -120,13 +120,13 @@ A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
 D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 ```
 
-Als Nächstes berechnen Sie Enc_CBC (K_E, IV, "") für 3DES-192-CBC, wobei "IV = 0 *" angegeben wird, und K_E wie oben beschrieben.
+Als Nächstes berechnen Sie `Enc_CBC (K_E, IV, "")` für 3DES-192-CBC `IV = 0*` und `K_E` wie oben angegeben.
 
-Ergebnis: = ABB100F81E53E10E
+`result := ABB100F81E53E10E`
 
-Als Nächstes berechnen Sie den Mac (K_H, "") für HMACSHA1, der K_H wie oben angegeben wurde.
+Als Nächstes berechnen Sie `MAC(K_H, "")` für HMACSHA1, `K_H` wie oben angegeben.
 
-Ergebnis: = 76eb189b35cf03461ddf877cd9f4b1b4d63a7555
+`result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555`
 
 Dies erzeugt den vollständigen Kontext Header, bei dem es sich um einen Fingerabdruck des authentifizierten Verschlüsselungsalgorithmus-Paars handelt (3DES-192-CBC-Verschlüsselung + HMACSHA1-Validierung), wie unten dargestellt:
 
@@ -138,19 +138,19 @@ Dies erzeugt den vollständigen Kontext Header, bei dem es sich um einen Fingera
 
 Die Komponenten unterbrechen wie folgt:
 
-* der Marker (00 00)
+* der Marker`(00 00)`
 
-* die Länge des Blockchiffre Schlüssels (00 00 00 18).
+* die Länge des Blockchiffre Schlüssels`(00 00 00 18)`
 
-* Blockgröße für Blockchiffre (00 00 00 08)
+* Blockgröße für Blockchiffre`(00 00 00 08)`
 
-* die HMAC-Schlüssellänge (00 00 00 14)
+* die Länge des HMAC-Schlüssels`(00 00 00 14)`
 
-* HMAC Digest Size (00 00 00 14)
+* die HMAC-Digest-Größe`(00 00 00 14)`
 
-* die Blockchiffre PRP-Ausgabe (ab B1-E1 0E) und
+* die Blockchiffre-PRP `(AB B1 - E1 0E)` -Ausgabe und
 
-* die HMAC PRF-Ausgabe (76 EB-End).
+* die HMAC-PRF-Ausgabe `(76 EB - end)` .
 
 ## <a name="galoiscounter-mode-encryption--authentication"></a>Galois/Counter-modusverschlüsselung + Authentifizierung
 
@@ -166,21 +166,21 @@ Der Kontext Header besteht aus den folgenden Komponenten:
 
 * [32 Bits] Die von der authentifizierten Verschlüsselungsfunktion erzeugte authentifizierungstag Größe (in Byte, Big-Endian). (Für unser System wird dies bei Tag Size = 128 Bits korrigiert.)
 
-* [128 Bits] Das Tag Enc_GCM (K_E, Nonce, ""), bei dem es sich um die Ausgabe des symmetrischen Blockchiffre Algorithmus handelt, wenn eine leere Zeichenfolge eingegeben wird und wobei Nonce ein 96-Bit-Vektor mit allen NULL-Werten ist.
+* [128 Bits] Das-Tag von `Enc_GCM (K_E, nonce, "")` , bei dem es sich um die Ausgabe des symmetrischen Blockchiffre Algorithmus handelt, wenn eine leere Zeichenfolge eingegeben wird und wobei Nonce ein 96-Bit-Vektor mit allen NULL-Werten ist.
 
-K_E wird mit dem gleichen Mechanismus wie im Szenario für die CBC-Verschlüsselung und HMAC-Authentifizierung abgeleitet. Da es hier aber keine K_H gibt, gibt es im wesentlichen | K_H | = 0, und der Algorithmus wird auf das folgende Formular reduziert.
+`K_E`wird unter Verwendung desselben Mechanismus wie im Szenario für die CBC-Verschlüsselung und HMAC-Authentifizierung abgeleitet. Da es hier keine Rolle gibt, `K_H` haben wir im Grunde `| K_H | = 0` , und der Algorithmus wird auf das folgende Formular reduziert.
 
-K_E = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", Context = "")
+`K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-256-gcm"></a>Beispiel: AES-256-GCM
 
-Lassen Sie zunächst K_E = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", Context = ""), wobei | K_E | = 256 Bits.
+Zuerst, Let `K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` , where `| K_E | = 256 bits` .
 
-K_E: = 22bc6f1b171c08c4ae2f27444af8fc8b3087a90006caea91fdcfb47c1b8733b8
+`K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8`
 
-Berechnen Sie als nächstes das authentifizierungstag Enc_GCM (K_E, Nonce, "") für "AES-256-GCM", wenn Sie "Nonce = 096" angegeben haben, und K_E wie oben beschrieben.
+Berechnen Sie als nächstes das authentifizierungstag von `Enc_GCM (K_E, nonce, "")` für AES-256-GCM, `nonce = 096` und zwar `K_E` wie oben angegeben.
 
-Ergebnis: = E7DCCE66DF855A323A6BB7BD7A59BE45
+`result := E7DCCE66DF855A323A6BB7BD7A59BE45`
 
 Dies erzeugt den vollständigen Kontext Header unten:
 
@@ -192,14 +192,14 @@ BE 45
 
 Die Komponenten unterbrechen wie folgt:
 
-* der Marker (00 01)
+* der Marker`(00 01)`
 
-* die Länge des Blockchiffre Schlüssels (00 00 00 20).
+* die Länge des Blockchiffre Schlüssels`(00 00 00 20)`
 
-* die Nonce-Größe (00 00 00 0C)
+* die Nonce-Größe`(00 00 00 0C)`
 
-* Blockgröße für Blockchiffre (00 00 00 10)
+* Blockgröße für Blockchiffre`(00 00 00 10)`
 
-* die authentifizierungstag Größe (00 00 00 10) und
+* die authentifizierungstag Größe `(00 00 00 10)` und
 
-* Das authentifizierungstag von der Ausführung des Blockchiffre (E7 DC-End).
+* Das authentifizierungstag der Ausführung des Blockchiffre `(E7 DC - end)` .
