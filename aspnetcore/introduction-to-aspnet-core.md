@@ -14,11 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: f58c25ec8b47b2bd8d425d0bfd0d52df9bbc2655
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2ad97dd7eb38b4cb69fa7af5ae1e1d1837a97443
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408200"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944554"
 ---
 # <a name="introduction-to-aspnet-core"></a>Einführung in ASP.NET Core
 
@@ -79,7 +80,7 @@ Als Einführung in die Entwicklung von ASP.NET Core-Apps empfehlen wir die folge
    |----------|----------|----------|
    |Web-App                   | Neue serverseitige Webbenutzeroberflächenentwicklung |[Erste Schritte mit Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Web-App                   | Verwalten einer MVC-App |[Erste Schritte mit MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |Web-App                   | Clientseitige Webbenutzeroberflächenentwicklung |[Erste Schritte mit Blazor](xref:tutorials/first-blazor-app) |
+   |Web-App                   | Clientseitige Webbenutzeroberflächenentwicklung |[Erste Schritte mit Blazor](https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro) |
    |Web-API                   | RESTful-HTTP-Dienste |[Erstellen einer Web-API](xref:tutorials/first-web-api)&dagger; |
    |Apps für Remoteprozeduraufrufe | Contract-First-Dienste mithilfe von Protokollpuffern |[Erste Schritte mit dem gRPC-Dienst](xref:tutorials/grpc/grpc-start) |
    |Echtzeit-App             | Bidirektionale Kommunikation zwischen Servern und verbundenen Clients |[Erste Schritte mit SignalR](xref:tutorials/signalr) |

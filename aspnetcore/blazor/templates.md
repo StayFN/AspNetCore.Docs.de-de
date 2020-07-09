@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 6359a02b23803f26c4a40772c68d39e804396403
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f1b131947a242323295a763ba2f2473af0ccfb4f
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401895"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944535"
 ---
 # <a name="aspnet-core-blazor-templates"></a>ASP.NET Core-Blazor-Vorlagen
 
@@ -31,8 +32,6 @@ Das Blazor-Framework bietet Vorlagen zum Entwickeln von Apps für die einzelnen 
 * Blazor Server (`blazorserver`)
 
 Weitere Informationen zur Blazor-Hostingmodellen finden Sie unter <xref:blazor/hosting-models>.
-
-Eine ausführliche Anleitung zum Erstellen einer Blazor-App aus einer Vorlage finden Sie unter <xref:blazor/get-started>.
 
 Vorlagenoptionen sind verfügbar, indem Sie die `--help`-Option an den CLI-Befehl [`dotnet new`](/dotnet/core/tools/dotnet-new) übergeben:
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: b60fa81b3bf180cd2ba15f285df9474be42f95f8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5e04d54bedf7cce8b7a6ab546920e7dec1213a20
+ms.sourcegitcommit: d1fa3d69dda675d7a52c7100742dfa6297413376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400088"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86093353"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core-Modul
 
@@ -36,7 +36,7 @@ Das ASP.NET Core-Modul ist ein natives IIS-Modul, das in die IIS-Pipeline integr
 Unterstützte Windows-Versionen:
 
 * Windows 7 oder höher
-* Windows Server 2008 R2 oder höher
+* Windows Server 2012 R2 oder höher
 
 Beim In-Process-Hosting verwendet das Modul eine In-Process-Server-Implementierung für IIS, die als IIS-HTTP-Server (`IISHttpServer`) bezeichnet wird.
 
