@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 155bdfbeea06022d35bbb551d5b2d0ee5a51a093
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e2ae82b9c26771ee5da16b1611026c6d62804bce
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400816"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212943"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Gerüst Identity in ASP.net Core Projekten
 
@@ -48,7 +48,7 @@ Beispielsweise `AddDbContext` werden und `AddDefaultIdentity` im folgenden Code 
 
 [!code-csharp[](scaffold-identity/3.1sample/StartupRemove.cs?name=snippet)]
 
-Der vorangehende Code kommentiert den Code, der in " *Areas/ Identity /IdentityHostingStartup.cs* " dupliziert wird.
+Der vorangehende Code kommentiert den Code, der in *Bereichen/ Identity / Identity HostingStartup.cs* dupliziert wird.
 
 Apps, die mit einzelnen Konten erstellt wurden, sollten in der Regel ***keinen*** neuen Datenkontext erstellen.
 
@@ -93,7 +93,7 @@ before dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identitywird in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identitywird in *Areas/ Identity / Identity HostingStartup.cs*konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="efm"></a>
 
@@ -115,7 +115,7 @@ Aktualisieren Sie die- `Startup` Klasse mit Code, der dem folgenden ähnelt:
 
 Optional: Fügen Sie den Anmelde Namen partiell ( `_LoginPartial` ) der Layoutdatei hinzu:
 
-[!code-html[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
+[!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
 ## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Gerüst Identity in ein Razor Projekt mit Autorisierung
 
@@ -132,7 +132,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Einige Identity Optionen werden in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Einige Identity Optionen sind in " *Bereiche/ Identity / Identity HostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Gerüst für Identity ein MVC-Projekt ohne vorhandene Autorisierung
 
@@ -154,11 +154,11 @@ dotnet ef database update
 
 Optional: Fügen Sie der `_LoginPartial` Datei *views/Shared/_Layout. cshtml* den Anmelde Namen partiell () hinzu:
 
-[!code-html[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
+[!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
 * Verschieben Sie die Datei *pages/Shared/_LoginPartial. cshtml* in *views/Shared/_LoginPartial. cshtml.*
 
-Identitywird in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter ihostingstartup.
+Identitywird in *Areas/ Identity / Identity HostingStartup.cs*konfiguriert. Weitere Informationen finden Sie unter ihostingstartup.
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
@@ -184,7 +184,7 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext  --fi
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identitywird in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identitywird in *Areas/ Identity / Identity HostingStartup.cs*konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ### <a name="migrations"></a>Migrationen
 
@@ -304,7 +304,7 @@ Das Identity Seitenlayout und die Stile können so geändert werden, dass Seiten
 > [!NOTE]
 > Das Beispiel in diesem Abschnitt stellt lediglich einen Ausgangspunkt für die Anpassung dar. Es ist wahrscheinlich zusätzlicher Aufwand erforderlich, um die bestmögliche Benutzer Leistung zu erzielen.
 
-Erstellen Sie eine neue `NavMenu_IdentityLayout` Komponente (*Shared/NavMenu_IdentityLayout. Razor*). Verwenden Sie für das Markup und den Code der Komponente denselben Inhalt wie die Komponente der APP `NavMenu` (*Shared/NavMenu. Razor*). Entfernen Sie alle- `NavLink` Komponenten, die nicht anonym erreicht werden können, da die automatische Umleitung in der `RedirectToLogin` Komponente für Komponenten fehlschlägt, die eine Authentifizierung oder Autorisierung erfordern.
+Erstellen Sie eine neue `NavMenu_IdentityLayout` Komponente (*Shared/NavMenu_ Identity Layout. Razor*). Verwenden Sie für das Markup und den Code der Komponente denselben Inhalt wie die Komponente der APP `NavMenu` (*Shared/NavMenu. Razor*). Entfernen Sie alle- `NavLink` Komponenten, die nicht anonym erreicht werden können, da die automatische Umleitung in der `RedirectToLogin` Komponente für Komponenten fehlschlägt, die eine Authentifizierung oder Autorisierung erfordern.
 
 Nehmen Sie in der Datei *pages/Shared/Layout. cshtml* die folgenden Änderungen vor:
 
@@ -366,7 +366,7 @@ Nehmen Sie in der Datei *pages/Shared/Layout. cshtml* die folgenden Änderungen 
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Einige Identity Optionen werden in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Einige Identity Optionen sind in " *Bereiche/ Identity / Identity HostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="full"></a>
 
@@ -406,7 +406,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Registerseite deaktivieren, aber d
 
 So deaktivieren Sie die Benutzerregistrierung:
 
-* Gerüstbau Identity . Schließen Sie Account. Register, Account. Login und Account. registerconfirmation ein. Zum Beispiel:
+* Gerüstbau Identity . Schließen Sie Account. Register, Account. Login und Account. registerconfirmation ein. Beispiel:
 
   ```dotnetcli
    dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
@@ -526,7 +526,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identitywird in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identitywird in *Areas/ Identity / Identity HostingStartup.cs*konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="efm"></a>
 
@@ -548,7 +548,7 @@ In der- `Configure` Methode der- `Startup` Klasse wird [UseAuthentication](/dotn
 
 Optional: Fügen Sie den Anmelde Namen partiell ( `_LoginPartial` ) der Layoutdatei hinzu:
 
-[!code-html[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
+[!code-cshtml[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
 ## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Gerüst Identity in ein Razor Projekt mit Autorisierung
 
@@ -565,7 +565,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Einige Identity Optionen werden in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
+Einige Identity Optionen sind in " *Bereiche/ Identity / Identity HostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter [ihostingstartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Gerüst für Identity ein MVC-Projekt ohne vorhandene Autorisierung
 
@@ -587,11 +587,11 @@ dotnet ef database update
 
 Optional: Fügen Sie der `_LoginPartial` Datei *views/Shared/_Layout. cshtml* den Anmelde Namen partiell () hinzu:
 
-[!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
+[!code-cshtml[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
 * Verschieben Sie die Datei *pages/Shared/_LoginPartial. cshtml* in *views/Shared/_LoginPartial. cshtml.*
 
-Identitywird in " *Bereiche/ Identity /IdentityHostingStartup.cs*" konfiguriert. Weitere Informationen finden Sie unter ihostingstartup.
+Identitywird in *Areas/ Identity / Identity HostingStartup.cs*konfiguriert. Weitere Informationen finden Sie unter ihostingstartup.
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
@@ -651,7 +651,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 So deaktivieren Sie die Benutzerregistrierung:
 
-* Gerüstbau Identity . Schließen Sie Account. Register, Account. Login und Account. registerconfirmation ein. Zum Beispiel:
+* Gerüstbau Identity . Schließen Sie Account. Register, Account. Login und Account. registerconfirmation ein. Beispiel:
 
   ```dotnetcli
    dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"

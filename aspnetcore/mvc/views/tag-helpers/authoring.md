@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5e250debb5c4c2ef00b844557d31ed8281d2ff2f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e630bf4b0c121796315be077623abae73d240b37
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407589"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212459"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Erstellen von Taghilfsprogrammen in ASP.NET Core
 
@@ -39,7 +39,7 @@ Bei einem Taghilfsprogramm handelt es sich um eine Klasse, die die `ITagHelper`-
 
 ## <a name="a-minimal-tag-helper"></a>Ein Taghilfsprogramm mit den mindestens erforderlichen Elementen
 
-In diesem Beispiel wird erläutert, wie Sie ein Taghilfsprogramm schreiben, das ein Update für ein E-Mail-Tag ausführt. Zum Beispiel:
+In diesem Beispiel wird erläutert, wie Sie ein Taghilfsprogramm schreiben, das ein Update für ein E-Mail-Tag ausführt. Beispiel:
 
 ```html
 <email>Support</email>
@@ -87,14 +87,14 @@ Dabei handelt es sich um ein Anchor-Tag, das daraus einen E-Mail-Link erstellt. 
 
 <!--
 the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
-    [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
+    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
 Wenn Sie einer Ansicht über einen vollqualifizierten Namen ein Taghilfsprogramm hinzufügen möchten, müssen Sie zunächst den Namen (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) und dann den **Assemblynamen** (*AuthoringTagHelpers*, nicht notwendigerweise `namespace`) hinzufügen. Die meisten Entwickler verwenden am liebsten die Platzhaltersyntax. Unter [Introduction to Tag Helpers (Einführung in Taghilfsprogramme)](intro.md) finden Sie mehr Details zum Hinzufügen und Entfernen von Taghilfsprogrammen, zur Hierarchie und zur Platzhaltersyntax.
 
 1. Aktualisieren Sie das Markup mit den folgenden Änderungen in der Datei *Views/Home/Contact.cshtml*:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. Führen Sie die App aus, und verwenden Sie einen beliebigen Browser, um die HTML-Quelle abzurufen, damit Sie überprüfen können, ob die E-Mail-Tags durch Anchor-Markups wie `<a>Support</a>` ersetzt wurden. *Support* und *Marketing* werden als Links gerendert. Allerdings besitzen sie kein `href`-Attribut, das sie funktionsfähig macht. Dies soll im nächsten Abschnitt behoben werden.
 
@@ -118,7 +118,7 @@ Dieser Ansatz funktioniert für das Attribut „href“, wenn es zu diesem Zeitp
 
 1. Aktualisieren Sie das Markup mit den folgenden Änderungen in der Datei *Views/Home/Contact.cshtml*:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 1. Führen Sie die App aus, und überprüfen Sie, ob die richtigen Links generiert werden.
 
@@ -147,7 +147,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein asynchrones E-Mail-Hilfsprogra
 
 1. Nehmen Sie folgende Änderung an der *Views/Home/Contact.cshtml*-Datei vor, damit das Taghilfsprogramm die Ziel-E-Mail abrufen kann.
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. Führen Sie die App aus, und überprüfen Sie, ob gültige E-Mail-Links generiert werden.
 
@@ -163,7 +163,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein asynchrones E-Mail-Hilfsprogra
 
 1. Verändern Sie die Ansicht *About.cshtml*, damit diese den Attributwert `bold` enthält. Der fertige Code wird nachfolgend dargestellt.
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
 1. Führen Sie die App aus. Sie können einen beliebigen Browser verwenden, um die Quelle zu untersuchen und das Markup zu überprüfen.
 
@@ -225,7 +225,7 @@ Außerdem können Sie `[HtmlTargetElement]` verwenden, um den Namen des angeziel
 
 1. Fügen Sie der *About.cshtml*-Ansicht das folgende Markup hinzu. Das markierte Markup zeigt die Websiteinformationen an.
 
-   [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
    > [!NOTE]
    > Im Razor unten gezeigten Markup:
@@ -251,7 +251,7 @@ Das Taghilfsprogramm für Bedingungen rendert Ausgaben, wenn ein TRUE-Wert zurü
 
 1. Ersetzen Sie die Inhalte der Datei *Views/HelloWorld/Index.cshtml* durch das folgende Markup:
 
-   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
 
 1. Ersetzen Sie die `Index`-Methode im `Home`-Controller durch den folgenden Code:
 
@@ -281,7 +281,7 @@ Da dieses beiden Hilfsprogramme sehr ähnlich funktionieren und Sie sie möglich
 
 1. Fügen Sie das folgende Markup an das Ende der Datei *Views/Home/Contact.cshtml* an:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 
 1. Führen Sie die App aus, und überprüfen Sie, ob das Taghilfsprogramm den Anchor richtig rendert.
 

@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 0fef14388f83d8b4c708194954f2b75b2164b746
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8a7041a976ea9f0e99bfd1eba792d0e919eaf6d3
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404495"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212827"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Unterstützung der EU-Datenschutz-Grundverordnung (dsgvo) in ASP.net Core
 
@@ -86,7 +86,7 @@ RazorSeiten und MVC-Projekte, die mit den Projektvorlagen erstellt wurden, entha
 
 Die Teilansicht * \_ cookiegenehmipartial. cshtml* :
 
-[!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
+[!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Diese partielle:
 
@@ -122,7 +122,7 @@ Wählen Sie den Benutzernamen aus, und wählen Sie dann **persönliche Daten**au
 
 ![Seite "persönliche Daten verwalten"](gdpr/_static/pd.png)
 
-Notizen:
+Hinweise:
 
 * Informationen zum Generieren des `Account/Manage` Codes finden Sie unter [ Identity Gerüstbau ](xref:security/authentication/scaffold-identity).
 * Die Links zum **Löschen** und **herunterladen** wirken sich nur auf die Standard Identitätsdaten aus. Apps, die benutzerdefinierte Benutzerdaten erstellen, müssen erweitert werden, um die benutzerdefinierten Benutzerdaten zu löschen/herunterzuladen. Weitere Informationen finden Sie unter [hinzufügen, herunterladen und Löschen von benutzerdefinierten Identity Benutzerdaten in ](xref:security/authentication/add-user-data).
@@ -140,13 +140,13 @@ Einige Datenbanken und Speicher Mechanismen ermöglichen die Verschlüsselung ru
 * Ist die einfachste und sicherste Option.
 * Ermöglicht der Datenbank die Verwaltung von Schlüsseln und Verschlüsselung.
 
-Zum Beispiel:
+Beispiel:
 
 * Microsoft SQL und Azure SQL bieten [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).
 * [Die Datenbank wird von SQL Azure standardmäßig verschlüsselt.](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [Azure-blobdateien,-Dateien,-Tabellen und-Queue Storage werden standardmäßig verschlüsselt](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
-Bei Datenbanken, die keine integrierte Verschlüsselung im Ruhezustand bereitstellen, können Sie die Datenträger Verschlüsselung möglicherweise verwenden, um denselben Schutz zu gewährleisten. Zum Beispiel:
+Bei Datenbanken, die keine integrierte Verschlüsselung im Ruhezustand bereitstellen, können Sie die Datenträger Verschlüsselung möglicherweise verwenden, um denselben Schutz zu gewährleisten. Beispiel:
 
 * [BitLocker für Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux:

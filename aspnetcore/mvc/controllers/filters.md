@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 7fe33a620e43603388dd0cacb3ea42f5b5adc40f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0141ad2df5216183424980a6ca50bf6bcd64ade5
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408291"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213053"
 ---
 # <a name="filters-in-aspnet-core"></a>Filter in ASP.NET Core
 
@@ -123,7 +123,7 @@ Mit dem folgenden Code wird ein `ActionFilterAttribute`-Element implementiert, d
 
 Die Konfigurationsoptionen werden vom [Konfigurationssystem](xref:fundamentals/configuration/index) mithilfe der [Optionsmuster](xref:fundamentals/configuration/options) bereitgestellt. Beispielsweise aus der Datei *appsettings.json*:
 
-[!code-csharp[](filters/3.1sample/FiltersSample/appsettings.json)]
+[!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
 In `StartUp.ConfigureServices`:
 
@@ -284,7 +284,7 @@ Der `AddHeader`-Filter wird daher nie für die `SomeResource`-Aktion ausgeführt
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-## <a name="dependency-injection"></a>Abhängigkeitsinjektion
+## <a name="dependency-injection"></a>Dependency Injection
 
 Filter können nach Typ oder Instanz hinzugefügt werden. Wenn eine Instanz hinzugefügt wird, wird diese Instanz für jede Anforderung verwendet. Wenn ein Typ hinzugefügt wird, ist der Filter typaktiviert. Ein typaktivierter Filter bedeutet Folgendes:
 
@@ -435,7 +435,7 @@ Durch Auslösen einer Ausnahme in einer Aktionsmethode geschieht Folgendes:
 Bei einem `IAsyncActionFilter` hat der Aufruf von <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate> folgende Auswirkungen:
 
 * Alle nachfolgenden Aktionsfilter und die Aktionsmethode werden ausgeführt.
-* Gibt `ActionExecutedContext` zurück.
+* Gibt `ActionExecutedContext`zurück.
 
 Weisen Sie einer Ergebnisinstanz <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result?displayProperty=fullName> zu, und rufen Sie nicht `next` (den `ActionExecutionDelegate`) auf, um die Pipeline kurzzuschließen.
 
@@ -788,7 +788,7 @@ Die Eigenschaft `Order` kann mit einem Konstruktorparameter festgelegt werden:
 
 Sehen Sie sich die drei Aktionsfilter an, die im vorherigen Beispiel gezeigt werden. Wenn die `Order`-Eigenschaft des Controllers und der globalen Filter auf 1 bzw. 2 festgelegt ist, wird die Reihenfolge der Ausführung umgekehrt.
 
-| Sequenz | Filterbereich | `Order`-Eigenschaft | Filtermethode |
+| Sequenz | Filterbereich | `Order` -Eigenschaft | Filtermethode |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Methode | 0 | `OnActionExecuting` |
 | 2 | Controller | 1  | `OnActionExecuting` |
@@ -816,7 +816,7 @@ Der `AddHeader`-Filter wird daher nie für die `SomeResource`-Aktion ausgeführt
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]
 
-## <a name="dependency-injection"></a>Abhängigkeitsinjektion
+## <a name="dependency-injection"></a>Dependency Injection
 
 Filter können nach Typ oder Instanz hinzugefügt werden. Wenn eine Instanz hinzugefügt wird, wird diese Instanz für jede Anforderung verwendet. Wenn ein Typ hinzugefügt wird, ist der Filter typaktiviert. Ein typaktivierter Filter bedeutet Folgendes:
 
@@ -969,7 +969,7 @@ Durch Auslösen einer Ausnahme in einer Aktionsmethode geschieht Folgendes:
 Bei einem `IAsyncActionFilter` hat der Aufruf von <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate> folgende Auswirkungen:
 
 * Alle nachfolgenden Aktionsfilter und die Aktionsmethode werden ausgeführt.
-* Gibt `ActionExecutedContext` zurück.
+* Gibt `ActionExecutedContext`zurück.
 
 Weisen Sie einer Ergebnisinstanz <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result?displayProperty=fullName> zu, und rufen Sie nicht `next` (den `ActionExecutionDelegate`) auf, um die Pipeline kurzzuschließen.
 

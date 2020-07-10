@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 31970bd2b52ad83c116067d258aa9dca2d9b3b66
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 6ac565bfa4862168fa143417ab5a81c51b620f16
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793586"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212442"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Einführung in Identity ASP.net Core
 
@@ -44,7 +44,7 @@ Die [Microsoft Identity-Plattform](/azure/active-directory/develop/) ist:
 * Eine Weiterentwicklung der Azure Active Directory (Azure AD)-Entwicklerplattform.
 * Nicht im Zusammenhang mit ASP.net Core Identity .
 
-[!INCLUDE[](~/includes/IdentityServer4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.MD)]
 
 [Anzeigen oder Herunterladen des Beispielcodes](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([herunterladen)](xref:index#how-to-download-a-sample)
 
@@ -75,7 +75,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Zum Beispiel:
+Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Beispiel:
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -185,7 +185,7 @@ Im vorangehenden Code muss der Code `return RedirectToPage();` eine Umleitung se
 
 Post wird in der Datei *pages/Shared/_LoginPartial. cshtml*angegeben:
 
-[!code-csharp[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
+[!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
 ## <a name="test-identity"></a>TestIdentity
 
@@ -216,7 +216,7 @@ Weitere Informationen und Anleitungen zum Migrieren Ihres vorhandenen Identity S
 
 Ein Beispiel zum Festlegen der Mindestanforderungen für das Kennwort finden Sie unter [Konfiguration](#pw) .
 
-## <a name="adddefaultidentity-and-addidentity"></a>Adddefaultidentity und addidentity
+## <a name="adddefaultidentity-and-addidentity"></a>Adddefault Identity und AddIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*>wurde in ASP.net Core 2,1 eingeführt. `AddDefaultIdentity`Das Aufrufen von ähnelt dem Aufrufen der folgenden:
 
@@ -224,7 +224,7 @@ Ein Beispiel zum Festlegen der Mindestanforderungen für das Kennwort finden Sie
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-Weitere Informationen finden Sie unter [adddefaultidentity-Quelle](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
+Weitere Informationen finden Sie unter [adddefault Identity Source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
 
 ## <a name="prevent-publish-of-static-identity-assets"></a>Veröffentlichen statischer Identity Assets verhindern
 
@@ -271,7 +271,7 @@ In diesem Thema erfahren Sie, wie Sie Identity einen Benutzer mit registrieren, 
 
 <a name="adi"></a>
 
-## <a name="adddefaultidentity-and-addidentity"></a>Adddefaultidentity und addidentity
+## <a name="adddefaultidentity-and-addidentity"></a>Adddefault Identity und AddIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*>wurde in ASP.net Core 2,1 eingeführt. `AddDefaultIdentity`Das Aufrufen von ähnelt dem Aufrufen der folgenden:
 
@@ -279,7 +279,7 @@ In diesem Thema erfahren Sie, wie Sie Identity einen Benutzer mit registrieren, 
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-Weitere Informationen finden Sie unter [adddefaultidentity-Quelle](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
+Weitere Informationen finden Sie unter [adddefault Identity Source](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
 
 ## <a name="create-a-web-app-with-authentication"></a>Erstellen einer Web-App mit Authentifizierung
 
@@ -300,7 +300,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Zum Beispiel:
+Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Beispiel:
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -346,7 +346,7 @@ Identitywird durch Aufrufen von [UseAuthentication](/dotnet/api/microsoft.aspnet
 
 [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
-Weitere Informationen finden Sie unter [identityoptions-Klasse](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) und [Anwendungsstart](xref:fundamentals/startup).
+Weitere Informationen finden Sie unter der [ Identity options-Klasse](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) und dem [Anwendungsstart](xref:fundamentals/startup).
 
 ## <a name="scaffold-register-login-and-logout"></a>Gerüst: registrieren, anmelden und Abmelden
 
@@ -402,7 +402,7 @@ Der Link " **Abmelden** " Ruft die `LogoutModel.OnPost` Aktion auf.
 
 Post wird in der Datei *pages/Shared/_LoginPartial. cshtml*angegeben:
 
-[!code-csharp[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
+[!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
 ## <a name="test-identity"></a>TestIdentity
 

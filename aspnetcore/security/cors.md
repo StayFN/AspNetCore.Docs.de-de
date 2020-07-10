@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 0a2be31092ab491e23ab9de9be676b5b4d3963ee
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: dc8e68ef482025443147eeb27bd3f245c1a1a5ed
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060279"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212885"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Aktivieren von Cross-Origin-Anforderungen (cors) in ASP.net Core
 
@@ -79,7 +79,7 @@ Cors-Middleware verarbeitet Ursprungs übergreifende Anforderungen. Mit dem folg
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Startup.cs?name=snippet&highlight=3,9,32)]
 
-Der vorangehende Code:
+Der obige Code:
 
 * Legt den Richtlinien Namen auf fest `_myAllowSpecificOrigins` . Der Richtlinien Name ist willkürlich.
 * Ruft die <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> Erweiterungsmethode auf und gibt die `_myAllowSpecificOrigins` cors-Richtlinie an. `UseCors`Fügt die cors-Middleware hinzu. Der-Anruf `UseCors` muss nach, jedoch `UseRouting` vor eingefügt werden `UseAuthorization` . Weitere Informationen finden Sie unter [Middleware Order](xref:fundamentals/middleware/index#middleware-order).
@@ -123,7 +123,7 @@ Mit dem Endpunkt Routing kann cors pro Endpunkt mit dem <xref:Microsoft.AspNetCo
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupEndPt.cs?name=snippet2&highlight=3,7-15,32,40,43)]
 
-Für den Code oben gilt:
+Im obigen Code:
 
 * `app.UseCors`aktiviert die cors-Middleware. Da eine Standard Richtlinie nicht konfiguriert wurde, werden `app.UseCors()` cors von alleine nicht aktiviert.
 * Die `/echo` -und-Controller Endpunkte lassen Ursprungs übergreifende Anforderungen zu, die die angegebene Richtlinie verwenden.
@@ -184,7 +184,7 @@ Der folgende Code deaktiviert cors für die `GetValues2` Aktion:
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/ValuesController.cs?name=snippet&highlight=1,23)]
 
-Der vorangehende Code:
+Der obige Code:
 
 * Aktivieren von cors mit dem [Endpunkt Routing](#ecors)nicht.
 * Definiert keine [cors-Standard Richtlinie](#dp).
@@ -665,7 +665,7 @@ Cors-Middleware verarbeitet Ursprungs übergreifende Anforderungen. Der folgende
 
 [!code-csharp[](cors/sample/Cors/WebAPI/Startup.cs?name=snippet&highlight=8,14-23,38)]
 
-Der vorangehende Code:
+Der obige Code:
 
 * Legt den Richtlinien Namen auf " \_ myallowspecificorigins" fest. Der Richtlinien Name ist willkürlich.
 * Ruft die <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> Erweiterungsmethode auf, die cors aktiviert.
@@ -988,7 +988,7 @@ Wenn die Antwort den Header nicht enthält `Access-Control-Allow-Origin` , schl�
 So testen Sie cors:
 
 1. [Erstellen Sie ein API-Projekt](xref:tutorials/first-web-api). Alternativ können Sie [das Beispiel herunterladen](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
-1. Aktivieren Sie cors mithilfe eines der Vorgehensweisen in diesem Dokument. Zum Beispiel:
+1. Aktivieren Sie cors mithilfe eines der Vorgehensweisen in diesem Dokument. Beispiel:
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
@@ -998,7 +998,7 @@ So testen Sie cors:
 1. Erstellen Sie ein Web-App-Projekt ( Razor Pages oder MVC). Im Beispiel werden Razor Seiten verwendet. Sie können die Web-App in der gleichen Projekt Mappe wie das API-Projekt erstellen.
 1. Fügen Sie der Datei " *Index. cshtml* " den folgenden hervorgehobenen Code hinzu:
 
-  [!code-csharp[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
+  [!code-cshtml[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
 
 1. Ersetzen Sie im vorangehenden Code `url: 'https://<web app>.azurewebsites.net/api/values/1',` durch die URL zur bereitgestellten app.
 1. Stellen Sie das API-Projekt bereit. Nehmen Sie beispielsweise die Bereitstellung [in Azure vor](xref:host-and-deploy/azure-apps/index).

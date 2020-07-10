@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 40902da52217505822abd9bfd889ecafdd4d88e0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 272b5a89601a9e6ef24f3e60a3da7e2a40297c97
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407836"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213111"
 ---
 # <a name="view-components-in-aspnet-core"></a>Ansichtskomponenten in ASP.NET Core
 
@@ -100,7 +100,7 @@ Es wird empfohlen, dass Sie die Ansichtsdatei *Default.cshtml* nennen und den Pf
 
 Um den Suchpfad für die Ansicht anzupassen, ändern Sie Razor die <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> Sammlung. Um z. B. nach Ansichten im Pfad „/Components/{Name der Ansichtskomponente}/{Name der Ansicht}“ zu suchen, fügen Sie der Auflistung ein neues Element hinzu:
 
-[!code-cs[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
+[!code-csharp[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
 Im vorangehenden Code stellt der Platzhalter „{0}“ den Pfad „Components/{Name der Ansichtskomponente}/{Name der Ansicht}“ dar.
 
