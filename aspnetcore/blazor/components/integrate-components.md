@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: 29360174ea86623491d5d8aacd4038162855bba8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6aef51a0f8bf4ec2e7cb6115856bc465a90ec2ee
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399061"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059848"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>Integrieren von ASP.NET Core Razor-Komponenten in Razor Pages- und MVC-Apps
 
@@ -50,7 +51,7 @@ Eine vorhandene Razor Pages- oder MVC-App kann Razor-Komponenten in Seiten und A
 
      Die Datei `_Layout.cshtml` befindet sich bei Razor-Pages-Apps im Ordner *Pages/Shared* und bei MVC-Apps im Ordner *Views/Shared*.
 
-   * Fügen Sie ein `<script>`-Tag für das Skript *blazor.server.js* direkt vor dem schließenden `</body>`-Tag ein:
+   * Fügen Sie direkt vor dem schließenden `</body>`-Tag ein `<script>`-Tag für das Skript *blazor.server.js* ein:
 
      ```html
      <script src="_framework/blazor.server.js"></script>

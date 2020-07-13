@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 59bf94f6818108f09e9af147559fc304f48936bc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 066bebf95a941fca5e7cc175c4c0d6d56abc9cb5
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401310"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060058"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Aktualisieren verwandter Daten: ASP.NET Core MVC mit EF Core
 
@@ -143,7 +143,7 @@ Der Code führt Folgendes aus:
 
 * Ruft für die Navigationseigenschaft `OfficeAssignment` die aktuelle Dozentenentität von der Datenbank über Eager Loading ab. Dies entspricht dem Vorgang in der HttpGet-Methode `Edit`.
 
-* Führt ein Update für die abgerufene Dozentenentität mit Werten aus der Modellbindung aus. Mithilfe der `TryUpdateModel`-Überladung können Sie die Eigenschaften auf die Whitelist setzen, die Sie hinzufügen möchten. Dadurch wird, wie im [zweiten Tutorial](crud.md) beschrieben, vermieden, dass zu viele Angaben gemacht werden.
+* Führt ein Update für die abgerufene Dozentenentität mit Werten aus der Modellbindung aus. Mithilfe der `TryUpdateModel`-Überladung können Sie die Eigenschaften deklarieren, die Sie hinzufügen möchten. Dadurch wird, wie im [zweiten Tutorial](crud.md) beschrieben, vermieden, dass zu viele Angaben gemacht werden.
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -211,7 +211,7 @@ Fügen Sie als nächstes den Code hinzu, der ausgeführt wird, wenn der Benutzer
 
 Die Methodensignatur unterscheidet sich jetzt von der HttpGet-Methode `Edit`, wodurch der Methodenname von `EditPost` auf `Edit` geändert wird.
 
-Da es in der Ansicht keine Auflistung der Course-Entitäten gibt, kann durch die Modellbindung kein automatisches Update für die `CourseAssignments`-Navigationseigenschaft ausgeführt werden. Verwenden Sie dafür die neue `CourseAssignments`-Methode anstatt die Modellbindung zu verwenden, um ein Update für die `UpdateInstructorCourses`-Navigationseigenschaft auszuführen. Aus diesem Grund müssen Sie die `CourseAssignments`-Eigenschaft von der Modellbindung ausschließen. Dafür muss der Code, der `TryUpdateModel` aufruft, nicht verändert werden, da Sie die Whitelist-Überladung verwenden und `CourseAssignments` nicht in der Liste enthalten ist.
+Da es in der Ansicht keine Auflistung der Course-Entitäten gibt, kann durch die Modellbindung kein automatisches Update für die `CourseAssignments`-Navigationseigenschaft ausgeführt werden. Verwenden Sie dafür die neue `CourseAssignments`-Methode anstatt die Modellbindung zu verwenden, um ein Update für die `UpdateInstructorCourses`-Navigationseigenschaft auszuführen. Aus diesem Grund müssen Sie die `CourseAssignments`-Eigenschaft von der Modellbindung ausschließen. Dafür muss der Code, der `TryUpdateModel` aufruft, nicht verändert werden, weil Sie die Überladung verwenden, die eine explizite Genehmigung erfordert, und `CourseAssignments` nicht in der Liste der einzuschließenden Elemente enthalten ist.
 
 Wenn keins der Kontrollkästchen aktiviert ist, initialisiert der Code in `UpdateInstructorCourses` die `CourseAssignments`-Navigationseigenschaft mit einer leeren Auflistung und gibt Folgendes zurück:
 

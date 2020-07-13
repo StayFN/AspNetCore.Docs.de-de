@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 0be63811874709db95285f4013e47bc1706050b1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401479"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060123"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: Implementieren von CRUD-Funktionen – ASP.NET MVC mit EF Core
 
@@ -187,7 +187,7 @@ Diese Änderungen implementieren eine bewährte Sicherheitsmethode, um Overposti
 
 Der neue Code liest die vorhandene Entität und ruft `TryUpdateModel` auf, um Felder in der abgerufenen Entität [basierend auf Benutzereingaben in den gesendeten Formulardaten](xref:mvc/models/model-binding) zu aktualisieren. Die automatische Änderungsnachverfolgung des Entity Frameworks legt das Flag `Modified` auf den Feldern fest, die durch die Formulareingabe geändert wurden. Wenn die Methode `SaveChanges` aufgerufen wird, erstellt Entity Framework SQL-Anweisungen, um die Datenbankzeile zu aktualisieren. Nebenläufigkeitskonflikte werden ignoriert, und nur die Tabellenspalten, die vom Benutzer aktualisiert wurden, werden in der Datenbank aktualisiert. (In einem späteren Tutorial lernen Sie, wie man Nebenläufigkeitskonflikte behandelt.)
 
-Als eine bewährte Methode zum Verhindern von Overposting, sind die Felder in den `TryUpdateModel`-Parametern zugelassen, die durch die Seite **Edit** (Bearbeiten) aktualisierbar sein sollen. (Die leere Zeichenfolge vor der Liste der Felder in der Parameterliste ist für einen Präfix zur Verwendung mit den Namen der Formularfelder.) Derzeit sind keine zusätzlichen von Ihnen geschützten Felder vorhanden. Wenn Sie jedoch die Felder auflisten, die die Modellbindung binden soll, stellen Sie sicher, dass zukünftig hinzugefügte Felder automatisch geschützt sind, bis Sie sie explizit hier hinzufügen.
+Als Best Practice zum Verhindern von Overposting werden die Felder, die durch die Seite **Bearbeiten** aktualisierbar sein sollen, in den `TryUpdateModel`-Parametern deklariert. (Die leere Zeichenfolge vor der Liste der Felder in der Parameterliste ist für einen Präfix zur Verwendung mit den Namen der Formularfelder.) Derzeit sind keine zusätzlichen von Ihnen geschützten Felder vorhanden. Wenn Sie jedoch die Felder auflisten, die die Modellbindung binden soll, stellen Sie sicher, dass zukünftig hinzugefügte Felder automatisch geschützt sind, bis Sie sie explizit hier hinzufügen.
 
 Aus diesen Änderungen resultiert, dass die Methodensignatur der HttpPost-Methode `Edit` identisch mit der HttpGet-Methode `Edit` ist. Daher haben Sie die Methode in `EditPost` umbenannt.
 

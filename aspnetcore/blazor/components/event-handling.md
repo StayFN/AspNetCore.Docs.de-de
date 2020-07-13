@@ -5,7 +5,7 @@ description: Informieren Sie sich über die Features zur Ereignisbehandlung von 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 2fce394202be5df9af67e8afca27a0914f410402
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f15f7e0fc7ef460cefffd817a7d0fa40c1f919b2
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399035"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059798"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor-Ereignisbehandlung
 
@@ -182,7 +183,7 @@ Wenn die Schaltfläche in der `ChildComponent` ausgewählt ist:
 * Die `ShowMessage`-Methode von `ParentComponent` wird aufgerufen. `messageText` wird aktualisiert und in der `ParentComponent` angezeigt.
 * Ein Aufruf von [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) ist in der Methode des Rückrufs (`ShowMessage`) nicht erforderlich. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> wird automatisch aufgerufen, um die `ParentComponent` zu rendern, so wie Ereignisse untergeordneter Elemente das Rendern von Komponenten in Ereignishandlern auslösen, die innerhalb des untergeordneten Elements ausgeführt werden.
 
-<xref:Microsoft.AspNetCore.Components.EventCallback> und <xref:Microsoft.AspNetCore.Components.EventCallback%601> gestatten asynchrone Delegate. <xref:Microsoft.AspNetCore.Components.EventCallback%601> ist stark typisiert und erfordert einen bestimmten Argumenttyp. <xref:Microsoft.AspNetCore.Components.EventCallback> ist schwach typisiert und gestattet jeden Argumenttyp.
+<xref:Microsoft.AspNetCore.Components.EventCallback> und <xref:Microsoft.AspNetCore.Components.EventCallback%601> gestatten asynchrone Delegate. <xref:Microsoft.AspNetCore.Components.EventCallback> ist schwach typisiert und erlaubt das Übergeben von Argumenten eines beliebigen Typs in `InvokeAsync(Object)`. <xref:Microsoft.AspNetCore.Components.EventCallback%601> ist stark typisiert und erfordert das Übergeben eines `T`-Arguments in `InvokeAsync(T)`, das `TValue` zugewiesen werden kann.
 
 ```razor
 <ChildComponent 
@@ -228,8 +229,6 @@ Der Wert des Attributs kann auch ein Ausdruck sein. Im folgenden Beispiel ist `s
 ```razor
 <input @onkeypress:preventDefault="shouldPreventDefault" />
 ```
-
-Ein Ereignishandler ist nicht erforderlich, um die Standardaktion zu verhindern. Die Szenarien für Ereignishandler und die Verhinderung von Standardaktionen können unabhängig voneinander verwendet werden.
 
 ## <a name="stop-event-propagation"></a>Beenden der Ereignisweitergabe
 

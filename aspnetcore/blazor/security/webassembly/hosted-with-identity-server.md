@@ -1,11 +1,11 @@
 ---
 title: Sichern einer gehosteten Blazor WebAssembly-App in ASP.NET Core mit Identity Server
 author: guardrex
-description: In diesem Artikel erfahren Sie, wie Sie eine neue von Blazor gehostete App mit Authentifizierung in Visual Studio erstellen, die ein [IdentityServer](https://identityserver.io/)-Backend verwendet.
+description: In diesem Artikel erfahren Sie, wie Sie in Visual Studio eine neue von Blazor gehostete App mit Authentifizierung erstellen, die ein [IdentityServer](https://identityserver.io/)-Back-End verwendet.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,37 +15,54 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: cce6b6b1ec144e362415fe34645aef567269c873
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 001fa0885c4ef4f365d9849278d3aa36e7657c54
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147730"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Sichern einer gehosteten Blazor WebAssembly-App in ASP.NET Core mit Identity Server
 
 Von [Javier Calvarro Nelson](https://github.com/javiercn) und [Luke Latham](https://github.com/guardrex)
 
-In diesem Artikel wird erläutert, wie eine neue von Blazor gehostete App erstellt wird, für die [IdentityServer](https://identityserver.io/) verwendet wird, um Benutzer und API-Aufrufe zu authentifizieren.
+In diesem Artikel wird erläutert, wie eine neue von Blazor gehostete App erstellt wird, die [IdentityServer](https://identityserver.io/) verwendet, um Benutzer und API-Aufrufe zu authentifizieren.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-In Visual Studio:
+So erstellen Sie ein neues Blazor WebAssembly-Projekt mit einem Authentifizierungsmechanismus:
 
-1. Erstellen Sie eine neue **Blazor WebAssembly** -App. Weitere Informationen finden Sie unter <xref:blazor/get-started>.
-1. Klicken Sie im Dialogfeld **Neue Blazor-App erstellen** im Bereich **Authentifizierung** auf **Ändern**.
-1. Klicken Sie zuerst auf **Einzelne Benutzerkonten** und dann auf **OK**.
-1. Aktivieren Sie im Bereich **Erweitert** das Kontrollkästchen **ASP.NET Core hosted** (In ASP.NET Core gehostet).
-1. Wählen Sie die Schaltfläche **Erstellen**.
+1. Nachdem Sie im Dialogfeld **Neue ASP.NET Core-Webanwendung erstellen** die Vorlage **Blazor WebAssembly-App** ausgewählt haben, wählen Sie im Dialogfeld **Authentifizierung** die Option **Ändern** aus.
 
-# <a name="net-core-cli"></a>[.NET Core-CLI](#tab/netcore-cli/)
+1. Wählen Sie **Einzelne Benutzerkonten** mit der Option **In-App-Speicherung von Benutzerkonten** aus, um Benutzer über das [Identity](xref:security/authentication/identity)-System von ASP.NET Core innerhalb der App zu speichern.
 
-Führen Sie zum Erstellen der App in einer Befehlsshell den folgenden Befehle aus:
+1. Aktivieren Sie im Bereich **Erweitert** das Kontrollkästchen **Von ASP.NET Core gehostet**.
+
+# <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code / .NET Core-CLI](#tab/visual-studio-code+netcore-cli)
+
+Um ein neues Blazor WebAssembly-Projekt mit einem Authentifizierungsmechanismus in einem leeren Ordner zu erstellen, geben Sie den Authentifizierungsmechanismus `Individual` mit der `-au|--auth`Option an, Benutzer innerhalb der App über das [Identity](xref:security/authentication/identity)-System von ASP.NET Core zu speichern:
 
 ```dotnetcli
-dotnet new blazorwasm -au Individual -ho
+dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 ```
 
-Zum Angeben eines Ausgabespeicherorts (wodurch ein Projektordner erstellt wird, falls noch nicht vorhanden) schließen Sie die Ausgabeoption mit einem Pfad (z. B. `-o BlazorSample`) in den Befehl ein. Der Name des Ordners wird auch Teil des Projektnamens.
+| Platzhalter  | Beispiel        |
+| ------------ | -------------- |
+| `{APP NAME}` | `BlazorSample` |
+
+Der mit der Option `-o|--output` angegebene Ausgabespeicherort erstellt einen Projektordner, sofern kein solcher vorhanden ist, und wird Teil des Namens der App.
+
+Weitere Informationen finden Sie im Befehl [`dotnet new`](/dotnet/core/tools/dotnet-new) im Leitfaden für .NET Core.
+
+# <a name="visual-studio-for-mac"></a>[Visual Studio für Mac](#tab/visual-studio-mac)
+
+So erstellen Sie ein neues Blazor WebAssembly-Projekt mit einem Authentifizierungsmechanismus:
+
+1. Wählen Sie im Schritt **Konfigurieren Ihrer neuen Blazor WebAssembly-App** in der Dropdownliste **Authentifizierung** die Option **Individual Authentication (in-app)** (Individuelle Authentifizierung [in der App]) aus.
+
+1. Die App wird für einzelne Benutzer erstellt, die über [Identity](xref:security/authentication/identity) von ASP.NET Core in der App gespeichert sind.
+
+1. Aktivieren Sie das Kontrollkästchen **Von ASP.NET Core gehostet**.
 
 ---
 
@@ -71,14 +88,14 @@ Die `Startup`-Klasse verfügt über die folgenden Ergänzungen.
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer mit einer zusätzlichen <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>-Hilfsprogrammmethode, die ASP.NET Core-Standardkonventionen zusätzlich zu IdentityServer einrichtet:
+  * IdentityServer mit einer zusätzlichen <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>-Hilfsmethode, die ASP.NET Core-Standardkonventionen zusätzlich zu IdentityServer einrichtet:
 
     ```csharp
     services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * Authentifizierung mit einer zusätzlichen <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>-Hilfsprogrammmethode, die die App so konfiguriert, dass sie von IdentityServer generierte JWT-Token überprüft:
+  * Authentifizierung mit einer zusätzlichen <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>-Hilfsmethode, die die App so konfiguriert, dass sie von IdentityServer generierte JWT-Token überprüft:
 
     ```csharp
     services.AddAuthentication()
@@ -108,14 +125,14 @@ Die `Startup`-Klasse verfügt über die folgenden Ergänzungen.
 
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
-Die <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>-Hilfsprogrammmethode konfiguriert [IdentityServer](https://identityserver.io/) für ASP.NET Core-Szenarios. IdentityServer ist ein leistungsfähiges und erweiterbares Framework für Überlegungen zum Thema „App-Sicherheit“. IdentityServer ist für die meisten gängigen Szenarios unnötig komplex. Als Folge werden mehrere Konventionen und Konfigurationsoptionen bereitgestellt, die sich gut als Startpunkt eignen. Sobald Ihre Authentifizierung geändert werden muss, stehen alle Funktionen von IdentityServer zur Verfügung, um die Authentifizierung so anzupassen, dass sie den Anforderungen der App entspricht.
+Die <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>-Hilfsmethode konfiguriert [IdentityServer](https://identityserver.io/) für ASP.NET Core-Szenarien. IdentityServer ist ein leistungsfähiges und erweiterbares Framework für Überlegungen zum Thema „App-Sicherheit“. IdentityServer ist für die meisten gängigen Szenarien unnötig komplex. Als Folge werden mehrere Konventionen und Konfigurationsoptionen bereitgestellt, die sich gut als Startpunkt eignen. Wenn sich Ihre Anforderungen an die Authentifizierung ändern, bietet IdentityServer eine Vielzahl leistungsfähiger Funktionen, mit denen Sie die Authentifizierung genau an die Anforderungen einer App anpassen können.
 
 ### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
 Die <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>-Hilfsprogrammmethode konfiguriert ein Richtlinienschema für die App als Standardauthentifizierungshandler. Die Richtlinie ist so konfiguriert, dass Identity alle an beliebige Unterpfade im Identity-URL-Raum `/Identity` weitergeleiteten Anforderungen verarbeiten kann. <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> verarbeitet alle anderen Anforderungen. Außerdem übernimmt diese Methode die folgenden Aufgaben:
 
-* Registrieren einer `{APPLICATION NAME}API`-API-Ressource mit IdentityServer mit einem Standardbereich für `{APPLICATION NAME}API`
-* Konfigurieren der JWT-Bearertoken-Middleware zum Überprüfen der von IdentityServer für die App ausgegeben Token
+* Registrieren einer `{APPLICATION NAME}API`-API-Ressource mit IdentityServer mit dem Standardbereich `{APPLICATION NAME}API`
+* Konfigurieren der JWT-Bearertoken-Middleware zum Überprüfen der von IdentityServer für die App ausgegebenen Token
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 

@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: 23118193ec3829fddce392123210856839471058
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e3ce3a62f351255fd059adaa6e9b0a8e9bdc2ce7
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402844"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059876"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Fehlerbehandlung in ASP.NET Core Blazor-Apps
 
@@ -61,7 +62,7 @@ Passen Sie in einer Blazor Server-App die Darstellung in der `Pages/_Host.cshtml
 </div>
 ```
 
-Das `blazor-error-ui`-Element wird von den Formatvorlagen, die in den Blazor-Vorlagen enthalten sind (`wwwroot/css/site.css`) ausgeblendet und erst angezeigt, wenn ein Fehler auftritt:
+Das `blazor-error-ui`-Element wird von den Stilen in den Blazor-Vorlagen (`wwwroot/css/app.css` oder `wwwroot/css/site.css`) verborgen und nur angezeigt, wenn ein Fehler auftritt:
 
 ```css
 #blazor-error-ui {

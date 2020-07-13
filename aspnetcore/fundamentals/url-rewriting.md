@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: c41ba2e067c8dc978b1359db548733c5f8890a2b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: dbdb7cd86218fd9ba63ae4ac2aa516836d4fd1a1
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408382"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944294"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL-umschreibende Middleware in ASP.NET Core
 
@@ -325,7 +325,7 @@ Die Middleware unterstützt die folgenden Servervariablen für das IIS-URL-Umsch
 
 Verwenden Sie <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*>, um Ihre eigene Regellogik in einer Methode zu implementieren. `Add` macht <xref:Microsoft.AspNetCore.Rewrite.RewriteContext> verfügbar, wodurch die Verwendung von <xref:Microsoft.AspNetCore.Http.HttpContext> in Ihrer Methode ermöglicht wird. [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*) bestimmt, wie die zusätzliche Pipelineverarbeitung erfolgt. Legen Sie den Wert auf eines der <xref:Microsoft.AspNetCore.Rewrite.RuleResult>-Felder fest, die in der folgenden Tabelle beschrieben sind:
 
-| `RewriteContext.Result`              | Aktion                                                           |
+| Umschreiben von Kontext – Ergebnisse               | Aktion                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (Standardwert) | Regeln weiter anwenden.                                         |
 | `RuleResult.EndResponse`             | Regeln nicht mehr anwenden und Antwort senden.                       |
@@ -679,7 +679,7 @@ Die Middleware unterstützt die folgenden Servervariablen für das IIS-URL-Umsch
 
 Verwenden Sie <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*>, um Ihre eigene Regellogik in einer Methode zu implementieren. `Add` macht <xref:Microsoft.AspNetCore.Rewrite.RewriteContext> verfügbar, wodurch die Verwendung von <xref:Microsoft.AspNetCore.Http.HttpContext> in Ihrer Methode ermöglicht wird. [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*) bestimmt, wie die zusätzliche Pipelineverarbeitung erfolgt. Legen Sie den Wert auf eines der <xref:Microsoft.AspNetCore.Rewrite.RuleResult>-Felder fest, die in der folgenden Tabelle beschrieben sind:
 
-| `RewriteContext.Result`              | Aktion                                                           |
+| Umschreiben von Kontext – Ergebnisse               | Aktion                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (Standardwert) | Regeln weiter anwenden.                                         |
 | `RuleResult.EndResponse`             | Regeln nicht mehr anwenden und Antwort senden.                       |

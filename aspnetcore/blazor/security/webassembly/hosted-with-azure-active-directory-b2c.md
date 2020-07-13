@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 123b664b87eb41a8f07344608713d9aed7a0aa37
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b9125526db9a7484aca50f2ffa6175fd99b11453
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402246"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147763"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Sichern einer gehosteten ASP.NET Core Blazor WebAssembly-App mit Azure Active Directory B2C
 
@@ -33,10 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie eine eigenständige Blazor WebAssemb
 
 Befolgen Sie die Anweisungen unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](/azure/active-directory-b2c/tutorial-create-tenant), um einen AAD B2C-Mandanten zu erstellen.
 
-Notieren Sie sich folgende Informationen:
-
-* AAD B2C-Instanz (z. B. `https://contoso.b2clogin.com/`, wobei der nachgestellte Schrägstrich enthalten ist)
-* Domäne des AAD B2C-Mandanten (z. B. `contoso.onmicrosoft.com`)
+Notieren Sie sich die AAD B2C-Instanz (z. B. `https://contoso.b2clogin.com/`, wobei der nachgestellte Schrägstrich enthalten ist). Die Instanz ist das Schema und der Host einer Azure-B2B-App-Registrierung, die Sie im Fenster **Endpunkte** auf der Seite **App-Registrierungen** im Azure-Portal finden.
 
 ### <a name="register-a-server-api-app"></a>Registrieren einer Server-API-App
 
@@ -51,9 +49,8 @@ Befolgen Sie die Anweisungen unter [Tutorial: Registrieren einer Webanwendung in
 
 Notieren Sie sich folgende Informationen:
 
-* Anwendungs-ID (Client-ID) der *Server-API-App* (z. B. `11111111-1111-1111-1111-111111111111`)
-* Verzeichnis-ID (Mandanten-ID), z. B. `222222222-2222-2222-2222-222222222222`
-* Domäne des AAD-Mandanten (z. B. `contoso.onmicrosoft.com`): Die Domäne ist als **Herausgeberdomäne** auf dem Blatt **Branding** des Azure-Portals für die registrierte App verfügbar.
+* Anwendungs-ID (Client-ID) der *Server-API-App* (z. B. `41451fa7-82d9-4673-8fa5-69eff5a761fd`)
+* Primäre, Herausgeber- oder Mandantendomäne für AAD (z. B. `contoso.onmicrosoft.com`): Die Domäne ist als **Herausgeberdomäne** auf dem Blatt **Branding** des Azure-Portals für die registrierte App verfügbar.
 
 Gehen Sie unter **Eine API verfügbar machen** wie folgt vor:
 
@@ -67,8 +64,10 @@ Gehen Sie unter **Eine API verfügbar machen** wie folgt vor:
 
 Notieren Sie sich folgende Informationen:
 
-* App-ID-URI (z. B. `https://contoso.onmicrosoft.com/11111111-1111-1111-1111-111111111111`, `api://11111111-1111-1111-1111-111111111111` oder der von Ihnen angegebene benutzerdefinierte Wert)
+* App-ID-URI (z. B. `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` oder der von Ihnen angegebene benutzerdefinierte Wert)
 * Standardbereich (z. B. `API.Access`)
+
+Für den App-ID-URI ist möglicherweise eine bestimmte Konfiguration in der Client-App erforderlich, die im Abschnitt [Zugriffstokenbereiche](#access-token-scopes) weiter unten in diesem Thema beschrieben wird.
 
 ### <a name="register-a-client-app"></a>Registrieren einer Client-App
 
@@ -81,7 +80,7 @@ Befolgen Sie die Anweisungen unter [Tutorial: Registrieren einer Webanwendung in
 1. Vergewissern Sie sich, dass die Option **Berechtigungen** > **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aktiviert ist.
 1. Wählen Sie **Registrieren**.
 
-Notieren Sie sich die Anwendungs-ID (Client-ID) (z. B. `11111111-1111-1111-1111-111111111111`).
+Notieren Sie sich die Anwendungs-ID (Client-ID) (z. B. `4369008b-21fa-427c-abaa-9b53bf58e538`).
 
 Gehen Sie unter **Authentifizierung** > **Plattformkonfigurationen** > **Web** wie folgt vor:
 
@@ -97,7 +96,7 @@ Gehen Sie unter **API-Berechtigungen** wie folgt vor:
 1. Öffnen Sie die **API**-Liste.
 1. Ermöglichen Sie den Zugriff auf die API (z. B. `API.Access`).
 1. Wählen Sie **Berechtigungen hinzufügen** aus.
-1. Klicken Sie auf die Schaltfläche **Administratorzustimmung für {Mandantenname} erteilen**. Klicken Sie auf **Ja**, um zu bestätigen.
+1. Klicken Sie auf die Schaltfläche **Administratoreinwilligung für {MANDANTENNAME} erteilen**. Klicken Sie auf **Ja**, um zu bestätigen.
 
 Gehen Sie unter **Startseite** > **Azure AD B2C** > **Benutzerflows** wie folgt vor:
 
@@ -112,10 +111,21 @@ Notieren Sie sich den Namen des für die App erstellten Benutzerflows für die R
 Ersetzen Sie die Platzhalter im folgenden Befehl durch die zuvor notierten Informationen, und führen Sie den Befehl in einer Befehlsshell aus:
 
 ```dotnetcli
-dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -ssp "{SIGN UP OR SIGN IN POLICY}" --tenant-id "{TENANT ID}"
+dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 ```
 
-Zum Angeben eines Ausgabespeicherorts (wodurch ein Projektordner erstellt wird, falls noch nicht vorhanden) schließen Sie die Ausgabeoption mit einem Pfad (z. B. `-o BlazorSample`) in den Befehl ein. Der Name des Ordners wird auch Teil des Projektnamens.
+| Platzhalter                   | Name im Azure-Portal                                     | Beispiel                                |
+| ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
+| `{AAD B2C INSTANCE}`          | Instanz                                              | `https://contoso.b2clogin.com/`        |
+| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                         |
+| `{CLIENT APP CLIENT ID}`      | Anwendungs-ID (Client-ID) für die *Client-App*          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
+| `{DEFAULT SCOPE}`             | Bereichsname                                            | `API.Access`                           |
+| `{SERVER API APP CLIENT ID}`  | Anwendungs-ID (Client-ID) für die *Server-API-App*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SERVER API APP ID URI}`     | Anwendungs-ID-URI ([siehe Hinweis](#access-token-scopes)) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SIGN UP OR SIGN IN POLICY}` | Benutzerflow für die Registrierung oder Anmeldung                             | `B2C_1_signupsignin1`                  |
+| `{TENANT DOMAIN}`             | Primäre, Herausgeber- oder Mandantendomäne                       | `contoso.onmicrosoft.com`              |
+
+Der mit der Option `-o|--output` angegebene Ausgabespeicherort erstellt einen Projektordner, sofern kein solcher vorhanden ist, und wird Teil des Namens der App.
 
 > [!NOTE]
 > Übergeben Sie den App-ID-URI an die Option `app-id-uri`. Beachten Sie jedoch, dass eine Änderung der Konfiguration in der Client-App erforderlich sein könnte, die im Abschnitt [Zugriffstokenbereiche](#access-token-scopes) beschrieben ist.
@@ -125,7 +135,7 @@ Zum Angeben eines Ausgabespeicherorts (wodurch ein Projektordner erstellt wird, 
 > [!NOTE]
 > Im Azure-Portal ist der **Authentifizierung** > **Plattformkonfigurationen** > **Web** > **Umleitungs-URI** der *Client-App* für Apps für Port 5001 konfiguriert, die auf dem Kestrel-Server mit Standardeinstellungen ausgeführt werden.
 >
-> Wenn die *Client-App* auf einem zufälligen IIS Express-Port ausgeführt wird, finden Sie den Port der App in den Eigenschaften der *Server-App* im Panel **Debuggen**.
+> Wenn die *Client-App* an einem zufälligen IIS Express-Port ausgeführt wird, finden Sie den Port der App in den Eigenschaften der *Server-API-App* im Panel **Debuggen**.
 >
 > Wenn der Port nicht zuvor mit dem bekannten Port der *Client-App* konfiguriert wurde, kehren Sie zur *Client-App-Registrierung* im Azure-Portal zurück, und aktualisieren Sie den Umleitungs-URI mit dem korrekten Port.
 

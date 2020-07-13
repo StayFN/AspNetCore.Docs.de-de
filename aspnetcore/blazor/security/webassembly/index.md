@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 3fdea9f553cbd37f2c27740487cfe030ebd81937
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0ff580dd7cbefdfe3121b30490f99e0235d93bc3
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176149"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>Schützen der Blazor WebAssembly von ASP.NET Core
 
@@ -55,6 +55,18 @@ Die [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.n
 * Wenn die Blazor WebAssembly-App den Anmelderückrufendpunkt (`/authentication/login-callback`) lädt, wird die Authentifizierungsantwort verarbeitet.
   * Sobald der Authentifizierungsprozess erfolgreich abgeschlossen wird, wird der Benutzer authentifiziert und optional an die ursprüngliche geschützte URL weitergeleitet, die vom Benutzer angefordert wurde.
   * Sollte der Authentifizierungsprozess aus irgend einem Grund fehlschlagen, wird der Benutzer auf die Seite „Fehler bei der Anmeldung“ (`/authentication/login-failed`) weitergeleitet, und ein Fehler wird angezeigt.
+
+## <a name="authentication-component"></a>`Authentication`-Komponente
+
+Die `Authentication`-Komponente (`Pages/Authentication.razor`) behandelt Remote-Authentifizierungsvorgänge und ermöglicht der App Folgendes:
+
+* Konfigurieren von App-Routen für Authentifizierungsstatus.
+* Festlegen von Inhalten der Benutzeroberfläche für Authentifizierungsstatus.
+* Verwalten des Authentifizierungsstatus.
+
+Authentifizierungsaktionen, wie etwa das Registrieren oder Anmelden eines Benutzers, werden der <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorViewCore%601>-Komponente des Blazor-Frameworks übergeben, die für die übergreifende Dauerhaftigkeit und die Steuerung des Status über Authentifizierungsvorgänge hinweg zuständig ist.
+
+Weitere Informationen und Beispiele finden Sie unter <xref:blazor/security/webassembly/additional-scenarios>.
 
 ## <a name="authorization"></a>Autorisierung
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 7ac6dc983454153792610a07c1df01fbc38c8d67
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 25464817314f79c5bfd11d982cc9b09a3c72df15
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400829"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060344"
 ---
 # <a name="routing-in-aspnet-core"></a>Routing in ASP.NET Core
 
@@ -1436,26 +1436,26 @@ Routeneinschränkungen werden angewendet, wenn eine Übereinstimmung mit der ein
 
 In der folgenden Tabelle werden Beispiele für Routeneinschränkungen und deren zu erwartendes Verhalten beschriebe.
 
-| Einschränkung | Beispiel | Beispiele für Übereinstimmungen | Hinweise |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | Für jeden Integer wird eine Übereinstimmung ermittelt. |
-| `bool` | `{active:bool}` | `true`, `FALSE` | Entspricht `true` oder „FALSE“. Groß-/Kleinschreibung wird nicht beachtet. |
+| Constraint | Beispiel | Beispiele für Übereinstimmungen | Hinweise |
+|------------|---------|-----------------|-------|
+| `int` | `{id:int}` | `123456789`, `-123456789` | Für jeden Integer wird eine Übereinstimmung ermittelt.|
+| `bool` | `{active:bool}` | `true`, `FALSE` | Entspricht `true` oder `false`. Groß-/Kleinschreibung wird nicht beachtet.|
 | `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | Entspricht einem gültigen `DateTime`-Wert in der invarianten Kultur. Siehe vorherige Warnung.|
 | `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | Entspricht einem gültigen `decimal`-Wert in der invarianten Kultur. Siehe vorherige Warnung.|
 | `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | Entspricht einem gültigen `double`-Wert in der invarianten Kultur. Siehe vorherige Warnung.|
 | `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | Entspricht einem gültigen `float`-Wert in der invarianten Kultur. Siehe vorherige Warnung.|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Für einen gültigen `Guid`-Wert wird eine Übereinstimmung ermittelt. |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | Für einen gültigen `long`-Wert wird eine Übereinstimmung ermittelt. |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | Die Zeichenfolge muss mindestens eine Länge von 4 Zeichen aufweisen. |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | Die Zeichenfolge hat maximal 8 Zeichen. |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | Die Zeichenfolge muss genau 12 Zeichen aufweisen. |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | Die Zeichenfolge muss mindestens 8 und darf maximal 16 Zeichen lang sein. |
-| `min(value)` | `{age:min(18)}` | `19` | Der ganzzahlige Wert muss mindestens 18 sein. |
-| `max(value)` | `{age:max(120)}` | `91` | Der ganzzahlige Wert darf höchstens 120 sein. |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | Der ganzzahlige Wert muss mindestens 18 und darf höchstens 120 sein. |
-| `alpha` | `{name:alpha}` | `Rick` | Die Zeichenfolge muss aus mindestens einem alphabetische Zeichen bestehen, `a`-`z`.  Groß-/Kleinschreibung wird nicht beachtet. |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | Die Zeichenfolge muss mit dem regulären Ausdruck übereinstimmen. Weitere Informationen finden Sie unter Tipps zum Definieren eines regulären Ausdrucks. |
-| `required` | `{name:required}` | `Rick` | Hierdurch wird erzwungen, dass ein Wert, der kein Parameter ist, für die URL-Generierung vorhanden sein muss. |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Für einen gültigen `Guid`-Wert wird eine Übereinstimmung ermittelt.|
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | Für einen gültigen `long`-Wert wird eine Übereinstimmung ermittelt.|
+| `minlength(value)` | `{username:minlength(4)}` | `Rick` | Die Zeichenfolge muss mindestens eine Länge von 4 Zeichen aufweisen.|
+| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | Die Zeichenfolge hat maximal 8 Zeichen.|
+| `length(length)` | `{filename:length(12)}` | `somefile.txt` | Die Zeichenfolge muss genau 12 Zeichen aufweisen.|
+| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | Die Zeichenfolge muss mindestens 8 und darf maximal 16 Zeichen lang sein.|
+| `min(value)` | `{age:min(18)}` | `19` | Der ganzzahlige Wert muss mindestens 18 sein.|
+| `max(value)` | `{age:max(120)}` | `91` | Der ganzzahlige Wert darf höchstens 120 sein.|
+| `range(min,max)` | `{age:range(18,120)}` | `91` | Der ganzzahlige Wert muss mindestens 18 und darf höchstens 120 sein.|
+| `alpha` | `{name:alpha}` | `Rick` | Die Zeichenfolge muss aus mindestens einem alphabetische Zeichen bestehen, `a`-`z`. Groß-/Kleinschreibung wird nicht beachtet.|
+| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | Die Zeichenfolge muss mit dem regulären Ausdruck übereinstimmen. Weitere Informationen finden Sie unter Tipps zum Definieren eines regulären Ausdrucks.|
+| `required` | `{name:required}` | `Rick` | Hierdurch wird erzwungen, dass ein Wert, der kein Parameter ist, für die URL-Generierung vorhanden sein muss.|
 
 Auf einen einzelnen Parameter können mehrere durch Doppelpunkte getrennte Einschränkungen angewendet werden. Durch die folgende Einschränkung wird ein Parameter beispielsweise auf einen Integerwert größer oder gleich 1 beschränkt:
 

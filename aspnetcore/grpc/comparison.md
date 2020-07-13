@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 08efb79f5085acff455744e46ca411777b2641e5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: caf9e99bcd4a1887fe5d69a3641fabee08573ef1
+ms.sourcegitcommit: d1fa3d69dda675d7a52c7100742dfa6297413376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406159"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86093316"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Vergleich von gRPC-Diensten mit HTTP-APIs
 
@@ -104,7 +104,7 @@ Es ist heute unmöglich, einen gRPC-Dienst direkt von einem Browser aus aufzuruf
 Nicht alle Features von gRPC werden von gRPC-Web unterstützt. Client- und bidirektionales Streaming wird nicht unterstützt, und es gibt nur begrenzte Unterstützung für Serverstreaming.
 
 > [!TIP]
-> .NET Core verfügt über experimentelle Unterstützung für gRPC-Web. Weitere Informationen finden Sie unter <xref:grpc/browser>.
+> .NET Core unterstützt gRPC-Web. Weitere Informationen finden Sie unter <xref:grpc/browser>.
 
 ### <a name="not-human-readable"></a>Nicht für Menschen lesbar
 
