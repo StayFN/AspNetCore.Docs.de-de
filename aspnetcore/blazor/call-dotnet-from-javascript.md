@@ -5,7 +5,7 @@ description: In diesem Artikel erfahren Sie, wie Sie .NET-Methoden von JavaScrip
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,29 +15,30 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 91f2aa893c06728b4b71d010241a2cb5a307ae0b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5dc1c5a4fbaaa756cfaf09c751e516147a04c899
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400192"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060019"
 ---
-# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a><span data-ttu-id="c6f78-103">Aufrufen von .NET-Methoden von JavaScript-Funktionen in ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="c6f78-103">Call .NET methods from JavaScript functions in ASP.NET Core Blazor</span></span>
+# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a><span data-ttu-id="bfec1-103">Aufrufen von .NET-Methoden von JavaScript-Funktionen in ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="bfec1-103">Call .NET methods from JavaScript functions in ASP.NET Core Blazor</span></span>
 
-<span data-ttu-id="c6f78-104">Von [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) und [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="c6f78-104">By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co), and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="bfec1-104">Von [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) und [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="bfec1-104">By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co), and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="c6f78-105">Eine Blazor-App kann JavaScript-Funktionen über .NET-Methoden und .NET-Methoden über JavaScript-Funktionen aufrufen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-105">A Blazor app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="c6f78-106">Diese Szenarios werden als *JavaScript-Interoperabilität* (*JS Interop*) bezeichnet.</span><span class="sxs-lookup"><span data-stu-id="c6f78-106">These scenarios are called *JavaScript interoperability* (*JS interop*).</span></span>
+<span data-ttu-id="bfec1-105">Eine Blazor-App kann JavaScript-Funktionen über .NET-Methoden und .NET-Methoden über JavaScript-Funktionen aufrufen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-105">A Blazor app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="bfec1-106">Diese Szenarios werden als *JavaScript-Interoperabilität* (*JS Interop*) bezeichnet.</span><span class="sxs-lookup"><span data-stu-id="bfec1-106">These scenarios are called *JavaScript interoperability* (*JS interop*).</span></span>
 
-<span data-ttu-id="c6f78-107">In diesem Artikel wird das Aufrufen von .NET-Methoden über JavaScript behandelt.</span><span class="sxs-lookup"><span data-stu-id="c6f78-107">This article covers invoking .NET methods from JavaScript.</span></span> <span data-ttu-id="c6f78-108">Informationen zum Aufrufen von JavaScript-Funktionen über .NET finden Sie unter <xref:blazor/call-javascript-from-dotnet>.</span><span class="sxs-lookup"><span data-stu-id="c6f78-108">For information on how to call JavaScript functions from .NET, see <xref:blazor/call-javascript-from-dotnet>.</span></span>
+<span data-ttu-id="bfec1-107">In diesem Artikel wird das Aufrufen von .NET-Methoden über JavaScript behandelt.</span><span class="sxs-lookup"><span data-stu-id="bfec1-107">This article covers invoking .NET methods from JavaScript.</span></span> <span data-ttu-id="bfec1-108">Informationen zum Aufrufen von JavaScript-Funktionen über .NET finden Sie unter <xref:blazor/call-javascript-from-dotnet>.</span><span class="sxs-lookup"><span data-stu-id="bfec1-108">For information on how to call JavaScript functions from .NET, see <xref:blazor/call-javascript-from-dotnet>.</span></span>
 
-<span data-ttu-id="c6f78-109">[Anzeigen oder Herunterladen von Beispielcode](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([Vorgehensweise zum Herunterladen](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c6f78-109">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="bfec1-109">[Anzeigen oder Herunterladen von Beispielcode](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([Vorgehensweise zum Herunterladen](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="bfec1-109">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="static-net-method-call"></a><span data-ttu-id="c6f78-110">Statischer .NET-Methodenaufruf</span><span class="sxs-lookup"><span data-stu-id="c6f78-110">Static .NET method call</span></span>
+## <a name="static-net-method-call"></a><span data-ttu-id="bfec1-110">Statischer .NET-Methodenaufruf</span><span class="sxs-lookup"><span data-stu-id="bfec1-110">Static .NET method call</span></span>
 
-<span data-ttu-id="c6f78-111">Um eine statische .NET-Methode über JavaScript aufzurufen, verwenden Sie die Funktionen `DotNet.invokeMethod` oder `DotNet.invokeMethodAsync`.</span><span class="sxs-lookup"><span data-stu-id="c6f78-111">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="c6f78-112">Übergeben Sie den Bezeichner der statischen Methode, die Sie aufrufen möchten, den Namen der Assembly, die die Funktion enthält, und alle Argumente.</span><span class="sxs-lookup"><span data-stu-id="c6f78-112">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="c6f78-113">Die asynchrone Version wird bevorzugt, um Blazor Server-Szenarien zu unterstützen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-113">The asynchronous version is preferred to support Blazor Server scenarios.</span></span> <span data-ttu-id="c6f78-114">Die .NET-Methode muss öffentlich und statisch sein sowie das Attribut [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) aufweisen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-114">The .NET method must be public, static, and have the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute.</span></span> <span data-ttu-id="c6f78-115">Das Aufrufen offener generischer Methoden wird derzeit nicht unterstützt.</span><span class="sxs-lookup"><span data-stu-id="c6f78-115">Calling open generic methods isn't currently supported.</span></span>
+<span data-ttu-id="bfec1-111">Um eine statische .NET-Methode über JavaScript aufzurufen, verwenden Sie die Funktionen `DotNet.invokeMethod` oder `DotNet.invokeMethodAsync`.</span><span class="sxs-lookup"><span data-stu-id="bfec1-111">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="bfec1-112">Übergeben Sie den Bezeichner der statischen Methode, die Sie aufrufen möchten, den Namen der Assembly, die die Funktion enthält, und alle Argumente.</span><span class="sxs-lookup"><span data-stu-id="bfec1-112">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="bfec1-113">Die asynchrone Version wird bevorzugt, um Blazor Server-Szenarien zu unterstützen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-113">The asynchronous version is preferred to support Blazor Server scenarios.</span></span> <span data-ttu-id="bfec1-114">Die .NET-Methode muss öffentlich und statisch sein sowie das Attribut [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) aufweisen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-114">The .NET method must be public, static, and have the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute.</span></span> <span data-ttu-id="bfec1-115">Das Aufrufen offener generischer Methoden wird derzeit nicht unterstützt.</span><span class="sxs-lookup"><span data-stu-id="bfec1-115">Calling open generic methods isn't currently supported.</span></span>
 
-<span data-ttu-id="c6f78-116">Die Beispiel-App enthält eine C#-Methode zur Rückgabe eines `int`-Arrays.</span><span class="sxs-lookup"><span data-stu-id="c6f78-116">The sample app includes a C# method to return an `int` array.</span></span> <span data-ttu-id="c6f78-117">Das [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute)-Attribut wird auf die Methode angewendet.</span><span class="sxs-lookup"><span data-stu-id="c6f78-117">The [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute is applied to the method.</span></span>
+<span data-ttu-id="bfec1-116">Die Beispiel-App enthält eine C#-Methode zur Rückgabe eines `int`-Arrays.</span><span class="sxs-lookup"><span data-stu-id="bfec1-116">The sample app includes a C# method to return an `int` array.</span></span> <span data-ttu-id="bfec1-117">Das [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute)-Attribut wird auf die Methode angewendet.</span><span class="sxs-lookup"><span data-stu-id="bfec1-117">The [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute is applied to the method.</span></span>
 
-<span data-ttu-id="c6f78-118">`Pages/JsInterop.razor`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-118">`Pages/JsInterop.razor`:</span></span>
+<span data-ttu-id="bfec1-118">`Pages/JsInterop.razor`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-118">`Pages/JsInterop.razor`:</span></span>
 
 ```razor
 <button type="button" class="btn btn-primary"
@@ -54,23 +55,23 @@ ms.locfileid: "85400192"
 }
 ```
 
-<span data-ttu-id="c6f78-119">Das dem Client zugestellte JavaScript ruft die C# .NET-Methode auf.</span><span class="sxs-lookup"><span data-stu-id="c6f78-119">JavaScript served to the client invokes the C# .NET method.</span></span>
+<span data-ttu-id="bfec1-119">Das dem Client zugestellte JavaScript ruft die C# .NET-Methode auf.</span><span class="sxs-lookup"><span data-stu-id="bfec1-119">JavaScript served to the client invokes the C# .NET method.</span></span>
 
-<span data-ttu-id="c6f78-120">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-120">`wwwroot/exampleJsInterop.js`:</span></span>
+<span data-ttu-id="bfec1-120">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-120">`wwwroot/exampleJsInterop.js`:</span></span>
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
 
-<span data-ttu-id="c6f78-121">Überprüfen Sie bei Auswahl der Schaltfläche **`Trigger .NET static method ReturnArrayAsync`** die Konsolenausgabe in den Web Developer Tools des Browsers.</span><span class="sxs-lookup"><span data-stu-id="c6f78-121">When the **`Trigger .NET static method ReturnArrayAsync`** button is selected, examine the console output in the browser's web developer tools.</span></span>
+<span data-ttu-id="bfec1-121">Überprüfen Sie bei Auswahl der Schaltfläche **`Trigger .NET static method ReturnArrayAsync`** die Konsolenausgabe in den Web Developer Tools des Browsers.</span><span class="sxs-lookup"><span data-stu-id="bfec1-121">When the **`Trigger .NET static method ReturnArrayAsync`** button is selected, examine the console output in the browser's web developer tools.</span></span>
 
-<span data-ttu-id="c6f78-122">Die Konsolenausgabe lautet:</span><span class="sxs-lookup"><span data-stu-id="c6f78-122">The console output is:</span></span>
+<span data-ttu-id="bfec1-122">Die Konsolenausgabe lautet:</span><span class="sxs-lookup"><span data-stu-id="bfec1-122">The console output is:</span></span>
 
 ```console
 Array(4) [ 1, 2, 3, 4 ]
 ```
 
-<span data-ttu-id="c6f78-123">Der vierte Arraywert wird in das von `ReturnArrayAsync` zurückgegebene Array (`data.push(4);`) gepusht.</span><span class="sxs-lookup"><span data-stu-id="c6f78-123">The fourth array value is pushed to the array (`data.push(4);`) returned by `ReturnArrayAsync`.</span></span>
+<span data-ttu-id="bfec1-123">Der vierte Arraywert wird in das von `ReturnArrayAsync` zurückgegebene Array (`data.push(4);`) gepusht.</span><span class="sxs-lookup"><span data-stu-id="bfec1-123">The fourth array value is pushed to the array (`data.push(4);`) returned by `ReturnArrayAsync`.</span></span>
 
-<span data-ttu-id="c6f78-124">Standardmäßig ist der Methodenbezeichner der Methodenname, aber Sie können mit dem Attributkonstruktor [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) einen anderen Bezeichner angeben:</span><span class="sxs-lookup"><span data-stu-id="c6f78-124">By default, the method identifier is the method name, but you can specify a different identifier using the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute constructor:</span></span>
+<span data-ttu-id="bfec1-124">Standardmäßig ist der Methodenbezeichner der Methodenname, aber Sie können mit dem Attributkonstruktor [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) einen anderen Bezeichner angeben:</span><span class="sxs-lookup"><span data-stu-id="bfec1-124">By default, the method identifier is the method name, but you can specify a different identifier using the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute constructor:</span></span>
 
 ```csharp
 @code {
@@ -82,11 +83,11 @@ Array(4) [ 1, 2, 3, 4 ]
 }
 ```
 
-<span data-ttu-id="c6f78-125">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="c6f78-125">In the client-side JavaScript file:</span></span>
+<span data-ttu-id="bfec1-125">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="bfec1-125">In the client-side JavaScript file:</span></span>
 
 ```javascript
 returnArrayAsyncJs: function () {
-  DotNet.invokeMethodAsync('BlazorSample', 'DifferentMethodName')
+  DotNet.invokeMethodAsync('{APP ASSEMBLY}', 'DifferentMethodName')
     .then(data => {
       data.push(4);
       console.log(data);
@@ -94,21 +95,23 @@ returnArrayAsyncJs: function () {
 }
 ```
 
-## <a name="instance-method-call"></a><span data-ttu-id="c6f78-126">Aufruf der Instanzmethode</span><span class="sxs-lookup"><span data-stu-id="c6f78-126">Instance method call</span></span>
+<span data-ttu-id="bfec1-126">Der Platzhalter `{APP ASSEMBLY}` ist der App-Assemblyname der App (z. B. `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="bfec1-126">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
-<span data-ttu-id="c6f78-127">Sie können auch .NET-Instanzmethoden von JavaScript aus aufrufen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-127">You can also call .NET instance methods from JavaScript.</span></span> <span data-ttu-id="c6f78-128">So rufen Sie .NET-Instanzmethoden von JavaScript aus auf</span><span class="sxs-lookup"><span data-stu-id="c6f78-128">To invoke a .NET instance method from JavaScript:</span></span>
+## <a name="instance-method-call"></a><span data-ttu-id="bfec1-127">Aufruf der Instanzmethode</span><span class="sxs-lookup"><span data-stu-id="bfec1-127">Instance method call</span></span>
 
-* <span data-ttu-id="c6f78-129">Übergeben Sie die .NET-Instanz durch Verweis auf JavaScript:</span><span class="sxs-lookup"><span data-stu-id="c6f78-129">Pass the .NET instance by reference to JavaScript:</span></span>
-  * <span data-ttu-id="c6f78-130">Führen Sie einen statischen Aufruf an <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType> durch.</span><span class="sxs-lookup"><span data-stu-id="c6f78-130">Make a static call to <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType>.</span></span>
-  * <span data-ttu-id="c6f78-131">Umschließen Sie die Instanz mit einer <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz, und rufen Sie <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> für die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz auf.</span><span class="sxs-lookup"><span data-stu-id="c6f78-131">Wrap the instance in a <xref:Microsoft.JSInterop.DotNetObjectReference> instance and call <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> on the <xref:Microsoft.JSInterop.DotNetObjectReference> instance.</span></span> <span data-ttu-id="c6f78-132">Entsorgen Sie <xref:Microsoft.JSInterop.DotNetObjectReference>-Objekte (ein Beispiel folgt später in diesem Abschnitt).</span><span class="sxs-lookup"><span data-stu-id="c6f78-132">Dispose of <xref:Microsoft.JSInterop.DotNetObjectReference> objects (an example appears later in this section).</span></span>
-* <span data-ttu-id="c6f78-133">Rufen Sie .NET-Instanzmethoden für die Instanz mit den Funktionen `invokeMethod` oder `invokeMethodAsync` auf.</span><span class="sxs-lookup"><span data-stu-id="c6f78-133">Invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions.</span></span> <span data-ttu-id="c6f78-134">Die .NET-Instanz kann auch als Argument übergeben werden, wenn andere .NET-Methoden von JavaScript aus aufgerufen werden.</span><span class="sxs-lookup"><span data-stu-id="c6f78-134">The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.</span></span>
+<span data-ttu-id="bfec1-128">Sie können auch .NET-Instanzmethoden von JavaScript aus aufrufen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-128">You can also call .NET instance methods from JavaScript.</span></span> <span data-ttu-id="bfec1-129">So rufen Sie .NET-Instanzmethoden von JavaScript aus auf</span><span class="sxs-lookup"><span data-stu-id="bfec1-129">To invoke a .NET instance method from JavaScript:</span></span>
+
+* <span data-ttu-id="bfec1-130">Übergeben Sie die .NET-Instanz durch Verweis auf JavaScript:</span><span class="sxs-lookup"><span data-stu-id="bfec1-130">Pass the .NET instance by reference to JavaScript:</span></span>
+  * <span data-ttu-id="bfec1-131">Führen Sie einen statischen Aufruf an <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType> durch.</span><span class="sxs-lookup"><span data-stu-id="bfec1-131">Make a static call to <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType>.</span></span>
+  * <span data-ttu-id="bfec1-132">Umschließen Sie die Instanz mit einer <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz, und rufen Sie <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> für die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz auf.</span><span class="sxs-lookup"><span data-stu-id="bfec1-132">Wrap the instance in a <xref:Microsoft.JSInterop.DotNetObjectReference> instance and call <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> on the <xref:Microsoft.JSInterop.DotNetObjectReference> instance.</span></span> <span data-ttu-id="bfec1-133">Entsorgen Sie <xref:Microsoft.JSInterop.DotNetObjectReference>-Objekte (ein Beispiel folgt später in diesem Abschnitt).</span><span class="sxs-lookup"><span data-stu-id="bfec1-133">Dispose of <xref:Microsoft.JSInterop.DotNetObjectReference> objects (an example appears later in this section).</span></span>
+* <span data-ttu-id="bfec1-134">Rufen Sie .NET-Instanzmethoden für die Instanz mit den Funktionen `invokeMethod` oder `invokeMethodAsync` auf.</span><span class="sxs-lookup"><span data-stu-id="bfec1-134">Invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions.</span></span> <span data-ttu-id="bfec1-135">Die .NET-Instanz kann auch als Argument übergeben werden, wenn andere .NET-Methoden von JavaScript aus aufgerufen werden.</span><span class="sxs-lookup"><span data-stu-id="bfec1-135">The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c6f78-135">Die Beispiel-App protokolliert Nachrichten an die clientseitige Konsole.</span><span class="sxs-lookup"><span data-stu-id="c6f78-135">The sample app logs messages to the client-side console.</span></span> <span data-ttu-id="c6f78-136">Für die folgenden Beispiele, die durch die Beispiel-App veranschaulicht werden, untersuchen Sie die Konsolenausgabe des Browsers in den Entwicklertools des Browsers.</span><span class="sxs-lookup"><span data-stu-id="c6f78-136">For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.</span></span>
+> <span data-ttu-id="bfec1-136">Die Beispiel-App protokolliert Nachrichten an die clientseitige Konsole.</span><span class="sxs-lookup"><span data-stu-id="bfec1-136">The sample app logs messages to the client-side console.</span></span> <span data-ttu-id="bfec1-137">Für die folgenden Beispiele, die durch die Beispiel-App veranschaulicht werden, untersuchen Sie die Konsolenausgabe des Browsers in den Entwicklertools des Browsers.</span><span class="sxs-lookup"><span data-stu-id="bfec1-137">For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.</span></span>
 
-<span data-ttu-id="c6f78-137">Bei Auswahl der Schaltfläche **`Trigger .NET instance method HelloHelper.SayHello`** wird `ExampleJsInterop.CallHelloHelperSayHello` aufgerufen und der Name `Blazor` an die Methode übergeben.</span><span class="sxs-lookup"><span data-stu-id="c6f78-137">When the **`Trigger .NET instance method HelloHelper.SayHello`** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.</span></span>
+<span data-ttu-id="bfec1-138">Bei Auswahl der Schaltfläche **`Trigger .NET instance method HelloHelper.SayHello`** wird `ExampleJsInterop.CallHelloHelperSayHello` aufgerufen und der Name `Blazor` an die Methode übergeben.</span><span class="sxs-lookup"><span data-stu-id="bfec1-138">When the **`Trigger .NET instance method HelloHelper.SayHello`** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.</span></span>
 
-<span data-ttu-id="c6f78-138">`Pages/JsInterop.razor`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-138">`Pages/JsInterop.razor`:</span></span>
+<span data-ttu-id="bfec1-139">`Pages/JsInterop.razor`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-139">`Pages/JsInterop.razor`:</span></span>
 
 ```razor
 <button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
@@ -124,31 +127,31 @@ returnArrayAsyncJs: function () {
 }
 ```
 
-<span data-ttu-id="c6f78-139">`CallHelloHelperSayHello` ruft die JavaScript-Funktion `sayHello` mit einer neuen Instanz von `HelloHelper` auf.</span><span class="sxs-lookup"><span data-stu-id="c6f78-139">`CallHelloHelperSayHello` invokes the JavaScript function `sayHello` with a new instance of `HelloHelper`.</span></span>
+<span data-ttu-id="bfec1-140">`CallHelloHelperSayHello` ruft die JavaScript-Funktion `sayHello` mit einer neuen Instanz von `HelloHelper` auf.</span><span class="sxs-lookup"><span data-stu-id="bfec1-140">`CallHelloHelperSayHello` invokes the JavaScript function `sayHello` with a new instance of `HelloHelper`.</span></span>
 
-<span data-ttu-id="c6f78-140">`JsInteropClasses/ExampleJsInterop.cs`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-140">`JsInteropClasses/ExampleJsInterop.cs`:</span></span>
+<span data-ttu-id="bfec1-141">`JsInteropClasses/ExampleJsInterop.cs`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-141">`JsInteropClasses/ExampleJsInterop.cs`:</span></span>
 
 [!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
 
-<span data-ttu-id="c6f78-141">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-141">`wwwroot/exampleJsInterop.js`:</span></span>
+<span data-ttu-id="bfec1-142">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-142">`wwwroot/exampleJsInterop.js`:</span></span>
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
 
-<span data-ttu-id="c6f78-142">Der Name wird an den Konstruktor von `HelloHelper` übergeben, der die Eigenschaft `HelloHelper.Name` festlegt.</span><span class="sxs-lookup"><span data-stu-id="c6f78-142">The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property.</span></span> <span data-ttu-id="c6f78-143">Wenn die JavaScript-Funktion `sayHello` ausgeführt wird, gibt `HelloHelper.SayHello` die Nachricht `Hello, {Name}!` zurück, die von der JavaScript-Funktion in die Konsole geschrieben wird.</span><span class="sxs-lookup"><span data-stu-id="c6f78-143">When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.</span></span>
+<span data-ttu-id="bfec1-143">Der Name wird an den Konstruktor von `HelloHelper` übergeben, der die Eigenschaft `HelloHelper.Name` festlegt.</span><span class="sxs-lookup"><span data-stu-id="bfec1-143">The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property.</span></span> <span data-ttu-id="bfec1-144">Wenn die JavaScript-Funktion `sayHello` ausgeführt wird, gibt `HelloHelper.SayHello` die Nachricht `Hello, {Name}!` zurück, die von der JavaScript-Funktion in die Konsole geschrieben wird.</span><span class="sxs-lookup"><span data-stu-id="bfec1-144">When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.</span></span>
 
-<span data-ttu-id="c6f78-144">`JsInteropClasses/HelloHelper.cs`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-144">`JsInteropClasses/HelloHelper.cs`:</span></span>
+<span data-ttu-id="bfec1-145">`JsInteropClasses/HelloHelper.cs`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-145">`JsInteropClasses/HelloHelper.cs`:</span></span>
 
 [!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
 
-<span data-ttu-id="c6f78-145">Konsolenausgabe in den Webentwicklertools des Browsers:</span><span class="sxs-lookup"><span data-stu-id="c6f78-145">Console output in the browser's web developer tools:</span></span>
+<span data-ttu-id="bfec1-146">Konsolenausgabe in den Webentwicklertools des Browsers:</span><span class="sxs-lookup"><span data-stu-id="bfec1-146">Console output in the browser's web developer tools:</span></span>
 
 ```console
 Hello, Blazor!
 ```
 
-<span data-ttu-id="c6f78-146">Verwenden Sie einen der folgenden Ansätze, um einen Arbeitsspeicherverlust zu vermeiden und die Garbage Collection für eine Komponente zu ermöglichen, die ein <xref:Microsoft.JSInterop.DotNetObjectReference> erstellt:</span><span class="sxs-lookup"><span data-stu-id="c6f78-146">To avoid a memory leak and allow garbage collection on a component that creates a <xref:Microsoft.JSInterop.DotNetObjectReference>, adopt one of the following approaches:</span></span>
+<span data-ttu-id="bfec1-147">Verwenden Sie einen der folgenden Ansätze, um einen Arbeitsspeicherverlust zu vermeiden und die Garbage Collection für eine Komponente zu ermöglichen, die ein <xref:Microsoft.JSInterop.DotNetObjectReference> erstellt:</span><span class="sxs-lookup"><span data-stu-id="bfec1-147">To avoid a memory leak and allow garbage collection on a component that creates a <xref:Microsoft.JSInterop.DotNetObjectReference>, adopt one of the following approaches:</span></span>
 
-* <span data-ttu-id="c6f78-147">Löschen Sie das Objekt in der Klasse, die die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz erstellt hat:</span><span class="sxs-lookup"><span data-stu-id="c6f78-147">Dispose of the object in the class that created the <xref:Microsoft.JSInterop.DotNetObjectReference> instance:</span></span>
+* <span data-ttu-id="bfec1-148">Löschen Sie das Objekt in der Klasse, die die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz erstellt hat:</span><span class="sxs-lookup"><span data-stu-id="bfec1-148">Dispose of the object in the class that created the <xref:Microsoft.JSInterop.DotNetObjectReference> instance:</span></span>
 
   ```csharp
   public class ExampleJsInterop : IDisposable
@@ -177,11 +180,11 @@ Hello, Blazor!
   }
   ```
 
-  <span data-ttu-id="c6f78-148">Das vorhergehende Muster, das in der Klasse `ExampleJsInterop` gezeigt wird, kann auch in einer Komponente implementiert werden:</span><span class="sxs-lookup"><span data-stu-id="c6f78-148">The preceding pattern shown in the `ExampleJsInterop` class can also be implemented in a component:</span></span>
+  <span data-ttu-id="bfec1-149">Das vorhergehende Muster, das in der Klasse `ExampleJsInterop` gezeigt wird, kann auch in einer Komponente implementiert werden:</span><span class="sxs-lookup"><span data-stu-id="bfec1-149">The preceding pattern shown in the `ExampleJsInterop` class can also be implemented in a component:</span></span>
 
   ```razor
   @page "/JSInteropComponent"
-  @using BlazorSample.JsInteropClasses
+  @using {APP ASSEMBLY}.JsInteropClasses
   @implements IDisposable
   @inject IJSRuntime JSRuntime
 
@@ -209,32 +212,36 @@ Hello, Blazor!
       }
   }
   ```
+  
+  <span data-ttu-id="bfec1-150">Der Platzhalter `{APP ASSEMBLY}` ist der App-Assemblyname der App (z. B. `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="bfec1-150">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
-* <span data-ttu-id="c6f78-149">Wenn die Komponente oder Klasse die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz nicht löscht, löschen Sie das Objekt im Client, indem Sie `.dispose()` aufrufen:</span><span class="sxs-lookup"><span data-stu-id="c6f78-149">When the component or class doesn't dispose of the <xref:Microsoft.JSInterop.DotNetObjectReference>, dispose of the object on the client by calling `.dispose()`:</span></span>
+* <span data-ttu-id="bfec1-151">Wenn die Komponente oder Klasse die <xref:Microsoft.JSInterop.DotNetObjectReference>-Instanz nicht löscht, löschen Sie das Objekt im Client, indem Sie `.dispose()` aufrufen:</span><span class="sxs-lookup"><span data-stu-id="bfec1-151">When the component or class doesn't dispose of the <xref:Microsoft.JSInterop.DotNetObjectReference>, dispose of the object on the client by calling `.dispose()`:</span></span>
 
   ```javascript
   window.myFunction = (dotnetHelper) => {
-    dotnetHelper.invokeMethod('BlazorSample', 'MyMethod');
+    dotnetHelper.invokeMethod('{APP ASSEMBLY}', 'MyMethod');
     dotnetHelper.dispose();
   }
   ```
 
-## <a name="component-instance-method-call"></a><span data-ttu-id="c6f78-150">Aufrufen der Komponenteninstanzmethode</span><span class="sxs-lookup"><span data-stu-id="c6f78-150">Component instance method call</span></span>
+## <a name="component-instance-method-call"></a><span data-ttu-id="bfec1-152">Aufrufen der Komponenteninstanzmethode</span><span class="sxs-lookup"><span data-stu-id="bfec1-152">Component instance method call</span></span>
 
-<span data-ttu-id="c6f78-151">So rufen Sie die .NET-Methoden einer Komponente auf:</span><span class="sxs-lookup"><span data-stu-id="c6f78-151">To invoke a component's .NET methods:</span></span>
+<span data-ttu-id="bfec1-153">So rufen Sie die .NET-Methoden einer Komponente auf:</span><span class="sxs-lookup"><span data-stu-id="bfec1-153">To invoke a component's .NET methods:</span></span>
 
-* <span data-ttu-id="c6f78-152">Verwenden Sie die `invokeMethod`- oder `invokeMethodAsync`-Funktion, um einen statischen Methodenaufruf an die Komponente auszuführen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-152">Use the `invokeMethod` or `invokeMethodAsync` function to make a static method call to the component.</span></span>
-* <span data-ttu-id="c6f78-153">Die statische Methode der Komponente umschließt den Aufruf der Instanzmethode als aufgerufene <xref:System.Action>.</span><span class="sxs-lookup"><span data-stu-id="c6f78-153">The component's static method wraps the call to its instance method as an invoked <xref:System.Action>.</span></span>
+* <span data-ttu-id="bfec1-154">Verwenden Sie die `invokeMethod`- oder `invokeMethodAsync`-Funktion, um einen statischen Methodenaufruf an die Komponente auszuführen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-154">Use the `invokeMethod` or `invokeMethodAsync` function to make a static method call to the component.</span></span>
+* <span data-ttu-id="bfec1-155">Die statische Methode der Komponente umschließt den Aufruf der Instanzmethode als aufgerufene <xref:System.Action>.</span><span class="sxs-lookup"><span data-stu-id="bfec1-155">The component's static method wraps the call to its instance method as an invoked <xref:System.Action>.</span></span>
 
-<span data-ttu-id="c6f78-154">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="c6f78-154">In the client-side JavaScript:</span></span>
+<span data-ttu-id="bfec1-156">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="bfec1-156">In the client-side JavaScript:</span></span>
 
 ```javascript
 function updateMessageCallerJS() {
-  DotNet.invokeMethod('BlazorSample', 'UpdateMessageCaller');
+  DotNet.invokeMethod('{APP ASSEMBLY}', 'UpdateMessageCaller');
 }
 ```
 
-<span data-ttu-id="c6f78-155">`Pages/JSInteropComponent.razor`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-155">`Pages/JSInteropComponent.razor`:</span></span>
+<span data-ttu-id="bfec1-157">Der Platzhalter `{APP ASSEMBLY}` ist der App-Assemblyname der App (z. B. `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="bfec1-157">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
+
+<span data-ttu-id="bfec1-158">`Pages/JSInteropComponent.razor`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-158">`Pages/JSInteropComponent.razor`:</span></span>
 
 ```razor
 @page "/JSInteropComponent"
@@ -270,15 +277,15 @@ function updateMessageCallerJS() {
 }
 ```
 
-<span data-ttu-id="c6f78-156">Wenn mehrere Komponenten mit eigenen aufzurufenden Instanzmethoden vorliegen, verwenden Sie eine Hilfsklasse, um die Instanzmethoden aller Komponenten (als <xref:System.Action>) aufzurufen.</span><span class="sxs-lookup"><span data-stu-id="c6f78-156">When there are several components, each with instance methods to call, use a helper class to invoke the instance methods (as <xref:System.Action>s) of each component.</span></span>
+<span data-ttu-id="bfec1-159">Wenn mehrere Komponenten mit eigenen aufzurufenden Instanzmethoden vorliegen, verwenden Sie eine Hilfsklasse, um die Instanzmethoden aller Komponenten (als <xref:System.Action>) aufzurufen.</span><span class="sxs-lookup"><span data-stu-id="bfec1-159">When there are several components, each with instance methods to call, use a helper class to invoke the instance methods (as <xref:System.Action>s) of each component.</span></span>
 
-<span data-ttu-id="c6f78-157">Im folgenden Beispiel:</span><span class="sxs-lookup"><span data-stu-id="c6f78-157">In the following example:</span></span>
+<span data-ttu-id="bfec1-160">Im folgenden Beispiel:</span><span class="sxs-lookup"><span data-stu-id="bfec1-160">In the following example:</span></span>
 
-* <span data-ttu-id="c6f78-158">Die `JSInteropExample`-Komponente enthält mehrere `ListItem`-Komponenten.</span><span class="sxs-lookup"><span data-stu-id="c6f78-158">The `JSInteropExample` component contains several `ListItem` components.</span></span>
-* <span data-ttu-id="c6f78-159">Alle `ListItem`-Komponenten bestehen aus einer Nachricht und einer Schaltfläche.</span><span class="sxs-lookup"><span data-stu-id="c6f78-159">Each `ListItem` component is composed of a message and a button.</span></span>
-* <span data-ttu-id="c6f78-160">Wenn auf die Schaltfläche einer `ListItem`-Komponente geklickt wird, ändert die `UpdateMessage`-Methode des `ListItem`-Elements den Text des Listenelements und blendet die Schaltfläche aus.</span><span class="sxs-lookup"><span data-stu-id="c6f78-160">When a `ListItem` component button is selected, that `ListItem`'s `UpdateMessage` method changes the list item text and hides the button.</span></span>
+* <span data-ttu-id="bfec1-161">Die `JSInteropExample`-Komponente enthält mehrere `ListItem`-Komponenten.</span><span class="sxs-lookup"><span data-stu-id="bfec1-161">The `JSInteropExample` component contains several `ListItem` components.</span></span>
+* <span data-ttu-id="bfec1-162">Alle `ListItem`-Komponenten bestehen aus einer Nachricht und einer Schaltfläche.</span><span class="sxs-lookup"><span data-stu-id="bfec1-162">Each `ListItem` component is composed of a message and a button.</span></span>
+* <span data-ttu-id="bfec1-163">Wenn auf die Schaltfläche einer `ListItem`-Komponente geklickt wird, ändert die `UpdateMessage`-Methode des `ListItem`-Elements den Text des Listenelements und blendet die Schaltfläche aus.</span><span class="sxs-lookup"><span data-stu-id="bfec1-163">When a `ListItem` component button is selected, that `ListItem`'s `UpdateMessage` method changes the list item text and hides the button.</span></span>
 
-<span data-ttu-id="c6f78-161">`MessageUpdateInvokeHelper.cs`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-161">`MessageUpdateInvokeHelper.cs`:</span></span>
+<span data-ttu-id="bfec1-164">`MessageUpdateInvokeHelper.cs`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-164">`MessageUpdateInvokeHelper.cs`:</span></span>
 
 ```csharp
 using System;
@@ -293,7 +300,7 @@ public class MessageUpdateInvokeHelper
         action = action;
     }
 
-    [JSInvokable("BlazorSample")]
+    [JSInvokable("{APP ASSEMBLY}")]
     public void UpdateMessageCaller()
     {
         action.Invoke();
@@ -301,16 +308,18 @@ public class MessageUpdateInvokeHelper
 }
 ```
 
-<span data-ttu-id="c6f78-162">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="c6f78-162">In the client-side JavaScript:</span></span>
+<span data-ttu-id="bfec1-165">Der Platzhalter `{APP ASSEMBLY}` ist der App-Assemblyname der App (z. B. `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="bfec1-165">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
+
+<span data-ttu-id="bfec1-166">In der clientseitigen JavaScript-Datei:</span><span class="sxs-lookup"><span data-stu-id="bfec1-166">In the client-side JavaScript:</span></span>
 
 ```javascript
 window.updateMessageCallerJS = (dotnetHelper) => {
-    dotnetHelper.invokeMethod('BlazorSample', 'UpdateMessageCaller');
+    dotnetHelper.invokeMethod('{APP ASSEMBLY}', 'UpdateMessageCaller');
     dotnetHelper.dispose();
 }
 ```
 
-<span data-ttu-id="c6f78-163">`Shared/ListItem.razor`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-163">`Shared/ListItem.razor`:</span></span>
+<span data-ttu-id="bfec1-167">`Shared/ListItem.razor`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-167">`Shared/ListItem.razor`:</span></span>
 
 ```razor
 @inject IJSRuntime JsRuntime
@@ -345,7 +354,7 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 }
 ```
 
-<span data-ttu-id="c6f78-164">`Pages/JSInteropExample.razor`:</span><span class="sxs-lookup"><span data-stu-id="c6f78-164">`Pages/JSInteropExample.razor`:</span></span>
+<span data-ttu-id="bfec1-168">`Pages/JSInteropExample.razor`:</span><span class="sxs-lookup"><span data-stu-id="bfec1-168">`Pages/JSInteropExample.razor`:</span></span>
 
 ```razor
 @page "/JSInteropExample"
@@ -362,20 +371,20 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 
 [!INCLUDE[Share interop code in a class library](~/includes/blazor-share-interop-code.md)]
 
-## <a name="avoid-circular-object-references"></a><span data-ttu-id="c6f78-165">Vermeiden von Objektzirkelbezügen</span><span class="sxs-lookup"><span data-stu-id="c6f78-165">Avoid circular object references</span></span>
+## <a name="avoid-circular-object-references"></a><span data-ttu-id="bfec1-169">Vermeiden von Objektzirkelbezügen</span><span class="sxs-lookup"><span data-stu-id="bfec1-169">Avoid circular object references</span></span>
 
-<span data-ttu-id="c6f78-166">Objekte, die Zirkelbezüge enthalten, können auf dem Client für folgende Vorgänge nicht serialisiert werden:</span><span class="sxs-lookup"><span data-stu-id="c6f78-166">Objects that contain circular references can't be serialized on the client for either:</span></span>
+<span data-ttu-id="bfec1-170">Objekte, die Zirkelbezüge enthalten, können auf dem Client für folgende Vorgänge nicht serialisiert werden:</span><span class="sxs-lookup"><span data-stu-id="bfec1-170">Objects that contain circular references can't be serialized on the client for either:</span></span>
 
-* <span data-ttu-id="c6f78-167">.NET-Methodenaufrufe.</span><span class="sxs-lookup"><span data-stu-id="c6f78-167">.NET method calls.</span></span>
-* <span data-ttu-id="c6f78-168">JavaScript-Methodenaufrufe von C#, wenn der Rückgabetyp Zirkelbezüge enthält.</span><span class="sxs-lookup"><span data-stu-id="c6f78-168">JavaScript method calls from C# when the return type has circular references.</span></span>
+* <span data-ttu-id="bfec1-171">.NET-Methodenaufrufe.</span><span class="sxs-lookup"><span data-stu-id="bfec1-171">.NET method calls.</span></span>
+* <span data-ttu-id="bfec1-172">JavaScript-Methodenaufrufe von C#, wenn der Rückgabetyp Zirkelbezüge enthält.</span><span class="sxs-lookup"><span data-stu-id="bfec1-172">JavaScript method calls from C# when the return type has circular references.</span></span>
 
-<span data-ttu-id="c6f78-169">Weitere Informationen finden Sie unter den folgenden Problemen:</span><span class="sxs-lookup"><span data-stu-id="c6f78-169">For more information, see the following issues:</span></span>
+<span data-ttu-id="bfec1-173">Weitere Informationen finden Sie unter den folgenden Problemen:</span><span class="sxs-lookup"><span data-stu-id="bfec1-173">For more information, see the following issues:</span></span>
 
-* [<span data-ttu-id="c6f78-170">Zirkelbezüge werden nicht unterstützt, die Zweite (dotnet/aspnetcore #20525)</span><span class="sxs-lookup"><span data-stu-id="c6f78-170">Circular references are not supported, take two (dotnet/aspnetcore #20525)</span></span>](https://github.com/dotnet/aspnetcore/issues/20525)
-* [<span data-ttu-id="c6f78-171">Vorschlag: Hinzufügen eines Mechanismus zur Verarbeitung von Zirkelbezügen bei der Serialisierung (dotnet/runtime #30820)</span><span class="sxs-lookup"><span data-stu-id="c6f78-171">Proposal: Add mechanism to handle circular references when serializing (dotnet/runtime #30820)</span></span>](https://github.com/dotnet/runtime/issues/30820)
+* [<span data-ttu-id="bfec1-174">Zirkelbezüge werden nicht unterstützt, die Zweite (dotnet/aspnetcore #20525)</span><span class="sxs-lookup"><span data-stu-id="bfec1-174">Circular references are not supported, take two (dotnet/aspnetcore #20525)</span></span>](https://github.com/dotnet/aspnetcore/issues/20525)
+* [<span data-ttu-id="bfec1-175">Vorschlag: Hinzufügen eines Mechanismus zur Verarbeitung von Zirkelbezügen bei der Serialisierung (dotnet/runtime #30820)</span><span class="sxs-lookup"><span data-stu-id="bfec1-175">Proposal: Add mechanism to handle circular references when serializing (dotnet/runtime #30820)</span></span>](https://github.com/dotnet/runtime/issues/30820)
 
-## <a name="additional-resources"></a><span data-ttu-id="c6f78-172">Zusätzliche Ressourcen</span><span class="sxs-lookup"><span data-stu-id="c6f78-172">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="bfec1-176">Zusätzliche Ressourcen</span><span class="sxs-lookup"><span data-stu-id="bfec1-176">Additional resources</span></span>
 
 * <xref:blazor/call-javascript-from-dotnet>
-* [<span data-ttu-id="c6f78-173">`InteropComponent.razor`-Beispiel (dotnet/AspNetCore-GitHub-Repository, Releasebranch 3.1)</span><span class="sxs-lookup"><span data-stu-id="c6f78-173">`InteropComponent.razor` example (dotnet/AspNetCore GitHub repository, 3.1 release branch)</span></span>](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* <span data-ttu-id="c6f78-174">[Ausführen umfangreicher Datenübertragungen in Blazor Server-Apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span><span class="sxs-lookup"><span data-stu-id="c6f78-174">[Perform large data transfers in Blazor Server apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span></span>
+* [<span data-ttu-id="bfec1-177">`InteropComponent.razor`-Beispiel (dotnet/AspNetCore-GitHub-Repository, Releasebranch 3.1)</span><span class="sxs-lookup"><span data-stu-id="bfec1-177">`InteropComponent.razor` example (dotnet/AspNetCore GitHub repository, 3.1 release branch)</span></span>](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
+* <span data-ttu-id="bfec1-178">[Ausführen umfangreicher Datenübertragungen in Blazor Server-Apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span><span class="sxs-lookup"><span data-stu-id="bfec1-178">[Perform large data transfers in Blazor Server apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span></span>
