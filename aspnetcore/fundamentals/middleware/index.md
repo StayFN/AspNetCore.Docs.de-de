@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 69c253171c51e08802b82415245a66921168ec80
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ea11b2fa70b9aef96971c41910136f0b09a31f55
+ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404261"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86239659"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core-Middleware
 
@@ -58,7 +58,7 @@ Mit <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*> können Sie mehrere A
 Wenn ein keine Anforderung an den nächsten Delegaten übergibt, wird dies als *Kurzschluss der Anforderungspipeline* bezeichnet. Das Kurzschließen ist oft sinnvoll, da es unnötige Arbeit verhindert. Die [Middleware für statische Dateien](xref:fundamentals/static-files) kann beispielsweise als *Terminalmiddleware* fungieren, indem sie eine Anforderung für eine statische Datei zurückgibt und den Rest der Pipeline kurzschließt. Middleware, die noch vor der Middleware, die die weitere Verarbeitung beendet, zur Pipeline hinzugefügt wird, verarbeitet Code noch nach den `next.Invoke`-Anweisungen weiter. Sehen Sie sich allerdings die folgende Warnung zum Versuch an, in eine Antwort zu schreiben, die bereits gesendet wurde.
 
 > [!WARNING]
-> Rufen Sie `next.Invoke` nicht auf, nachdem die Antwort an den Client gesendet wurde. An <xref:Microsoft.AspNetCore.Http.HttpResponse> vorgenommene Änderungen lösen nach dem Start der Antwort eine Ausnahme aus. Änderungen wie das Festlegen von Headern und einem Statuscode lösen beispielsweise eine Ausnahme aus. Wenn Sie nach dem Aufruf von `next` in den Antworttext schreiben, kann dies:
+> Rufen Sie `next.Invoke` nicht auf, nachdem die Antwort an den Client gesendet wurde. An <xref:Microsoft.AspNetCore.Http.HttpResponse> vorgenommene Änderungen lösen nach dem Start der Antwort eine Ausnahme aus. Das [Festlegen von Headern und einem Statuscode lösen beispielsweise eine Ausnahme aus](xref:performance/performance-best-practices#do-not-modify-the-status-code-or-headers-after-the-response-body-has-started). Wenn Sie nach dem Aufruf von `next` in den Antworttext schreiben, kann dies:
 >
 > * einen Protokollverstoß verursachen, wenn Sie z.B. mehr als das genannte `Content-Length`-Objekt schreiben.
 > * Fehler im Textformat auslösen, wenn Sie z.B. eine HTML-Fußzeile in eine CSS-Datei schreiben.
