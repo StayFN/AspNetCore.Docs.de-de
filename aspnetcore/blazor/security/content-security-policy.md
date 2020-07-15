@@ -17,6 +17,7 @@ no-loc:
 uid: blazor/security/content-security-policy
 ms.openlocfilehash: 5c53ac64d3ae1b365b40c519eb119f913d58cad1
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402441"
@@ -35,7 +36,7 @@ Zum Anwenden einer CSP auf eine App gibt der Entwickler mehrere CSP-*Anweisungen
 
 Die Richtlinien werden vom Browser ausgewertet, während eine Seite geladen wird. Der Browser untersucht die Quellen der Seite und bestimmt, ob diese die Anforderungen der Anweisungen zur Inhaltssicherheit erfüllen. Wenn Richtlinienanweisungen für eine Ressource nicht erfüllt werden, lädt der Browser die Ressource nicht. Denken Sie sich beispielsweise eine Richtlinie, die keine Skripts von Drittanbietern zulässt. Wenn eine Seite ein `<script>`-Tag mit Drittanbieterursprung im `src`-Attribut enthält, verhindert der Browser das Laden des Skripts.
 
-CSP wird von den meisten modernen Desktopbrowsern und mobilen Browsern unterstützt, darunter Chrome, Edge, Firefox, Opera und Safari. CSP wird für Blazor-Apps empfohlen.
+CSP wird von den meisten modernen Desktopbrowsern und mobilen Browsern unterstützt, darunter Chrome, Microsoft Edge, Firefox, Opera und Safari. CSP wird für Blazor-Apps empfohlen.
 
 ## <a name="policy-directives"></a>Richtlinienanweisungen
 
