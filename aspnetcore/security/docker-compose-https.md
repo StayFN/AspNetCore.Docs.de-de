@@ -15,61 +15,61 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: b282af3b9c657bda4432f0d60f100f65fa7cbae9
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a44e82be9c631aae788a671b514bab3b70f54522
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408616"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407800"
 ---
-# <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a><span data-ttu-id="5a30e-103">Hosting ASP.net Core Images mit docker Compose über HTTPS</span><span class="sxs-lookup"><span data-stu-id="5a30e-103">Hosting ASP.NET Core images with Docker Compose over HTTPS</span></span>
+# <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a><span data-ttu-id="1d7ad-103">Hosting ASP.net Core Images mit docker Compose über HTTPS</span><span class="sxs-lookup"><span data-stu-id="1d7ad-103">Hosting ASP.NET Core images with Docker Compose over HTTPS</span></span>
 
 
-<span data-ttu-id="5a30e-104">ASP.net Core verwendet [standardmäßig HTTPS](/aspnet/core/security/enforcing-ssl).</span><span class="sxs-lookup"><span data-stu-id="5a30e-104">ASP.NET Core uses [HTTPS by default](/aspnet/core/security/enforcing-ssl).</span></span> <span data-ttu-id="5a30e-105">[Https](https://en.wikipedia.org/wiki/HTTPS) stützt sich auf [Zertifikate](https://en.wikipedia.org/wiki/Public_key_certificate) für Vertrauenswürdigkeit, Identität und Verschlüsselung.</span><span class="sxs-lookup"><span data-stu-id="5a30e-105">[HTTPS](https://en.wikipedia.org/wiki/HTTPS) relies on [certificates](https://en.wikipedia.org/wiki/Public_key_certificate) for trust, identity, and encryption.</span></span>
+<span data-ttu-id="1d7ad-104">ASP.net Core verwendet [standardmäßig HTTPS](/aspnet/core/security/enforcing-ssl).</span><span class="sxs-lookup"><span data-stu-id="1d7ad-104">ASP.NET Core uses [HTTPS by default](/aspnet/core/security/enforcing-ssl).</span></span> <span data-ttu-id="1d7ad-105">[Https](https://en.wikipedia.org/wiki/HTTPS) stützt sich auf [Zertifikate](https://en.wikipedia.org/wiki/Public_key_certificate) für Vertrauenswürdigkeit, Identität und Verschlüsselung.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-105">[HTTPS](https://en.wikipedia.org/wiki/HTTPS) relies on [certificates](https://en.wikipedia.org/wiki/Public_key_certificate) for trust, identity, and encryption.</span></span>
 
-<span data-ttu-id="5a30e-106">In diesem Dokument wird erläutert, wie vorgefertigte Container Images mit HTTPS ausgeführt werden.</span><span class="sxs-lookup"><span data-stu-id="5a30e-106">This document explains how to run pre-built container images with HTTPS.</span></span>
+<span data-ttu-id="1d7ad-106">In diesem Dokument wird erläutert, wie vorgefertigte Container Images mit HTTPS ausgeführt werden.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-106">This document explains how to run pre-built container images with HTTPS.</span></span>
 
-<span data-ttu-id="5a30e-107">Weitere Informationen finden Sie [unter Entwickeln von ASP.net Core Anwendungen mit docker über HTTPS](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) für Entwicklungsszenarien.</span><span class="sxs-lookup"><span data-stu-id="5a30e-107">See [Developing ASP.NET Core Applications with Docker over HTTPS](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) for development scenarios.</span></span>
+<span data-ttu-id="1d7ad-107">Weitere Informationen finden Sie [unter Entwickeln von ASP.net Core Anwendungen mit docker über HTTPS](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) für Entwicklungsszenarien.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-107">See [Developing ASP.NET Core Applications with Docker over HTTPS](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) for development scenarios.</span></span>
 
-<span data-ttu-id="5a30e-108">Für dieses Beispiel ist [docker 17,06](https://docs.docker.com/release-notes/docker-ce) oder höher des [docker-Clients](https://www.docker.com/products/docker)erforderlich.</span><span class="sxs-lookup"><span data-stu-id="5a30e-108">This sample requires [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) or later of the [Docker client](https://www.docker.com/products/docker).</span></span>
+<span data-ttu-id="1d7ad-108">Für dieses Beispiel ist [docker 17,06](https://docs.docker.com/release-notes/docker-ce) oder höher des [docker-Clients](https://www.docker.com/products/docker)erforderlich.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-108">This sample requires [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) or later of the [Docker client](https://www.docker.com/products/docker).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5a30e-109">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="5a30e-109">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="1d7ad-109">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="1d7ad-109">Prerequisites</span></span>
 
-<span data-ttu-id="5a30e-110">Für einige der Anweisungen in diesem Dokument ist das [.net Core 2,2 SDK](https://dotnet.microsoft.com/download) oder höher erforderlich.</span><span class="sxs-lookup"><span data-stu-id="5a30e-110">The [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download) or later is required for some of the instructions in this document.</span></span>
+<span data-ttu-id="1d7ad-110">Für einige der Anweisungen in diesem Dokument ist das [.net Core 2,2 SDK](https://dotnet.microsoft.com/download) oder höher erforderlich.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-110">The [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download) or later is required for some of the instructions in this document.</span></span>
 
-## <a name="certificates"></a><span data-ttu-id="5a30e-111">Zertifikate</span><span class="sxs-lookup"><span data-stu-id="5a30e-111">Certificates</span></span>
+## <a name="certificates"></a><span data-ttu-id="1d7ad-111">Zertifikate</span><span class="sxs-lookup"><span data-stu-id="1d7ad-111">Certificates</span></span>
 
-<span data-ttu-id="5a30e-112">Ein Zertifikat von einer [Zertifizierungs](https://wikipedia.org/wiki/Certificate_authority) Stelle ist für das [Produktions Hosting](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) für eine Domäne erforderlich.</span><span class="sxs-lookup"><span data-stu-id="5a30e-112">A certificate from a [certificate authority](https://wikipedia.org/wiki/Certificate_authority) is required for [production hosting](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) for a domain.</span></span> <span data-ttu-id="5a30e-113">[Let's Encrypt](https://letsencrypt.org/)ist eine Zertifizierungsstelle, die kostenlose Zertifikate anbietet.</span><span class="sxs-lookup"><span data-stu-id="5a30e-113">[Let's Encrypt](https://letsencrypt.org/) is a certificate authority that offers free certificates.</span></span>
+<span data-ttu-id="1d7ad-112">Ein Zertifikat von einer [Zertifizierungs](https://wikipedia.org/wiki/Certificate_authority) Stelle ist für das [Produktions Hosting](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) für eine Domäne erforderlich.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-112">A certificate from a [certificate authority](https://wikipedia.org/wiki/Certificate_authority) is required for [production hosting](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) for a domain.</span></span> <span data-ttu-id="1d7ad-113">[Let's Encrypt](https://letsencrypt.org/)ist eine Zertifizierungsstelle, die kostenlose Zertifikate anbietet.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-113">[Let's Encrypt](https://letsencrypt.org/) is a certificate authority that offers free certificates.</span></span>
 
-<span data-ttu-id="5a30e-114">In diesem Dokument werden [selbst signierte Entwicklungs Zertifikate](https://wikipedia.org/wiki/Self-signed_certificate) für das Hosting von vordefinierten Images verwendet `localhost` .</span><span class="sxs-lookup"><span data-stu-id="5a30e-114">This document uses [self-signed development certificates](https://wikipedia.org/wiki/Self-signed_certificate) for hosting pre-built images over `localhost`.</span></span> <span data-ttu-id="5a30e-115">Die Anweisungen ähneln der Verwendung von Produktions Zertifikaten.</span><span class="sxs-lookup"><span data-stu-id="5a30e-115">The instructions are similar to using production certificates.</span></span>
+<span data-ttu-id="1d7ad-114">In diesem Dokument werden [selbst signierte Entwicklungs Zertifikate](https://wikipedia.org/wiki/Self-signed_certificate) für das Hosting von vordefinierten Images verwendet `localhost` .</span><span class="sxs-lookup"><span data-stu-id="1d7ad-114">This document uses [self-signed development certificates](https://wikipedia.org/wiki/Self-signed_certificate) for hosting pre-built images over `localhost`.</span></span> <span data-ttu-id="1d7ad-115">Die Anweisungen ähneln der Verwendung von Produktions Zertifikaten.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-115">The instructions are similar to using production certificates.</span></span>
 
-<span data-ttu-id="5a30e-116">Für Produktions Zertifikate:</span><span class="sxs-lookup"><span data-stu-id="5a30e-116">For production certificates:</span></span>
+<span data-ttu-id="1d7ad-116">Für Produktions Zertifikate:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-116">For production certificates:</span></span>
 
-* <span data-ttu-id="5a30e-117">Das `dotnet dev-certs` Tool ist nicht erforderlich.</span><span class="sxs-lookup"><span data-stu-id="5a30e-117">The `dotnet dev-certs` tool is not required.</span></span>
-* <span data-ttu-id="5a30e-118">Zertifikate müssen nicht an dem Speicherort gespeichert werden, der in den Anweisungen verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="5a30e-118">Certificates don't need to be stored in the location used in the instructions.</span></span> <span data-ttu-id="5a30e-119">Speichern Sie die Zertifikate an einem beliebigen Speicherort außerhalb des Website Verzeichnisses.</span><span class="sxs-lookup"><span data-stu-id="5a30e-119">Store the certificates in any location outside the site directory.</span></span>
+* <span data-ttu-id="1d7ad-117">Das `dotnet dev-certs` Tool ist nicht erforderlich.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-117">The `dotnet dev-certs` tool is not required.</span></span>
+* <span data-ttu-id="1d7ad-118">Zertifikate müssen nicht an dem Speicherort gespeichert werden, der in den Anweisungen verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-118">Certificates don't need to be stored in the location used in the instructions.</span></span> <span data-ttu-id="1d7ad-119">Speichern Sie die Zertifikate an einem beliebigen Speicherort außerhalb des Website Verzeichnisses.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-119">Store the certificates in any location outside the site directory.</span></span>
 
-<span data-ttu-id="5a30e-120">Die Anweisungen im folgenden Abschnitt enthalten ein Volume zum Einbinden von Zertifikaten in Containern mithilfe der- `volumes` Eigenschaft in *docker-Compose. yml.*</span><span class="sxs-lookup"><span data-stu-id="5a30e-120">The instructions contained in the following section volume mount certificates into containers using the `volumes` property in *docker-compose.yml.*</span></span> <span data-ttu-id="5a30e-121">Sie können Zertifikate in Container Images mit einem `COPY` Befehl in einer *dockerfile-Datei*hinzufügen, dies wird jedoch nicht empfohlen.</span><span class="sxs-lookup"><span data-stu-id="5a30e-121">You could add certificates into container images with a `COPY` command in a *Dockerfile*, but it's not recommended.</span></span> <span data-ttu-id="5a30e-122">Das Kopieren von Zertifikaten in ein Abbild wird aus den folgenden Gründen nicht empfohlen:</span><span class="sxs-lookup"><span data-stu-id="5a30e-122">Copying certificates into an image isn't recommended for the following reasons:</span></span>
+<span data-ttu-id="1d7ad-120">Die Anweisungen im folgenden Abschnitt enthalten ein Volume zum Einbinden von Zertifikaten in Containern mithilfe der- `volumes` Eigenschaft in *docker-Compose. yml.*</span><span class="sxs-lookup"><span data-stu-id="1d7ad-120">The instructions contained in the following section volume mount certificates into containers using the `volumes` property in *docker-compose.yml.*</span></span> <span data-ttu-id="1d7ad-121">Sie können Zertifikate in Container Images mit einem `COPY` Befehl in einer *dockerfile-Datei*hinzufügen, dies wird jedoch nicht empfohlen.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-121">You could add certificates into container images with a `COPY` command in a *Dockerfile*, but it's not recommended.</span></span> <span data-ttu-id="1d7ad-122">Das Kopieren von Zertifikaten in ein Abbild wird aus den folgenden Gründen nicht empfohlen:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-122">Copying certificates into an image isn't recommended for the following reasons:</span></span>
 
-* <span data-ttu-id="5a30e-123">Es ist schwierig, dasselbe Image für Tests mit Entwickler Zertifikaten zu verwenden.</span><span class="sxs-lookup"><span data-stu-id="5a30e-123">It makes it difficult to use the same image for testing with developer certificates.</span></span>
-* <span data-ttu-id="5a30e-124">Es ist schwierig, das gleiche Image für das Hosting mit Produktions Zertifikaten zu verwenden.</span><span class="sxs-lookup"><span data-stu-id="5a30e-124">It makes it difficult to use the same image for Hosting with production certificates.</span></span>
-* <span data-ttu-id="5a30e-125">Es besteht ein erhebliches Risiko für die Offenlegung von Zertifikaten.</span><span class="sxs-lookup"><span data-stu-id="5a30e-125">There is significant risk of certificate disclosure.</span></span>
+* <span data-ttu-id="1d7ad-123">Es ist schwierig, dasselbe Image für Tests mit Entwickler Zertifikaten zu verwenden.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-123">It makes it difficult to use the same image for testing with developer certificates.</span></span>
+* <span data-ttu-id="1d7ad-124">Es ist schwierig, das gleiche Image für das Hosting mit Produktions Zertifikaten zu verwenden.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-124">It makes it difficult to use the same image for Hosting with production certificates.</span></span>
+* <span data-ttu-id="1d7ad-125">Es besteht ein erhebliches Risiko für die Offenlegung von Zertifikaten.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-125">There is significant risk of certificate disclosure.</span></span>
 
-## <a name="starting-a-container-with-https-support-using-docker-compose"></a><span data-ttu-id="5a30e-126">Starten eines Containers mit HTTPS-Unterstützung mithilfe von Docker Compose</span><span class="sxs-lookup"><span data-stu-id="5a30e-126">Starting a container with https support using docker compose</span></span>
+## <a name="starting-a-container-with-https-support-using-docker-compose"></a><span data-ttu-id="1d7ad-126">Starten eines Containers mit HTTPS-Unterstützung mithilfe von Docker Compose</span><span class="sxs-lookup"><span data-stu-id="1d7ad-126">Starting a container with https support using docker compose</span></span>
 
-<span data-ttu-id="5a30e-127">Verwenden Sie die folgenden Anweisungen für die Betriebssystem Konfiguration.</span><span class="sxs-lookup"><span data-stu-id="5a30e-127">Use the following instructions for your operating system configuration.</span></span>
+<span data-ttu-id="1d7ad-127">Verwenden Sie die folgenden Anweisungen für die Betriebssystem Konfiguration.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-127">Use the following instructions for your operating system configuration.</span></span>
 
-### <a name="windows-using-linux-containers"></a><span data-ttu-id="5a30e-128">Windows mithilfe von Linux-Containern</span><span class="sxs-lookup"><span data-stu-id="5a30e-128">Windows using Linux containers</span></span>
+### <a name="windows-using-linux-containers"></a><span data-ttu-id="1d7ad-128">Windows mithilfe von Linux-Containern</span><span class="sxs-lookup"><span data-stu-id="1d7ad-128">Windows using Linux containers</span></span>
 
-<span data-ttu-id="5a30e-129">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="5a30e-129">Generate certificate and configure local machine:</span></span>
+<span data-ttu-id="1d7ad-129">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-129">Generate certificate and configure local machine:</span></span>
 
 ```dotnetcli
 dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { password here }
 dotnet dev-certs https --trust
 ```
 
-<span data-ttu-id="5a30e-130">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="5a30e-130">In the preceding commands, replace `{ password here }` with a password.</span></span>
+<span data-ttu-id="1d7ad-130">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-130">In the preceding commands, replace `{ password here }` with a password.</span></span>
 
-<span data-ttu-id="5a30e-131">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="5a30e-131">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
+<span data-ttu-id="1d7ad-131">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-131">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
 
 ```json
 version: '3.4'
@@ -88,28 +88,28 @@ services:
     volumes:
       - ~/.aspnet/https:/https:ro
 ```
-<span data-ttu-id="5a30e-132">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="5a30e-132">The password specified in the docker compose file must match the password used for the certificate.</span></span>
+<span data-ttu-id="1d7ad-132">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-132">The password specified in the docker compose file must match the password used for the certificate.</span></span>
 
-<span data-ttu-id="5a30e-133">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="5a30e-133">Start the container with ASP.NET Core configured for HTTPS:</span></span>
+<span data-ttu-id="1d7ad-133">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-133">Start the container with ASP.NET Core configured for HTTPS:</span></span>
 
 ```console
 docker-compose -f "docker-compose.debug.yml" up -d
 ```
 
-### <a name="macos-or-linux"></a><span data-ttu-id="5a30e-134">macOS oder Linux</span><span class="sxs-lookup"><span data-stu-id="5a30e-134">macOS or Linux</span></span>
+### <a name="macos-or-linux"></a><span data-ttu-id="1d7ad-134">macOS oder Linux</span><span class="sxs-lookup"><span data-stu-id="1d7ad-134">macOS or Linux</span></span>
 
-<span data-ttu-id="5a30e-135">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="5a30e-135">Generate certificate and configure local machine:</span></span>
+<span data-ttu-id="1d7ad-135">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-135">Generate certificate and configure local machine:</span></span>
 
 ```dotnetcli
 dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password here }
 dotnet dev-certs https --trust
 ```
 
-<span data-ttu-id="5a30e-136">`dotnet dev-certs https --trust`wird nur unter macOS und Windows unterstützt.</span><span class="sxs-lookup"><span data-stu-id="5a30e-136">`dotnet dev-certs https --trust` is only supported on macOS and Windows.</span></span> <span data-ttu-id="5a30e-137">Sie müssen Zertifikate unter Linux in der von Ihrer Distribution unterstützten Weise als vertrauenswürdig einstufen.</span><span class="sxs-lookup"><span data-stu-id="5a30e-137">You need to trust certificates on Linux in the way that is supported by your distro.</span></span> <span data-ttu-id="5a30e-138">Es ist wahrscheinlich, dass Sie das Zertifikat in Ihrem Browser als vertrauenswürdig einstufen müssen.</span><span class="sxs-lookup"><span data-stu-id="5a30e-138">It is likely that you need to trust the certificate in your browser.</span></span>
+<span data-ttu-id="1d7ad-136">`dotnet dev-certs https --trust`wird nur unter macOS und Windows unterstützt.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-136">`dotnet dev-certs https --trust` is only supported on macOS and Windows.</span></span> <span data-ttu-id="1d7ad-137">Sie müssen Zertifikate unter Linux auf die gleiche Weise als vertrauenswürdig einstufen, die von Ihrer Distribution unterstützt wird.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-137">You need to trust certificates on Linux in the way that is supported by your distribution.</span></span> <span data-ttu-id="1d7ad-138">Es ist wahrscheinlich, dass Sie das Zertifikat in Ihrem Browser als vertrauenswürdig einstufen müssen.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-138">It is likely that you need to trust the certificate in your browser.</span></span>
 
-<span data-ttu-id="5a30e-139">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="5a30e-139">In the preceding commands, replace `{ password here }` with a password.</span></span>
+<span data-ttu-id="1d7ad-139">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-139">In the preceding commands, replace `{ password here }` with a password.</span></span>
 
-<span data-ttu-id="5a30e-140">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="5a30e-140">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
+<span data-ttu-id="1d7ad-140">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-140">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
 
 ```json
 version: '3.4'
@@ -128,26 +128,26 @@ services:
     volumes:
       - ~/.aspnet/https:/https:ro
 ```
-<span data-ttu-id="5a30e-141">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="5a30e-141">The password specified in the docker compose file must match the password used for the certificate.</span></span>
+<span data-ttu-id="1d7ad-141">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-141">The password specified in the docker compose file must match the password used for the certificate.</span></span>
 
-<span data-ttu-id="5a30e-142">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="5a30e-142">Start the container with ASP.NET Core configured for HTTPS:</span></span>
+<span data-ttu-id="1d7ad-142">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-142">Start the container with ASP.NET Core configured for HTTPS:</span></span>
 
 ```console
 docker-compose -f "docker-compose.debug.yml" up -d
 ```
 
-### <a name="windows-using-windows-containers"></a><span data-ttu-id="5a30e-143">Windows mithilfe von Windows-Containern</span><span class="sxs-lookup"><span data-stu-id="5a30e-143">Windows using Windows containers</span></span>
+### <a name="windows-using-windows-containers"></a><span data-ttu-id="1d7ad-143">Windows mithilfe von Windows-Containern</span><span class="sxs-lookup"><span data-stu-id="1d7ad-143">Windows using Windows containers</span></span>
 
-<span data-ttu-id="5a30e-144">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="5a30e-144">Generate certificate and configure local machine:</span></span>
+<span data-ttu-id="1d7ad-144">Zertifikat generieren und lokalen Computer konfigurieren:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-144">Generate certificate and configure local machine:</span></span>
 
 ```dotnetcli
 dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { password here }
 dotnet dev-certs https --trust
 ```
 
-<span data-ttu-id="5a30e-145">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="5a30e-145">In the preceding commands, replace `{ password here }` with a password.</span></span>
+<span data-ttu-id="1d7ad-145">Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-145">In the preceding commands, replace `{ password here }` with a password.</span></span>
 
-<span data-ttu-id="5a30e-146">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="5a30e-146">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
+<span data-ttu-id="1d7ad-146">Erstellen Sie eine _docker-Compose. Debug. yml_ -Datei mit folgendem Inhalt:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-146">Create a _docker-compose.debug.yml_ file with the following content:</span></span>
 
 ```json
 version: '3.4'
@@ -166,9 +166,9 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:C:\https:ro
 ```
-<span data-ttu-id="5a30e-147">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="5a30e-147">The password specified in the docker compose file must match the password used for the certificate.</span></span>
+<span data-ttu-id="1d7ad-147">Das in der Docker Compose-Datei angegebene Kennwort muss dem Kennwort entsprechen, das für das Zertifikat verwendet wird.</span><span class="sxs-lookup"><span data-stu-id="1d7ad-147">The password specified in the docker compose file must match the password used for the certificate.</span></span>
 
-<span data-ttu-id="5a30e-148">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="5a30e-148">Start the container with ASP.NET Core configured for HTTPS:</span></span>
+<span data-ttu-id="1d7ad-148">Starten Sie den Container mit ASP.net Core, die für HTTPS konfiguriert sind:</span><span class="sxs-lookup"><span data-stu-id="1d7ad-148">Start the container with ASP.NET Core configured for HTTPS:</span></span>
 
 ```console
 docker-compose -f "docker-compose.debug.yml" up -d
