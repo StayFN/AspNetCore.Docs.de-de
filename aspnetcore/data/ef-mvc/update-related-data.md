@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 066bebf95a941fca5e7cc175c4c0d6d56abc9cb5
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 754ca2f94b1abde30ae650c9c3bcf00499520383
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060058"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212583"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Aktualisieren verwandter Daten: ASP.NET Core MVC mit EF Core
 
@@ -87,19 +87,19 @@ Fügen Sie `AsNoTracking`-Aufrufe in die `Details` und zu den HttpGet-Methoden `
 
 Fügen Sie in der *Views/Courses/Create.cshtml*-Datei die Option „Select Department“ (Fachbereich auswählen) zu der Dropdownliste **Department** (Fachbereich) hinzu, ändern Sie den Titel von **DepartmentID** in **Department**, und fügen Sie eine Validierungsmeldung hinzu.
 
-[!code-html[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
 Nehmen Sie in der Datei *Views/Courses/Edit.cshtml* dieselben Änderungen für das Feld „Department“ (Fachbereich) vor wie in der Datei *Create.cshtml*.
 
 Fügen Sie in der *Views/Courses/Edit.cshtml*-Datei außerdem vor dem Feld **Titel** ein Feld für die Kursnummer hinzu. Da es sich bei der Kursnummer um einen Primärschlüssel handelt, wird dieser zwar angezeigt, kann aber nicht geändert werden.
 
-[!code-html[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
 In der Ansicht „Bearbeiten“ ist bereits eine ausgeblendetes Feld (`<input type="hidden">`) für die Kursnummer vorhanden. Wenn Sie ein `<label>`-Taghilfsprogramm hinzufügen, wird trotzdem ein ausgeblendetes Feld benötigt, da dieses nicht dazu beiträgt, dass die Kursnummer in den bereitgestellten Daten vorhanden ist, wenn der Benutzer auf der Seite **Bearbeiten** auf **Speichern** klickt.
 
 Fügen Sie oben in der *Views/Courses/Delete.cshtml*-Datei ein Feld für die Kursnummer hinzu, und ändern Sie „Department ID“ (Fachbereichs-ID) in „Department Name“ (Fachbereichsname).
 
-[!code-html[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
 Nehmen Sie in der *Views/Courses/Details.cshtml*-Datei dieselben Änderungen wie in der *Delete.cshtml*-Datei vor.
 
@@ -171,7 +171,7 @@ Der Code führt Folgendes aus:
 
 Fügen Sie am Ende vor der Schaltfläche **Speichern** in der *Views/Instructors/Edit.cshtml*-Datei ein neues Feld hinzu, um den Standort des Büros zu bearbeiten:
 
-[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
 Führen Sie die App aus, klicken Sie erst auf die Registerkarte **Dozenten** und dann für einen Dozenten auf **Bearbeiten**. Ändern Sie den **Standort des Büros**, und klicken Sie auf **Speichern**.
 
@@ -235,7 +235,7 @@ Fügen Sie in der *Views/Instructors/Edit.cshtml*-Datei ein **Kurse**-Feld mit e
 > [!NOTE]
 > Wenn Sie den Code in Visual Studio einfügen, werden Zeilenumbrüche möglicherweise so geändert, dass der Code unterbrochen wird. Wenn der Code nach dem Einfügen anders aussieht, drücken Sie einmal STRG+Z, um die automatische Formatierung rückgängig zu machen. Damit werden die Zeilenumbrüche korrigiert, damit sie dem entsprechen, was Sie hier sehen. Der Einzug muss nicht perfekt sein, die Zeilen `@:</tr><tr>`, `@:<td>`, `@:</td>` und `@:</tr>` müssen jedoch, wie dargestellt, jeweils in einer einzelnen Zeile stehen. Ansonsten wird ein Laufzeitfehler ausgelöst. Drücken Sie, nachdem Sie den Block mit dem neuen Code ausgewählt haben, dreimal auf die TAB-Taste, um den neuen Code am vorhandenen Code auszurichten. Dieses Problem wurde in Visual Studio 2019 behoben.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
 Dieser Code erstellt eine HTML-Tabelle mit drei Spalten. Jede Spalte enthält ein Kontrollkästchen gefolgt von einem Titel, der aus der Kursnummer und dem Kurstitel besteht. Die Kontrollkästchen haben denselben Namen („selectedCourses“), was bei der Modellbindung deutlich macht, dass diese als Gruppe behandelt werden sollen. Das Wertattribut der einzelnen Kontrollkästchen ist auf den Wert von `CourseID` festgelegt. Wenn die Seite zurückgesendet wird, übergibt die Modellbindung ein Array an den Controller, das lediglich die `CourseID`-Werte der aktivierten Kontrollkästchen enthält.
 
@@ -299,7 +299,7 @@ Wenn Sie die `CourseAssignments`-Eigenschaft auf diese Weise ändern, können Si
 
 Fügen die in der *Views/Instructor/Create.cshtml*-Datei ein Textfeld für den Bürostandort hinzu, und aktivieren Sie Felder für Kurse, bevor Sie auf die Schaltfläche „Übermitteln“ klicken. [Wenn Visual Studio den Code neu formatiert, wenn Sie diesen einfügen, beheben Sie die Formatierung](#notepad) auf dieselbe Weise wie auf der Seite „Bearbeiten“.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
 Führen Sie einen Test durch, indem Sie die App ausführen und einen Dozenten erstellen.
 

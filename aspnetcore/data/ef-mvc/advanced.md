@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 7233d6baf139d2ef362f4e3d1a56cf7f0e2514d2
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ebeb581cf79f2d2ab60de7df43d042fa3185cd32
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403117"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212738"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Tutorial: Erfahren Sie mehr über erweiterte Szenarien: ASP.NET MVC mit EF Core
 
@@ -105,7 +105,7 @@ Klicken Sie im Dialogfeld **Neues Element hinzufügen** unter **Installiert** im
 
 Ersetzen Sie in *Views/Courses/UpdateCourseCredits.cshtml* den Vorlagencode durch den folgenden Code:
 
-[!code-html[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
 Führen Sie die `UpdateCourseCredits`-Methode aus, indem Sie die Registerkarte **Courses** (Kurse) auswählen, und dann „/UpdateCourseCredits“ am Ende der URL in die Adressleiste des Browsers einfügen (z.B.: `http://localhost:5813/Courses/UpdateCourseCredits`). Geben Sie eine Zahl in das Textfeld ein:
 

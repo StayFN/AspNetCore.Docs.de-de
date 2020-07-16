@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 0a87fe2f4cf7014cc15752dcf25545ce7aaa4687
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 496221bb4e34e1f9e4177d1934786a77d8c9b411
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408603"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212545"
 ---
 # <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Teil 3: Razor Pages mit EF Core in ASP.NET Core – Sortieren, Filtern und Paging
 
@@ -337,7 +337,7 @@ Die Methode gibt über LINQ to Entities die Spalte an, nach der sortiert werden 
 
 Ersetzen Sie den Code in *Students/Index.cshtml* durch folgenden hervorgehobenen Code:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
 Der vorangehende Code:
 
@@ -393,7 +393,7 @@ Beim Aufrufen von `ToUpper` kommt es zu Leistungseinbußen. Der `ToUpper`-Code i
 
 Fügen Sie folgenden hervorgehobenen Code zu *Pages/Students/Index.cshtml* hinzu, um die Schaltfläche **Suchen** und sortiertes Chrom zu erstellen.
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
 Der vorangehende Code verwendet das `<form>`-[Taghilfsprogramm](xref:mvc/views/tag-helpers/intro), um das Suchtextfeld und die Schaltfläche hinzuzufügen. Das `<form>`-Taghilfsprogramm sendet Formulardaten standardmäßig mit einer POST-Anforderung. Mit der POST-Anforderung werden die Parameter im HTTP-Nachrichtentext und nicht in der URL übergeben. Bei Verwendung einer HTTP GET-Anforderung werden die Formulardaten als Abfragezeichenfolgen in der URL übergeben. Durch die Übergabe der Daten mit Abfragezeichenfolgen können Benutzer die URL als Lesezeichen speichern. In den [W3C-Richtlinien](https://www.w3.org/2001/tag/doc/whenToUseGet.html) wird die Verwendung einer GET-Anforderung empfohlen, wenn die Aktion nicht zu einem Update führt.
 
@@ -471,15 +471,15 @@ Die zwei Fragezeichen in `PaginatedList.CreateAsync` stellen den [NULL-Sammelope
 
 Aktualisieren Sie das Markup in *Students/Index.cshtml*. Die Änderungen werden hervorgehoben:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
 In den Links der Spaltenüberschriften wird die Abfragezeichenfolge verwendet, um die aktuelle Suchzeichenfolge an die Methode `OnGetAsync` zu übergeben, damit der Benutzer Filterergebnisse sortieren kann:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
 
 Die Pagingschaltflächen werden durch Taghilfsprogramme angezeigt:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
 
 Führen Sie die App aus, und navigieren Sie zur Studentenseite.
 
@@ -525,7 +525,7 @@ Die LINQ-Anweisung gruppiert die Studentenentitäten nach Anmeldedatum, berechne
 
 Ersetzen Sie den Code in der Datei *Pages/About.cshtml* durch den folgenden Code:
 
-[!code-html[](intro/samples/cu21/Pages/About.cshtml)]
+[!code-cshtml[](intro/samples/cu21/Pages/About.cshtml)]
 
 Führen Sie die App aus, und navigieren Sie zur Seite „Info“. Die Anzahl der Studenten für die jeweiligen Anmeldedatumswerte wird in einer Tabelle angezeigt.
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 652ee8c4bfe8980eb09246720f9ddf1743021f34
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 65bf5e6b022699268f9e7e5677ea8632f1a489c7
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399048"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213140"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>Teil 7: Hinzufügen der Suche zu einer ASP.NET Core MVC-App
 
@@ -75,7 +75,7 @@ Sie können jedoch von den Benutzern nicht erwarten, dass sie jedes Mal die URL 
 
 Öffnen Sie die Datei *Views/Movies/Index.cshtml*, und fügen Sie das hervorgehobene `<form>`-Markup hinzu:
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=10-16&range=4-21)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=10-16&range=4-21)]
 
 Das HTML-Tag `<form>` nutzt das [Hilfsprogramm für Formulartags](xref:mvc/views/working-with-forms). Wenn Sie nun das Formular senden, wird die Filterzeichenfolge an die Aktion `Index` des „movies“-Controllers übermittelt. Speichern Sie Ihre Änderungen, und testen Sie dann den Filter.
 
@@ -101,7 +101,7 @@ Sie können den Suchparameter und das [XSRF](xref:security/anti-request-forgery)
 
 Da sich der Suchparameter im Anforderungstext und nicht in der URL befindet, können Sie diese Suchinformationen nicht als Favorit speichern oder mit anderen teilen. Beheben Sie dieses Problem, indem Sie angeben, dass eine `HTTP GET`-Anforderung verwendet werden soll, die sich in der Datei *Views/Movies/Index.cshtml* befindet.
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
 Wenn Sie nun eine Suche übermitteln, enthält die URL die Suchabfragezeichenfolge. Das Suchen wird auch an Aktionsmethode `HttpGet Index` übertragen, auch wenn Sie eine `HttpPost Index`-Methode haben.
 

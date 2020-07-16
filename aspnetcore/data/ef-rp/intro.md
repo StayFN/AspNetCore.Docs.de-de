@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 79cfe50f7e074954291c88689940c3263b68e151
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 700370fd11a0df40a45c47e8c378d5bdd0c60009
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401356"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212697"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages mit Entity Framework Core in ASP.NET Core – Tutorial 1 bis 8
 
@@ -529,11 +529,11 @@ Sie können das Websitemenü, das Layout und die Startseite über einige Änderu
 
 Die Änderungen werden hervorgehoben. (Es wird *nicht* das gesamte Markup angezeigt.)
 
-[!code-html[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
+[!code-cshtml[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
 
 Ersetzen Sie in *Pages/Index.cshtml* die Inhalte der Datei durch den folgenden Code. Dadurch ersetzen Sie den Text zu ASP.NET und MVC durch Text zu dieser App:
 
-[!code-html[](intro/samples/cu21/Pages/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu21/Pages/Index.cshtml)]
 
 ## <a name="create-the-data-model"></a>Erstellen des Datenmodells
 

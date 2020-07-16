@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: b282af3b9c657bda4432f0d60f100f65fa7cbae9
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a44e82be9c631aae788a671b514bab3b70f54522
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408616"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407800"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hosting ASP.net Core Images mit docker Compose über HTTPS
 
@@ -105,7 +105,7 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`wird nur unter macOS und Windows unterstützt. Sie müssen Zertifikate unter Linux in der von Ihrer Distribution unterstützten Weise als vertrauenswürdig einstufen. Es ist wahrscheinlich, dass Sie das Zertifikat in Ihrem Browser als vertrauenswürdig einstufen müssen.
+`dotnet dev-certs https --trust`wird nur unter macOS und Windows unterstützt. Sie müssen Zertifikate unter Linux auf die gleiche Weise als vertrauenswürdig einstufen, die von Ihrer Distribution unterstützt wird. Es ist wahrscheinlich, dass Sie das Zertifikat in Ihrem Browser als vertrauenswürdig einstufen müssen.
 
 Ersetzen Sie in den vorangehenden Befehlen `{ password here }` durch ein Kennwort.
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: f756d9abfb92fd4d6d51d8762967ac2288b54b2a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0abb5e78e1971925c8e741386c65bdf71a0f0072
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405756"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407631"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Fehlerbehandlung in ASP.NET Core-Web-APIs
 
@@ -76,7 +76,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-Legen Sie den HTTP-Anforderungsheader `Accept` auf den Medientyp `text/html` fest, um stattdessen eine HTML-formatierte Antwort anzuzeigen. Zum Beispiel:
+Legen Sie den HTTP-Anforderungsheader `Accept` auf den Medientyp `text/html` fest, um stattdessen eine HTML-formatierte Antwort anzuzeigen. Beispiel:
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
@@ -290,11 +290,11 @@ Die Fehlerantwort kann auf eine der folgenden Arten konfiguriert werden:
 1. [Implementieren der ProblemDetailsFactory](#implement-problemdetailsfactory)
 1. [Verwenden von ApiBehaviorOptions.ClientErrorMapping](#use-apibehavioroptionsclienterrormapping)
 
-### <a name="implement-problemdetailsfactory"></a>Implementieren der ProblemDetailsFactory
+### <a name="implement-problemdetailsfactory"></a>Implementieren Sie `ProblemDetailsFactory`.
 
-MVC verwendet die `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory`, um alle Instanzen von <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> und <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> zu generieren. Hierzu gehören Clientfehlerantworten, Antworten auf Überprüfungsfehler sowie die Hilfsmethoden `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` und <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem>.
+MVC verwendet die <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName>, um alle Instanzen von <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> und <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> zu generieren. Hierzu gehören Clientfehlerantworten, Antworten auf Überprüfungsfehler sowie die Hilfsmethoden <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> und <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType>.
 
-Um die Antwort mit Problemdetails anzupassen, registrieren Sie eine benutzerdefinierte Implementierung von `ProblemDetailsFactory` in `Startup.ConfigureServices`:
+Um die Antwort mit Problemdetails anzupassen, registrieren Sie eine benutzerdefinierte Implementierung von <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory> in `Startup.ConfigureServices`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection serviceCollection)

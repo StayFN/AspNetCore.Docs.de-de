@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 14b28f04f4077cb5622858dad1bd18b81b198f3d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 171607544bfe89fdd0a1ed9efb68f7a532f9aee1
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405795"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212661"
 ---
 # <a name="part-6-razor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>Teil 6: Razor Pages mit EF Core in ASP.NET Core – Lesen relevanter Daten
 
@@ -420,7 +420,7 @@ Der vorangehende Code fügt `AsNoTracking` hinzu. `AsNoTracking` verbessert die 
 
 Aktualisieren Sie *Pages/Courses/Index.cshtml* mit dem folgenden hervorgehobenen Markup:
 
-[!code-html[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 Die folgenden Änderungen wurden am Codegerüst vorgenommen:
 
@@ -515,7 +515,7 @@ Die Abfrage enthält zwei Dinge:
 
 Aktualisieren Sie *Pages/Instructors/Index.cshtml* mit folgendem Markup:
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=1-65&highlight=1,5,8,16-21,25-32,43-57)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=1-65&highlight=1,5,8,16-21,25-32,43-57)]
 
 Das oben stehende Markup führt die folgenden Änderungen durch:
 
@@ -595,7 +595,7 @@ Wenn ein Kurs ausgewählt ist, füllt der folgende Code die `Enrollments`-Eigens
 
 Fügen Sie das folgende Markup zum Ende der Razor-Seite *Pages/Instructors/Index.cshtml* hinzu:
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
 Das vorhergehende Markup zeigt eine Liste der Kurse eines bestimmten Dozenten an, wenn einer ausgewählt wird.
 
@@ -611,7 +611,7 @@ Aktualisieren Sie die Abfrage in der `OnGetAsync`-Methode in *Pages/Instructors/
 
 Aktualisieren Sie *Pages/Instructors/Index.cshtml*. Fügen Sie dem Dateiende das folgende Markup hinzu:
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
 
 Das vorhergehende Markup zeigt eine Liste der Studenten, die im ausgewählten Kurs registriert sind.
 
