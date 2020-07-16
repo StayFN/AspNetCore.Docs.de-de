@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: c33ff357ec6b467435325578047ac851a39e533e
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060123"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212719"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: Implementieren von CRUD-Funktionen – ASP.NET MVC mit EF Core
 
@@ -102,11 +102,11 @@ Weitere Informationen über Taghilfsprogramme finden Sie unter <xref:mvc/views/t
 
 Öffnen Sie *Views/Students/Details.cshtml*. Alle Felder werden mithilfe der Hilfsprogramme `DisplayNameFor` und `DisplayFor` dargestellt, wie in folgendem Beispiel gezeigt wird:
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
 Fügen Sie den folgenden Code nach dem letzten Feld und direkt vor dem Endtag `</dl>` ein, um eine Liste der Registrierungen anzuzeigen:
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
 
 Wenn der Codeeinzug nach dem Einfügen des Codes falsch ist, drücken Sie Strg + K + D, um diesen zu korrigieren.
 
@@ -267,7 +267,7 @@ Wenn die Entität zugehörige Daten besitzt, die auch gelöscht werden sollen, s
 
 Fügen Sie in der Datei *Views/Student/Delete.cshtml* eine Fehlermeldung zwischen der Überschrift „h2“ und der Überschrift „h3“ eine Fehlermeldung ein, wie im folgenden Beispiel gezeigt wird:
 
-[!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
 Führen Sie die Anwendung aus, wählen Sie die Registerkarte **Students** aus und klicken auf den Link **Löschen**:
 

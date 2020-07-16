@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: f2e989b2c6370d862b4d1e6550b09cb47b5747c1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: abd5c4e474e30c119e2bea9e3cce3d2b277e0daf
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401518"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212745"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Lesen verwandter Daten: ASP.NET Core MVC mit EF Core
 
@@ -83,7 +83,7 @@ Ersetzen Sie die `Index`-Methode durch den folgenden Code, der einen geeignetere
 
 Öffnen Sie *Views/Courses/Index.cshtml*. Ersetzen Sie den Vorlagencode durch den folgenden Code. Die Änderungen werden hervorgehoben:
 
-[!code-html[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 Sie haben die folgenden Änderungen am eingerüsteten Code vorgenommen:
 
@@ -179,7 +179,7 @@ Wenn ein Kurs ausgewählt wurde, wird der ausgewählte Kurs aus der Kursliste im
 
 Ersetzen Sie in *Views/Instructors/Index.cshtml* den Vorlagencode durch den folgenden Code. Die Änderungen werden hervorgehoben.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
 Sie haben die folgenden Änderungen am bestehenden Code vorgenommen:
 
@@ -221,7 +221,7 @@ Führen Sie die Anwendung aus. Klicken Sie auf die Registerkarte **Dozenten**. D
 
 Fügen Sie in der Datei *Views/Instructors/Index.cshtml* nach dem Schließen des Tabellenelements (am Ende der Datei) den folgenden Code hinzu. Dieser Code zeigt eine Liste der Kurse an, die im Zusammenhang mit einem Dozenten stehen, wenn ein Dozent ausgewählt wird.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
 
 Dieser Code liest die `Courses`-Eigenschaft des Ansichtsmodells, um eine Kursliste anzuzeigen. Er bietet außerdem einen **Auswählen**-Link, der die ID des ausgewählten Kurses an die `Index`-Aktionsmethode sendet.
 
@@ -231,7 +231,7 @@ Aktualisieren Sie die Seite. Wählen Sie einen Dozenten aus. Jetzt sehen Sie ein
 
 Fügen Sie den folgenden Code hinzu, nachdem Sie den Codeblock hinzugefügt haben. Dies zeigt eine Liste der Studenten an, die im Kurs registriert sind, wenn dieser Kurs ausgewählt ist.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=103-125)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=103-125)]
 
 Dieser Code liest die Registrierungseigenschaft des Ansichtsmodells, um eine Liste der in diesem Kurs registrierten Studenten anzuzeigen.
 

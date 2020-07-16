@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: a22bc9f9156b671d7bf17b56b62e384a60b2568b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b473b8575a870b91d83e5494103d39486ef4fee1
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405262"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213041"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Teil 6: Controllermethoden und Ansichten in ASP.NET Core
 
@@ -42,7 +42,7 @@ Navigieren Sie zum `Movies`-Controller, und halten Sie den Mauszeiger über eine
 
 Die Links **Bearbeiten**, **Details** und **Löschen** werden mithilfe des MVC Core-Hilfsprogramms für Ankertags in der Datei *Views/Movies/Index.cshtml* generiert.
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
 [Taghilfsprogramme](xref:mvc/views/tag-helpers/intro) ermöglichen serverseitigem Code das Mitwirken am Erstellen und Rendern von HTML-Elementen in Razor-Dateien. Im obigen Code generiert `AnchorTagHelper` dynamisch den HTML-`href`-Attributwert aus der Controlleraktionsmethode und der Routen-ID. Verwenden Sie in Ihrem bevorzugten Browser **Quelltext anzeigen** oder die Entwicklertools, um das generierte Markup zu untersuchen. Ein Teil des generierten HTML-Codes wird unten gezeigt:
 
@@ -106,7 +106,7 @@ Das `HttpPost`-Attribut gibt an, dass diese `Edit`-Methode *nur* für `POST`-Anf
 
 Das `ValidateAntiForgeryToken`-Attribut wird verwendet, um [die Fälschung einer Anforderung zu verhindern](xref:security/anti-request-forgery). Es wird einem Fälschungssicherheitstoken zugeordnet, das in der Datei für die Bearbeitungsansicht (*Views/Movies/Edit.cshtml*) generiert wird. Die Datei für die Bearbeitungsansicht generiert das Fälschungssicherheitstoken mit dem [Hilfsprogramm für Formulartags](xref:mvc/views/working-with-forms).
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
 Das [Hilfsprogramm für Formulartags](xref:mvc/views/working-with-forms) generiert ein ausgeblendetes Fälschungssicherheitstoken, das mit dem von `[ValidateAntiForgeryToken]` generierten Fälschungssicherheitstoken in der `Edit`-Methode des Movies-Controllers übereinstimmen muss. Weitere Informationen finden Sie unter [Antianforderungsfälschung](xref:security/anti-request-forgery).
 
@@ -116,7 +116,7 @@ Die `HttpGet Edit`-Methode verwendet den `ID`-Parameter eines Films, sucht den F
 
 Als das Gerüstsystem die Bearbeitungsansicht erstellt hat, wurde die `Movie`-Klasse überprüft und Code zum Rendern der `<label>`- und `<input>`-Elemente für jede Eigenschaft der Klasse erstellt. Das folgende Beispiel zeigt die Bearbeitungsansicht, die vom Visual Studio-Gerüstsystem generiert wurde:
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/EditOriginal.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/EditOriginal.cshtml)]
 
 Beachten Sie, dass die Ansichtsvorlage eine `@model MvcMovie.Models.Movie`-Anweisung am Anfang der Datei aufweist. `@model MvcMovie.Models.Movie` gibt an, dass die Ansicht erwartet, dass das Modell für die Ansichtsvorlage den Typ `Movie` hat.
 

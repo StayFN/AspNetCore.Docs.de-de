@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 3038ae8f01273013e6c35694583d9674a1668bac
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f6ee60bf5e75256a9bf330f56b2f09b06f720a85
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401557"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212796"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutorial: Behandeln der Parallelität: ASP.NET MVC mit EF Core
 
@@ -148,7 +148,7 @@ Die Engine für den Gerüstbau hat eine RowVersion-Spalte in der Indexansicht er
 
 Ersetzen Sie den Code in der Datei *Views/Departments/Index.cshtml* durch folgenden Code:
 
-[!code-html[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
 Damit wird die Überschrift in „Abteilungen“ geändert, die Spalte „RowVersion“ gelöscht und der vollständige Name des Administrators wird anstelle des Vornamens angezeigt.
 
@@ -198,7 +198,7 @@ Nehmen Sie folgende Änderungen in der Datei *Views/Departments/Edit.cshtml* vor
 
 * Fügen Sie der Dropdownliste die Option „Select Administrator“ hinzu.
 
-[!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
 ## <a name="test-concurrency-conflicts"></a>Testen Sie auf Parallelitätskonflikte
 
@@ -258,7 +258,7 @@ Wenn ein Parallelitätsfehler abgefangen wird, zeigt der Code erneut die Bestät
 
 Ersetzen Sie den eingerüsteten Code in der Datei *Views/Departments/Delete.cshtml* durch den folgenden Code, der ein Feld für die Fehlermeldung und ausgeblendete Felder für die Eigenschaften „DepartmentID“ und „RowVersion“ hinzufügt. Die Änderungen werden hervorgehoben.
 
-[!code-html[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
 Dadurch werden folgende Änderungen vorgenommen:
 
@@ -288,11 +288,11 @@ Optional können Sie den eingerüsteten Code in den Ansichten „Details“ und 
 
 Ersetzen Sie den Code in der Datei *Views/Departments/Details.cshtml*, um die Spalte „RowVersion“ zu löschen und den vollständigen Namen des Administrators anzuzeigen.
 
-[!code-html[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
 Ersetzen Sie den Code in der Datei *Views/Departments/Create.cshtml*, um der Dropdownliste eine Select-Option hinzuzufügen.
 
-[!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
 ## <a name="get-the-code"></a>Abrufen des Codes
 

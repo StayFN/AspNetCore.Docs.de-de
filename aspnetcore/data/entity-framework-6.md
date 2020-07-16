@@ -4,7 +4,7 @@ author: rick-anderson
 description: Entity Framework 6.3 und höher funktioniert mit ASP.Net Core 3.1 und höher.
 ms.author: riande
 ms.custom: mvc
-ms.date: 7/24/2020
+ms.date: 7/14/2020
 no-loc:
 - Blazor
 - Identity
@@ -12,11 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: c58f788e0ba21e27423ef7b3eeee548b4cc60b4c
-ms.sourcegitcommit: b06511252f165dd4590ba9b5beca4153fa220779
+ms.openlocfilehash: 0512907b5f937df1776570c507606fe3ef4340d4
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85459752"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407774"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core und Entity Framework 6
 
@@ -24,4 +25,4 @@ ms.locfileid: "85459752"
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Entity Framework – Code-Based Configuration (Codebasierte Konfiguration von Entity Framework)](/ef6/fundamentals/configuring/code-based)
+* [Entity Framework – Code-Based Configuration (Codebasierte Konfiguration von Entity Framework)](/ef/ef6/fundamentals/configuring/code-based)

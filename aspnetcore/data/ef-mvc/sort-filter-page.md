@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 45aabc644fbeaeaa31d534877ba93cb0611f3f34
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 24643931ed84ac257d98ceb8cc6c64d0767cfc14
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401336"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212586"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutorial: Hinzufügen von Sortieren, Filtern und Paging: ASP.NET MVC mit EF Core
 
@@ -78,7 +78,7 @@ Dieser Code könnte mit einer großen Anzahl von Spalten ausführlich werden. [D
 
 Ersetzen Sie den Code in *Views/Students/Index.cshtml* durch den folgenden Code, um Spaltenüberschriftenlinks hinzuzufügen. Die geänderten Zeilen werden hervorgehoben.
 
-[!code-html[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
 
 Dieser Code verwendet die Informationen in den `ViewData`-Eigenschaften zum Einrichten von Links mit den entsprechenden Abfragezeichenfolgenwerten.
 
@@ -107,7 +107,7 @@ Sie haben einen `searchString`-Parameter zur `Index`-Methode hinzugefügt. Der Z
 
 Fügen Sie in *Views/Student/Index.cshtml* den hervorgehobenen Code unmittelbar vor dem Tag „Tabelle öffnen“ hinzu, um eine Beschriftung, ein Textfeld und eine **Suche**-Schaltfläche zu erstellen.
 
-[!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 Dieser Code verwendet das [Taghilfsprogramm](xref:mvc/views/tag-helpers/intro) `<form>`, um das Suchtextfeld und die Schaltfläche hinzuzufügen. Das Taghilfsprogramm `<form>` sendet standardmäßig Formulardaten mit einem POST, was bedeutet, dass Parameter als Abfragezeichenfolgen im Hauptteil der HTTP-Nachricht und nicht in der URL übergeben werden. Bei der Angabe von HTTP GET werden die Formulardaten als Abfragezeichenfolgen an die URL übergeben. Dadurch können Benutzer ein Lesezeichen für die URL erstellen. Die W3C-Richtlinien empfehlen die Verwendung eines GET-Vorgangs, wenn die Aktion nicht zu einem Update führt.
 
@@ -186,7 +186,7 @@ Die `PaginatedList.CreateAsync`-Methode nimmt eine Seitenanzahl. Die zwei Fragez
 
 Ersetzen Sie in *Views/Students/Index.cshtml* den vorhandenen Code durch den folgenden Code. Die Änderungen werden hervorgehoben.
 
-[!code-html[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
 Die `@model`-Anweisung am oberen Rand der Seite gibt an, dass die Ansicht nun ein `PaginatedList<T>`-Objekt anstelle eines `List<T>`-Objekts aufruft.
 
@@ -250,7 +250,7 @@ Die LINQ-Anweisung gruppiert die Studentenentitäten nach Anmeldedatum, berechne
 
 Fügen Sie eine *Views/Home/About.cshtml*-Datei mit dem folgenden Code hinzu:
 
-[!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/About.cshtml)]
 
 Führen Sie die Anwendung aus, und wechseln Sie zur Infoseite. Die Anzahl der Studenten für die jeweiligen Anmeldedatumswerte wird in einer Tabelle angezeigt.
 

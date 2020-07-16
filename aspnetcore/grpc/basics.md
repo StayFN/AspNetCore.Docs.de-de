@@ -4,7 +4,7 @@ author: juntaoluo
 description: Hier erlernen Sie die grundlegenden Konzepte beim Schreiben von gRPC-Diensten mit C#.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 07/03/2019
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/basics
-ms.openlocfilehash: 08c755cf078fe71d09e8c7af2cc16f5c427495f1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a99e5c78e291469bdce5c2b5cfa6eec86caa9735
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407290"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176297"
 ---
 # <a name="grpc-services-with-c"></a>gRPC-Dienste mit C\#
 
@@ -50,6 +50,13 @@ Sehen Sie sich beispielsweise die Datei *greet.proto* an, die in den [ersten Sch
 Die *\*.proto*-Datei wird in ein Projekt eingefügt, indem sie zur Elementgruppe `<Protobuf>` hinzugefügt wird:
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
+
+Durch einen `<Protobuf>`-Verweis werden standardmäßig ein konkreter Client und eine Dienstbasisklasse generiert. Mit dem Attribut `GrpcServices` des Verweiselements kann das Generieren von C#-Objekten beschränkt werden. Gültige Optionen für `GrpcServices` sind:
+
+* `Both` (Standardwert, wenn nicht vorhanden)
+* `Server`
+* `Client`
+* `None`
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#-Toolunterstützung für PROTO-Dateien
 
