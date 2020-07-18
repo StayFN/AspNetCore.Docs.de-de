@@ -3,7 +3,7 @@ title: Einführung in Identity ASP.net Core
 author: rick-anderson
 description: Verwenden Sie dies Identity mit einer ASP.net Core-app. Erfahren Sie, wie Sie Kenn Wort Anforderungen ("Requirements Digit", "Requirements dlength", "Requirements duniquechars" usw.) festlegen.
 ms.author: riande
-ms.date: 01/15/2020
+ms.date: 7/15/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 6ac565bfa4862168fa143417ab5a81c51b620f16
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: dd3296db568700a363c427398f02239846a46ada
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212442"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445429"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Einführung in Identity ASP.net Core
 
@@ -37,7 +37,7 @@ Der [ Identity Quellcode](https://github.com/dotnet/AspNetCore/tree/master/src/I
 
 Identitywird in der Regel mit einer SQL Server Datenbank konfiguriert, um Benutzernamen, Kenn Wörter und Profildaten zu speichern. Alternativ können Sie auch einen weiteren permanenten Speicher verwenden, z. b. Azure Table Storage.
 
-In diesem Thema erfahren Sie, wie Sie Identity einen Benutzer mit registrieren, anmelden und abmelden. Hinweis: die Vorlagen behandeln Benutzername und e-Mail-Adresse für Benutzer als identisch. Ausführlichere Anweisungen zum Erstellen von apps, die verwenden Identity , finden Sie im Abschnitt nächste Schritte am Ende dieses Artikels.
+In diesem Thema erfahren Sie, wie Sie Identity einen Benutzer mit registrieren, anmelden und abmelden. Hinweis: die Vorlagen behandeln Benutzername und e-Mail-Adresse für Benutzer als identisch. Ausführlichere Anweisungen zum Erstellen von apps, die verwenden Identity , finden Sie unter [Nächste Schritte](#next).
 
 Die [Microsoft Identity-Plattform](/azure/active-directory/develop/) ist:
 
@@ -75,7 +75,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Beispiel:
+Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Zum Beispiel:
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -117,7 +117,7 @@ Führen Sie die APP aus, und registrieren Sie einen Benutzer. Abhängig von der 
 
 Dienste werden in hinzugefügt `ConfigureServices` . Das typische Muster besteht darin, alle `Add{Service}`-Methoden und dann alle `services.Configure{Service}`-Methoden aufzurufen.
 
-[!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=10-99)]
+[!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=11-99)]
 
 Der vorangehende markierte Code konfiguriert Identity mit Standard Options Werten. Dienste werden über die [Abhängigkeitsinjektion](xref:fundamentals/dependency-injection)der App zur Verfügung gestellt.
 
@@ -129,11 +129,11 @@ Die von der Vorlage generierte App verwendet keine [Autorisierung](xref:security
 
 Weitere Informationen zu `IdentityOptions` und `Startup` finden Sie unter <xref:Microsoft.AspNetCore.Identity.IdentityOptions> und [Anwendungsstart](xref:fundamentals/startup).
 
-## <a name="scaffold-register-login-and-logout"></a>Gerüst: registrieren, anmelden und Abmelden
+## <a name="scaffold-register-login-logout-and-registerconfirmation"></a>Gerüst Register, anmelden, abmelden und Register Bestätigung
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Fügen Sie die Registrierungs-, Anmelde-und Abmelde Dateien hinzu. Befolgen Sie die [Gerüst Identität in einem Razor Projekt mit Autorisierungs](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) Anweisungen, um den in diesem Abschnitt gezeigten Code zu generieren.
+Fügen Sie `Register` die `Login` Dateien,, `LogOut` und hinzu `RegisterConfirmation` . Befolgen Sie die [Gerüst Identität in einem Razor Projekt mit Autorisierungs](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) Anweisungen, um den in diesem Abschnitt gezeigten Code zu generieren.
 
 # <a name="net-core-cli"></a>[.NET Core-CLI](#tab/netcore-cli)
 
@@ -141,7 +141,7 @@ Wenn Sie das Projekt mit dem Namen **"WebApp1"** erstellt haben, führen Sie die
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 ```
 
 PowerShell verwendet ein Semikolon als Befehls Trennzeichen. Wenn Sie PowerShell verwenden, führen Sie einen Escapezeichen in der Datei Liste aus, oder fügen Sie die Datei Liste in doppelte Anführungszeichen ein, wie im vorherigen Beispiel gezeigt.
@@ -152,13 +152,14 @@ Weitere Informationen zum Gerüstbau finden Sie unter Identity [Gerüst Identit�
 
 ### <a name="examine-register"></a>Register überprüfen
 
-Wenn ein Benutzer auf den Link **registrieren** klickt, `RegisterModel.OnPostAsync` wird die Aktion aufgerufen. Der Benutzer wird von " [kreateasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) " für das `_userManager` Objekt erstellt:
+Wenn ein Benutzer auf die Schaltfläche **registrieren** auf der `Register` Seite klickt, `RegisterModel.OnPostAsync` wird die Aktion aufgerufen. Der Benutzer wird von " [kreateasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) " für das `_userManager` Objekt erstellt:
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
-Wenn der Benutzer erfolgreich erstellt wurde, wird der Benutzer durch den-Befehl angemeldet `_signInManager.SignInAsync` .
-
-Unter [Konto Bestätigung](xref:security/authentication/accconfirm#prevent-login-at-registration) finden Sie Schritte zum Verhindern der sofortigen Anmeldung bei der Registrierung.
+<!-- .NET 5 fixes this, see
+https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+-->
+[!INCLUDE[](~/includes/disableVer.md)]
 
 ### <a name="log-in"></a>Anmelden
 
@@ -242,6 +243,8 @@ Identity Identity Fügen Sie die folgende `ResolveStaticWebAssetsInputsDependsOn
 </Target>
 ```
 
+<a name="next"></a>
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [ASP.net Core Identity Quellcode](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
@@ -300,7 +303,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Beispiel:
+Das generierte Projekt stellt [ASP.net Core Identity ](xref:security/authentication/identity) als [ Razor Klassenbibliothek](xref:razor-pages/ui-class)bereit. Die Identity Razor Klassenbibliothek macht Endpunkte mit dem `Identity` Bereich verfügbar. Zum Beispiel:
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
