@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: e905f08f867b73fc37d5fed7138256ac89811312
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 85446ac18608b39c469da766e1a9f2e92a1f5e11
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402402"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445111"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentifizierung und Autorisierung in ASP.NET Core Blazor
 
@@ -320,7 +320,7 @@ Wenn weder <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Rol
 
 Bei Blazor kann der Authentifizierungsstatus *asynchron* bestimmt werden. Das primäre Szenario für diesen Ansatz sind Blazor WebAssembly-Apps, die eine Anforderung zur Authentifizierung an einen externen Endpunkt stellen.
 
-Während der Authentifizierung zeigt <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> standardmäßig keine Inhalte an. Um während der Authentifizierung Inhalte anzuzeigen, wenden Sie das `<Authorizing>`-Element:
+Während der Authentifizierung zeigt <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> standardmäßig keine Inhalte an. Wenden Sie das `<Authorizing>`-Tag an, um während der Authentifizierung Inhalte anzuzeigen:
 
 ```razor
 <AuthorizeView>
@@ -413,7 +413,7 @@ In der Standardprojektvorlage für Blazor Server zeigt die Komponente `App` (`Ap
 
 Der Inhalt der Tags `<NotFound>`, `<NotAuthorized>` und `<Authorizing>` kann beliebige Elemente beinhalten, z. B. andere interaktive Komponenten.
 
-Wenn das Element `<NotAuthorized>` nicht angegeben ist, verwendet <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> die folgende alternative Meldung:
+Wenn das Tag `<NotAuthorized>` nicht angegeben ist, verwendet <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> die folgende alternative Meldung:
 
 ```html
 Not authorized.
