@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 2c58a274e8de0b1205b223287b7690b1d5caed23
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 06803ee57824bbfac5725763938abbb9db0e360a
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445124"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568846"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Konfigurieren der Zertifikat Authentifizierung in ASP.net Core
 
@@ -44,7 +44,7 @@ Fügen Sie in Ihrer Web-App einen Verweis auf das Paket [Microsoft. aspnetcore. 
 
 Wenn die Authentifizierung fehlschlägt, gibt dieser Handler `403 (Forbidden)` wie erwartet eine Antwort zurück `401 (Unauthorized)` . Der Grund dafür ist, dass die Authentifizierung während der anfänglichen TLS-Verbindung stattfinden soll. Bis zum Zeitpunkt, an dem der Handler erreicht wird, ist es zu spät. Es gibt keine Möglichkeit, die Verbindung von einer anonymen Verbindung mit einem Zertifikat zu aktualisieren.
 
-Fügen Sie außerdem `app.UseAuthentication();` die- `Startup.Configure` Methode hinzu. Andernfalls `HttpContext.User` wird nicht auf `ClaimsPrincipal` aus dem Zertifikat erstellt festgelegt. Zum Beispiel:
+Fügen Sie außerdem `app.UseAuthentication();` die- `Startup.Configure` Methode hinzu. Andernfalls `HttpContext.User` wird nicht auf `ClaimsPrincipal` aus dem Zertifikat erstellt festgelegt. Beispiel:
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -614,7 +614,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Die standardmäßige Cache Implementierung speichert die Ergebnisse im Arbeitsspeicher. Sie können Ihren eigenen Cache bereitstellen, indem `ICertificateValidationCache` Sie ihn mit Abhängigkeitsinjektion implementieren und registrieren. Beispielsweise `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
+Die standardmäßige Cache Implementierung speichert die Ergebnisse im Arbeitsspeicher. Sie können Ihren eigenen Cache bereitstellen, indem `ICertificateValidationCache` Sie ihn mit Abhängigkeitsinjektion implementieren und registrieren. Beispiel: `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
 
 ::: moniker-end
 
@@ -630,7 +630,7 @@ Die TLS-Aushandlung war eine alte Möglichkeit zum Implementieren Optionaler Cli
 - HTTP/2 [verbietet](https://tools.ietf.org/html/rfc7540#section-9.2.1) die erneute Aushandlung explizit.
 - TLS 1,3 hat die Unterstützung für die erneute Aushandlung [entfernt](https://tools.ietf.org/html/rfc8740#section-1) .
 
-ASP.net Core 5 Preview 4 und höher bietet eine bequeme Unterstützung für optionale Client Zertifikate. Weitere Informationen finden Sie im [Beispiel optionale Zertifikate](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample).
+ASP.net Core 5 Preview 7 und höher bietet eine komfortable Unterstützung für optionale Client Zertifikate. Weitere Informationen finden Sie im [Beispiel optionale Zertifikate](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample).
 
 Der folgende Ansatz unterstützt optionale Client Zertifikate:
 

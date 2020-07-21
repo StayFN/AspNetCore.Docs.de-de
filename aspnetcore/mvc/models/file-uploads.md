@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 055dc7295aad67f92fe5f4e8271a1543262257b5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 720da8a8fe22f0e1911fd554c094661b4465a335
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404599"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568833"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Hochladen von Dateien in ASP.NET Core
 
@@ -191,7 +191,7 @@ Das folgende Beispiel ist analog zum vorherigen Beispiel, mit der Ausnahme, dass
 Um den POST-Befehl für das Formular in JavaScript für Clients auszuführen, die [die Fetch-API nicht unterstützen](https://caniuse.com/#feat=fetch), wählen Sie einen der folgenden Ansätze:
 
 * Verwenden Sie Fetch Polyfill (Beispiel: [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Verwenden Sie `XMLHttpRequest`. Zum Beispiel:
+* Verwenden Sie `XMLHttpRequest`. Beispiel:
 
   ```javascript
   <script>
@@ -424,7 +424,7 @@ Das `DisableFormValueModelBindingAttribute` wird zum Deaktivieren der Modellbind
 
 In der Beispiel-APP `GenerateAntiforgeryTokenCookieAttribute` `DisableFormValueModelBindingAttribute` werden und als Filter auf die Seiten Anwendungsmodelle von `/StreamedSingleFileUploadDb` und in der Verwendung von `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ Razor Seiten Konventionen](xref:razor-pages/razor-pages-conventions)angewendet:
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=8-11,17-20)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 Da die Modellbindung das Formular nicht liest, werden Parameter, die über das Formular gebunden werden, nicht gebunden (Abfrage, Route und Header funktionieren weiterhin). Die Aktionsmethode arbeitet direkt mit der `Request`-Eigenschaft zusammen. Ein `MultipartReader` wird verwendet, um die verschiedenen Abschnitte zu lesen. Schlüssel-Wert-Daten werden in einem `KeyValueAccumulator` gespeichert. Nachdem die mehrteiligen Abschnitte gelesen wurden, werden die Inhalte von `KeyValueAccumulator` verwendet, um die Formulardaten an einen Modelltyp zu binden.
 
@@ -442,7 +442,7 @@ Die vollständige `StreamingController.UploadPhysical`-Methode für das Streamin
 
 In der Beispiel-App werden Validierungsprüfungen von `FileHelpers.ProcessStreamedFile` übernommen.
 
-## <a name="validation"></a>Validierung
+## <a name="validation"></a>Überprüfen
 
 Die `FileHelpers`-Klasse der Beispiel-App veranschaulicht eine Reihe von Prüfungen für gepufferte <xref:Microsoft.AspNetCore.Http.IFormFile>- und gestreamte Dateiuploads. Informationen zum Verarbeiten mit <xref:Microsoft.AspNetCore.Http.IFormFile> gepufferter Dateiuploads in der Beispiel-App finden Sie in der Datei *Utilities/FileHelpers.cs* in der `ProcessFormFile`-Methode. Informationen zum Verarbeiten gestreamter Dateien finden Sie in der `ProcessStreamedFile`-Methode in der gleichen Datei.
 
@@ -456,7 +456,7 @@ Die `FileHelpers`-Klasse der Beispiel-App veranschaulicht eine Reihe von Prüfun
 >
 > **Implementieren Sie niemals willkürlich Sicherheitscode in einer App, wenn Sie diese Anforderungen nicht erfüllen.**
 
-### <a name="content-validation"></a>Inhaltsprüfung
+### <a name="content-validation"></a>Validierung von Inhalten
 
 **Wenden Sie für hochgeladene Inhalte eine API zum Scannen auf Viren/Schadsoftware von Drittanbietern an.**
 
@@ -464,7 +464,7 @@ Das Scannen von Dateien stellt in Szenarien mit hohem Verarbeitungsvolumen hohe 
 
 ### <a name="file-extension-validation"></a>Validierung von Dateierweiterungen
 
-Die Erweiterung der hochgeladenen Datei muss mit einer Liste zulässiger Erweiterungen abgeglichen werden. Zum Beispiel:
+Die Erweiterung der hochgeladenen Datei muss mit einer Liste zulässiger Erweiterungen abgeglichen werden. Beispiel:
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -567,7 +567,7 @@ if (formFile.Length > _fileSizeLimit)
 
 In nicht- Razor Formularen, die Formulardaten veröffentlichen oder direkt JavaScript verwenden `FormData` , muss der im-Element des Formulars angegebene Name dem `FormData` Namen des Parameters in der Aktion des Controllers entsprechen.
 
-Im folgenden Beispiel:
+Siehe folgendes Beispiel:
 
 * Wenn ein `<input>`-Element verwendet wird, wird das `name`-Attribut auf den Wert `battlePlans` festgelegt:
 
@@ -621,18 +621,17 @@ public void ConfigureServices(IServiceCollection services)
 Wenden Sie in einer Razor pages-App den Filter mit einer [Konvention](xref:razor-pages/razor-pages-conventions) in an `Startup.ConfigureServices` :
 
 ```csharp
-services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions
-            .AddPageApplicationModelConvention("/FileUploadPage",
-                model.Filters.Add(
-                    new RequestFormLimitsAttribute()
-                    {
-                        // Set the limit to 256 MB
-                        MultipartBodyLengthLimit = 268435456
-                    });
-    });
+services.AddRazorPages(options =>
+{
+    options.Conventions
+        .AddPageApplicationModelConvention("/FileUploadPage",
+            model.Filters.Add(
+                new RequestFormLimitsAttribute()
+                {
+                    // Set the limit to 256 MB
+                    MultipartBodyLengthLimit = 268435456
+                });
+});
 ```
 
 RazorWenden Sie in einer Pages-APP oder einer MVC-App den Filter auf das Seiten Modell oder die Aktionsmethode an:
@@ -669,18 +668,17 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 Wenden Sie in einer Razor pages-App den Filter mit einer [Konvention](xref:razor-pages/razor-pages-conventions) in an `Startup.ConfigureServices` :
 
 ```csharp
-services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions
-            .AddPageApplicationModelConvention("/FileUploadPage",
-                model =>
-                {
-                    // Handle requests up to 50 MB
-                    model.Filters.Add(
-                        new RequestSizeLimitAttribute(52428800));
-                });
-    });
+services.AddRazorPages(options =>
+{
+    options.Conventions
+        .AddPageApplicationModelConvention("/FileUploadPage",
+            model =>
+            {
+                // Handle requests up to 50 MB
+                model.Filters.Add(
+                    new RequestSizeLimitAttribute(52428800));
+            });
+});
 ```
 
 RazorWenden Sie den Filter in einer Pages-APP oder einer MVC-App auf die Seitenhandlerklasse oder Aktionsmethode an:
@@ -920,7 +918,7 @@ Das folgende Beispiel ist analog zum vorherigen Beispiel, mit der Ausnahme, dass
 Um den POST-Befehl für das Formular in JavaScript für Clients auszuführen, die [die Fetch-API nicht unterstützen](https://caniuse.com/#feat=fetch), wählen Sie einen der folgenden Ansätze:
 
 * Verwenden Sie Fetch Polyfill (Beispiel: [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Verwenden Sie `XMLHttpRequest`. Zum Beispiel:
+* Verwenden Sie `XMLHttpRequest`. Beispiel:
 
   ```javascript
   <script>
@@ -1171,7 +1169,7 @@ Die vollständige `StreamingController.UploadPhysical`-Methode für das Streamin
 
 In der Beispiel-App werden Validierungsprüfungen von `FileHelpers.ProcessStreamedFile` übernommen.
 
-## <a name="validation"></a>Validierung
+## <a name="validation"></a>Überprüfen
 
 Die `FileHelpers`-Klasse der Beispiel-App veranschaulicht eine Reihe von Prüfungen für gepufferte <xref:Microsoft.AspNetCore.Http.IFormFile>- und gestreamte Dateiuploads. Informationen zum Verarbeiten mit <xref:Microsoft.AspNetCore.Http.IFormFile> gepufferter Dateiuploads in der Beispiel-App finden Sie in der Datei *Utilities/FileHelpers.cs* in der `ProcessFormFile`-Methode. Informationen zum Verarbeiten gestreamter Dateien finden Sie in der `ProcessStreamedFile`-Methode in der gleichen Datei.
 
@@ -1185,7 +1183,7 @@ Die `FileHelpers`-Klasse der Beispiel-App veranschaulicht eine Reihe von Prüfun
 >
 > **Implementieren Sie niemals willkürlich Sicherheitscode in einer App, wenn Sie diese Anforderungen nicht erfüllen.**
 
-### <a name="content-validation"></a>Inhaltsprüfung
+### <a name="content-validation"></a>Validierung von Inhalten
 
 **Wenden Sie für hochgeladene Inhalte eine API zum Scannen auf Viren/Schadsoftware von Drittanbietern an.**
 
@@ -1193,7 +1191,7 @@ Das Scannen von Dateien stellt in Szenarien mit hohem Verarbeitungsvolumen hohe 
 
 ### <a name="file-extension-validation"></a>Validierung von Dateierweiterungen
 
-Die Erweiterung der hochgeladenen Datei muss mit einer Liste zulässiger Erweiterungen abgeglichen werden. Zum Beispiel:
+Die Erweiterung der hochgeladenen Datei muss mit einer Liste zulässiger Erweiterungen abgeglichen werden. Beispiel:
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1296,7 +1294,7 @@ if (formFile.Length > _fileSizeLimit)
 
 In nicht- Razor Formularen, die Formulardaten veröffentlichen oder direkt JavaScript verwenden `FormData` , muss der im-Element des Formulars angegebene Name dem `FormData` Namen des Parameters in der Aktion des Controllers entsprechen.
 
-Im folgenden Beispiel:
+Siehe folgendes Beispiel:
 
 * Wenn ein `<input>`-Element verwendet wird, wird das `name`-Attribut auf den Wert `battlePlans` festgelegt:
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 0492dd3d9b2aee7e844e944bea96259c3ddf18d0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0f4022e46993c6a957d3d0c133b3db56fa650edc
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408720"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568820"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>RazorSeiten Autorisierungs Konventionen in ASP.net Core
 
@@ -34,9 +34,9 @@ Die Beispiel-App verwendet die [Cookie- Identity Authentifizierung ohne ASP.net 
 
 ## <a name="require-authorization-to-access-a-page"></a>Autorisierung für den Zugriff auf eine Seite erforderlich
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um der <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> Seite auf dem angegebenen Pfad ein hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> Konvention, um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> der Seite einen unter dem angegebenen Pfad hinzuzufügen:
 
-[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,4)]
+[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=3)]
 
 Der angegebene Pfad ist der Ansichts-Engine-Pfad. dabei handelt es sich um den Razor relativen Pfad des Seiten Stamms ohne Erweiterung, der nur Schrägstriche enthält.
 
@@ -51,9 +51,9 @@ options.Conventions.AuthorizePage("/Contact", "AtLeast21");
 
 ## <a name="require-authorization-to-access-a-folder-of-pages"></a>Autorisierung für den Zugriff auf einen Ordner von Seiten erforderlich
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> auf allen Seiten in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> Konvention, um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> allen Seiten in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
 
-[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,5)]
+[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=4)]
 
 Der angegebene Pfad ist der Pfad der Ansichts-Engine, der der relative Pfad des Seiten Stamms ist Razor .
 
@@ -65,7 +65,7 @@ options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
 
 ## <a name="require-authorization-to-access-an-area-page"></a>Autorisierung für den Zugriff auf eine Bereichs Seite erforderlich
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um der <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> Bereichs Seite einen unter dem angegebenen Pfad hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> Konvention, um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> der Bereichs Seite einen unter dem angegebenen Pfad hinzuzufügen:
 
 ```csharp
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
@@ -81,7 +81,7 @@ options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21
 
 ## <a name="require-authorization-to-access-a-folder-of-areas"></a>Autorisierung für den Zugriff auf einen Ordner von Bereichen erforderlich
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um einem <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> alle Bereiche in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> Konvention, um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> allen Bereichen in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
 
 ```csharp
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
@@ -97,17 +97,17 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 
 ## <a name="allow-anonymous-access-to-a-page"></a>Anonymen Zugriff auf eine Seite zulassen
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um eine einer <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> Seite im angegebenen Pfad hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> Konvention, um eine <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> Seite unter dem angegebenen Pfad zu einer Seite hinzuzufügen:
 
-[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,6)]
+[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=5)]
 
 Der angegebene Pfad ist der Ansichts-Engine-Pfad. dabei handelt es sich um den Razor relativen Pfad des Seiten Stamms ohne Erweiterung, der nur Schrägstriche enthält.
 
 ## <a name="allow-anonymous-access-to-a-folder-of-pages"></a>Anonymen Zugriff auf einen Ordner von Seiten zulassen
 
-Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> Konvention über <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> , um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> auf allen Seiten in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
+Verwenden Sie die <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> Konvention, um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> allen Seiten in einem Ordner unter dem angegebenen Pfad hinzuzufügen:
 
-[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,7)]
+[!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=6)]
 
 Der angegebene Pfad ist der Pfad der Ansichts-Engine, der der relative Pfad des Seiten Stamms ist Razor .
 
