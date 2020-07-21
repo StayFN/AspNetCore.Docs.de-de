@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 97e3f60480bc8e7e88c8361e5b13f02d98765d9e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 77b230f14b4eef60d771daf8fe09288a9dd3c69c
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405301"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212994"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutorial: Erste Schritte mit Razor Pages in ASP.NET Core
 
@@ -94,7 +94,7 @@ Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-W
   * Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.
   * Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.
 
-* Wenn das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Required assets to build and debug are missing from 'RazorPagesMovie'. (Die erforderlichen Objekte zum Erstellen und Debuggen sind in „RazorPagesMovie“ nicht vorhanden. Sollen sie hinzugefügt werden?** Wählen Sie **Ja**.
+* Sobald das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Die erforderlichen Objekte zum Erstellen und Debuggen sind in "RazorPagesMovie" nicht vorhanden. Sollen sie hinzugefügt werden?** Wählen Sie **Ja**.
 
   Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.
 
@@ -108,16 +108,14 @@ Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-W
 
   ![Auswählen der macOS-Web-App-Vorlage](razor-pages-start/_static/web_app_template_vsmac.png)
 
-* Bestätigen Sie die folgenden Konfigurationen:
+* Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:
 
-  * **Zielframework** auf **.NET Core 3.1** festgelegt
-  * **Authentifizierung** auf **Keine Authentifizierung** festgelegt
-   
+  * Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.
+  * Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 3.x-Version aus.
+
   Klicken Sie auf **Weiter**.
 
-  ![Auswahl für .NET Core 3.1 in macOS](razor-pages-start/_static/targetframework3.png)
-
-* Nennen Sie das Projekt **RazorPagesMovie**, und wählen Sie dann **Erstellen** aus.
+* Nennen Sie das Projekt **RazorPagesMovie**, und klicken Sie auf **Erstellen**.
 
   ![Benennen des macOS-Projekts](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -244,7 +242,7 @@ Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-W
   * Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.
   * Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.
 
-* Wenn das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Required assets to build and debug are missing from 'RazorPagesMovie'. (Die erforderlichen Objekte zum Erstellen und Debuggen sind in „RazorPagesMovie“ nicht vorhanden. Sollen sie hinzugefügt werden?** Wählen Sie **Ja**.
+* Sobald das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Die erforderlichen Objekte zum Erstellen und Debuggen sind in "RazorPagesMovie" nicht vorhanden. Sollen sie hinzugefügt werden?** Wählen Sie **Ja**.
 
   Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.
 
@@ -256,11 +254,14 @@ Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-W
 
 * Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung** > **Weiter**. Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung** > **Weiter** (Web und Konsole).
 
-* Legen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** das **Zielframework** auf **.NET Core 3.1** fest.
+* Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:
 
-  ![Auswahl für .NET Core 3.0 in macOS](razor-pages-start/_static/targetframework3.png)
+  * Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.
+  * Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 2.x-Version aus.
 
-* Nennen Sie das Projekt **RazorPagesMovie**, und wählen Sie dann **Erstellen** aus.
+  Klicken Sie auf **Weiter**.
+
+* Nennen Sie das Projekt **RazorPagesMovie**, und klicken Sie auf **Erstellen**.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 

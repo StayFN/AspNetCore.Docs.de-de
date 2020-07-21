@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 01321d68defafbe79371250669f921307bcfdba6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d4eb1744b1186704603430584b3da0793f90ee49
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407043"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213090"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Erste Schritte mit ASP.NET Core MVC
 
@@ -106,14 +106,12 @@ Das Tutorial setzt voraus, dass Sie mit VS Code vertraut sind. Weitere Informati
 
   ![Auswählen der macOS-Web-App-Vorlage](start-mvc/_static/web_app_template_vsmac.png)
 
-* Bestätigen Sie die folgenden Konfigurationen:
+* Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:
 
-  * **Zielframework** auf **.NET Core 3.1** festgelegt
-  * **Authentifizierung** auf **Keine Authentifizierung** festgelegt
-   
+  * Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.
+  * Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 3.x-Version aus.
+
   Klicken Sie auf **Weiter**.
-
-  ![Auswahl für .NET Core 3.1 in macOS](start-mvc/_static/new_project_31_vsmac.png)
 
 * Nennen Sie das Projekt **MvcMovie**, und wählen Sie dann **Erstellen** aus.
 
@@ -259,9 +257,12 @@ Das Tutorial setzt voraus, dass Sie mit VS Code vertraut sind. Weitere Informati
 
 * Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung (Model-View-Controller)**  > **Weiter**. Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung (Model-View-Controller)**  > **Weiter** (Web und Konsole).
 
-* Übernehmen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** die Standardeinstellung für **Zielframework** von **.NET Core 2.2**.
+* Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:
 
-  ![Auswahl für .NET Core 2.2 in macOS](./start-mvc/_static/new_project_22_vsmac.png)
+  * Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.
+  * Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 2.x-Version aus.
+
+  Klicken Sie auf **Weiter**.
 
 * Nennen Sie das Projekt **MvcMovie**, und wählen Sie dann **Erstellen** aus.
 

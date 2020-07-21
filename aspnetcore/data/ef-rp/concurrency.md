@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 597f396237151f49a9ae333973e91d8f4f7c6ff1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ff9e01df002ac0fc94ced6d5d093099d66a14f36
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176276"
 ---
 # <a name="part-8-razor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Teil 8: Razor Pages mit EF Core in ASP.NET Core – Parallelität
 
@@ -86,7 +86,7 @@ EF Core löst `DbConcurrencyException`-Ausnahmen aus, wenn Konflikte erkannt wer
 
 * Konfigurieren Sie EF Core so, dass die ursprünglichen Werte von Spalten, die als [Parallelitätstoken](/ef/core/modeling/concurrency) in der Where-Klausel der Update- und Delete-Befehle enthalten sind, einbezogen werden.
 
-  Wenn `SaveChanges` aufgerufen wird, sucht die Where-Klausel nach den ursprünglichen Werten von Eigenschaften, die als Anmerkung mit dem [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute)-Attribut versehen wurden. Die Update-Anweisung findet keine zu aktualisierende Zeile, wenn sich eine der Parallelitätstokeneigenschaften geändert hat, seit die Zeile zum ersten Mal gelesen wurde. EF Core interpretiert dies als einen Parallelitätskonflikt. Bei Datenbanktabellen mit vielen Spalten kann dieser Ansatz zu sehr großen Where-Klauseln führen, was wiederum dazu führen kann, dass eine große Anzahl von Zuständen erforderlich ist. Deshalb wird dieser Ansatz in der Regel nicht empfohlen, und ist nicht die Methode, die in diesem Tutorial verwendet wird.
+  Wenn `SaveChanges` aufgerufen wird, sucht die Where-Klausel nach den ursprünglichen Werten von Eigenschaften, die als Anmerkung mit dem <xref:System.ComponentModel.DataAnnotations.ConcurrencyCheckAttribute>-Attribut versehen wurden. Die Update-Anweisung findet keine zu aktualisierende Zeile, wenn sich eine der Parallelitätstokeneigenschaften geändert hat, seit die Zeile zum ersten Mal gelesen wurde. EF Core interpretiert dies als einen Parallelitätskonflikt. Bei Datenbanktabellen mit vielen Spalten kann dieser Ansatz zu sehr großen Where-Klauseln führen, was wiederum dazu führen kann, dass eine große Anzahl von Zuständen erforderlich ist. Deshalb wird dieser Ansatz in der Regel nicht empfohlen, und ist nicht die Methode, die in diesem Tutorial verwendet wird.
 
 * Fügen Sie eine Änderungsverfolgungsspalte in die Datenbanktabelle ein, die verwendet werden kann, um zu bestimmen, wenn eine Änderung an einer Zeile vorgenommen wurde.
 
@@ -98,7 +98,7 @@ Fügen Sie der Datei *Models/Department.cs* eine Nachverfolgungseigenschaft name
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
-Das [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute)-Attribut identifiziert die Spalte als Parallelitätsnachverfolgungsspalte. Die Fluent-API ist eine alternative Methode, um die Nachverfolgungseigenschaft anzugeben:
+Das <xref:System.ComponentModel.DataAnnotations.TimestampAttribute>-Attribut identifiziert die Spalte als Parallelitätsnachverfolgungsspalte. Die Fluent-API ist eine alternative Methode, um die Nachverfolgungseigenschaft anzugeben:
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -250,7 +250,7 @@ Aktualisieren Sie die Seite *Pages\Departments\Index.cshtml*:
 
 Der folgende Code zeigt die aktualisierte Seite an:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
 
 ## <a name="update-the-edit-page-model"></a>Aktualisieren des Seitenbearbeitungsmodells
 
@@ -258,7 +258,7 @@ Aktualisieren Sie die Datei *Pages\Departments\Edit.cshtml.cs* mithilfe des folg
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
 
-[OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) wird mit dem `rowVersion`-Wert aus der Entität aktualisiert, aus der dieser in der `OnGet`-Methode abgerufen wurde. EF Core generiert einen SQL UPDATE-Befehl mit einer WHERE-Klausel mit dem ursprünglichen `RowVersion`-Wert. Wenn keine Zeilen durch den UPDATE-Befehl betroffen sind (keine Zeile enthält den ursprünglichen `RowVersion`-Wert), wird eine `DbUpdateConcurrencyException`-Ausnahme ausgelöst.
+<xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry.OriginalValue> wird mit dem `rowVersion`-Wert aus der Entität aktualisiert, als diese in der `OnGet`-Methode abgerufen wurde. EF Core generiert einen SQL UPDATE-Befehl mit einer WHERE-Klausel mit dem ursprünglichen `RowVersion`-Wert. Wenn keine Zeilen durch den UPDATE-Befehl betroffen sind (keine Zeile enthält den ursprünglichen `RowVersion`-Wert), wird eine `DbUpdateConcurrencyException`-Ausnahme ausgelöst.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_RowVersion&highlight=17-18)]
 
@@ -282,16 +282,16 @@ Der folgende hervorgehobene Code legt den `RowVersion`-Wert auf den neuen Wert f
 
 Die Anweisung `ModelState.Remove` ist erforderlich, da `ModelState` über den alten `RowVersion`-Wert verfügt. In der Razor-Seite hat der Wert `ModelState` Vorrang vor den Modelleigenschaftswerten, wenn beide vorhanden sind.
 
-### <a name="update-the-razor-page"></a>Aktualisieren der Razor-Seite
+### <a name="update-the-edit-page"></a>Aktualisieren der Seite „Bearbeiten“
 
 Aktualisieren Sie die Datei *Pages/Departments/Edit.cshtml* mithilfe des folgenden Codes:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 Der vorangehende Code:
 
 * Aktualisiert die `page`-Anweisung von `@page` auf `@page "{id:int}"`.
-* Fügt eine ausgeblendete Zeilenversion hinzu. `RowVersion` muss hinzugefügt werden, damit über ein Postback-Ereignis der Wert gebunden werden kann.
+* Fügt eine ausgeblendete Zeilenversion hinzu. `RowVersion` muss hinzugefügt werden, damit ein Postback-Ereignis den Wert bindet.
 * Zeigt das letzte Byte von `RowVersion` zu Debugzwecken an.
 * Ersetzt `ViewData` durch den stark typisierten `InstructorNameSL`.
 
@@ -323,7 +323,7 @@ In diesem Browserfenster sollte nicht das Namensfeld geändert werden. Kopieren 
 
 Klicken Sie erneut auf **Speichern**. Der Wert, den Sie auf der zweiten Registerkarte eingegeben haben, wird gespeichert. Die gespeicherten Werte werden auf der Indexseite angezeigt.
 
-## <a name="update-the-delete-page"></a>Aktualisieren der Seite „Delete“ (Löschen)
+## <a name="update-the-delete-page-model"></a>Aktualisieren des Modells für die Seite „Löschen“
 
 Aktualisieren Sie die Datei *Pages/Departments/Delete.cshtml.cs* mithilfe des folgenden Codes:
 
@@ -335,11 +335,11 @@ Die Seite „Löschen“ erkennt Nebenläufigkeitskonflikte, wenn die Entität g
 * Wird eine DbUpdateConcurrencyException-Ausnahme ausgelöst.
 * Wird `OnGetAsync` mit `concurrencyError` aufgerufen.
 
-### <a name="update-the-delete-razor-page"></a>Aktualisieren der Razor-Seite „Delete“ (Löschen)
+### <a name="update-the-delete-page"></a>Aktualisieren der Seite „Delete“ (Löschen)
 
 Aktualisieren Sie die *Pages\Departments\Delete.cshtml*-Datei mithilfe des folgenden Codes:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,42,51)]
 
 Durch den vorangehenden Code werden folgende Änderungen vorgenommen:
 
@@ -347,7 +347,7 @@ Durch den vorangehenden Code werden folgende Änderungen vorgenommen:
 * Eine Fehlermeldung wird hinzugefügt.
 * „FirstMidName“ wird durch „FullName“ im Feld **Administrator** ersetzt.
 * `RowVersion` wird geändert, um das letzte Byte anzuzeigen.
-* Fügt eine ausgeblendete Zeilenversion hinzu. `RowVersion` muss hinzugefügt werden, damit postgit add back den Wert bindet.
+* Fügt eine ausgeblendete Zeilenversion hinzu. `RowVersion` muss hinzugefügt werden, damit ein Postback-Ereignis den Wert bindet.
 
 ### <a name="test-concurrency-conflicts"></a>Testen Sie auf Parallelitätskonflikte
 
@@ -365,7 +365,7 @@ Beide Registerkarten zeigen die gleichen Informationen an.
 
 Der Browser zeigt die Indexseite mit dem geänderten Wert und dem aktualisierten RowVersion-Indikator an. Beachten Sie, dass der aktualisierte RowVersion-Indikator beim zweiten Postback-Ereignis auf der anderen Registerkarte angezeigt wird.
 
-Löschen Sie den Testfachbereich aus der zweiten Registerkarte. Ein Parallelitätsfehler wird mit den aktuellen Werten aus der Datenbank angezeigt. Klicken Sie auf **Löschen**, wird die Entität gelöscht, es sei denn, `RowVersion` wurde aktualisiert und der Fachbereich wurde gelöscht.
+Löschen Sie den Testfachbereich aus der zweiten Registerkarte. Ein Parallelitätsfehler wird mit den aktuellen Werten aus der Datenbank angezeigt. Durch Klicken auf **Löschen** wird die Entität gelöscht, es sei denn, `RowVersion` wurde aktualisiert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -550,7 +550,7 @@ Aktualisieren der Indexseite:
 
 Das folgende Markup zeigt die aktualisierte Seite an:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
 
 ### <a name="update-the-edit-page-model"></a>Aktualisieren des Seitenbearbeitungsmodells
 
@@ -582,7 +582,7 @@ Die Anweisung `ModelState.Remove` ist erforderlich, da `ModelState` über den al
 
 Aktualisieren Sie *Pages/Courses/Edit.cshtml* mithilfe des folgenden Markups:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 Das obenstehende Markup:
 
@@ -637,7 +637,7 @@ Die Seite „Löschen“ erkennt Nebenläufigkeitskonflikte, wenn die Entität g
 
 Aktualisieren Sie die *Pages\Departments\Delete.cshtml*-Datei mithilfe des folgenden Codes:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
 Durch den vorangehenden Code werden folgende Änderungen vorgenommen:
 
@@ -663,7 +663,7 @@ Beide Registerkarten zeigen die gleichen Informationen an.
 
 Der Browser zeigt die Indexseite mit dem geänderten Wert und dem aktualisierten RowVersion-Indikator an. Beachten Sie, dass der aktualisierte RowVersion-Indikator beim zweiten Postback-Ereignis auf der anderen Registerkarte angezeigt wird.
 
-Löschen Sie den Testfachbereich aus der zweiten Registerkarte. Ein Parallelitätsfehler wird mit den aktuellen Werten aus der Datenbank angezeigt. Klicken Sie auf **Löschen**, wird die Entität gelöscht, es sei denn, `RowVersion` wurde aktualisiert und der Fachbereich wurde gelöscht.
+Löschen Sie den Testfachbereich aus der zweiten Registerkarte. Ein Parallelitätsfehler wird mit den aktuellen Werten aus der Datenbank angezeigt. Durch Klicken auf **Löschen** wird die Entität gelöscht, es sei denn, `RowVersion` wurde aktualisiert.
 
 Informationen zum Vererben eines Datenmodells finden Sie unter [Vererbung](xref:data/ef-mvc/inheritance).
 
