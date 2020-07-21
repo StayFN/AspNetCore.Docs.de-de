@@ -13,111 +13,109 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 97e3f60480bc8e7e88c8361e5b13f02d98765d9e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 77b230f14b4eef60d771daf8fe09288a9dd3c69c
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405301"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212994"
 ---
-# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a><span data-ttu-id="8c16a-104">Tutorial: Erste Schritte mit Razor Pages in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8c16a-104">Tutorial: Get started with Razor Pages in ASP.NET Core</span></span>
+# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a><span data-ttu-id="e65bd-104">Tutorial: Erste Schritte mit Razor Pages in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e65bd-104">Tutorial: Get started with Razor Pages in ASP.NET Core</span></span>
 
-<span data-ttu-id="8c16a-105">Von [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="8c16a-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="e65bd-105">Von [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="e65bd-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
-<span data-ttu-id="8c16a-106">Dies ist das erste Tutorial einer Reihe, in der Sie Grundlegendes zur Erstellung einer ASP.NET Core-Web-App mit Razor Pages erfahren.</span><span class="sxs-lookup"><span data-stu-id="8c16a-106">This is the first tutorial of a series that teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span>
+<span data-ttu-id="e65bd-106">Dies ist das erste Tutorial einer Reihe, in der Sie Grundlegendes zur Erstellung einer ASP.NET Core-Web-App mit Razor Pages erfahren.</span><span class="sxs-lookup"><span data-stu-id="e65bd-106">This is the first tutorial of a series that teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span>
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
-<span data-ttu-id="8c16a-107">Am Ende der Reihe verfügen Sie über eine App, mit der eine Filmdatenbank verwaltet werden kann.</span><span class="sxs-lookup"><span data-stu-id="8c16a-107">At the end of the series, you'll have an app that manages a database of movies.</span></span>  
+<span data-ttu-id="e65bd-107">Am Ende der Reihe verfügen Sie über eine App, mit der eine Filmdatenbank verwaltet werden kann.</span><span class="sxs-lookup"><span data-stu-id="e65bd-107">At the end of the series, you'll have an app that manages a database of movies.</span></span>  
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-<span data-ttu-id="8c16a-108">In diesem Tutorial:</span><span class="sxs-lookup"><span data-stu-id="8c16a-108">In this tutorial, you:</span></span>
+<span data-ttu-id="e65bd-108">In diesem Tutorial:</span><span class="sxs-lookup"><span data-stu-id="e65bd-108">In this tutorial, you:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="8c16a-109">Sie erstellen eine Razor Pages-Web-App.</span><span class="sxs-lookup"><span data-stu-id="8c16a-109">Create a Razor Pages web app.</span></span>
-> * <span data-ttu-id="8c16a-110">Führen Sie die App aus.</span><span class="sxs-lookup"><span data-stu-id="8c16a-110">Run the app.</span></span>
-> * <span data-ttu-id="8c16a-111">Überprüfen Sie die Projektdateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-111">Examine the project files.</span></span>
+> * <span data-ttu-id="e65bd-109">Sie erstellen eine Razor Pages-Web-App.</span><span class="sxs-lookup"><span data-stu-id="e65bd-109">Create a Razor Pages web app.</span></span>
+> * <span data-ttu-id="e65bd-110">Führen Sie die App aus.</span><span class="sxs-lookup"><span data-stu-id="e65bd-110">Run the app.</span></span>
+> * <span data-ttu-id="e65bd-111">Überprüfen Sie die Projektdateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-111">Examine the project files.</span></span>
 
-<span data-ttu-id="8c16a-112">Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-Web-App, auf der Sie in späteren Tutorials aufbauen werden.</span><span class="sxs-lookup"><span data-stu-id="8c16a-112">At the end of this tutorial, you'll have a working Razor Pages web app that you'll build on in later tutorials.</span></span>
+<span data-ttu-id="e65bd-112">Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-Web-App, auf der Sie in späteren Tutorials aufbauen werden.</span><span class="sxs-lookup"><span data-stu-id="e65bd-112">At the end of this tutorial, you'll have a working Razor Pages web app that you'll build on in later tutorials.</span></span>
 
 ![Start- oder Indexseite](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a><span data-ttu-id="8c16a-114">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="8c16a-114">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e65bd-114">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="e65bd-114">Prerequisites</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="8c16a-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8c16a-115">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="e65bd-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e65bd-115">Visual Studio</span></span>](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="8c16a-116">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8c16a-116">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="e65bd-116">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="e65bd-116">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="8c16a-117">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="8c16a-117">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="e65bd-117">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="e65bd-117">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a><span data-ttu-id="8c16a-118">Erstellen einer Razor Pages-Web-App</span><span class="sxs-lookup"><span data-stu-id="8c16a-118">Create a Razor Pages web app</span></span>
+## <a name="create-a-razor-pages-web-app"></a><span data-ttu-id="e65bd-118">Erstellen einer Razor Pages-Web-App</span><span class="sxs-lookup"><span data-stu-id="e65bd-118">Create a Razor Pages web app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="8c16a-119">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8c16a-119">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="e65bd-119">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e65bd-119">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="8c16a-120">Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** > **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-120">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
-* <span data-ttu-id="8c16a-121">Erstellen Sie eine neue ASP.NET Core-Webanwendung, und klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-121">Create a new ASP.NET Core Web Application and select **Next**.</span></span>
-  <span data-ttu-id="8c16a-122">![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/np_2.1.png)</span><span class="sxs-lookup"><span data-stu-id="8c16a-122">![new ASP.NET Core Web Application](razor-pages-start/_static/np_2.1.png)</span></span>
-* <span data-ttu-id="8c16a-123">Nennen Sie das Projekt **RazorPagesMovie**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-123">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="8c16a-124">Es ist wichtig, den Namen *RazorPagesMovie* zu verwenden, damit die Namespaces übereinstimmen, wenn Sie Code kopieren und einfügen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-124">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy and paste code.</span></span>
-  <span data-ttu-id="8c16a-125">![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/config.png)</span><span class="sxs-lookup"><span data-stu-id="8c16a-125">![new ASP.NET Core Web Application](razor-pages-start/_static/config.png)</span></span>
+* <span data-ttu-id="e65bd-120">Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** > **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-120">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="e65bd-121">Erstellen Sie eine neue ASP.NET Core-Webanwendung, und klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-121">Create a new ASP.NET Core Web Application and select **Next**.</span></span>
+  <span data-ttu-id="e65bd-122">![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/np_2.1.png)</span><span class="sxs-lookup"><span data-stu-id="e65bd-122">![new ASP.NET Core Web Application](razor-pages-start/_static/np_2.1.png)</span></span>
+* <span data-ttu-id="e65bd-123">Nennen Sie das Projekt **RazorPagesMovie**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-123">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="e65bd-124">Es ist wichtig, den Namen *RazorPagesMovie* zu verwenden, damit die Namespaces übereinstimmen, wenn Sie Code kopieren und einfügen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-124">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy and paste code.</span></span>
+  <span data-ttu-id="e65bd-125">![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/config.png)</span><span class="sxs-lookup"><span data-stu-id="e65bd-125">![new ASP.NET Core Web Application](razor-pages-start/_static/config.png)</span></span>
 
-* <span data-ttu-id="8c16a-126">Klicken Sie in der Dropdownliste nacheinander auf **ASP.NET Core 3.1**, **Webanwendung** und **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-126">Select **ASP.NET Core 3.1** in the dropdown, **Web Application**, and then select **Create**.</span></span>
+* <span data-ttu-id="e65bd-126">Klicken Sie in der Dropdownliste nacheinander auf **ASP.NET Core 3.1**, **Webanwendung** und **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-126">Select **ASP.NET Core 3.1** in the dropdown, **Web Application**, and then select **Create**.</span></span>
 
 ![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/3/npx.png)
 
-  <span data-ttu-id="8c16a-128">Das folgende Startprojekt wird erstellt:</span><span class="sxs-lookup"><span data-stu-id="8c16a-128">The following starter project is created:</span></span>
+  <span data-ttu-id="e65bd-128">Das folgende Startprojekt wird erstellt:</span><span class="sxs-lookup"><span data-stu-id="e65bd-128">The following starter project is created:</span></span>
 
   ![Projektmappen-Explorer](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="8c16a-130">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8c16a-130">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="e65bd-130">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="e65bd-130">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="8c16a-131">Öffnen Sie das [integrierte Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span><span class="sxs-lookup"><span data-stu-id="8c16a-131">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
+* <span data-ttu-id="e65bd-131">Öffnen Sie das [integrierte Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span><span class="sxs-lookup"><span data-stu-id="e65bd-131">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
 
-* <span data-ttu-id="8c16a-132">Wechseln Sie zum Verzeichnis (`cd`), das das Projekt enthalten soll.</span><span class="sxs-lookup"><span data-stu-id="8c16a-132">Change to the directory (`cd`) which will contain the project.</span></span>
+* <span data-ttu-id="e65bd-132">Wechseln Sie zum Verzeichnis (`cd`), das das Projekt enthalten soll.</span><span class="sxs-lookup"><span data-stu-id="e65bd-132">Change to the directory (`cd`) which will contain the project.</span></span>
 
-* <span data-ttu-id="8c16a-133">Führen Sie die folgenden Befehle aus:</span><span class="sxs-lookup"><span data-stu-id="8c16a-133">Run the following commands:</span></span>
+* <span data-ttu-id="e65bd-133">Führen Sie die folgenden Befehle aus:</span><span class="sxs-lookup"><span data-stu-id="e65bd-133">Run the following commands:</span></span>
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
 
-  * <span data-ttu-id="8c16a-134">Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.</span><span class="sxs-lookup"><span data-stu-id="8c16a-134">The `dotnet new` command creates a new Razor Pages project in the *RazorPagesMovie* folder.</span></span>
-  * <span data-ttu-id="8c16a-135">Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="8c16a-135">The `code` command opens the *RazorPagesMovie* folder in the current instance of Visual Studio Code.</span></span>
+  * <span data-ttu-id="e65bd-134">Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.</span><span class="sxs-lookup"><span data-stu-id="e65bd-134">The `dotnet new` command creates a new Razor Pages project in the *RazorPagesMovie* folder.</span></span>
+  * <span data-ttu-id="e65bd-135">Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="e65bd-135">The `code` command opens the *RazorPagesMovie* folder in the current instance of Visual Studio Code.</span></span>
 
-* <span data-ttu-id="8c16a-136">Wenn das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Required assets to build and debug are missing from 'RazorPagesMovie'. (Die erforderlichen Objekte zum Erstellen und Debuggen sind in „RazorPagesMovie“ nicht vorhanden. Sollen sie hinzugefügt werden?**</span><span class="sxs-lookup"><span data-stu-id="8c16a-136">After the status bar's OmniSharp flame icon turns green, a dialog asks **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?**</span></span> <span data-ttu-id="8c16a-137">Wählen Sie **Ja**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-137">Select **Yes**.</span></span>
+* <span data-ttu-id="e65bd-136">Sobald das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Die erforderlichen Objekte zum Erstellen und Debuggen sind in "RazorPagesMovie" nicht vorhanden. Sollen sie hinzugefügt werden?**</span><span class="sxs-lookup"><span data-stu-id="e65bd-136">After the status bar's OmniSharp flame icon turns green, a dialog asks **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?**</span></span> <span data-ttu-id="e65bd-137">Wählen Sie **Ja**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-137">Select **Yes**.</span></span>
 
-  <span data-ttu-id="8c16a-138">Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="8c16a-138">A *.vscode* directory, containing *launch.json* and *tasks.json* files, is added to the project's root directory.</span></span>
+  <span data-ttu-id="e65bd-138">Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="e65bd-138">A *.vscode* directory, containing *launch.json* and *tasks.json* files, is added to the project's root directory.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="8c16a-139">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="8c16a-139">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="e65bd-139">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="e65bd-139">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="8c16a-140">Klicken Sie auf **Datei** > **Neue Projektmappe**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-140">Select **File** > **New Solution**.</span></span>
+* <span data-ttu-id="e65bd-140">Klicken Sie auf **Datei** > **Neue Projektmappe**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-140">Select **File** > **New Solution**.</span></span>
 
   ![Neue Projektmappe in macOS](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* <span data-ttu-id="8c16a-142">Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung** > **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-142">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **Web Application** > **Next**.</span></span> <span data-ttu-id="8c16a-143">Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung** > **Weiter** (Web und Konsole).</span><span class="sxs-lookup"><span data-stu-id="8c16a-143">In version 8.6 or later, select **Web and Console** > **App** > **Web Application** > **Next**.</span></span>
+* <span data-ttu-id="e65bd-142">Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung** > **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-142">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **Web Application** > **Next**.</span></span> <span data-ttu-id="e65bd-143">Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung** > **Weiter** (Web und Konsole).</span><span class="sxs-lookup"><span data-stu-id="e65bd-143">In version 8.6 or later, select **Web and Console** > **App** > **Web Application** > **Next**.</span></span>
 
   ![Auswählen der macOS-Web-App-Vorlage](razor-pages-start/_static/web_app_template_vsmac.png)
 
-* <span data-ttu-id="8c16a-145">Bestätigen Sie die folgenden Konfigurationen:</span><span class="sxs-lookup"><span data-stu-id="8c16a-145">Confirm the following configurations:</span></span>
+* <span data-ttu-id="e65bd-145">Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:</span><span class="sxs-lookup"><span data-stu-id="e65bd-145">In the **Configure your new Web Application** dialog:</span></span>
 
-  * <span data-ttu-id="8c16a-146">**Zielframework** auf **.NET Core 3.1** festgelegt</span><span class="sxs-lookup"><span data-stu-id="8c16a-146">**Target Framework** set to **.NET Core 3.1**.</span></span>
-  * <span data-ttu-id="8c16a-147">**Authentifizierung** auf **Keine Authentifizierung** festgelegt</span><span class="sxs-lookup"><span data-stu-id="8c16a-147">**Authentication** set to **No Authentication**.</span></span>
-   
-  <span data-ttu-id="8c16a-148">Klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-148">Select **Next**.</span></span>
+  * <span data-ttu-id="e65bd-146">Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.</span><span class="sxs-lookup"><span data-stu-id="e65bd-146">Confirm that **Authentication** is set to **No Authentication**.</span></span>
+  * <span data-ttu-id="e65bd-147">Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 3.x-Version aus.</span><span class="sxs-lookup"><span data-stu-id="e65bd-147">If presented an option to select a **Target Framework**, select the latest 3.x version.</span></span>
 
-  ![Auswahl für .NET Core 3.1 in macOS](razor-pages-start/_static/targetframework3.png)
+  <span data-ttu-id="e65bd-148">Klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-148">Select **Next**.</span></span>
 
-* <span data-ttu-id="8c16a-150">Nennen Sie das Projekt **RazorPagesMovie**, und wählen Sie dann **Erstellen** aus.</span><span class="sxs-lookup"><span data-stu-id="8c16a-150">Name the project **RazorPagesMovie**, and then select **Create**.</span></span>
+* <span data-ttu-id="e65bd-149">Nennen Sie das Projekt **RazorPagesMovie**, und klicken Sie auf **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-149">Name the project **RazorPagesMovie**, and then select **Create**.</span></span>
 
   ![Benennen des macOS-Projekts](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -125,45 +123,45 @@ ms.locfileid: "85405301"
 
 ---
 
-## <a name="run-the-app"></a><span data-ttu-id="8c16a-152">Ausführen der App</span><span class="sxs-lookup"><span data-stu-id="8c16a-152">Run the app</span></span>
+## <a name="run-the-app"></a><span data-ttu-id="e65bd-151">Ausführen der App</span><span class="sxs-lookup"><span data-stu-id="e65bd-151">Run the app</span></span>
 
   [!INCLUDE[](~/includes/run-the-app.md)]
 
-## <a name="examine-the-project-files"></a><span data-ttu-id="8c16a-153">Überprüfen der Projektdateien</span><span class="sxs-lookup"><span data-stu-id="8c16a-153">Examine the project files</span></span>
+## <a name="examine-the-project-files"></a><span data-ttu-id="e65bd-152">Überprüfen der Projektdateien</span><span class="sxs-lookup"><span data-stu-id="e65bd-152">Examine the project files</span></span>
 
-<span data-ttu-id="8c16a-154">Es folgt eine Übersicht über die Hauptprojektordner und -dateien, mit denen Sie in späteren Tutorials arbeiten werden.</span><span class="sxs-lookup"><span data-stu-id="8c16a-154">Here's an overview of the main project folders and files that you'll work with in later tutorials.</span></span>
+<span data-ttu-id="e65bd-153">Es folgt eine Übersicht über die Hauptprojektordner und -dateien, mit denen Sie in späteren Tutorials arbeiten werden.</span><span class="sxs-lookup"><span data-stu-id="e65bd-153">Here's an overview of the main project folders and files that you'll work with in later tutorials.</span></span>
 
-### <a name="pages-folder"></a><span data-ttu-id="8c16a-155">Ordner „Seiten“</span><span class="sxs-lookup"><span data-stu-id="8c16a-155">Pages folder</span></span>
+### <a name="pages-folder"></a><span data-ttu-id="e65bd-154">Ordner „Seiten“</span><span class="sxs-lookup"><span data-stu-id="e65bd-154">Pages folder</span></span>
 
-<span data-ttu-id="8c16a-156">Enthält Razor-Seiten und unterstützende Dateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-156">Contains Razor pages and supporting files.</span></span> <span data-ttu-id="8c16a-157">Jede Razor-Seite besteht aus einem Dateienpaar:</span><span class="sxs-lookup"><span data-stu-id="8c16a-157">Each Razor page is a pair of files:</span></span>
+<span data-ttu-id="e65bd-155">Enthält Razor-Seiten und unterstützende Dateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-155">Contains Razor pages and supporting files.</span></span> <span data-ttu-id="e65bd-156">Jede Razor-Seite besteht aus einem Dateienpaar:</span><span class="sxs-lookup"><span data-stu-id="e65bd-156">Each Razor page is a pair of files:</span></span>
 
-* <span data-ttu-id="8c16a-158">Eine *.cshtml*-Datei, die HTML-Markup mit C#-Code in Razor-Syntax enthält</span><span class="sxs-lookup"><span data-stu-id="8c16a-158">A *.cshtml* file that contains HTML markup with C# code using Razor syntax.</span></span>
-* <span data-ttu-id="8c16a-159">Eine *.cshtml.cs*-Datei mit C# Code, in dem Seitenereignisse verarbeitet werden</span><span class="sxs-lookup"><span data-stu-id="8c16a-159">A *.cshtml.cs* file that contains C# code that handles page events.</span></span>
+* <span data-ttu-id="e65bd-157">Eine *.cshtml*-Datei, die HTML-Markup mit C#-Code in Razor-Syntax enthält</span><span class="sxs-lookup"><span data-stu-id="e65bd-157">A *.cshtml* file that contains HTML markup with C# code using Razor syntax.</span></span>
+* <span data-ttu-id="e65bd-158">Eine *.cshtml.cs*-Datei mit C# Code, in dem Seitenereignisse verarbeitet werden</span><span class="sxs-lookup"><span data-stu-id="e65bd-158">A *.cshtml.cs* file that contains C# code that handles page events.</span></span>
 
-<span data-ttu-id="8c16a-160">Unterstützende Dateien haben Namen, die mit einem Unterstrich beginnen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-160">Supporting files have names that begin with an underscore.</span></span> <span data-ttu-id="8c16a-161">Zum Beispiel sind in der Datei *_Layout.cshtml* Benutzeroberflächenelemente konfiguriert, die für alle Seiten gelten.</span><span class="sxs-lookup"><span data-stu-id="8c16a-161">For example, the *_Layout.cshtml* file configures UI elements common to all pages.</span></span> <span data-ttu-id="8c16a-162">Mit dieser Datei werden das Navigationsmenü oben auf der Seite und der Urheberrechtshinweis unten auf der Seite eingerichtet.</span><span class="sxs-lookup"><span data-stu-id="8c16a-162">This file sets up the navigation menu at the top of the page and the copyright notice at the bottom of the page.</span></span> <span data-ttu-id="8c16a-163">Weitere Informationen finden Sie unter <xref:mvc/views/layout>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-163">For more information, see <xref:mvc/views/layout>.</span></span>
+<span data-ttu-id="e65bd-159">Unterstützende Dateien haben Namen, die mit einem Unterstrich beginnen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-159">Supporting files have names that begin with an underscore.</span></span> <span data-ttu-id="e65bd-160">Zum Beispiel sind in der Datei *_Layout.cshtml* Benutzeroberflächenelemente konfiguriert, die für alle Seiten gelten.</span><span class="sxs-lookup"><span data-stu-id="e65bd-160">For example, the *_Layout.cshtml* file configures UI elements common to all pages.</span></span> <span data-ttu-id="e65bd-161">Mit dieser Datei werden das Navigationsmenü oben auf der Seite und der Urheberrechtshinweis unten auf der Seite eingerichtet.</span><span class="sxs-lookup"><span data-stu-id="e65bd-161">This file sets up the navigation menu at the top of the page and the copyright notice at the bottom of the page.</span></span> <span data-ttu-id="e65bd-162">Weitere Informationen finden Sie unter <xref:mvc/views/layout>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-162">For more information, see <xref:mvc/views/layout>.</span></span>
 
-### <a name="wwwroot-folder"></a><span data-ttu-id="8c16a-164">Ordner „wwwroot“</span><span class="sxs-lookup"><span data-stu-id="8c16a-164">wwwroot folder</span></span>
+### <a name="wwwroot-folder"></a><span data-ttu-id="e65bd-163">Ordner „wwwroot“</span><span class="sxs-lookup"><span data-stu-id="e65bd-163">wwwroot folder</span></span>
 
-<span data-ttu-id="8c16a-165">Enthält statische Dateien, z. B. HTML-Dateien, JavaScript-Dateien und CSS-Dateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-165">Contains static files, such as HTML files, JavaScript files, and CSS files.</span></span> <span data-ttu-id="8c16a-166">Weitere Informationen finden Sie unter <xref:fundamentals/static-files>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-166">For more information, see <xref:fundamentals/static-files>.</span></span>
+<span data-ttu-id="e65bd-164">Enthält statische Dateien, z. B. HTML-Dateien, JavaScript-Dateien und CSS-Dateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-164">Contains static files, such as HTML files, JavaScript files, and CSS files.</span></span> <span data-ttu-id="e65bd-165">Weitere Informationen finden Sie unter <xref:fundamentals/static-files>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-165">For more information, see <xref:fundamentals/static-files>.</span></span>
 
-### <a name="appsettingsjson"></a><span data-ttu-id="8c16a-167">appsettings.json</span><span class="sxs-lookup"><span data-stu-id="8c16a-167">appSettings.json</span></span>
+### <a name="appsettingsjson"></a><span data-ttu-id="e65bd-166">appsettings.json</span><span class="sxs-lookup"><span data-stu-id="e65bd-166">appSettings.json</span></span>
 
-<span data-ttu-id="8c16a-168">Enthält Konfigurationsdaten, z. B. Verbindungszeichenfolgen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-168">Contains configuration data, such as connection strings.</span></span> <span data-ttu-id="8c16a-169">Weitere Informationen finden Sie unter <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-169">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="e65bd-167">Enthält Konfigurationsdaten, z. B. Verbindungszeichenfolgen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-167">Contains configuration data, such as connection strings.</span></span> <span data-ttu-id="e65bd-168">Weitere Informationen finden Sie unter <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-168">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-### <a name="programcs"></a><span data-ttu-id="8c16a-170">Program.cs</span><span class="sxs-lookup"><span data-stu-id="8c16a-170">Program.cs</span></span>
+### <a name="programcs"></a><span data-ttu-id="e65bd-169">Program.cs</span><span class="sxs-lookup"><span data-stu-id="e65bd-169">Program.cs</span></span>
 
-<span data-ttu-id="8c16a-171">Enthält den Einstiegspunkt für das Programm.</span><span class="sxs-lookup"><span data-stu-id="8c16a-171">Contains the entry point for the program.</span></span> <span data-ttu-id="8c16a-172">Weitere Informationen finden Sie unter <xref:fundamentals/host/generic-host>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-172">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
+<span data-ttu-id="e65bd-170">Enthält den Einstiegspunkt für das Programm.</span><span class="sxs-lookup"><span data-stu-id="e65bd-170">Contains the entry point for the program.</span></span> <span data-ttu-id="e65bd-171">Weitere Informationen finden Sie unter <xref:fundamentals/host/generic-host>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-171">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
 
-### <a name="startupcs"></a><span data-ttu-id="8c16a-173">Startup.cs</span><span class="sxs-lookup"><span data-stu-id="8c16a-173">Startup.cs</span></span>
+### <a name="startupcs"></a><span data-ttu-id="e65bd-172">Startup.cs</span><span class="sxs-lookup"><span data-stu-id="e65bd-172">Startup.cs</span></span>
 
-<span data-ttu-id="8c16a-174">Diese Datei enthält Code, mit dem das App-Verhalten konfiguriert wird.</span><span class="sxs-lookup"><span data-stu-id="8c16a-174">Contains code that configures app behavior.</span></span> <span data-ttu-id="8c16a-175">Weitere Informationen finden Sie unter <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-175">For more information, see <xref:fundamentals/startup>.</span></span>
+<span data-ttu-id="e65bd-173">Diese Datei enthält Code, mit dem das App-Verhalten konfiguriert wird.</span><span class="sxs-lookup"><span data-stu-id="e65bd-173">Contains code that configures app behavior.</span></span> <span data-ttu-id="e65bd-174">Weitere Informationen finden Sie unter <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-174">For more information, see <xref:fundamentals/startup>.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="8c16a-176">Nächste Schritte</span><span class="sxs-lookup"><span data-stu-id="8c16a-176">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e65bd-175">Nächste Schritte</span><span class="sxs-lookup"><span data-stu-id="e65bd-175">Next steps</span></span>
 
-<span data-ttu-id="8c16a-177">Wechseln Sie zum nächsten Tutorial in der Reihe:</span><span class="sxs-lookup"><span data-stu-id="8c16a-177">Advance to the next tutorial in the series:</span></span>
+<span data-ttu-id="e65bd-176">Wechseln Sie zum nächsten Tutorial in der Reihe:</span><span class="sxs-lookup"><span data-stu-id="e65bd-176">Advance to the next tutorial in the series:</span></span>
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="8c16a-178">Hinzufügen eines Modells</span><span class="sxs-lookup"><span data-stu-id="8c16a-178">Add a model</span></span>](xref:tutorials/razor-pages/model)
+> [<span data-ttu-id="e65bd-177">Hinzufügen eines Modells</span><span class="sxs-lookup"><span data-stu-id="e65bd-177">Add a model</span></span>](xref:tutorials/razor-pages/model)
 
 ::: moniker-end
 
@@ -171,96 +169,99 @@ ms.locfileid: "85405301"
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="8c16a-179">Dies ist das erste Tutorial aus einer Reihe.</span><span class="sxs-lookup"><span data-stu-id="8c16a-179">This is the first tutorial of a series.</span></span> <span data-ttu-id="8c16a-180">[In der Reihe](xref:tutorials/razor-pages/index) lernen Sie die Grundlagen zum Erstellen einer Razor Pages-Web-App mit ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="8c16a-180">[The series](xref:tutorials/razor-pages/index) teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span>
+<span data-ttu-id="e65bd-178">Dies ist das erste Tutorial aus einer Reihe.</span><span class="sxs-lookup"><span data-stu-id="e65bd-178">This is the first tutorial of a series.</span></span> <span data-ttu-id="e65bd-179">[In der Reihe](xref:tutorials/razor-pages/index) lernen Sie die Grundlagen zum Erstellen einer Razor Pages-Web-App mit ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="e65bd-179">[The series](xref:tutorials/razor-pages/index) teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span>
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
-<span data-ttu-id="8c16a-181">Am Ende der Reihe verfügen Sie über eine App, mit der eine Filmdatenbank verwaltet werden kann.</span><span class="sxs-lookup"><span data-stu-id="8c16a-181">At the end of the series, you'll have an app that manages a database of movies.</span></span>  
+<span data-ttu-id="e65bd-180">Am Ende der Reihe verfügen Sie über eine App, mit der eine Filmdatenbank verwaltet werden kann.</span><span class="sxs-lookup"><span data-stu-id="e65bd-180">At the end of the series, you'll have an app that manages a database of movies.</span></span>  
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-<span data-ttu-id="8c16a-182">In diesem Tutorial:</span><span class="sxs-lookup"><span data-stu-id="8c16a-182">In this tutorial, you:</span></span>
+<span data-ttu-id="e65bd-181">In diesem Tutorial:</span><span class="sxs-lookup"><span data-stu-id="e65bd-181">In this tutorial, you:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="8c16a-183">Sie erstellen eine Razor Pages-Web-App.</span><span class="sxs-lookup"><span data-stu-id="8c16a-183">Create a Razor Pages web app.</span></span>
-> * <span data-ttu-id="8c16a-184">Führen Sie die App aus.</span><span class="sxs-lookup"><span data-stu-id="8c16a-184">Run the app.</span></span>
-> * <span data-ttu-id="8c16a-185">Überprüfen Sie die Projektdateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-185">Examine the project files.</span></span>
+> * <span data-ttu-id="e65bd-182">Sie erstellen eine Razor Pages-Web-App.</span><span class="sxs-lookup"><span data-stu-id="e65bd-182">Create a Razor Pages web app.</span></span>
+> * <span data-ttu-id="e65bd-183">Führen Sie die App aus.</span><span class="sxs-lookup"><span data-stu-id="e65bd-183">Run the app.</span></span>
+> * <span data-ttu-id="e65bd-184">Überprüfen Sie die Projektdateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-184">Examine the project files.</span></span>
 
-<span data-ttu-id="8c16a-186">Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-Web-App, auf der Sie in späteren Tutorials aufbauen werden.</span><span class="sxs-lookup"><span data-stu-id="8c16a-186">At the end of this tutorial, you'll have a working Razor Pages web app that you'll build on in later tutorials.</span></span>
+<span data-ttu-id="e65bd-185">Am Ende dieses Tutorials verfügen Sie über eine funktionsfähige Razor Pages-Web-App, auf der Sie in späteren Tutorials aufbauen werden.</span><span class="sxs-lookup"><span data-stu-id="e65bd-185">At the end of this tutorial, you'll have a working Razor Pages web app that you'll build on in later tutorials.</span></span>
 
 ![Start- oder Indexseite](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a><span data-ttu-id="8c16a-188">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="8c16a-188">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e65bd-187">Voraussetzungen</span><span class="sxs-lookup"><span data-stu-id="e65bd-187">Prerequisites</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="8c16a-189">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8c16a-189">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="e65bd-188">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e65bd-188">Visual Studio</span></span>](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="8c16a-190">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8c16a-190">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="e65bd-189">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="e65bd-189">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="8c16a-191">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="8c16a-191">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="e65bd-190">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="e65bd-190">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a><span data-ttu-id="8c16a-192">Erstellen einer Razor Pages-Web-App</span><span class="sxs-lookup"><span data-stu-id="8c16a-192">Create a Razor Pages web app</span></span>
+## <a name="create-a-razor-pages-web-app"></a><span data-ttu-id="e65bd-191">Erstellen einer Razor Pages-Web-App</span><span class="sxs-lookup"><span data-stu-id="e65bd-191">Create a Razor Pages web app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="8c16a-193">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8c16a-193">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="e65bd-192">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e65bd-192">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="8c16a-194">Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** > **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-194">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="e65bd-193">Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** > **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-193">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
 
-* <span data-ttu-id="8c16a-195">Erstellen Sie eine neue ASP.NET Core-Webanwendung, und klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-195">Create a new ASP.NET Core Web Application and select **Next**.</span></span>
+* <span data-ttu-id="e65bd-194">Erstellen Sie eine neue ASP.NET Core-Webanwendung, und klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-194">Create a new ASP.NET Core Web Application and select **Next**.</span></span>
 
   ![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/np_2.1.png)
 
-* <span data-ttu-id="8c16a-197">Nennen Sie das Projekt **RazorPagesMovie**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-197">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="8c16a-198">Es ist wichtig, den Namen *RazorPagesMovie* zu verwenden, damit die Namespaces übereinstimmen, wenn Sie Code kopieren und einfügen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-198">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy and paste code.</span></span>
+* <span data-ttu-id="e65bd-196">Nennen Sie das Projekt **RazorPagesMovie**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-196">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="e65bd-197">Es ist wichtig, den Namen *RazorPagesMovie* zu verwenden, damit die Namespaces übereinstimmen, wenn Sie Code kopieren und einfügen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-197">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy and paste code.</span></span>
 
   ![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/config.png)
 
-* <span data-ttu-id="8c16a-200">Klicken Sie in der Dropdownliste auf **ASP.NET Core 2.2**, auf **Webanwendung** und anschließend auf **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-200">Select **ASP.NET Core 2.2** in the dropdown, **Web Application**, and then select **Create**.</span></span>
+* <span data-ttu-id="e65bd-199">Klicken Sie in der Dropdownliste auf **ASP.NET Core 2.2**, auf **Webanwendung** und anschließend auf **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-199">Select **ASP.NET Core 2.2** in the dropdown, **Web Application**, and then select **Create**.</span></span>
 
 ![neue ASP.NET Core-Webanwendung](razor-pages-start/_static/np_2_2.2.png)
 
-  <span data-ttu-id="8c16a-202">Das folgende Startprojekt wird erstellt:</span><span class="sxs-lookup"><span data-stu-id="8c16a-202">The following starter project is created:</span></span>
+  <span data-ttu-id="e65bd-201">Das folgende Startprojekt wird erstellt:</span><span class="sxs-lookup"><span data-stu-id="e65bd-201">The following starter project is created:</span></span>
 
   ![Projektmappen-Explorer](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="8c16a-204">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8c16a-204">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="e65bd-203">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="e65bd-203">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="8c16a-205">Öffnen Sie das [integrierte Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span><span class="sxs-lookup"><span data-stu-id="8c16a-205">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
+* <span data-ttu-id="e65bd-204">Öffnen Sie das [integrierte Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span><span class="sxs-lookup"><span data-stu-id="e65bd-204">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
 
-* <span data-ttu-id="8c16a-206">Wechseln Sie zum Verzeichnis (`cd`), das das Projekt enthalten soll.</span><span class="sxs-lookup"><span data-stu-id="8c16a-206">Change to the directory (`cd`) which will contain the project.</span></span>
+* <span data-ttu-id="e65bd-205">Wechseln Sie zum Verzeichnis (`cd`), das das Projekt enthalten soll.</span><span class="sxs-lookup"><span data-stu-id="e65bd-205">Change to the directory (`cd`) which will contain the project.</span></span>
 
-* <span data-ttu-id="8c16a-207">Führen Sie die folgenden Befehle aus:</span><span class="sxs-lookup"><span data-stu-id="8c16a-207">Run the following commands:</span></span>
+* <span data-ttu-id="e65bd-206">Führen Sie die folgenden Befehle aus:</span><span class="sxs-lookup"><span data-stu-id="e65bd-206">Run the following commands:</span></span>
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
 
-  * <span data-ttu-id="8c16a-208">Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.</span><span class="sxs-lookup"><span data-stu-id="8c16a-208">The `dotnet new` command creates a new Razor Pages project in the *RazorPagesMovie* folder.</span></span>
-  * <span data-ttu-id="8c16a-209">Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="8c16a-209">The `code` command opens the *RazorPagesMovie* folder in the current instance of Visual Studio Code.</span></span>
+  * <span data-ttu-id="e65bd-207">Der Befehl `dotnet new` erstellt ein neues Razor Pages-Projekt im Ordner *RazorPagesMovie*.</span><span class="sxs-lookup"><span data-stu-id="e65bd-207">The `dotnet new` command creates a new Razor Pages project in the *RazorPagesMovie* folder.</span></span>
+  * <span data-ttu-id="e65bd-208">Der Befehl `code` öffnet den Ordner *RazorPagesMovie* in der aktuellen Instanz von Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="e65bd-208">The `code` command opens the *RazorPagesMovie* folder in the current instance of Visual Studio Code.</span></span>
 
-* <span data-ttu-id="8c16a-210">Wenn das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Required assets to build and debug are missing from 'RazorPagesMovie'. (Die erforderlichen Objekte zum Erstellen und Debuggen sind in „RazorPagesMovie“ nicht vorhanden. Sollen sie hinzugefügt werden?**</span><span class="sxs-lookup"><span data-stu-id="8c16a-210">After the status bar's OmniSharp flame icon turns green, a dialog asks **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?**</span></span> <span data-ttu-id="8c16a-211">Wählen Sie **Ja**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-211">Select **Yes**.</span></span>
+* <span data-ttu-id="e65bd-209">Sobald das OmniSharp-Flammensymbol in der Statusleiste grün angezeigt wird, wird ein Dialogfeld mit folgender Meldung angezeigt: **Die erforderlichen Objekte zum Erstellen und Debuggen sind in "RazorPagesMovie" nicht vorhanden. Sollen sie hinzugefügt werden?**</span><span class="sxs-lookup"><span data-stu-id="e65bd-209">After the status bar's OmniSharp flame icon turns green, a dialog asks **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?**</span></span> <span data-ttu-id="e65bd-210">Wählen Sie **Ja**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-210">Select **Yes**.</span></span>
 
-  <span data-ttu-id="8c16a-212">Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="8c16a-212">A *.vscode* directory, containing *launch.json* and *tasks.json* files, is added to the project's root directory.</span></span>
+  <span data-ttu-id="e65bd-211">Ein *VSCODE*-Verzeichnis, das die Dateien *launch.json* und *tasks.json* enthält, wird dem Stammverzeichnis des Projekts hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="e65bd-211">A *.vscode* directory, containing *launch.json* and *tasks.json* files, is added to the project's root directory.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="8c16a-213">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="8c16a-213">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="e65bd-212">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="e65bd-212">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="8c16a-214">Klicken Sie auf **Datei** > **Neue Projektmappe**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-214">Select **File** > **New Solution**.</span></span>
+* <span data-ttu-id="e65bd-213">Klicken Sie auf **Datei** > **Neue Projektmappe**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-213">Select **File** > **New Solution**.</span></span>
 
 ![Neue Projektmappe in macOS](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* <span data-ttu-id="8c16a-216">Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung** > **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="8c16a-216">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **Web Application** > **Next**.</span></span> <span data-ttu-id="8c16a-217">Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung** > **Weiter** (Web und Konsole).</span><span class="sxs-lookup"><span data-stu-id="8c16a-217">In version 8.6 or later, select **Web and Console** > **App** > **Web Application** > **Next**.</span></span>
+* <span data-ttu-id="e65bd-215">Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **Webanwendung** > **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-215">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **Web Application** > **Next**.</span></span> <span data-ttu-id="e65bd-216">Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **Webanwendung** > **Weiter** (Web und Konsole).</span><span class="sxs-lookup"><span data-stu-id="e65bd-216">In version 8.6 or later, select **Web and Console** > **App** > **Web Application** > **Next**.</span></span>
 
-* <span data-ttu-id="8c16a-218">Legen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** das **Zielframework** auf **.NET Core 3.1** fest.</span><span class="sxs-lookup"><span data-stu-id="8c16a-218">In the **Configure your new ASP.NET Core Web API** dialog, set the  **Target Framework** to **.NET Core 3.1**.</span></span>
+* <span data-ttu-id="e65bd-217">Gehen Sie im Dialogfeld **Neue Webanwendung konfigurieren** folgendermaßen vor:</span><span class="sxs-lookup"><span data-stu-id="e65bd-217">In the **Configure your new Web Application** dialog:</span></span>
 
-  ![Auswahl für .NET Core 3.0 in macOS](razor-pages-start/_static/targetframework3.png)
+  * <span data-ttu-id="e65bd-218">Vergewissern Sie sich, dass **Authentifizierung** auf **Keine Authentifizierung** festgelegt ist.</span><span class="sxs-lookup"><span data-stu-id="e65bd-218">Confirm that **Authentication** is set to **No Authentication**.</span></span>
+  * <span data-ttu-id="e65bd-219">Wenn eine Option zum Auswählen eines **Zielframeworks** angezeigt wird, wählen Sie die neueste 2.x-Version aus.</span><span class="sxs-lookup"><span data-stu-id="e65bd-219">If presented an option to select a **Target Framework**, select the latest 2.x version.</span></span>
 
-* <span data-ttu-id="8c16a-220">Nennen Sie das Projekt **RazorPagesMovie**, und wählen Sie dann **Erstellen** aus.</span><span class="sxs-lookup"><span data-stu-id="8c16a-220">Name the project **RazorPagesMovie**, and then select **Create**.</span></span>
+  <span data-ttu-id="e65bd-220">Klicken Sie auf **Weiter**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-220">Select **Next**.</span></span>
+
+* <span data-ttu-id="e65bd-221">Nennen Sie das Projekt **RazorPagesMovie**, und klicken Sie auf **Erstellen**.</span><span class="sxs-lookup"><span data-stu-id="e65bd-221">Name the project **RazorPagesMovie**, and then select **Create**.</span></span>
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -268,59 +269,59 @@ ms.locfileid: "85405301"
 
 ---
 
-## <a name="run-the-app"></a><span data-ttu-id="8c16a-222">Ausführen der App</span><span class="sxs-lookup"><span data-stu-id="8c16a-222">Run the app</span></span>
+## <a name="run-the-app"></a><span data-ttu-id="e65bd-223">Ausführen der App</span><span class="sxs-lookup"><span data-stu-id="e65bd-223">Run the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="8c16a-223">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8c16a-223">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="e65bd-224">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e65bd-224">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="8c16a-224">Drücken Sie STRG+F5, um die Ausführung ohne den Debugger zu starten.</span><span class="sxs-lookup"><span data-stu-id="8c16a-224">Press Ctrl+F5 to run without the debugger.</span></span>
+* <span data-ttu-id="e65bd-225">Drücken Sie STRG+F5, um die Ausführung ohne den Debugger zu starten.</span><span class="sxs-lookup"><span data-stu-id="e65bd-225">Press Ctrl+F5 to run without the debugger.</span></span>
 
   [!INCLUDE[](~/includes/trustCertVS.md)]
 
-  <span data-ttu-id="8c16a-225">Visual Studio startet [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) und führt die App aus.</span><span class="sxs-lookup"><span data-stu-id="8c16a-225">Visual Studio starts [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) and runs the app.</span></span> <span data-ttu-id="8c16a-226">Die Adressleiste zeigt `localhost:port#` an, nicht `example.com`.</span><span class="sxs-lookup"><span data-stu-id="8c16a-226">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="8c16a-227">Das liegt daran, dass es sich bei `localhost` um den Standardhostnamen für den lokalen Computer handelt.</span><span class="sxs-lookup"><span data-stu-id="8c16a-227">That's because `localhost` is the standard hostname for the local computer.</span></span> <span data-ttu-id="8c16a-228">„Localhost“ dient nur Webanforderungen vom lokalen Computer.</span><span class="sxs-lookup"><span data-stu-id="8c16a-228">Localhost only serves web requests from the local computer.</span></span> <span data-ttu-id="8c16a-229">Wenn in Visual Studio ein Webprojekt erstellt wird, wird für den Webserver ein zufälliger Port verwendet.</span><span class="sxs-lookup"><span data-stu-id="8c16a-229">When Visual Studio creates a web project, a random port is used for the web server.</span></span>
+  <span data-ttu-id="e65bd-226">Visual Studio startet [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) und führt die App aus.</span><span class="sxs-lookup"><span data-stu-id="e65bd-226">Visual Studio starts [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) and runs the app.</span></span> <span data-ttu-id="e65bd-227">Die Adressleiste zeigt `localhost:port#` an, nicht `example.com`.</span><span class="sxs-lookup"><span data-stu-id="e65bd-227">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="e65bd-228">Das liegt daran, dass es sich bei `localhost` um den Standardhostnamen für den lokalen Computer handelt.</span><span class="sxs-lookup"><span data-stu-id="e65bd-228">That's because `localhost` is the standard hostname for the local computer.</span></span> <span data-ttu-id="e65bd-229">„Localhost“ dient nur Webanforderungen vom lokalen Computer.</span><span class="sxs-lookup"><span data-stu-id="e65bd-229">Localhost only serves web requests from the local computer.</span></span> <span data-ttu-id="e65bd-230">Wenn in Visual Studio ein Webprojekt erstellt wird, wird für den Webserver ein zufälliger Port verwendet.</span><span class="sxs-lookup"><span data-stu-id="e65bd-230">When Visual Studio creates a web project, a random port is used for the web server.</span></span>
 
-* <span data-ttu-id="8c16a-230">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-230">On the app's home page, select **Accept** to consent to tracking.</span></span>
+* <span data-ttu-id="e65bd-231">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-231">On the app's home page, select **Accept** to consent to tracking.</span></span>
 
-  <span data-ttu-id="8c16a-231">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="8c16a-231">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
+  <span data-ttu-id="e65bd-232">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="e65bd-232">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/homeGDPR2.2.png)
 
-  <span data-ttu-id="8c16a-233">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="8c16a-233">The following image shows the app after you give consent to tracking:</span></span>
+  <span data-ttu-id="e65bd-234">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="e65bd-234">The following image shows the app after you give consent to tracking:</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/home2.2.png)
   
-# <a name="visual-studio-code"></a>[<span data-ttu-id="8c16a-235">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8c16a-235">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="e65bd-236">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="e65bd-236">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
   [!INCLUDE[](~/includes/trustCertVSC.md)]
 
-* <span data-ttu-id="8c16a-236">Drücken Sie **STRG+F5**, um die Ausführung ohne den Debugger zu starten.</span><span class="sxs-lookup"><span data-stu-id="8c16a-236">Press **Ctrl-F5** to run without the debugger.</span></span>
+* <span data-ttu-id="e65bd-237">Drücken Sie **STRG+F5**, um die Ausführung ohne den Debugger zu starten.</span><span class="sxs-lookup"><span data-stu-id="e65bd-237">Press **Ctrl-F5** to run without the debugger.</span></span>
 
-  <span data-ttu-id="8c16a-237">Visual Studio Code startet [Kestrel](xref:fundamentals/servers/kestrel) und einen Browser und navigiert zu `http://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="8c16a-237">Visual Studio Code starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5001`.</span></span> <span data-ttu-id="8c16a-238">Die Adressleiste zeigt `localhost:port#` an, nicht `example.com`.</span><span class="sxs-lookup"><span data-stu-id="8c16a-238">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="8c16a-239">Das liegt daran, dass es sich bei `localhost` um den Standardhostnamen für den lokalen Computer handelt.</span><span class="sxs-lookup"><span data-stu-id="8c16a-239">That's because `localhost` is the standard hostname for  local computer.</span></span> <span data-ttu-id="8c16a-240">„Localhost“ dient nur Webanforderungen vom lokalen Computer.</span><span class="sxs-lookup"><span data-stu-id="8c16a-240">Localhost only serves web requests from the local computer.</span></span>
+  <span data-ttu-id="e65bd-238">Visual Studio Code startet [Kestrel](xref:fundamentals/servers/kestrel) und einen Browser und navigiert zu `http://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="e65bd-238">Visual Studio Code starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5001`.</span></span> <span data-ttu-id="e65bd-239">Die Adressleiste zeigt `localhost:port#` an, nicht `example.com`.</span><span class="sxs-lookup"><span data-stu-id="e65bd-239">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="e65bd-240">Das liegt daran, dass es sich bei `localhost` um den Standardhostnamen für den lokalen Computer handelt.</span><span class="sxs-lookup"><span data-stu-id="e65bd-240">That's because `localhost` is the standard hostname for  local computer.</span></span> <span data-ttu-id="e65bd-241">„Localhost“ dient nur Webanforderungen vom lokalen Computer.</span><span class="sxs-lookup"><span data-stu-id="e65bd-241">Localhost only serves web requests from the local computer.</span></span>
 
-* <span data-ttu-id="8c16a-241">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-241">On the app's home page, select **Accept** to consent to tracking.</span></span>
+* <span data-ttu-id="e65bd-242">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-242">On the app's home page, select **Accept** to consent to tracking.</span></span>
 
-  <span data-ttu-id="8c16a-242">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="8c16a-242">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
+  <span data-ttu-id="e65bd-243">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="e65bd-243">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/homeGDPR2.2.png)
 
-  <span data-ttu-id="8c16a-244">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="8c16a-244">The following image shows the app after you give consent to tracking:</span></span>
+  <span data-ttu-id="e65bd-245">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="e65bd-245">The following image shows the app after you give consent to tracking:</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/home2.2.png)
   
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="8c16a-246">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="8c16a-246">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="e65bd-247">Visual Studio für Mac</span><span class="sxs-lookup"><span data-stu-id="e65bd-247">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* <span data-ttu-id="8c16a-247">Drücken Sie **CMD+OPT+F5** für eine Ausführung ohne Debugger.</span><span class="sxs-lookup"><span data-stu-id="8c16a-247">Press **Cmd-Opt-F5** to run without the debugger.</span></span>
+* <span data-ttu-id="e65bd-248">Drücken Sie **CMD+OPT+F5** für eine Ausführung ohne Debugger.</span><span class="sxs-lookup"><span data-stu-id="e65bd-248">Press **Cmd-Opt-F5** to run without the debugger.</span></span>
 
-  <span data-ttu-id="8c16a-248">Visual Studio startet dann [Kestrel](xref:fundamentals/servers/kestrel) und einen Browser und navigiert zu `http://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="8c16a-248">Visual Studio starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5001`.</span></span>
+  <span data-ttu-id="e65bd-249">Visual Studio startet dann [Kestrel](xref:fundamentals/servers/kestrel) und einen Browser und navigiert zu `http://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="e65bd-249">Visual Studio starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5001`.</span></span>
 
-* <span data-ttu-id="8c16a-249">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-249">On the app's home page, select **Accept** to consent to tracking.</span></span>
+* <span data-ttu-id="e65bd-250">Wählen Sie auf der Homepage der App **Akzeptieren** aus, um der Nachverfolgung zuzustimmen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-250">On the app's home page, select **Accept** to consent to tracking.</span></span>
 
-  <span data-ttu-id="8c16a-250">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="8c16a-250">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
+  <span data-ttu-id="e65bd-251">Diese App verfolgt keine persönlichen Informationen nach, aber die Projektvorlage enthält das Einverständniserklärungsfeature für den Fall, dass die App die [allgemeine Datenschutz-Grundverordnung (DSGVO)](xref:security/gdpr) der Europäischen Union erfüllen muss.</span><span class="sxs-lookup"><span data-stu-id="e65bd-251">This app doesn't track personal information, but the project template includes the consent feature in case you need it to comply with the European Union's [General Data Protection Regulation (GDPR)](xref:security/gdpr).</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/homeGDPR2.2_safari.png)
 
-  <span data-ttu-id="8c16a-252">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="8c16a-252">The following image shows the app after you give consent to tracking:</span></span>
+  <span data-ttu-id="e65bd-253">Die folgende Abbildung zeigt die App, nachdem Sie das Einverständnis zur Nachverfolgung gegeben haben:</span><span class="sxs-lookup"><span data-stu-id="e65bd-253">The following image shows the app after you give consent to tracking:</span></span>
 
   ![Start- oder Indexseite](razor-pages-start/_static/home2.2_safari.png)
 
@@ -328,44 +329,44 @@ ms.locfileid: "85405301"
 
 ---
 
-## <a name="examine-the-project-files"></a><span data-ttu-id="8c16a-254">Überprüfen der Projektdateien</span><span class="sxs-lookup"><span data-stu-id="8c16a-254">Examine the project files</span></span>
+## <a name="examine-the-project-files"></a><span data-ttu-id="e65bd-255">Überprüfen der Projektdateien</span><span class="sxs-lookup"><span data-stu-id="e65bd-255">Examine the project files</span></span>
 
-<span data-ttu-id="8c16a-255">Es folgt eine Übersicht über die Hauptprojektordner und -dateien, mit denen Sie in späteren Tutorials arbeiten werden.</span><span class="sxs-lookup"><span data-stu-id="8c16a-255">Here's an overview of the main project folders and files that you'll work with in later tutorials.</span></span>
+<span data-ttu-id="e65bd-256">Es folgt eine Übersicht über die Hauptprojektordner und -dateien, mit denen Sie in späteren Tutorials arbeiten werden.</span><span class="sxs-lookup"><span data-stu-id="e65bd-256">Here's an overview of the main project folders and files that you'll work with in later tutorials.</span></span>
 
-### <a name="pages-folder"></a><span data-ttu-id="8c16a-256">Ordner „Seiten“</span><span class="sxs-lookup"><span data-stu-id="8c16a-256">Pages folder</span></span>
+### <a name="pages-folder"></a><span data-ttu-id="e65bd-257">Ordner „Seiten“</span><span class="sxs-lookup"><span data-stu-id="e65bd-257">Pages folder</span></span>
 
-<span data-ttu-id="8c16a-257">Enthält Razor-Seiten und unterstützende Dateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-257">Contains Razor pages and supporting files.</span></span> <span data-ttu-id="8c16a-258">Jede Razor-Seite besteht aus einem Dateienpaar:</span><span class="sxs-lookup"><span data-stu-id="8c16a-258">Each Razor page is a pair of files:</span></span>
+<span data-ttu-id="e65bd-258">Enthält Razor-Seiten und unterstützende Dateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-258">Contains Razor pages and supporting files.</span></span> <span data-ttu-id="e65bd-259">Jede Razor-Seite besteht aus einem Dateienpaar:</span><span class="sxs-lookup"><span data-stu-id="e65bd-259">Each Razor page is a pair of files:</span></span>
 
-* <span data-ttu-id="8c16a-259">Eine *.cshtml*-Datei, die HTML-Markup mit C#-Code in Razor-Syntax enthält</span><span class="sxs-lookup"><span data-stu-id="8c16a-259">A *.cshtml* file that contains HTML markup with C# code using Razor syntax.</span></span>
-* <span data-ttu-id="8c16a-260">Eine *.cshtml.cs*-Datei mit C# Code, in dem Seitenereignisse verarbeitet werden</span><span class="sxs-lookup"><span data-stu-id="8c16a-260">A *.cshtml.cs* file that contains C# code that handles page events.</span></span>
+* <span data-ttu-id="e65bd-260">Eine *.cshtml*-Datei, die HTML-Markup mit C#-Code in Razor-Syntax enthält</span><span class="sxs-lookup"><span data-stu-id="e65bd-260">A *.cshtml* file that contains HTML markup with C# code using Razor syntax.</span></span>
+* <span data-ttu-id="e65bd-261">Eine *.cshtml.cs*-Datei mit C# Code, in dem Seitenereignisse verarbeitet werden</span><span class="sxs-lookup"><span data-stu-id="e65bd-261">A *.cshtml.cs* file that contains C# code that handles page events.</span></span>
 
-<span data-ttu-id="8c16a-261">Unterstützende Dateien haben Namen, die mit einem Unterstrich beginnen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-261">Supporting files have names that begin with an underscore.</span></span> <span data-ttu-id="8c16a-262">Zum Beispiel sind in der Datei *_Layout.cshtml* Benutzeroberflächenelemente konfiguriert, die für alle Seiten gelten.</span><span class="sxs-lookup"><span data-stu-id="8c16a-262">For example, the *_Layout.cshtml* file configures UI elements common to all pages.</span></span> <span data-ttu-id="8c16a-263">Mit dieser Datei werden das Navigationsmenü oben auf der Seite und der Urheberrechtshinweis unten auf der Seite eingerichtet.</span><span class="sxs-lookup"><span data-stu-id="8c16a-263">This file sets up the navigation menu at the top of the page and the copyright notice at the bottom of the page.</span></span> <span data-ttu-id="8c16a-264">Weitere Informationen finden Sie unter <xref:mvc/views/layout>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-264">For more information, see <xref:mvc/views/layout>.</span></span>
+<span data-ttu-id="e65bd-262">Unterstützende Dateien haben Namen, die mit einem Unterstrich beginnen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-262">Supporting files have names that begin with an underscore.</span></span> <span data-ttu-id="e65bd-263">Zum Beispiel sind in der Datei *_Layout.cshtml* Benutzeroberflächenelemente konfiguriert, die für alle Seiten gelten.</span><span class="sxs-lookup"><span data-stu-id="e65bd-263">For example, the *_Layout.cshtml* file configures UI elements common to all pages.</span></span> <span data-ttu-id="e65bd-264">Mit dieser Datei werden das Navigationsmenü oben auf der Seite und der Urheberrechtshinweis unten auf der Seite eingerichtet.</span><span class="sxs-lookup"><span data-stu-id="e65bd-264">This file sets up the navigation menu at the top of the page and the copyright notice at the bottom of the page.</span></span> <span data-ttu-id="e65bd-265">Weitere Informationen finden Sie unter <xref:mvc/views/layout>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-265">For more information, see <xref:mvc/views/layout>.</span></span>
 
-### <a name="wwwroot-folder"></a><span data-ttu-id="8c16a-265">Ordner „wwwroot“</span><span class="sxs-lookup"><span data-stu-id="8c16a-265">wwwroot folder</span></span>
+### <a name="wwwroot-folder"></a><span data-ttu-id="e65bd-266">Ordner „wwwroot“</span><span class="sxs-lookup"><span data-stu-id="e65bd-266">wwwroot folder</span></span>
 
-<span data-ttu-id="8c16a-266">Enthält statische Dateien, z. B. HTML-Dateien, JavaScript-Dateien und CSS-Dateien.</span><span class="sxs-lookup"><span data-stu-id="8c16a-266">Contains static files, such as HTML files, JavaScript files, and CSS files.</span></span> <span data-ttu-id="8c16a-267">Weitere Informationen finden Sie unter <xref:fundamentals/static-files>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-267">For more information, see <xref:fundamentals/static-files>.</span></span>
+<span data-ttu-id="e65bd-267">Enthält statische Dateien, z. B. HTML-Dateien, JavaScript-Dateien und CSS-Dateien.</span><span class="sxs-lookup"><span data-stu-id="e65bd-267">Contains static files, such as HTML files, JavaScript files, and CSS files.</span></span> <span data-ttu-id="e65bd-268">Weitere Informationen finden Sie unter <xref:fundamentals/static-files>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-268">For more information, see <xref:fundamentals/static-files>.</span></span>
 
-### <a name="appsettingsjson"></a><span data-ttu-id="8c16a-268">appsettings.json</span><span class="sxs-lookup"><span data-stu-id="8c16a-268">appSettings.json</span></span>
+### <a name="appsettingsjson"></a><span data-ttu-id="e65bd-269">appsettings.json</span><span class="sxs-lookup"><span data-stu-id="e65bd-269">appSettings.json</span></span>
 
-<span data-ttu-id="8c16a-269">Enthält Konfigurationsdaten, z. B. Verbindungszeichenfolgen.</span><span class="sxs-lookup"><span data-stu-id="8c16a-269">Contains configuration data, such as connection strings.</span></span> <span data-ttu-id="8c16a-270">Weitere Informationen finden Sie unter <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-270">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="e65bd-270">Enthält Konfigurationsdaten, z. B. Verbindungszeichenfolgen.</span><span class="sxs-lookup"><span data-stu-id="e65bd-270">Contains configuration data, such as connection strings.</span></span> <span data-ttu-id="e65bd-271">Weitere Informationen finden Sie unter <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-271">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-### <a name="programcs"></a><span data-ttu-id="8c16a-271">Program.cs</span><span class="sxs-lookup"><span data-stu-id="8c16a-271">Program.cs</span></span>
+### <a name="programcs"></a><span data-ttu-id="e65bd-272">Program.cs</span><span class="sxs-lookup"><span data-stu-id="e65bd-272">Program.cs</span></span>
 
-<span data-ttu-id="8c16a-272">Enthält den Einstiegspunkt für das Programm.</span><span class="sxs-lookup"><span data-stu-id="8c16a-272">Contains the entry point for the program.</span></span> <span data-ttu-id="8c16a-273">Weitere Informationen finden Sie unter <xref:fundamentals/host/generic-host>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-273">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
+<span data-ttu-id="e65bd-273">Enthält den Einstiegspunkt für das Programm.</span><span class="sxs-lookup"><span data-stu-id="e65bd-273">Contains the entry point for the program.</span></span> <span data-ttu-id="e65bd-274">Weitere Informationen finden Sie unter <xref:fundamentals/host/generic-host>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-274">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
 
-### <a name="startupcs"></a><span data-ttu-id="8c16a-274">Startup.cs</span><span class="sxs-lookup"><span data-stu-id="8c16a-274">Startup.cs</span></span>
+### <a name="startupcs"></a><span data-ttu-id="e65bd-275">Startup.cs</span><span class="sxs-lookup"><span data-stu-id="e65bd-275">Startup.cs</span></span>
 
-<span data-ttu-id="8c16a-275">Enthält Code, mit dem das App-Verhalten konfiguriert wird, beispielsweise, ob die App Zustimmung für Cookies erfordert.</span><span class="sxs-lookup"><span data-stu-id="8c16a-275">Contains code that configures app behavior, such as whether it requires consent for cookies.</span></span> <span data-ttu-id="8c16a-276">Weitere Informationen finden Sie unter <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="8c16a-276">For more information, see <xref:fundamentals/startup>.</span></span>
+<span data-ttu-id="e65bd-276">Enthält Code, mit dem das App-Verhalten konfiguriert wird, beispielsweise, ob die App Zustimmung für Cookies erfordert.</span><span class="sxs-lookup"><span data-stu-id="e65bd-276">Contains code that configures app behavior, such as whether it requires consent for cookies.</span></span> <span data-ttu-id="e65bd-277">Weitere Informationen finden Sie unter <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="e65bd-277">For more information, see <xref:fundamentals/startup>.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="8c16a-277">Zusätzliche Ressourcen</span><span class="sxs-lookup"><span data-stu-id="8c16a-277">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e65bd-278">Zusätzliche Ressourcen</span><span class="sxs-lookup"><span data-stu-id="e65bd-278">Additional resources</span></span>
 
-* [<span data-ttu-id="8c16a-278">Dieses Tutorials auf YouTube</span><span class="sxs-lookup"><span data-stu-id="8c16a-278">Youtube version of this tutorial</span></span>](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)
+* [<span data-ttu-id="e65bd-279">Dieses Tutorials auf YouTube</span><span class="sxs-lookup"><span data-stu-id="e65bd-279">Youtube version of this tutorial</span></span>](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)
 
-## <a name="next-steps"></a><span data-ttu-id="8c16a-279">Nächste Schritte</span><span class="sxs-lookup"><span data-stu-id="8c16a-279">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e65bd-280">Nächste Schritte</span><span class="sxs-lookup"><span data-stu-id="e65bd-280">Next steps</span></span>
 
-<span data-ttu-id="8c16a-280">Wechseln Sie zum nächsten Tutorial in der Reihe:</span><span class="sxs-lookup"><span data-stu-id="8c16a-280">Advance to the next tutorial in the series:</span></span>
+<span data-ttu-id="e65bd-281">Wechseln Sie zum nächsten Tutorial in der Reihe:</span><span class="sxs-lookup"><span data-stu-id="e65bd-281">Advance to the next tutorial in the series:</span></span>
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="8c16a-281">Hinzufügen eines Modells</span><span class="sxs-lookup"><span data-stu-id="8c16a-281">Add a model</span></span>](xref:tutorials/razor-pages/model)
+> [<span data-ttu-id="e65bd-282">Hinzufügen eines Modells</span><span class="sxs-lookup"><span data-stu-id="e65bd-282">Add a model</span></span>](xref:tutorials/razor-pages/model)
 
 ::: moniker-end
