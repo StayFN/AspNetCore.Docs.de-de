@@ -5,7 +5,7 @@ description: Erfahren Sie mehr über die Grundlagen zum Erstellen einer Web-API 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/02/2020
+ms.date: 07/20/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 7c9762d23ff612155846357bfadeaaad492c7299
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 98fb8c0a26f5f8e7ce5f07066f2f36e748ab2398
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404729"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568742"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Erstellen von Web-APIs mit ASP.NET Core
 
@@ -98,16 +98,12 @@ Das Feature *Problemdetails für Fehlerstatuscodes* erfordert mindestens die [Ko
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.1"
-
 * [Anforderung für das Attributrouting](#attribute-routing-requirement)
 * [Automatische HTTP 400-Antworten](#automatic-http-400-responses)
 * [Rückschluss auf Bindungsquellparameter](#binding-source-parameter-inference)
 * [Ableiten der Multipart/form-data-Anforderung](#multipartform-data-request-inference)
 
 Diese Features erfordern mindestens [Kompatibilitätsversion](xref:mvc/compatibility-version) 2.1.
-
-::: moniker-end
 
 ### <a name="attribute-on-specific-controllers"></a>Attribut für bestimmte Controller
 
@@ -232,9 +228,11 @@ Der `ValidationProblemDetails`-Typ:
 
 ::: moniker-end
 
+Rufen Sie die <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A>-Methode anstelle von <xref:System.Web.Http.ApiController.BadRequest%2A> auf, um automatische und benutzerdefinierte Antworten konsistent zu machen. `ValidationProblem` gibt sowohl ein <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>-Objekt als auch die automatische Antwort zurück.
+
 ### <a name="log-automatic-400-responses"></a>Protokollieren automatischer 400-Antworten
 
-Informationen finden Sie unter [How to log automatic 400 responses on model validation errors (aspnet/AspNetCore.Docs #12157)](https://github.com/dotnet/AspNetCore.Docs/issues/12157) (Protokollieren automatischer 400-Antworten auf Modellvalidierungsfehler, aspnet/AspNetCore.Docs #12157).
+Informationen finden Sie unter [Protokollieren automatischer 400-Antworten auf Modellvalidierungsfehler, (dotnet/AspNetCore.Docs#12157)](https://github.com/dotnet/AspNetCore.Docs/issues/12157).
 
 ### <a name="disable-automatic-400-response"></a>Deaktivieren automatischer 400-Antwort
 

@@ -5,7 +5,7 @@ description: Erfahren Sie, wie Sie Blazor-WebAssembly-Apps als Single-Page-Anwen
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/01/2020
+ms.date: 07/16/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 0ff580dd7cbefdfe3121b30490f99e0235d93bc3
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: fbb3f6d254e6d294edc7af59d7980a1d67e4a801
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176149"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568807"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>Schützen der Blazor WebAssembly von ASP.NET Core
 
@@ -73,6 +73,22 @@ Weitere Informationen und Beispiele finden Sie unter <xref:blazor/security/webas
 In Blazor WebAssembly-Apps können Autorisierungsprüfungen umgangen werden, da der gesamte clientseitige Code von Benutzern geändert werden kann. Dasselbe gilt für alle clientseitigen App-Technologien, einschließlich JavaScript SPA-Frameworks oder native Apps für jedes Betriebssystem.
 
 **Führen Sie Autorisierungsprüfungen auf dem Server immer innerhalb aller API-Endpunkte durch, auf die Ihre clientseitige App zugreift.**
+
+## <a name="require-authorization-for-the-entire-app"></a>Autorisierung für die gesamte App erforderlich
+
+Wenden Sie die [`[Authorize]`-Attribute](xref:blazor/security/index#authorize-attribute) ([API-Dokumentation](xref:System.Web.Mvc.AuthorizeAttribute)) auf jede Razor-Komponente der App an, indem Sie einen der folgenden Ansätze verwenden:
+
+* Verwenden Sie die [`@attribute`](xref:mvc/views/razor#attribute)-Direktive in der `_Imports.razor`-Datei:
+
+  ```razor
+  @using Microsoft.AspNetCore.Authorization
+  @attribute [Authorize]
+  ```
+
+* Fügen Sie jeder Razor-Komponente im Ordner das `Pages`-Attribut hinzu.
+
+> [!NOTE]
+> Das Festlegen einer <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy?displayProperty=nameWithType> auf eine Richtlinie mit <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> wird **nicht** unterstützt.
 
 ## <a name="refresh-tokens"></a>Aktualisierungstoken
 
