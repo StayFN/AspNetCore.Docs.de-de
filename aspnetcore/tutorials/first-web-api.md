@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 63f91086a7e9d71add7f7a5d58d96f46fa76353c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2383934070a65b8131e890a170186b736d3fcec0
+ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407784"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86869990"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Erstellen einer Web-API mit ASP.NET Core
 
@@ -114,9 +114,7 @@ Das folgende Diagramm zeigt den Entwurf der App.
 
   ![Auswählen von macOS-API-Vorlagen](first-web-api-mac/_static/api_template.png)
 
-* Vergewissern Sie sich, dass das **Zielframework** auf **.NET Core 3.1** festgelegt ist. Klicken Sie auf **Weiter**.
-
-  ![Auswahl für .NET Core 3.1 in macOS](first-web-api-mac/_static/api_31_config.png)
+* Wählen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** die neueste .NET Core 3.x-Version als **Zielframework** aus. Klicken Sie auf **Weiter**.
 
 * Geben Sie für **Projektname** *TodoApi* ein, und wählen Sie dann **Erstellen** aus.
 
@@ -234,7 +232,7 @@ Der *Datenbankkontext* ist die Hauptklasse, die die Entity Framework-Funktionen 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-### <a name="add-microsoftentityframeworkcoresqlserver"></a>Hinzufügen von Microsoft.EntityFrameworkCore.SqlServer
+### <a name="add-nuget-packages"></a>Hinzufügen von NuGet-Paketen
 
 * Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager > NuGet-Pakete für Projektmappe verwalten...** .
 * Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie dann **Microsoft.EntityFrameworkCore.SqlServer** in das Suchfeld ein.
@@ -594,7 +592,7 @@ Das folgende Diagramm zeigt den Entwurf der App.
 
 * Navigieren Sie in Visual Studio für Mac-Versionen vor Version 8.6 zu **.NET Core** > **App** > **API** > **Weiter**. Bei Version 8.6 oder höher klicken Sie auf **Web and Console** > **App** > **API** > **Weiter** (Web und Konsole).
   
-* Übernehmen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** die Standardeinstellung **Zielframework** von * *.NET Core 2.2*.
+* Wählen Sie im Dialogfeld **Neue ASP.NET Core-Web-API konfigurieren** die neueste .NET Core 2.x-Version als **Zielframework** aus. Klicken Sie auf **Weiter**.
 
 * Geben Sie für **Projektname** *TodoApi* ein, und wählen Sie dann **Erstellen** aus.
 

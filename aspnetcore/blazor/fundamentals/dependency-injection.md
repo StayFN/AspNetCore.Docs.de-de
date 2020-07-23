@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: e88a471a35e1c2be5f77407a6c594cd6a97e1737
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 07fe7d4b64c84956be44e7d3ac0b1d8687b085c6
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944366"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445163"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>Abhängigkeitsinjektion in ASP.NET Core Blazor
 
@@ -39,7 +39,7 @@ Standarddienste werden automatisch zur Dienstsammlung der App hinzugefügt.
 
 | Dienst | Lebensdauer | Beschreibung |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Transient (vorübergehend) | Stellt Methoden zum Senden von HTTP-Anforderungen und Empfangen von HTTP-Antworten aus einer Ressource bereit, die von einem URI identifiziert wird.<br><br>Die Instanz von <xref:System.Net.Http.HttpClient> in einer Blazor WebAssembly-App verwendet den Browser für die Behandlung des HTTP-Datenverkehrs im Hintergrund.<br><br>Blazor Server-Apps enthalten standardmäßig keinen <xref:System.Net.Http.HttpClient>, der als Dienst konfiguriert ist. Stellen Sie einen <xref:System.Net.Http.HttpClient> für eine Blazor Server-App bereit.<br><br>Weitere Informationen finden Sie unter <xref:blazor/call-web-api>. |
+| <xref:System.Net.Http.HttpClient> | Bereichsbezogen | Stellt Methoden zum Senden von HTTP-Anforderungen und Empfangen von HTTP-Antworten aus einer Ressource bereit, die von einem URI identifiziert wird.<br><br>Die Instanz von <xref:System.Net.Http.HttpClient> in einer Blazor WebAssembly-App verwendet den Browser für die Behandlung des HTTP-Datenverkehrs im Hintergrund.<br><br>Blazor Server-Apps enthalten standardmäßig keinen <xref:System.Net.Http.HttpClient>, der als Dienst konfiguriert ist. Stellen Sie einen <xref:System.Net.Http.HttpClient> für eine Blazor Server-App bereit.<br><br>Weitere Informationen finden Sie unter <xref:blazor/call-web-api>. |
 | <xref:Microsoft.JSInterop.IJSRuntime> | Singleton (Blazor WebAssembly)<br>Bereichsbezogen (Blazor Server) | Stellt eine Instanz einer JavaScript-Laufzeit dar, in der JavaScript-Aufrufe verteilt werden. Weitere Informationen finden Sie unter <xref:blazor/call-javascript-from-dotnet>. |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton (Blazor WebAssembly)<br>Bereichsbezogen (Blazor Server) | Enthält Hilfsprogramme für die Arbeit mit URIs und dem Navigationszustand. Weitere Informationen finden Sie unter [Hilfsprogramme für URI und Navigationszustand](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers). |
 
@@ -66,8 +66,11 @@ public class Program
         builder.Services.AddSingleton<IMyDependency, MyDependency>();
         builder.RootComponents.Add<App>("app");
         
-        builder.Services.AddTransient(sp => 
-            new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        builder.Services.AddScoped(sp => 
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
 
         await builder.Build().RunAsync();
     }
@@ -85,8 +88,11 @@ public class Program
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
         
-        builder.Services.AddTransient(sp => 
-            new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        builder.Services.AddScoped(sp => 
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
 
         var host = builder.Build();
 
@@ -109,8 +115,11 @@ public class Program
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
         
-        builder.Services.AddTransient(sp => 
-            new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        builder.Services.AddScoped(sp => 
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
 
         var host = builder.Build();
 
