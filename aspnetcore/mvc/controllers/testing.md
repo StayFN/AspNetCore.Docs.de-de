@@ -5,7 +5,7 @@ description: Informationen zum Testen von Controllerlogik in ASP.NET Core mit Mo
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 7/22/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: 487e054675e40c158250fff5d38fc0e6930a68a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e75c3a382904011e30ed50dfd465a15210c64368
+ms.sourcegitcommit: c86b4e2955dc1724f2eaa7c97894ad8b3bf763fb
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408642"
+ms.lasthandoff: 07/22/2020
+ms.locfileid: "86949081"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Komponententests für die Controllerlogik in ASP.NET Core
 
@@ -357,4 +357,5 @@ Für eine gültige Sitzungs-`id` bestätigt der letzte Test Folgendes:
 * <xref:test/integration-tests>
 * [Erstellen und Ausführen von Komponententests mit Visual Studio](/visualstudio/test/unit-test-your-code)
 * [Mytesting. aspnetcore. MVC-fließende Test Bibliothek für ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): stark typisierte unittestbibliothek, die eine fließende Oberfläche zum Testen von MVC-und Web-API-apps bereitstellt. (*Wird von Microsoft nicht verwaltet oder unterstützt.*)
+* [Justmocklite](https://github.com/telerik/JustMockLite): ein Framework für .NET-Entwickler. (*Wird von Microsoft nicht verwaltet oder unterstützt.*)
 
