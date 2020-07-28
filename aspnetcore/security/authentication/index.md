@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: security/authentication/index
-ms.openlocfilehash: a58d48d390eefdc26cf3feb394874b0ba733e9f3
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a230e1ae85a54ddf16900b2ee7ed4a18d45e4ea2
+ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408343"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160207"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Übersicht über die ASP.NET Core-Authentifizierung
 
@@ -49,7 +49,7 @@ Der `AddAuthentication`-Parameter `JwtBearerDefaults.AuthenticationScheme` ist d
 
 Wenn mehrere Schemas verwendet werden, können Autorisierungsrichtlinien (oder Autorisierungsattribute) [das Authentifizierungsschema (oder die Authentifizierungsschemas) angeben](xref:security/authorization/limitingidentitybyscheme), von denen sie zur Authentifizierung des Benutzers abhängig sind. Im Beispiel oben kann das Cookie-Authentifizierungsschema verwendet werden, indem der Name angegeben wird (standardmäßig `CookieAuthenticationDefaults.AuthenticationScheme`, obwohl beim Aufruf von `AddCookie` ein anderer Name angegeben werden kann).
 
-In bestimmten Fällen erfolgt der Aufruf von `AddAuthentication` automatisch durch andere Erweiterungsmethoden. Wenn Sie z. B. [ASP.NET Core Identity](xref:security/authentication/identity) verwenden, wird `AddAuthentication` intern aufgerufen.
+In bestimmten Fällen erfolgt der Aufruf von `AddAuthentication` automatisch durch andere Erweiterungsmethoden. Wenn Sie z. B. [ASP.NET Core :::no-loc(Identity):::](xref:security/authentication/identity) verwenden, wird `AddAuthentication` intern aufgerufen.
 
 Die Authentifizierungsmiddleware wird in `Startup.Configure` durch Aufrufen der <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>-Erweiterungsmethode für den `IApplicationBuilder` der App hinzugefügt. Durch Aufrufen von `UseAuthentication` wird die Middleware registriert, die die zuvor registrierten Authentifizierungsschemas verwendet. Rufen Sie `UseAuthentication` vor jeder Middleware auf, die voraussetzt, dass Benutzer authentifiziert sind. Wenn Sie das Endpunktrouting verwenden, muss der Aufruf von `UseAuthentication`:
 
@@ -136,3 +136,4 @@ Im Quellcode von [Orchard Core](https://github.com/OrchardCMS/OrchardCore) finde
 * <xref:security/authorization/limitingidentitybyscheme>
 * <xref:security/authentication/policyschemes>
 * <xref:security/authorization/secure-data>
+* [Globales Anfordern authentifizierter Benutzer](xref:security/authorization/secure-data#rau)
