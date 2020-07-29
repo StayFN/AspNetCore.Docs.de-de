@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/policies
 ms.openlocfilehash: 668c68bc328860ef17e1f2df09103fca07733ef7
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
@@ -117,21 +117,21 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a><span data-ttu-id="4ae7c-120">Anwenden von Richtlinien auf MVC-Controller</span><span class="sxs-lookup"><span data-stu-id="4ae7c-120">Apply policies to MVC controllers</span></span>
 
-<span data-ttu-id="4ae7c-121">Wenn Sie Seiten verwenden :::no-loc(Razor)::: , finden Sie weitere Informationen unter [Anwenden von Richtlinien auf :::no-loc(Razor)::: Seiten](#apply-policies-to-razor-pages) in diesem Dokument.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-121">If you're using :::no-loc(Razor)::: Pages, see [Apply policies to :::no-loc(Razor)::: Pages](#apply-policies-to-razor-pages) in this document.</span></span>
+<span data-ttu-id="4ae7c-121">Wenn Sie Seiten verwenden Razor , finden Sie weitere Informationen unter [Anwenden von Richtlinien auf Razor Seiten](#apply-policies-to-razor-pages) in diesem Dokument.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-121">If you're using Razor Pages, see [Apply policies to Razor Pages](#apply-policies-to-razor-pages) in this document.</span></span>
 
 <span data-ttu-id="4ae7c-122">Richtlinien werden mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Controller angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-122">Policies are applied to controllers by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-123">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-123">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="4ae7c-124">Anwenden von Richtlinien auf :::no-loc(Razor)::: Seiten</span><span class="sxs-lookup"><span data-stu-id="4ae7c-124">Apply policies to :::no-loc(Razor)::: Pages</span></span>
+## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="4ae7c-124">Anwenden von Richtlinien auf Razor Seiten</span><span class="sxs-lookup"><span data-stu-id="4ae7c-124">Apply policies to Razor Pages</span></span>
 
-<span data-ttu-id="4ae7c-125">Richtlinien werden :::no-loc(Razor)::: mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Seiten angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-125">Policies are applied to :::no-loc(Razor)::: Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-126">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-126">For example:</span></span>
+<span data-ttu-id="4ae7c-125">Richtlinien werden Razor mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Seiten angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-125">Policies are applied to Razor Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-126">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-126">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-<span data-ttu-id="4ae7c-127">Richtlinien können ***nicht*** auf :::no-loc(Razor)::: seitenhandlerebene angewendet werden, sondern müssen auf die Seite angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-127">Policies can ***not*** be applied at the :::no-loc(Razor)::: Page handler level, they must be applied to the Page.</span></span>
+<span data-ttu-id="4ae7c-127">Richtlinien können ***nicht*** auf Razor seitenhandlerebene angewendet werden, sondern müssen auf die Seite angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-127">Policies can ***not*** be applied at the Razor Page handler level, they must be applied to the Page.</span></span>
 
-<span data-ttu-id="4ae7c-128">Richtlinien können :::no-loc(Razor)::: mithilfe einer [Autorisierungs Konvention](xref:security/authorization/razor-pages-authorization)auf Seiten angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-128">Policies can be applied to :::no-loc(Razor)::: Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
+<span data-ttu-id="4ae7c-128">Richtlinien können Razor mithilfe einer [Autorisierungs Konvention](xref:security/authorization/razor-pages-authorization)auf Seiten angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-128">Policies can be applied to Razor Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
 
 ## <a name="requirements"></a><span data-ttu-id="4ae7c-129">Anforderungen</span><span class="sxs-lookup"><span data-stu-id="4ae7c-129">Requirements</span></span>
 
@@ -225,7 +225,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a><span data-ttu-id="4ae7c-185">Zugreifen auf den MVC-Anforderungs Kontext in Handlern</span><span class="sxs-lookup"><span data-stu-id="4ae7c-185">Access MVC request context in handlers</span></span>
 
-<span data-ttu-id="4ae7c-186">Die `HandleRequirementAsync` Methode, die Sie in einem Autorisierungs Handler implementieren, verfügt über zwei Parameter: einen `AuthorizationHandlerContext` und den, den `TRequirement` Sie behandeln.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-186">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="4ae7c-187">Frameworks wie MVC oder :::no-loc(SignalR)::: können jedes beliebige Objekt der- `Resource` Eigenschaft im hinzufügen `AuthorizationHandlerContext` , um zusätzliche Informationen zu übergeben.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-187">Frameworks such as MVC or :::no-loc(SignalR)::: are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
+<span data-ttu-id="4ae7c-186">Die `HandleRequirementAsync` Methode, die Sie in einem Autorisierungs Handler implementieren, verfügt über zwei Parameter: einen `AuthorizationHandlerContext` und den, den `TRequirement` Sie behandeln.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-186">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="4ae7c-187">Frameworks wie MVC oder SignalR können jedes beliebige Objekt der- `Resource` Eigenschaft im hinzufügen `AuthorizationHandlerContext` , um zusätzliche Informationen zu übergeben.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-187">Frameworks such as MVC or SignalR are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
 
 <span data-ttu-id="4ae7c-188">Wenn Sie das Endpunkt Routing verwenden, wird die Autorisierung in der Regel von der Autorisierungs Middleware verarbeitet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-188">When using endpoint routing, authorization is typically handled by the Authorization Middleware.</span></span> <span data-ttu-id="4ae7c-189">In diesem Fall ist die `Resource` Eigenschaft eine Instanz von <xref:Microsoft.AspNetCore.Http.Endpoint> .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-189">In this case, the `Resource` property is an instance of <xref:Microsoft.AspNetCore.Http.Endpoint>.</span></span> <span data-ttu-id="4ae7c-190">Der Endpunkt kann verwendet werden, um die zugrunde liegende Ressource zu überprüfen, an die Sie weiterleiten.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-190">The endpoint can be used to probe the underlying resource to which you're routing.</span></span> <span data-ttu-id="4ae7c-191">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-191">For example:</span></span>
 
@@ -239,7 +239,7 @@ if (context.Resource is Endpoint endpoint)
 
 <span data-ttu-id="4ae7c-192">Der-Endpunkt bietet keinen Zugriff auf die aktuelle `HttpContext` .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-192">The endpoint doesn't provide access to the current `HttpContext`.</span></span> <span data-ttu-id="4ae7c-193">Wenn Sie das Endpunkt Routing verwenden, verwenden `IHttpContextAcessor` Sie für den Zugriff `HttpContext` innerhalb eines Autorisierungs Handlers.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-193">When using endpoint routing, use `IHttpContextAcessor` to access `HttpContext` inside of an authorization handler.</span></span> <span data-ttu-id="4ae7c-194">Weitere Informationen finden Sie unter [Verwenden von HttpContext aus benutzerdefinierten Komponenten](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components).</span><span class="sxs-lookup"><span data-stu-id="4ae7c-194">For more information, see [Use HttpContext from custom components](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components).</span></span>
 
-<span data-ttu-id="4ae7c-195">Mit herkömmlichem Routing oder wenn die Autorisierung im Rahmen des Autorisierungs Filters von MVC erfolgt, ist der Wert von `Resource` eine <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> Instanz von.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-195">With traditional routing, or when authorization happens as part of MVC's authorization filter, the value of `Resource` is an <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instance.</span></span> <span data-ttu-id="4ae7c-196">Diese Eigenschaft ermöglicht den Zugriff auf `HttpContext` , `RouteData` und alles andere, was von MVC und Seiten bereitgestellt wird :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-196">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="4ae7c-195">Mit herkömmlichem Routing oder wenn die Autorisierung im Rahmen des Autorisierungs Filters von MVC erfolgt, ist der Wert von `Resource` eine <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> Instanz von.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-195">With traditional routing, or when authorization happens as part of MVC's authorization filter, the value of `Resource` is an <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instance.</span></span> <span data-ttu-id="4ae7c-196">Diese Eigenschaft ermöglicht den Zugriff auf `HttpContext` , `RouteData` und alles andere, was von MVC und Seiten bereitgestellt wird Razor .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-196">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="4ae7c-197">Die Verwendung der- `Resource` Eigenschaft ist Framework-spezifisch.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-197">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="4ae7c-198">Die Verwendung von Informationen in der- `Resource` Eigenschaft schränkt Ihre Autorisierungs Richtlinien auf bestimmte Frameworks ein.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-198">Using information in the `Resource` property limits your authorization policies to particular frameworks.</span></span> <span data-ttu-id="4ae7c-199">Sie sollten die `Resource` -Eigenschaft mit dem `is` -Schlüsselwort umwandeln und dann bestätigen, dass die Umwandlung erfolgreich war, um sicherzustellen, dass der Code nicht mit einem stürzt `InvalidCastException`</span><span class="sxs-lookup"><span data-stu-id="4ae7c-199">You should cast the `Resource` property using the `is` keyword, and then confirm the cast has succeeded to ensure your code doesn't crash with an `InvalidCastException` when run on other frameworks:</span></span>
 
@@ -353,19 +353,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a><span data-ttu-id="4ae7c-217">Anwenden von Richtlinien auf MVC-Controller</span><span class="sxs-lookup"><span data-stu-id="4ae7c-217">Apply policies to MVC controllers</span></span>
 
-<span data-ttu-id="4ae7c-218">Wenn Sie Seiten verwenden :::no-loc(Razor)::: , finden Sie weitere Informationen unter [Anwenden von Richtlinien auf :::no-loc(Razor)::: Seiten](#apply-policies-to-razor-pages) in diesem Dokument.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-218">If you're using :::no-loc(Razor)::: Pages, see [Apply policies to :::no-loc(Razor)::: Pages](#apply-policies-to-razor-pages) in this document.</span></span>
+<span data-ttu-id="4ae7c-218">Wenn Sie Seiten verwenden Razor , finden Sie weitere Informationen unter [Anwenden von Richtlinien auf Razor Seiten](#apply-policies-to-razor-pages) in diesem Dokument.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-218">If you're using Razor Pages, see [Apply policies to Razor Pages](#apply-policies-to-razor-pages) in this document.</span></span>
 
 <span data-ttu-id="4ae7c-219">Richtlinien werden mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Controller angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-219">Policies are applied to controllers by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-220">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-220">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="4ae7c-221">Anwenden von Richtlinien auf :::no-loc(Razor)::: Seiten</span><span class="sxs-lookup"><span data-stu-id="4ae7c-221">Apply policies to :::no-loc(Razor)::: Pages</span></span>
+## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="4ae7c-221">Anwenden von Richtlinien auf Razor Seiten</span><span class="sxs-lookup"><span data-stu-id="4ae7c-221">Apply policies to Razor Pages</span></span>
 
-<span data-ttu-id="4ae7c-222">Richtlinien werden :::no-loc(Razor)::: mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Seiten angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-222">Policies are applied to :::no-loc(Razor)::: Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-223">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-223">For example:</span></span>
+<span data-ttu-id="4ae7c-222">Richtlinien werden Razor mithilfe des- `[Authorize]` Attributs mit dem Richtlinien Namen auf Seiten angewendet.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-222">Policies are applied to Razor Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="4ae7c-223">Beispiel:</span><span class="sxs-lookup"><span data-stu-id="4ae7c-223">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-<span data-ttu-id="4ae7c-224">Richtlinien können auch :::no-loc(Razor)::: mithilfe einer [Autorisierungs Konvention](xref:security/authorization/razor-pages-authorization)auf Seiten angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-224">Policies can also be applied to :::no-loc(Razor)::: Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
+<span data-ttu-id="4ae7c-224">Richtlinien können auch Razor mithilfe einer [Autorisierungs Konvention](xref:security/authorization/razor-pages-authorization)auf Seiten angewendet werden.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-224">Policies can also be applied to Razor Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
 
 ## <a name="requirements"></a><span data-ttu-id="4ae7c-225">Anforderungen</span><span class="sxs-lookup"><span data-stu-id="4ae7c-225">Requirements</span></span>
 
@@ -459,9 +459,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a><span data-ttu-id="4ae7c-281">Zugreifen auf den MVC-Anforderungs Kontext in Handlern</span><span class="sxs-lookup"><span data-stu-id="4ae7c-281">Access MVC request context in handlers</span></span>
 
-<span data-ttu-id="4ae7c-282">Die `HandleRequirementAsync` Methode, die Sie in einem Autorisierungs Handler implementieren, verfügt über zwei Parameter: einen `AuthorizationHandlerContext` und den, den `TRequirement` Sie behandeln.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-282">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="4ae7c-283">Frameworks wie MVC oder :::no-loc(SignalR)::: können jedes beliebige Objekt der- `Resource` Eigenschaft im hinzufügen `AuthorizationHandlerContext` , um zusätzliche Informationen zu übergeben.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-283">Frameworks such as MVC or :::no-loc(SignalR)::: are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
+<span data-ttu-id="4ae7c-282">Die `HandleRequirementAsync` Methode, die Sie in einem Autorisierungs Handler implementieren, verfügt über zwei Parameter: einen `AuthorizationHandlerContext` und den, den `TRequirement` Sie behandeln.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-282">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="4ae7c-283">Frameworks wie MVC oder SignalR können jedes beliebige Objekt der- `Resource` Eigenschaft im hinzufügen `AuthorizationHandlerContext` , um zusätzliche Informationen zu übergeben.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-283">Frameworks such as MVC or SignalR are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
 
-<span data-ttu-id="4ae7c-284">MVC übergibt z. b. eine Instanz von [authorizationfiltercontext](/dotnet/api/?term=AuthorizationFilterContext) in der- `Resource` Eigenschaft.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-284">For example, MVC passes an instance of [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) in the `Resource` property.</span></span> <span data-ttu-id="4ae7c-285">Diese Eigenschaft ermöglicht den Zugriff auf `HttpContext` , `RouteData` und alles andere, was von MVC und Seiten bereitgestellt wird :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-285">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="4ae7c-284">MVC übergibt z. b. eine Instanz von [authorizationfiltercontext](/dotnet/api/?term=AuthorizationFilterContext) in der- `Resource` Eigenschaft.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-284">For example, MVC passes an instance of [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) in the `Resource` property.</span></span> <span data-ttu-id="4ae7c-285">Diese Eigenschaft ermöglicht den Zugriff auf `HttpContext` , `RouteData` und alles andere, was von MVC und Seiten bereitgestellt wird Razor .</span><span class="sxs-lookup"><span data-stu-id="4ae7c-285">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="4ae7c-286">Die Verwendung der- `Resource` Eigenschaft ist Framework-spezifisch.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-286">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="4ae7c-287">Die Verwendung von Informationen in der- `Resource` Eigenschaft schränkt Ihre Autorisierungs Richtlinien auf bestimmte Frameworks ein.</span><span class="sxs-lookup"><span data-stu-id="4ae7c-287">Using information in the `Resource` property limits your authorization policies to particular frameworks.</span></span> <span data-ttu-id="4ae7c-288">Sie sollten die `Resource` -Eigenschaft mit dem `is` -Schlüsselwort umwandeln und dann bestätigen, dass die Umwandlung erfolgreich war, um sicherzustellen, dass der Code nicht mit einem stürzt `InvalidCastException`</span><span class="sxs-lookup"><span data-stu-id="4ae7c-288">You should cast the `Resource` property using the `is` keyword, and then confirm the cast has succeeded to ensure your code doesn't crash with an `InvalidCastException` when run on other frameworks:</span></span>
 

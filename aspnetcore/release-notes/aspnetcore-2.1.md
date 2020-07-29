@@ -6,16 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: aspnetcore-2.1
 ms.openlocfilehash: bf041965b009d5c10b96ad4f2a349c6efb346eb5
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85408161"
@@ -24,9 +25,9 @@ ms.locfileid: "85408161"
 
 <span data-ttu-id="46650-104">In diesem Artikel werden die wichtigsten Änderungen in ASP.NET Core 2.1 hervorgehoben und Links zu relevanter Dokumentation bereitgestellt.</span><span class="sxs-lookup"><span data-stu-id="46650-104">This article highlights the most significant changes in ASP.NET Core 2.1, with links to relevant documentation.</span></span>
 
-## SignalR
+## [SignalR
 
-SignalR<span data-ttu-id="46650-105"> wurde für ASP.NET Core 2.1 umgeschrieben.</span><span class="sxs-lookup"><span data-stu-id="46650-105"> has been rewritten for ASP.NET Core 2.1.</span></span> <span data-ttu-id="46650-106">ASP.NET Core SignalR bietet eine Reihe von Verbesserungen:</span><span class="sxs-lookup"><span data-stu-id="46650-106">ASP.NET Core SignalR includes a number of improvements:</span></span>
+<span data-ttu-id="46650-105">[SignalR wurde für ASP.NET Core 2.1 umgeschrieben.</span><span class="sxs-lookup"><span data-stu-id="46650-105">[SignalR has been rewritten for ASP.NET Core 2.1.</span></span> <span data-ttu-id="46650-106">ASP.NET Core [SignalR bietet eine Reihe von Verbesserungen:</span><span class="sxs-lookup"><span data-stu-id="46650-106">ASP.NET Core [SignalR includes a number of improvements:</span></span>
 
 * <span data-ttu-id="46650-107">Ein vereinfachtes Modell für horizontale Skalierung.</span><span class="sxs-lookup"><span data-stu-id="46650-107">A simplified scale-out model.</span></span>
 * <span data-ttu-id="46650-108">Einen neuen JavaScript-Client ohne jQuery-Abhängigkeit.</span><span class="sxs-lookup"><span data-stu-id="46650-108">A new JavaScript client with no jQuery dependency.</span></span>
@@ -35,24 +36,24 @@ SignalR<span data-ttu-id="46650-105"> wurde für ASP.NET Core 2.1 umgeschrieben
 * <span data-ttu-id="46650-111">Ein neues Streaming-Antwortmodell.</span><span class="sxs-lookup"><span data-stu-id="46650-111">A new streaming response model.</span></span>
 * <span data-ttu-id="46650-112">Unterstützung für Clients basierend auf Bare-WebSockets.</span><span class="sxs-lookup"><span data-stu-id="46650-112">Support for clients based on bare WebSockets.</span></span>
 
-<span data-ttu-id="46650-113">Weitere Informationen finden Sie unter [ASP.NET Core SignalR](xref:signalr/introduction).</span><span class="sxs-lookup"><span data-stu-id="46650-113">For more information, see [ASP.NET Core SignalR](xref:signalr/introduction).</span></span>
+<span data-ttu-id="46650-113">Weitere Informationen finden Sie unter [ASP.NET Core [SignalR](xref:signalr/introduction).</span><span class="sxs-lookup"><span data-stu-id="46650-113">For more information, see [ASP.NET Core [SignalR](xref:signalr/introduction).</span></span>
 
-## <a name="razor-class-libraries"></a>Razor<span data-ttu-id="46650-114">-Klassenbibliotheken</span><span class="sxs-lookup"><span data-stu-id="46650-114"> class libraries</span></span>
+## <a name="razor-class-libraries"></a><span data-ttu-id="46650-114">[Razor-Klassenbibliotheken</span><span class="sxs-lookup"><span data-stu-id="46650-114">[Razor class libraries</span></span>
 
-<span data-ttu-id="46650-115">ASP.NET Core 2.1 erleichtert die Erstellung und Einbeziehung einer Razor-basierten Benutzeroberfläche in einer Bibliothek sowie die mehrere Projekte übergreifende Freigabe.</span><span class="sxs-lookup"><span data-stu-id="46650-115">ASP.NET Core 2.1 makes it easier to build and include Razor-based UI in a library and share it across multiple projects.</span></span> <span data-ttu-id="46650-116">Mit dem neuen Razor SDK können Razor-Dateien in einem Klassenbibliotheksprojekt erstellt werden, das in ein NuGet-Paket gepackt werden kann.</span><span class="sxs-lookup"><span data-stu-id="46650-116">The new Razor SDK enables building Razor files into a class library project that can be packaged into a NuGet package.</span></span> <span data-ttu-id="46650-117">Ansichten und Seiten in Bibliotheken werden automatisch ermittelt und können von der App überschrieben werden.</span><span class="sxs-lookup"><span data-stu-id="46650-117">Views and pages in libraries are automatically discovered and can be overridden by the app.</span></span> <span data-ttu-id="46650-118">Folgen der Integration der Razor-Kompilierung in den Build:</span><span class="sxs-lookup"><span data-stu-id="46650-118">By integrating Razor compilation into the build:</span></span>
+<span data-ttu-id="46650-115">ASP.NET Core 2.1 erleichtert die Erstellung und Einbeziehung einer [Razor-basierten Benutzeroberfläche in einer Bibliothek sowie die mehrere Projekte übergreifende Freigabe.</span><span class="sxs-lookup"><span data-stu-id="46650-115">ASP.NET Core 2.1 makes it easier to build and include [Razor-based UI in a library and share it across multiple projects.</span></span> <span data-ttu-id="46650-116">Mit dem neuen [Razor SDK können [Razor-Dateien in einem Klassenbibliotheksprojekt erstellt werden, das in ein NuGet-Paket gepackt werden kann.</span><span class="sxs-lookup"><span data-stu-id="46650-116">The new [Razor SDK enables building [Razor files into a class library project that can be packaged into a NuGet package.</span></span> <span data-ttu-id="46650-117">Ansichten und Seiten in Bibliotheken werden automatisch ermittelt und können von der App überschrieben werden.</span><span class="sxs-lookup"><span data-stu-id="46650-117">Views and pages in libraries are automatically discovered and can be overridden by the app.</span></span> <span data-ttu-id="46650-118">Folgen der Integration der [Razor-Kompilierung in den Build:</span><span class="sxs-lookup"><span data-stu-id="46650-118">By integrating [Razor compilation into the build:</span></span>
 
 * <span data-ttu-id="46650-119">Die App wird deutlich schneller gestartet.</span><span class="sxs-lookup"><span data-stu-id="46650-119">The app startup time is significantly faster.</span></span>
-* <span data-ttu-id="46650-120">Schnelle Updates von Razor-Ansichten und -Seiten zur Laufzeit sind weiterhin als Bestandteil eines iterativen Entwicklungsworkflows verfügbar.</span><span class="sxs-lookup"><span data-stu-id="46650-120">Fast updates to Razor views and pages at runtime are still available as part of an iterative development workflow.</span></span>
+* <span data-ttu-id="46650-120">Schnelle Updates von [Razor-Ansichten und -Seiten zur Laufzeit sind weiterhin als Bestandteil eines iterativen Entwicklungsworkflows verfügbar.</span><span class="sxs-lookup"><span data-stu-id="46650-120">Fast updates to [Razor views and pages at runtime are still available as part of an iterative development workflow.</span></span>
 
-<span data-ttu-id="46650-121">Weitere Informationen finden Sie unter [Erstellen einer wiederverwendbaren Benutzeroberfläche mithilfe des Razor-Klassenbibliotheksprojekts](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="46650-121">For more information, see [Create reusable UI using the Razor Class Library project](xref:razor-pages/ui-class).</span></span>
+<span data-ttu-id="46650-121">Weitere Informationen finden Sie unter [Erstellen einer wiederverwendbaren Benutzeroberfläche mithilfe des [Razor-Klassenbibliotheksprojekts](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="46650-121">For more information, see [Create reusable UI using the [Razor Class Library project](xref:razor-pages/ui-class).</span></span>
 
-## <a name="identity-ui-library--scaffolding"></a><span data-ttu-id="46650-122">Bibliothek und Gerüst der Identity-Benutzeroberfläche</span><span class="sxs-lookup"><span data-stu-id="46650-122">Identity UI library & scaffolding</span></span>
+## <a name="identity-ui-library--scaffolding"></a><span data-ttu-id="46650-122">Bibliothek und Gerüst der [Identity-Benutzeroberfläche</span><span class="sxs-lookup"><span data-stu-id="46650-122">[Identity UI library & scaffolding</span></span>
 
-<span data-ttu-id="46650-123">ASP.NET Core 2.1 stellt [ASP.NET Core Identity](xref:security/authentication/identity) als [Razor-Klassenbibliothek](xref:razor-pages/ui-class) bereit.</span><span class="sxs-lookup"><span data-stu-id="46650-123">ASP.NET Core 2.1 provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="46650-124">Apps, die über Identity verfügen, können das neue Gerüst Identity anwenden, um die in der Identity-Klassenbibliothek Razor enthaltenen Quellcode selektiv hinzuzufügen.</span><span class="sxs-lookup"><span data-stu-id="46650-124">Apps that include Identity can apply the new Identity scaffolder to selectively add the source code contained in the Identity Razor Class Library (RCL).</span></span> <span data-ttu-id="46650-125">Sie sollten Quellcode generieren, um den Code und das Verhalten ändern zu können.</span><span class="sxs-lookup"><span data-stu-id="46650-125">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="46650-126">Sie können das Gerüst beispielsweise anweisen, den bei der Registrierung verwendeten Code zu generieren.</span><span class="sxs-lookup"><span data-stu-id="46650-126">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="46650-127">Generierter Code hat Vorrang vor dem gleichen Code in der Razor-Klassenbibliothek Identity.</span><span class="sxs-lookup"><span data-stu-id="46650-127">Generated code takes precedence over the same code in the Identity RCL.</span></span>
+<span data-ttu-id="46650-123">ASP.NET Core 2.1 stellt [ASP.NET Core [Identity](xref:security/authentication/identity) als [[Razor-Klassenbibliothek](xref:razor-pages/ui-class) bereit.</span><span class="sxs-lookup"><span data-stu-id="46650-123">ASP.NET Core 2.1 provides [ASP.NET Core [Identity](xref:security/authentication/identity) as a [[Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="46650-124">Apps, die über [Identity verfügen, können das neue Gerüst [Identity anwenden, um die in der [Identity-Klassenbibliothek [Razor enthaltenen Quellcode selektiv hinzuzufügen.</span><span class="sxs-lookup"><span data-stu-id="46650-124">Apps that include [Identity can apply the new [Identity scaffolder to selectively add the source code contained in the [Identity [Razor Class Library (RCL).</span></span> <span data-ttu-id="46650-125">Sie sollten Quellcode generieren, um den Code und das Verhalten ändern zu können.</span><span class="sxs-lookup"><span data-stu-id="46650-125">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="46650-126">Sie können das Gerüst beispielsweise anweisen, den bei der Registrierung verwendeten Code zu generieren.</span><span class="sxs-lookup"><span data-stu-id="46650-126">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="46650-127">Generierter Code hat Vorrang vor dem gleichen Code in der Razor-Klassenbibliothek [Identity.</span><span class="sxs-lookup"><span data-stu-id="46650-127">Generated code takes precedence over the same code in the [Identity RCL.</span></span>
 
-<span data-ttu-id="46650-128">Apps **ohne** Authentifizierung können das Gerüst Identity anwenden, um das Paket der Razor-Klassenbibliothek Identity hinzuzufügen.</span><span class="sxs-lookup"><span data-stu-id="46650-128">Apps that do **not** include authentication can apply the Identity scaffolder to add the RCL Identity package.</span></span> <span data-ttu-id="46650-129">Sie können Code der Klassenbibliothek Identity auswählen, der generiert werden soll.</span><span class="sxs-lookup"><span data-stu-id="46650-129">You have the option of selecting Identity code to be generated.</span></span>
+<span data-ttu-id="46650-128">Apps **ohne** Authentifizierung können das Gerüst [Identity anwenden, um das Paket der Razor-Klassenbibliothek [Identity hinzuzufügen.</span><span class="sxs-lookup"><span data-stu-id="46650-128">Apps that do **not** include authentication can apply the [Identity scaffolder to add the RCL [Identity package.</span></span> <span data-ttu-id="46650-129">Sie können Code der Klassenbibliothek [Identity auswählen, der generiert werden soll.</span><span class="sxs-lookup"><span data-stu-id="46650-129">You have the option of selecting [Identity code to be generated.</span></span>
 
-<span data-ttu-id="46650-130">Weitere Informationen finden Sie unter [Gerüst Identity in ASP.NET Core-Projekten](xref:security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="46650-130">For more information, see [Scaffold Identity in ASP.NET Core projects](xref:security/authentication/scaffold-identity).</span></span>
+<span data-ttu-id="46650-130">Weitere Informationen finden Sie unter [Gerüst [Identity in ASP.NET Core-Projekten](xref:security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="46650-130">For more information, see [Scaffold [Identity in ASP.NET Core projects](xref:security/authentication/scaffold-identity).</span></span>
 
 ## <a name="https"></a><span data-ttu-id="46650-131">HTTPS</span><span class="sxs-lookup"><span data-stu-id="46650-131">HTTPS</span></span>
 
@@ -158,17 +159,17 @@ public class BasicTests
 * <xref:spa/react>
 * <xref:spa/react-with-redux>
 
-## <a name="razor-pages-search-for-razor-assets"></a>Razor<span data-ttu-id="46650-195"> Pages-Suche nach Razor-Objekten</span><span class="sxs-lookup"><span data-stu-id="46650-195"> Pages search for Razor assets</span></span>
+## <a name="razor-pages-search-for-razor-assets"></a><span data-ttu-id="46650-195">[Razor Pages-Suche nach [Razor-Objekten</span><span class="sxs-lookup"><span data-stu-id="46650-195">[Razor Pages search for [Razor assets</span></span>
 
-<span data-ttu-id="46650-196">In Version 2.1 sucht Razor Pages in den folgenden Verzeichnissen in der aufgeführten Reihenfolge nach Razor-Objekten (z. B. Layouts und Teilausführungen):</span><span class="sxs-lookup"><span data-stu-id="46650-196">In 2.1, Razor Pages search for Razor assets (such as layouts and partials) in the following directories in the listed order:</span></span>
+<span data-ttu-id="46650-196">In Version 2.1 sucht [Razor Pages in den folgenden Verzeichnissen in der aufgeführten Reihenfolge nach [Razor-Objekten (z. B. Layouts und Teilausführungen):</span><span class="sxs-lookup"><span data-stu-id="46650-196">In 2.1, [Razor Pages search for [Razor assets (such as layouts and partials) in the following directories in the listed order:</span></span>
 
 1. <span data-ttu-id="46650-197">Im aktuellen Ordner „Pages“.</span><span class="sxs-lookup"><span data-stu-id="46650-197">Current Pages folder.</span></span>
 1. <span data-ttu-id="46650-198">*/Pages/Shared/*</span><span class="sxs-lookup"><span data-stu-id="46650-198">*/Pages/Shared/*</span></span>
 1. <span data-ttu-id="46650-199">*/Views/Shared/*</span><span class="sxs-lookup"><span data-stu-id="46650-199">*/Views/Shared/*</span></span>
 
-## <a name="razor-pages-in-an-area"></a>Razor<span data-ttu-id="46650-200"> Pages in einem Bereich</span><span class="sxs-lookup"><span data-stu-id="46650-200"> Pages in an area</span></span>
+## <a name="razor-pages-in-an-area"></a><span data-ttu-id="46650-200">[Razor Pages in einem Bereich</span><span class="sxs-lookup"><span data-stu-id="46650-200">[Razor Pages in an area</span></span>
 
-Razor<span data-ttu-id="46650-201"> Pages unterstützen jetzt [Bereiche](xref:mvc/controllers/areas).</span><span class="sxs-lookup"><span data-stu-id="46650-201"> Pages now support [areas](xref:mvc/controllers/areas).</span></span> <span data-ttu-id="46650-202">Erstellen Sie für die Anzeige eines Beispiels für Bereiche eine neue Razor Pages-Web-App mit individuellen Benutzerkonten.</span><span class="sxs-lookup"><span data-stu-id="46650-202">To see an example of areas, create a new Razor Pages web app with individual user accounts.</span></span> <span data-ttu-id="46650-203">Eine Razor Pages-Web-App mit individuellen Benutzerkonten enthält */Areas/Identity/Pages*.</span><span class="sxs-lookup"><span data-stu-id="46650-203">A Razor Pages web app with individual user accounts includes */Areas/Identity/Pages*.</span></span>
+<span data-ttu-id="46650-201">[Razor Pages unterstützen jetzt [Bereiche](xref:mvc/controllers/areas).</span><span class="sxs-lookup"><span data-stu-id="46650-201">[Razor Pages now support [areas](xref:mvc/controllers/areas).</span></span> <span data-ttu-id="46650-202">Erstellen Sie für die Anzeige eines Beispiels für Bereiche eine neue [Razor Pages-Web-App mit individuellen Benutzerkonten.</span><span class="sxs-lookup"><span data-stu-id="46650-202">To see an example of areas, create a new [Razor Pages web app with individual user accounts.</span></span> <span data-ttu-id="46650-203">Eine [Razor Pages-Web-App mit individuellen Benutzerkonten enthält */Areas/[Identity/Pages*.</span><span class="sxs-lookup"><span data-stu-id="46650-203">A [Razor Pages web app with individual user accounts includes */Areas/[Identity/Pages*.</span></span>
 
 ## <a name="mvc-compatibility-version"></a><span data-ttu-id="46650-204">MVC-Kompatibilitätsversion</span><span class="sxs-lookup"><span data-stu-id="46650-204">MVC compatibility version</span></span>
 

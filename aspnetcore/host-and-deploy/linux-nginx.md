@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: host-and-deploy/linux-nginx
 ms.openlocfilehash: c936ff9a7aadd21ce99a0c37184ae8cf911c3070
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85403975"
@@ -157,7 +158,7 @@ server {
 }
 ```
 
-<span data-ttu-id="dd181-170">Wenn es sich bei der App um eine Blazor Server-App handelt, die auf SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen dazu, wie Sie den `Connection`-Header festlegen.</span><span class="sxs-lookup"><span data-stu-id="dd181-170">If the app is a Blazor Server app that relies on SignalR WebSockets, see <xref:blazor/host-and-deploy/server#linux-with-nginx> for information on how to set the `Connection` header.</span></span>
+<span data-ttu-id="dd181-170">Wenn es sich bei der App um eine [Blazor Server-App handelt, die auf [SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen dazu, wie Sie den `Connection`-Header festlegen.</span><span class="sxs-lookup"><span data-stu-id="dd181-170">If the app is a [Blazor Server app that relies on [SignalR WebSockets, see <xref:blazor/host-and-deploy/server#linux-with-nginx> for information on how to set the `Connection` header.</span></span>
 
 <span data-ttu-id="dd181-171">Wenn keine Übereinstimmung mit `server_name` gefunden wird, verwendet Nginx den Standardserver.</span><span class="sxs-lookup"><span data-stu-id="dd181-171">When no `server_name` matches, Nginx uses the default server.</span></span> <span data-ttu-id="dd181-172">Wenn kein Server definiert ist, ist der erste Server in der Konfigurationsdatei der Standardserver.</span><span class="sxs-lookup"><span data-stu-id="dd181-172">If no default server is defined, the first server in the configuration file is the default server.</span></span> <span data-ttu-id="dd181-173">Als bewährte Methode gilt, einen bestimmten Standardserver hinzuzufügen, der den Statuscode 444 in Ihrer Konfigurationsdatei zurückgibt.</span><span class="sxs-lookup"><span data-stu-id="dd181-173">As a best practice, add a specific default server which returns a status code of 444 in your configuration file.</span></span> <span data-ttu-id="dd181-174">Im Folgenden wird ein Beispiel für eine Standardserverkonfiguration aufgeführt:</span><span class="sxs-lookup"><span data-stu-id="dd181-174">A default server configuration example is:</span></span>
 

@@ -1,31 +1,32 @@
 ---
-title: Blazor-Zustandsverwaltung in ASP.NET Core
+title: '[Blazor-Zustandsverwaltung in ASP.NET Core'
 author: guardrex
-description: Erfahren Sie, wie Sie den Zustand in Blazor Server-Apps beibehalten.
+description: Erfahren Sie, wie Sie den Zustand in [Blazor Server-Apps beibehalten.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/state-management
 ms.openlocfilehash: a6c646425145855538f408ec6cafdb151cd24b86
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85401947"
 ---
-# <a name="aspnet-core-blazor-state-management"></a><span data-ttu-id="4543f-103">Blazor-Zustandsverwaltung in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4543f-103">ASP.NET Core Blazor state management</span></span>
+# <a name="aspnet-core-blazor-state-management"></a><span data-ttu-id="4543f-103">[Blazor-Zustandsverwaltung in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4543f-103">ASP.NET Core [Blazor state management</span></span>
 
 <span data-ttu-id="4543f-104">Von [Steve Sanderson](https://github.com/SteveSandersonMS)</span><span class="sxs-lookup"><span data-stu-id="4543f-104">By [Steve Sanderson](https://github.com/SteveSandersonMS)</span></span>
 
-Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Framework.</span><span class="sxs-lookup"><span data-stu-id="4543f-105"> is a stateful app framework.</span></span> <span data-ttu-id="4543f-106">In den meisten Fällen behält die App eine laufende Verbindung mit dem Server bei.</span><span class="sxs-lookup"><span data-stu-id="4543f-106">Most of the time, the app maintains an ongoing connection to the server.</span></span> <span data-ttu-id="4543f-107">Der Benutzerzustand wird in einer *Verbindung* im Speicher des Servers gespeichert.</span><span class="sxs-lookup"><span data-stu-id="4543f-107">The user's state is held in the server's memory in a *circuit*.</span></span> 
+<span data-ttu-id="4543f-105">[Blazor Server ist ein zustandsbehaftetes App-Framework.</span><span class="sxs-lookup"><span data-stu-id="4543f-105">[Blazor Server is a stateful app framework.</span></span> <span data-ttu-id="4543f-106">In den meisten Fällen behält die App eine laufende Verbindung mit dem Server bei.</span><span class="sxs-lookup"><span data-stu-id="4543f-106">Most of the time, the app maintains an ongoing connection to the server.</span></span> <span data-ttu-id="4543f-107">Der Benutzerzustand wird in einer *Verbindung* im Speicher des Servers gespeichert.</span><span class="sxs-lookup"><span data-stu-id="4543f-107">The user's state is held in the server's memory in a *circuit*.</span></span> 
 
 <span data-ttu-id="4543f-108">Beispiele für den Zustand einer Benutzerverbindung sind:</span><span class="sxs-lookup"><span data-stu-id="4543f-108">Examples of state held for a user's circuit include:</span></span>
 
@@ -34,11 +35,11 @@ Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Frame
 * <span data-ttu-id="4543f-111">Daten, die in [-Abhängigkeitsinjektion (DI)](xref:fundamentals/dependency-injection)-Dienstinstanzen gespeichert sind, die auf die Verbindung beschränkt sind.</span><span class="sxs-lookup"><span data-stu-id="4543f-111">Data held in [dependency injection (DI)](xref:fundamentals/dependency-injection) service instances that are scoped to the circuit.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="4543f-112">In diesem Artikel wird die Zustandspersistenz in Blazor Server-Apps behandelt.</span><span class="sxs-lookup"><span data-stu-id="4543f-112">This article addresses state persistence in Blazor Server apps.</span></span> Blazor WebAssembly<span data-ttu-id="4543f-113">-Apps können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.</span><span class="sxs-lookup"><span data-stu-id="4543f-113"> apps can take advantage of [client-side state persistence in the browser](#client-side-in-the-browser) but require custom solutions or 3rd party packages beyond the scope of this article.</span></span>
+> <span data-ttu-id="4543f-112">In diesem Artikel wird die Zustandspersistenz in [Blazor Server-Apps behandelt.</span><span class="sxs-lookup"><span data-stu-id="4543f-112">This article addresses state persistence in [Blazor Server apps.</span></span> <span data-ttu-id="4543f-113">[Blazor WebAssembly-Apps können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.</span><span class="sxs-lookup"><span data-stu-id="4543f-113">[Blazor WebAssembly apps can take advantage of [client-side state persistence in the browser](#client-side-in-the-browser) but require custom solutions or 3rd party packages beyond the scope of this article.</span></span>
 
-## <a name="blazor-circuits"></a>Blazor<span data-ttu-id="4543f-114">-Verbindungen</span><span class="sxs-lookup"><span data-stu-id="4543f-114"> circuits</span></span>
+## <a name="blazor-circuits"></a><span data-ttu-id="4543f-114">[Blazor-Verbindungen</span><span class="sxs-lookup"><span data-stu-id="4543f-114">[Blazor circuits</span></span>
 
-<span data-ttu-id="4543f-115">Wenn die Netzwerkverbindung vorübergehend getrennt wird, versucht Blazor, den Benutzer nochmals mit der ursprünglichen Verbindung zu verbinden, damit er die mit der Verwendung der App fortfahren kann.</span><span class="sxs-lookup"><span data-stu-id="4543f-115">If a user experiences a temporary network connection loss, Blazor attempts to reconnect the user to their original circuit so they can continue to use the app.</span></span> <span data-ttu-id="4543f-116">Es ist jedoch nicht immer möglich, einen Benutzer noch mal mit der ursprünglichen Verbindung im Arbeitsspeicher des Servers zu verbinden:</span><span class="sxs-lookup"><span data-stu-id="4543f-116">However, reconnecting a user to their original circuit in the server's memory isn't always possible:</span></span>
+<span data-ttu-id="4543f-115">Wenn die Netzwerkverbindung vorübergehend getrennt wird, versucht [Blazor, den Benutzer nochmals mit der ursprünglichen Verbindung zu verbinden, damit er die mit der Verwendung der App fortfahren kann.</span><span class="sxs-lookup"><span data-stu-id="4543f-115">If a user experiences a temporary network connection loss, [Blazor attempts to reconnect the user to their original circuit so they can continue to use the app.</span></span> <span data-ttu-id="4543f-116">Es ist jedoch nicht immer möglich, einen Benutzer noch mal mit der ursprünglichen Verbindung im Arbeitsspeicher des Servers zu verbinden:</span><span class="sxs-lookup"><span data-stu-id="4543f-116">However, reconnecting a user to their original circuit in the server's memory isn't always possible:</span></span>
 
 * <span data-ttu-id="4543f-117">Der Server kann eine getrennte Verbindung nicht dauerhaft beibehalten.</span><span class="sxs-lookup"><span data-stu-id="4543f-117">The server can't retain a disconnected circuit forever.</span></span> <span data-ttu-id="4543f-118">Der Server muss eine getrennte Verbindung nach einem Timeout freigeben, oder wenn der Server nicht über genügend Arbeitsspeicher verfügt.</span><span class="sxs-lookup"><span data-stu-id="4543f-118">The server must release a disconnected circuit after a timeout or when the server is under memory pressure.</span></span>
 * <span data-ttu-id="4543f-119">In Bereitstellungsumgebungen mit mehreren Servern und Lastenausgleich kann es vorkommen, dass ein Server, der Anforderungen verarbeitet, zu einem bestimmten Zeitpunkt nicht mehr verfügbar ist.</span><span class="sxs-lookup"><span data-stu-id="4543f-119">In multiserver, load-balanced deployment environments, any server processing requests may become unavailable at any given time.</span></span> <span data-ttu-id="4543f-120">Bei einzelnen Servern tritt möglicherweise ein Fehler auf, oder sie werden automatisch entfernt, wenn nicht mehr das gesamte Anforderungsvolumen verarbeitet werden muss.</span><span class="sxs-lookup"><span data-stu-id="4543f-120">Individual servers may fail or be automatically removed when no longer required to handle the overall volume of requests.</span></span> <span data-ttu-id="4543f-121">Der ursprüngliche Server ist möglicherweise nicht verfügbar, wenn der Benutzer versucht, noch mal eine Verbindung herzustellen.</span><span class="sxs-lookup"><span data-stu-id="4543f-121">The original server may not be available when the user attempts to reconnect.</span></span>
@@ -69,7 +70,7 @@ Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Frame
 
 ## <a name="where-to-persist-state"></a><span data-ttu-id="4543f-147">Speicherort des Zustands</span><span class="sxs-lookup"><span data-stu-id="4543f-147">Where to persist state</span></span>
 
-<span data-ttu-id="4543f-148">Es gibt drei allgemeine Speicherorte für die Beibehaltung des Zustands in einer Blazor Server-App.</span><span class="sxs-lookup"><span data-stu-id="4543f-148">Three common locations exist for persisting state in a Blazor Server app.</span></span> <span data-ttu-id="4543f-149">Die Ansätze eignen sich jeweils für verschiedene Szenarios und weisen unterschiedliche Einschränkungen auf:</span><span class="sxs-lookup"><span data-stu-id="4543f-149">Each approach is best suited to different scenarios and has different caveats:</span></span>
+<span data-ttu-id="4543f-148">Es gibt drei allgemeine Speicherorte für die Beibehaltung des Zustands in einer [Blazor Server-App.</span><span class="sxs-lookup"><span data-stu-id="4543f-148">Three common locations exist for persisting state in a [Blazor Server app.</span></span> <span data-ttu-id="4543f-149">Die Ansätze eignen sich jeweils für verschiedene Szenarios und weisen unterschiedliche Einschränkungen auf:</span><span class="sxs-lookup"><span data-stu-id="4543f-149">Each approach is best suited to different scenarios and has different caveats:</span></span>
 
 * [<span data-ttu-id="4543f-150">Serverseitig in einer Datenbank</span><span class="sxs-lookup"><span data-stu-id="4543f-150">Server-side in a database</span></span>](#server-side-in-a-database)
 * [<span data-ttu-id="4543f-151">URL</span><span class="sxs-lookup"><span data-stu-id="4543f-151">URL</span></span>](#url)
@@ -107,7 +108,7 @@ Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Frame
 <span data-ttu-id="4543f-173">Für vorübergehende Daten, die der Benutzer aktiv erstellt, sind die `localStorage`- und `sessionStorage`-Sammlungen des Browsers ein häufig verwendeter Sicherungsspeicher.</span><span class="sxs-lookup"><span data-stu-id="4543f-173">For transient data that the user is actively creating, a common backing store is the browser's `localStorage` and `sessionStorage` collections.</span></span> <span data-ttu-id="4543f-174">Die App muss den gespeicherten Zustand nicht verwalten oder löschen, wenn die Verbindung abgebrochen wird. Dies ist ein Vorteil gegenüber serverseitigem Speicher.</span><span class="sxs-lookup"><span data-stu-id="4543f-174">The app isn't required to manage or clear the stored state if the circuit is abandoned, which is an advantage over server-side storage.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="4543f-175">„Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [Blazor WebAssembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly).</span><span class="sxs-lookup"><span data-stu-id="4543f-175">"Client-side" in this section refers to client-side scenarios in the browser, not the [Blazor WebAssembly hosting model](xref:blazor/hosting-models#blazor-webassembly).</span></span> <span data-ttu-id="4543f-176">`localStorage` und `sessionStorage` können in Blazor WebAssembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.</span><span class="sxs-lookup"><span data-stu-id="4543f-176">`localStorage` and `sessionStorage` can be used in Blazor WebAssembly apps but only by writing custom code or using a 3rd party package.</span></span>
+> <span data-ttu-id="4543f-175">„Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [[Blazor WebAssembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly).</span><span class="sxs-lookup"><span data-stu-id="4543f-175">"Client-side" in this section refers to client-side scenarios in the browser, not the [[Blazor WebAssembly hosting model](xref:blazor/hosting-models#blazor-webassembly).</span></span> <span data-ttu-id="4543f-176">`localStorage` und `sessionStorage` können in [Blazor WebAssembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.</span><span class="sxs-lookup"><span data-stu-id="4543f-176">`localStorage` and `sessionStorage` can be used in [Blazor WebAssembly apps but only by writing custom code or using a 3rd party package.</span></span>
 
 <span data-ttu-id="4543f-177">`localStorage` und `sessionStorage` unterscheiden sich wie folgt:</span><span class="sxs-lookup"><span data-stu-id="4543f-177">`localStorage` and `sessionStorage` differ as follows:</span></span>
 
@@ -125,7 +126,7 @@ Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Frame
 
 * <span data-ttu-id="4543f-191">Ähnlich wie bei der Verwendung einer serverseitigen Datenbank erfolgt das Laden und Speichern von Daten asynchron.</span><span class="sxs-lookup"><span data-stu-id="4543f-191">Similar to the use of a server-side database, loading and saving data are asynchronous.</span></span>
 * <span data-ttu-id="4543f-192">Im Gegensatz zu einer serverseitigen Datenbank ist der Speicher während des Prerenderings nicht verfügbar, da die angeforderte Seite im Browser während der Prerenderingphase nicht vorhanden ist.</span><span class="sxs-lookup"><span data-stu-id="4543f-192">Unlike a server-side database, storage isn't available during prerendering because the requested page doesn't exist in the browser during the prerendering stage.</span></span>
-* <span data-ttu-id="4543f-193">Es ist ohne Weiteres möglich, einige wenige Kilobyte Daten für Blazor Server-Apps zu speichern.</span><span class="sxs-lookup"><span data-stu-id="4543f-193">Storage of a few kilobytes of data is reasonable to persist for Blazor Server apps.</span></span> <span data-ttu-id="4543f-194">Bei mehr Kilobyte müssen Beeinträchtigungen der Leistung berücksichtigt werden, da die Daten über das Netzwerk geladen und gespeichert werden.</span><span class="sxs-lookup"><span data-stu-id="4543f-194">Beyond a few kilobytes, you must consider the performance implications because the data is loaded and saved across the network.</span></span>
+* <span data-ttu-id="4543f-193">Es ist ohne Weiteres möglich, einige wenige Kilobyte Daten für [Blazor Server-Apps zu speichern.</span><span class="sxs-lookup"><span data-stu-id="4543f-193">Storage of a few kilobytes of data is reasonable to persist for [Blazor Server apps.</span></span> <span data-ttu-id="4543f-194">Bei mehr Kilobyte müssen Beeinträchtigungen der Leistung berücksichtigt werden, da die Daten über das Netzwerk geladen und gespeichert werden.</span><span class="sxs-lookup"><span data-stu-id="4543f-194">Beyond a few kilobytes, you must consider the performance implications because the data is loaded and saved across the network.</span></span>
 * <span data-ttu-id="4543f-195">Benutzer können die Daten anzeigen oder manipulieren.</span><span class="sxs-lookup"><span data-stu-id="4543f-195">Users may view or tamper with the data.</span></span> <span data-ttu-id="4543f-196">Die [Datenschutzlösung](xref:security/data-protection/introduction) von ASP.NET Core reduziert die damit verbundenen Risiken.</span><span class="sxs-lookup"><span data-stu-id="4543f-196">ASP.NET Core [Data Protection](xref:security/data-protection/introduction) can mitigate the risk.</span></span>
 
 ## <a name="third-party-browser-storage-solutions"></a><span data-ttu-id="4543f-197">Browserspeicherlösungen von Drittanbietern</span><span class="sxs-lookup"><span data-stu-id="4543f-197">Third-party browser storage solutions</span></span>
@@ -145,7 +146,7 @@ Blazor Server<span data-ttu-id="4543f-105"> ist ein zustandsbehaftetes App-Frame
 
 <span data-ttu-id="4543f-209">So installieren Sie das `Microsoft.AspNetCore.ProtectedBrowserStorage`-Paket</span><span class="sxs-lookup"><span data-stu-id="4543f-209">To install the `Microsoft.AspNetCore.ProtectedBrowserStorage` package:</span></span>
 
-1. <span data-ttu-id="4543f-210">Fügen Sie im Blazor Server-App-Projekt einen Paketverweis zu [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) hinzu.</span><span class="sxs-lookup"><span data-stu-id="4543f-210">In the Blazor Server app project, add a package reference to [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).</span></span>
+1. <span data-ttu-id="4543f-210">Fügen Sie im [Blazor Server-App-Projekt einen Paketverweis zu [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) hinzu.</span><span class="sxs-lookup"><span data-stu-id="4543f-210">In the [Blazor Server app project, add a package reference to [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).</span></span>
 1. <span data-ttu-id="4543f-211">Fügen Sie im HTML-Code der obersten Ebene (z. B. in der Datei `Pages/_Host.cshtml` in der Standardprojektvorlage) das folgende `<script>`-Tag hinzu:</span><span class="sxs-lookup"><span data-stu-id="4543f-211">In the top-level HTML (for example, in the `Pages/_Host.cshtml` file in the default project template), add the following `<script>` tag:</span></span>
 
    ```html

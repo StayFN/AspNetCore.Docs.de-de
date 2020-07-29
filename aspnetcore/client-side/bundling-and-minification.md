@@ -6,16 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85401908"
@@ -70,19 +71,19 @@ ms.locfileid: "85401908"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a><span data-ttu-id="f8630-151">Auswählen einer Bündelungs- und Minimierungsstrategie</span><span class="sxs-lookup"><span data-stu-id="f8630-151">Choose a bundling and minification strategy</span></span>
 
-<span data-ttu-id="f8630-152">Die MVC- und Razor Pages-Projektvorlagen enthalten eine Bündelungs- und Minimierungslösung, bestehend aus einer JSON-Konfigurationsdatei.</span><span class="sxs-lookup"><span data-stu-id="f8630-152">The MVC and Razor Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="f8630-153">Drittanbietertools, wie die [Grunt](xref:client-side/using-grunt)-Aufgabenausführung, führen dieselben Aufgaben auf etwas komplexere Weise aus.</span><span class="sxs-lookup"><span data-stu-id="f8630-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="f8630-154">Ein Drittanbietertool eignet sich hervorragend in Fällen, in denen Ihr Entwicklungsworkflow Verarbeitungsschritte erfordert, die über die Bündelung und Minimierung hinausgehen, wie etwa Linting und Bildoptimierung.</span><span class="sxs-lookup"><span data-stu-id="f8630-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="f8630-155">Bei der Bündelung und Minimierung zur Entwurfszeit werden die minimierten Dateien vor Bereitstellung der App erstellt.</span><span class="sxs-lookup"><span data-stu-id="f8630-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="f8630-156">Werden die Bündelung und Minimierung vor der Bereitstellung durchgeführt, kann die Serverauslastung reduziert werden.</span><span class="sxs-lookup"><span data-stu-id="f8630-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="f8630-157">Beachten Sie jedoch, dass eine Bündelung und Minimierung zur Entwurfszeit die Komplexität des Builds erhöht und auch nur mit statischen Dateien ausgeführt werden kann.</span><span class="sxs-lookup"><span data-stu-id="f8630-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
+<span data-ttu-id="f8630-152">Die MVC- und [Razor Pages-Projektvorlagen enthalten eine Bündelungs- und Minimierungslösung, bestehend aus einer JSON-Konfigurationsdatei.</span><span class="sxs-lookup"><span data-stu-id="f8630-152">The MVC and [Razor Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="f8630-153">Drittanbietertools, wie die [Grunt](xref:client-side/using-grunt)-Aufgabenausführung, führen dieselben Aufgaben auf etwas komplexere Weise aus.</span><span class="sxs-lookup"><span data-stu-id="f8630-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="f8630-154">Ein Drittanbietertool eignet sich hervorragend in Fällen, in denen Ihr Entwicklungsworkflow Verarbeitungsschritte erfordert, die über die Bündelung und Minimierung hinausgehen, wie etwa Linting und Bildoptimierung.</span><span class="sxs-lookup"><span data-stu-id="f8630-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="f8630-155">Bei der Bündelung und Minimierung zur Entwurfszeit werden die minimierten Dateien vor Bereitstellung der App erstellt.</span><span class="sxs-lookup"><span data-stu-id="f8630-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="f8630-156">Werden die Bündelung und Minimierung vor der Bereitstellung durchgeführt, kann die Serverauslastung reduziert werden.</span><span class="sxs-lookup"><span data-stu-id="f8630-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="f8630-157">Beachten Sie jedoch, dass eine Bündelung und Minimierung zur Entwurfszeit die Komplexität des Builds erhöht und auch nur mit statischen Dateien ausgeführt werden kann.</span><span class="sxs-lookup"><span data-stu-id="f8630-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
 
 ## <a name="configure-bundling-and-minification"></a><span data-ttu-id="f8630-158">Konfigurieren der Bündelung und Minimierung</span><span class="sxs-lookup"><span data-stu-id="f8630-158">Configure bundling and minification</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="f8630-159">In ASP.NET Core 2.0 oder früher enthalten die MVC- und Razor Pages-Projektvorlagen eine Konfigurationsdatei mit dem Namen *bundleconfig.json*, in der die Optionen für jedes Bündel definiert werden:</span><span class="sxs-lookup"><span data-stu-id="f8630-159">In ASP.NET Core 2.0 or earlier, the MVC and Razor Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
+<span data-ttu-id="f8630-159">In ASP.NET Core 2.0 oder früher enthalten die MVC- und [Razor Pages-Projektvorlagen eine Konfigurationsdatei mit dem Namen *bundleconfig.json*, in der die Optionen für jedes Bündel definiert werden:</span><span class="sxs-lookup"><span data-stu-id="f8630-159">In ASP.NET Core 2.0 or earlier, the MVC and [Razor Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="f8630-160">Fügen Sie ab ASP.NET Core 2.1 dem MVC- oder Razor Pages-Projektstamm eine neue JSON-Datei mit dem Namen *bundleconfig.json* hinzu.</span><span class="sxs-lookup"><span data-stu-id="f8630-160">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json*, to the MVC or Razor Pages project root.</span></span> <span data-ttu-id="f8630-161">Fügen Sie dieser Datei als Startpunkt den folgenden JSON-Code hinzu:</span><span class="sxs-lookup"><span data-stu-id="f8630-161">Include the following JSON in that file as a starting point:</span></span>
+<span data-ttu-id="f8630-160">Fügen Sie ab ASP.NET Core 2.1 dem MVC- oder [Razor Pages-Projektstamm eine neue JSON-Datei mit dem Namen *bundleconfig.json* hinzu.</span><span class="sxs-lookup"><span data-stu-id="f8630-160">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json*, to the MVC or [Razor Pages project root.</span></span> <span data-ttu-id="f8630-161">Fügen Sie dieser Datei als Startpunkt den folgenden JSON-Code hinzu:</span><span class="sxs-lookup"><span data-stu-id="f8630-161">Include the following JSON in that file as a starting point:</span></span>
 
 ::: moniker-end
 

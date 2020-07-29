@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/startup
 ms.openlocfilehash: 0d1bf0dd23b7f3b99d6e9383ffc72291c1b138ec
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85400712"
@@ -40,7 +41,7 @@ ms.locfileid: "85400712"
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="a5612-114">Das Beispiel oben bezieht sich auf [Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.</span><span class="sxs-lookup"><span data-stu-id="a5612-114">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="a5612-114">Das Beispiel oben bezieht sich auf [[Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.</span><span class="sxs-lookup"><span data-stu-id="a5612-114">The preceding sample is for [[Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 
 <span data-ttu-id="a5612-115">Die `Startup`-Klasse wird angegeben, wenn der [Host](xref:fundamentals/index#host) der App erstellt wird.</span><span class="sxs-lookup"><span data-stu-id="a5612-115">The `Startup` class is specified when the app's [host](xref:fundamentals/index#host) is built.</span></span> <span data-ttu-id="a5612-116">Die `Startup`-Klasse wird in der Regel durch Aufruf der [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)-Methode im Hostgenerator angegeben:</span><span class="sxs-lookup"><span data-stu-id="a5612-116">The `Startup` class is typically specified by calling the [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) method on the host builder:</span></span>
@@ -92,12 +93,12 @@ ms.locfileid: "85400712"
 * [<span data-ttu-id="a5612-148">HTTP Strict Transport Security (HSTS)</span><span class="sxs-lookup"><span data-stu-id="a5612-148">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="a5612-149">HTTPS-Umleitung</span><span class="sxs-lookup"><span data-stu-id="a5612-149">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="a5612-150">Statische Dateien</span><span class="sxs-lookup"><span data-stu-id="a5612-150">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="a5612-151">ASP.NET Core-[MVC](xref:mvc/overview) und [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="a5612-151">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="a5612-151">ASP.NET Core-[MVC](xref:mvc/overview) und [[Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="a5612-151">ASP.NET Core [MVC](xref:mvc/overview) and [[Razor Pages](xref:razor-pages/index)</span></span>
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="a5612-152">Das Beispiel oben bezieht sich auf [Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.</span><span class="sxs-lookup"><span data-stu-id="a5612-152">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="a5612-152">Das Beispiel oben bezieht sich auf [[Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.</span><span class="sxs-lookup"><span data-stu-id="a5612-152">The preceding sample is for [[Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 <span data-ttu-id="a5612-153">Jede `Use`-Erweiterungsmethode fügt mindestens eine Middlewarekomponente zu der Anforderungspipeline hinzu.</span><span class="sxs-lookup"><span data-stu-id="a5612-153">Each `Use` extension method adds one or more middleware components to the request pipeline.</span></span> <span data-ttu-id="a5612-154">Beispielsweise konfiguriert <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>[Middleware](xref:fundamentals/middleware/index) für die Bereitstellung [statischer Dateien](xref:fundamentals/static-files).</span><span class="sxs-lookup"><span data-stu-id="a5612-154">For instance, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> configures [middleware](xref:fundamentals/middleware/index) to serve [static files](xref:fundamentals/static-files).</span></span>
 
@@ -226,7 +227,7 @@ ms.locfileid: "85400712"
 * [<span data-ttu-id="a5612-238">HTTP Strict Transport Security (HSTS)</span><span class="sxs-lookup"><span data-stu-id="a5612-238">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="a5612-239">HTTPS-Umleitung</span><span class="sxs-lookup"><span data-stu-id="a5612-239">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="a5612-240">Statische Dateien</span><span class="sxs-lookup"><span data-stu-id="a5612-240">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="a5612-241">ASP.NET Core-[MVC](xref:mvc/overview) und [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="a5612-241">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="a5612-241">ASP.NET Core-[MVC](xref:mvc/overview) und [[Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="a5612-241">ASP.NET Core [MVC](xref:mvc/overview) and [[Razor Pages](xref:razor-pages/index)</span></span>
 * [<span data-ttu-id="a5612-242">die Datenschutzgrundverordnung (DSGVO)</span><span class="sxs-lookup"><span data-stu-id="a5612-242">General Data Protection Regulation (GDPR)</span></span>](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

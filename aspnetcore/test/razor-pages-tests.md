@@ -1,38 +1,39 @@
 ---
-title: Komponententests für Razor Pages in ASP.NET Core
+title: Komponententests für [Razor Pages in ASP.NET Core
 author: rick-anderson
-description: Erfahren Sie, wie Sie Komponententests für Razor Pages-Apps erstellen.
+description: Erfahren Sie, wie Sie Komponententests für [Razor Pages-Apps erstellen.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: test/razor-pages-tests
 ms.openlocfilehash: 756af7f2b14512bd43aefd1a4e63e195c2daa138
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85407758"
 ---
-# <a name="razor-pages-unit-tests-in-aspnet-core"></a><span data-ttu-id="51460-103">Komponententests für Razor Pages in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="51460-103">Razor Pages unit tests in ASP.NET Core</span></span>
+# <a name="razor-pages-unit-tests-in-aspnet-core"></a><span data-ttu-id="51460-103">Komponententests für [Razor Pages in ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="51460-103">[Razor Pages unit tests in ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="51460-104">ASP.NET Core unterstützt Komponententests von Razor Pages-Apps.</span><span class="sxs-lookup"><span data-stu-id="51460-104">ASP.NET Core supports unit tests of Razor Pages apps.</span></span> <span data-ttu-id="51460-105">Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:</span><span class="sxs-lookup"><span data-stu-id="51460-105">Tests of the data access layer (DAL) and page models help ensure:</span></span>
+<span data-ttu-id="51460-104">ASP.NET Core unterstützt Komponententests von [Razor Pages-Apps.</span><span class="sxs-lookup"><span data-stu-id="51460-104">ASP.NET Core supports unit tests of [Razor Pages apps.</span></span> <span data-ttu-id="51460-105">Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:</span><span class="sxs-lookup"><span data-stu-id="51460-105">Tests of the data access layer (DAL) and page models help ensure:</span></span>
 
-* <span data-ttu-id="51460-106">Teile einer Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.</span><span class="sxs-lookup"><span data-stu-id="51460-106">Parts of a Razor Pages app work independently and together as a unit during app construction.</span></span>
+* <span data-ttu-id="51460-106">Teile einer [Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.</span><span class="sxs-lookup"><span data-stu-id="51460-106">Parts of a [Razor Pages app work independently and together as a unit during app construction.</span></span>
 * <span data-ttu-id="51460-107">Klassen und Methoden weisen eingeschränkte Zuständigkeitsbereiche auf.</span><span class="sxs-lookup"><span data-stu-id="51460-107">Classes and methods have limited scopes of responsibility.</span></span>
 * <span data-ttu-id="51460-108">Es gibt zusätzliche Dokumentation zum Verhalten der App.</span><span class="sxs-lookup"><span data-stu-id="51460-108">Additional documentation exists on how the app should behave.</span></span>
 * <span data-ttu-id="51460-109">Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.</span><span class="sxs-lookup"><span data-stu-id="51460-109">Regressions, which are errors brought about by updates to the code, are found during automated building and deployment.</span></span>
 
-<span data-ttu-id="51460-110">In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen.</span><span class="sxs-lookup"><span data-stu-id="51460-110">This topic assumes that you have a basic understanding of Razor Pages apps and unit tests.</span></span> <span data-ttu-id="51460-111">Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:</span><span class="sxs-lookup"><span data-stu-id="51460-111">If you're unfamiliar with Razor Pages apps or test concepts, see the following topics:</span></span>
+<span data-ttu-id="51460-110">In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über [Razor Pages-Apps und -Komponententests verfügen.</span><span class="sxs-lookup"><span data-stu-id="51460-110">This topic assumes that you have a basic understanding of [Razor Pages apps and unit tests.</span></span> <span data-ttu-id="51460-111">Wenn Sie mit [Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:</span><span class="sxs-lookup"><span data-stu-id="51460-111">If you're unfamiliar with [Razor Pages apps or test concepts, see the following topics:</span></span>
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -55,7 +56,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a><span data-ttu-id="51460-126">Organisation der Nachrichten-App</span><span class="sxs-lookup"><span data-stu-id="51460-126">Message app organization</span></span>
 
-<span data-ttu-id="51460-127">Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit folgenden Merkmalen:</span><span class="sxs-lookup"><span data-stu-id="51460-127">The message app is a Razor Pages message system with the following characteristics:</span></span>
+<span data-ttu-id="51460-127">Bei der Nachrichten-App handelt es sich um ein [Razor Pages-Nachrichtensystem mit folgenden Merkmalen:</span><span class="sxs-lookup"><span data-stu-id="51460-127">The message app is a [Razor Pages message system with the following characteristics:</span></span>
 
 * <span data-ttu-id="51460-128">Die Indexseite der App (*Pages/Index.cshtml* und *Pages/Index.cshtml.cs*) stellt eine Benutzeroberfläche und Seitenmodellmethoden bereit, mit der Sie das Hinzufügen, Löschen und Analysieren von Nachrichten (durch Ermitteln der durchschnittlichen Anzahl von Wörtern pro Nachricht) steuern können.</span><span class="sxs-lookup"><span data-stu-id="51460-128">The Index page of the app (*Pages/Index.cshtml* and *Pages/Index.cshtml.cs*) provides a UI and page model methods to control the addition, deletion, and analysis of messages (find the average number of words per message).</span></span>
 * <span data-ttu-id="51460-129">Eine Nachricht wird von der `Message`-Klasse (*Data/Message.cs*) mit zwei Eigenschaften beschrieben: `Id` (Schlüssel) und `Text` (Nachricht).</span><span class="sxs-lookup"><span data-stu-id="51460-129">A message is described by the `Message` class (*Data/Message.cs*) with two properties: `Id` (key) and `Text` (message).</span></span> <span data-ttu-id="51460-130">Die `Text`-Eigenschaft ist erforderlich und auf 200 Zeichen beschränkt.</span><span class="sxs-lookup"><span data-stu-id="51460-130">The `Text` property is required and limited to 200 characters.</span></span>
@@ -65,7 +66,7 @@ dotnet test
 
 <span data-ttu-id="51460-136">&#8224;Im Entity Framework-Thema [Testen mit InMemory](/ef/core/miscellaneous/testing/in-memory) wird die Verwendung einer In-Memory-Datenbank für Tests mit MSTest erläutert.</span><span class="sxs-lookup"><span data-stu-id="51460-136">&#8224;The EF topic, [Test with InMemory](/ef/core/miscellaneous/testing/in-memory), explains how to use an in-memory database for tests with MSTest.</span></span> <span data-ttu-id="51460-137">In diesem Thema wird das Testframework [xUnit](https://xunit.github.io/) verwendet.</span><span class="sxs-lookup"><span data-stu-id="51460-137">This topic uses the [xUnit](https://xunit.github.io/) test framework.</span></span> <span data-ttu-id="51460-138">Testkonzepte und Testimplementierungen in verschiedenen Testframeworks sind ähnlich, jedoch nicht identisch.</span><span class="sxs-lookup"><span data-stu-id="51460-138">Test concepts and test implementations across different test frameworks are similar but not identical.</span></span>
 
-<span data-ttu-id="51460-139">Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt Razor Pages diese Entwicklungsmuster.</span><span class="sxs-lookup"><span data-stu-id="51460-139">Although the sample app doesn't use the repository pattern and isn't an effective example of the [Unit of Work (UoW) pattern](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages supports these patterns of development.</span></span> <span data-ttu-id="51460-140">Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).</span><span class="sxs-lookup"><span data-stu-id="51460-140">For more information, see [Designing the infrastructure persistence layer](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) and <xref:mvc/controllers/testing> (the sample implements the repository pattern).</span></span>
+<span data-ttu-id="51460-139">Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt [Razor Pages diese Entwicklungsmuster.</span><span class="sxs-lookup"><span data-stu-id="51460-139">Although the sample app doesn't use the repository pattern and isn't an effective example of the [Unit of Work (UoW) pattern](https://martinfowler.com/eaaCatalog/unitOfWork.html), [Razor Pages supports these patterns of development.</span></span> <span data-ttu-id="51460-140">Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).</span><span class="sxs-lookup"><span data-stu-id="51460-140">For more information, see [Designing the infrastructure persistence layer](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) and <xref:mvc/controllers/testing> (the sample implements the repository pattern).</span></span>
 
 ## <a name="test-app-organization"></a><span data-ttu-id="51460-141">Organisation der Test-App</span><span class="sxs-lookup"><span data-stu-id="51460-141">Test app organization</span></span>
 
@@ -209,14 +210,14 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="51460-233">ASP.NET Core unterstützt Komponententests von Razor Pages-Apps.</span><span class="sxs-lookup"><span data-stu-id="51460-233">ASP.NET Core supports unit tests of Razor Pages apps.</span></span> <span data-ttu-id="51460-234">Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:</span><span class="sxs-lookup"><span data-stu-id="51460-234">Tests of the data access layer (DAL) and page models help ensure:</span></span>
+<span data-ttu-id="51460-233">ASP.NET Core unterstützt Komponententests von [Razor Pages-Apps.</span><span class="sxs-lookup"><span data-stu-id="51460-233">ASP.NET Core supports unit tests of [Razor Pages apps.</span></span> <span data-ttu-id="51460-234">Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:</span><span class="sxs-lookup"><span data-stu-id="51460-234">Tests of the data access layer (DAL) and page models help ensure:</span></span>
 
-* <span data-ttu-id="51460-235">Teile einer Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.</span><span class="sxs-lookup"><span data-stu-id="51460-235">Parts of a Razor Pages app work independently and together as a unit during app construction.</span></span>
+* <span data-ttu-id="51460-235">Teile einer [Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.</span><span class="sxs-lookup"><span data-stu-id="51460-235">Parts of a [Razor Pages app work independently and together as a unit during app construction.</span></span>
 * <span data-ttu-id="51460-236">Klassen und Methoden weisen eingeschränkte Zuständigkeitsbereiche auf.</span><span class="sxs-lookup"><span data-stu-id="51460-236">Classes and methods have limited scopes of responsibility.</span></span>
 * <span data-ttu-id="51460-237">Es gibt zusätzliche Dokumentation zum Verhalten der App.</span><span class="sxs-lookup"><span data-stu-id="51460-237">Additional documentation exists on how the app should behave.</span></span>
 * <span data-ttu-id="51460-238">Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.</span><span class="sxs-lookup"><span data-stu-id="51460-238">Regressions, which are errors brought about by updates to the code, are found during automated building and deployment.</span></span>
 
-<span data-ttu-id="51460-239">In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen.</span><span class="sxs-lookup"><span data-stu-id="51460-239">This topic assumes that you have a basic understanding of Razor Pages apps and unit tests.</span></span> <span data-ttu-id="51460-240">Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:</span><span class="sxs-lookup"><span data-stu-id="51460-240">If you're unfamiliar with Razor Pages apps or test concepts, see the following topics:</span></span>
+<span data-ttu-id="51460-239">In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über [Razor Pages-Apps und -Komponententests verfügen.</span><span class="sxs-lookup"><span data-stu-id="51460-239">This topic assumes that you have a basic understanding of [Razor Pages apps and unit tests.</span></span> <span data-ttu-id="51460-240">Wenn Sie mit [Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:</span><span class="sxs-lookup"><span data-stu-id="51460-240">If you're unfamiliar with [Razor Pages apps or test concepts, see the following topics:</span></span>
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -239,7 +240,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a><span data-ttu-id="51460-255">Organisation der Nachrichten-App</span><span class="sxs-lookup"><span data-stu-id="51460-255">Message app organization</span></span>
 
-<span data-ttu-id="51460-256">Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit folgenden Merkmalen:</span><span class="sxs-lookup"><span data-stu-id="51460-256">The message app is a Razor Pages message system with the following characteristics:</span></span>
+<span data-ttu-id="51460-256">Bei der Nachrichten-App handelt es sich um ein [Razor Pages-Nachrichtensystem mit folgenden Merkmalen:</span><span class="sxs-lookup"><span data-stu-id="51460-256">The message app is a [Razor Pages message system with the following characteristics:</span></span>
 
 * <span data-ttu-id="51460-257">Die Indexseite der App (*Pages/Index.cshtml* und *Pages/Index.cshtml.cs*) stellt eine Benutzeroberfläche und Seitenmodellmethoden bereit, mit der Sie das Hinzufügen, Löschen und Analysieren von Nachrichten (durch Ermitteln der durchschnittlichen Anzahl von Wörtern pro Nachricht) steuern können.</span><span class="sxs-lookup"><span data-stu-id="51460-257">The Index page of the app (*Pages/Index.cshtml* and *Pages/Index.cshtml.cs*) provides a UI and page model methods to control the addition, deletion, and analysis of messages (find the average number of words per message).</span></span>
 * <span data-ttu-id="51460-258">Eine Nachricht wird von der `Message`-Klasse (*Data/Message.cs*) mit zwei Eigenschaften beschrieben: `Id` (Schlüssel) und `Text` (Nachricht).</span><span class="sxs-lookup"><span data-stu-id="51460-258">A message is described by the `Message` class (*Data/Message.cs*) with two properties: `Id` (key) and `Text` (message).</span></span> <span data-ttu-id="51460-259">Die `Text`-Eigenschaft ist erforderlich und auf 200 Zeichen beschränkt.</span><span class="sxs-lookup"><span data-stu-id="51460-259">The `Text` property is required and limited to 200 characters.</span></span>
@@ -249,7 +250,7 @@ dotnet test
 
 <span data-ttu-id="51460-265">&#8224;Im Entity Framework-Thema [Testen mit InMemory](/ef/core/miscellaneous/testing/in-memory) wird die Verwendung einer In-Memory-Datenbank für Tests mit MSTest erläutert.</span><span class="sxs-lookup"><span data-stu-id="51460-265">&#8224;The EF topic, [Test with InMemory](/ef/core/miscellaneous/testing/in-memory), explains how to use an in-memory database for tests with MSTest.</span></span> <span data-ttu-id="51460-266">In diesem Thema wird das Testframework [xUnit](https://xunit.github.io/) verwendet.</span><span class="sxs-lookup"><span data-stu-id="51460-266">This topic uses the [xUnit](https://xunit.github.io/) test framework.</span></span> <span data-ttu-id="51460-267">Testkonzepte und Testimplementierungen in verschiedenen Testframeworks sind ähnlich, jedoch nicht identisch.</span><span class="sxs-lookup"><span data-stu-id="51460-267">Test concepts and test implementations across different test frameworks are similar but not identical.</span></span>
 
-<span data-ttu-id="51460-268">Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt Razor Pages diese Entwicklungsmuster.</span><span class="sxs-lookup"><span data-stu-id="51460-268">Although the sample app doesn't use the repository pattern and isn't an effective example of the [Unit of Work (UoW) pattern](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages supports these patterns of development.</span></span> <span data-ttu-id="51460-269">Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).</span><span class="sxs-lookup"><span data-stu-id="51460-269">For more information, see [Designing the infrastructure persistence layer](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) and <xref:mvc/controllers/testing> (the sample implements the repository pattern).</span></span>
+<span data-ttu-id="51460-268">Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt [Razor Pages diese Entwicklungsmuster.</span><span class="sxs-lookup"><span data-stu-id="51460-268">Although the sample app doesn't use the repository pattern and isn't an effective example of the [Unit of Work (UoW) pattern](https://martinfowler.com/eaaCatalog/unitOfWork.html), [Razor Pages supports these patterns of development.</span></span> <span data-ttu-id="51460-269">Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).</span><span class="sxs-lookup"><span data-stu-id="51460-269">For more information, see [Designing the infrastructure persistence layer](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) and <xref:mvc/controllers/testing> (the sample implements the repository pattern).</span></span>
 
 ## <a name="test-app-organization"></a><span data-ttu-id="51460-270">Organisation der Test-App</span><span class="sxs-lookup"><span data-stu-id="51460-270">Test app organization</span></span>
 

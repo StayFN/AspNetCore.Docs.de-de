@@ -1,45 +1,46 @@
 ---
-title: Globalisierung und Lokalisierung in ASP.NET Core Blazor
+title: Globalisierung und Lokalisierung in ASP.NET Core [Blazor
 author: guardrex
-description: In diesem Artikel erfahren Sie, wie Sie Razor-Komponenten Benutzern mit verschiedenen Kulturen und Sprachen zur Verfügung stellen.
+description: In diesem Artikel erfahren Sie, wie Sie [Razor-Komponenten Benutzern mit verschiedenen Kulturen und Sprachen zur Verfügung stellen.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/globalization-localization
 ms.openlocfilehash: 1d24ebe900dfcdeb8b7bcc97f1d212deea9cecae
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402727"
 ---
-# <a name="aspnet-core-blazor-globalization-and-localization"></a><span data-ttu-id="eedaf-103">Globalisierung und Lokalisierung in ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="eedaf-103">ASP.NET Core Blazor globalization and localization</span></span>
+# <a name="aspnet-core-blazor-globalization-and-localization"></a><span data-ttu-id="eedaf-103">Globalisierung und Lokalisierung in ASP.NET Core [Blazor</span><span class="sxs-lookup"><span data-stu-id="eedaf-103">ASP.NET Core [Blazor globalization and localization</span></span>
 
 <span data-ttu-id="eedaf-104">Von [Luke Latham](https://github.com/guardrex) und [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="eedaf-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-Razor<span data-ttu-id="eedaf-105">-Komponenten können Benutzern mit verschiedenen Kulturen und Sprachen zur Verfügung gestellt werden.</span><span class="sxs-lookup"><span data-stu-id="eedaf-105"> components can be made accessible to users in multiple cultures and languages.</span></span> <span data-ttu-id="eedaf-106">Die folgenden Szenarios zur Globalisierung und Lokalisierung von .NET sind verfügbar:</span><span class="sxs-lookup"><span data-stu-id="eedaf-106">The following .NET globalization and localization scenarios are available:</span></span>
+<span data-ttu-id="eedaf-105">[Razor-Komponenten können Benutzern mit verschiedenen Kulturen und Sprachen zur Verfügung gestellt werden.</span><span class="sxs-lookup"><span data-stu-id="eedaf-105">[Razor components can be made accessible to users in multiple cultures and languages.</span></span> <span data-ttu-id="eedaf-106">Die folgenden Szenarios zur Globalisierung und Lokalisierung von .NET sind verfügbar:</span><span class="sxs-lookup"><span data-stu-id="eedaf-106">The following .NET globalization and localization scenarios are available:</span></span>
 
 * <span data-ttu-id="eedaf-107">.NET-Ressourcensystem</span><span class="sxs-lookup"><span data-stu-id="eedaf-107">.NET's resources system</span></span>
 * <span data-ttu-id="eedaf-108">Kulturspezifische Zahlen- und Datumsformatierung</span><span class="sxs-lookup"><span data-stu-id="eedaf-108">Culture-specific number and date formatting</span></span>
 
 <span data-ttu-id="eedaf-109">Derzeit werden Lokalisierungsszenarios für ASP.NET Core eingeschränkt unterstützt:</span><span class="sxs-lookup"><span data-stu-id="eedaf-109">A limited set of ASP.NET Core's localization scenarios are currently supported:</span></span>
 
-* <span data-ttu-id="eedaf-110"><xref:Microsoft.Extensions.Localization.IStringLocalizer> und <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> werden in Blazor-Apps *unterstützt*.</span><span class="sxs-lookup"><span data-stu-id="eedaf-110"><xref:Microsoft.Extensions.Localization.IStringLocalizer> and <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *are supported* in Blazor apps.</span></span>
-* <span data-ttu-id="eedaf-111"><xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> und die Lokalisierung von Datenanmerkungen sind ASP.NET Core MVC-Szenarios und **werden nicht in Blazor-Apps unterstützt**.</span><span class="sxs-lookup"><span data-stu-id="eedaf-111"><xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer>, and Data Annotations localization are ASP.NET Core MVC scenarios and **not supported** in Blazor apps.</span></span>
+* <span data-ttu-id="eedaf-110"><xref:Microsoft.Extensions.Localization.IStringLocalizer> und <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> werden in [Blazor-Apps *unterstützt*.</span><span class="sxs-lookup"><span data-stu-id="eedaf-110"><xref:Microsoft.Extensions.Localization.IStringLocalizer> and <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *are supported* in [Blazor apps.</span></span>
+* <span data-ttu-id="eedaf-111"><xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> und die Lokalisierung von Datenanmerkungen sind ASP.NET Core MVC-Szenarios und **werden nicht in [Blazor-Apps unterstützt**.</span><span class="sxs-lookup"><span data-stu-id="eedaf-111"><xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer>, and Data Annotations localization are ASP.NET Core MVC scenarios and **not supported** in [Blazor apps.</span></span>
 
 <span data-ttu-id="eedaf-112">Weitere Informationen finden Sie unter <xref:fundamentals/localization>.</span><span class="sxs-lookup"><span data-stu-id="eedaf-112">For more information, see <xref:fundamentals/localization>.</span></span>
 
 ## <a name="globalization"></a><span data-ttu-id="eedaf-113">Globalisierung</span><span class="sxs-lookup"><span data-stu-id="eedaf-113">Globalization</span></span>
 
-<span data-ttu-id="eedaf-114">Die [`@bind`](xref:mvc/views/razor#bind)-Funktionalität von Blazor führt die Formatierung durch und analysiert Werte, um die Anzeige an die Kultur des jeweiligen Benutzers anzupassen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-114">Blazor's [`@bind`](xref:mvc/views/razor#bind) functionality performs formats and parses values for display based on the user's current culture.</span></span>
+<span data-ttu-id="eedaf-114">Die [`@bind`](xref:mvc/views/razor#bind)-Funktionalität von [Blazor führt die Formatierung durch und analysiert Werte, um die Anzeige an die Kultur des jeweiligen Benutzers anzupassen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-114">[Blazor's [`@bind`](xref:mvc/views/razor#bind) functionality performs formats and parses values for display based on the user's current culture.</span></span>
 
 <span data-ttu-id="eedaf-115">Der Zugriff auf die aktuelle Kultur kann über die <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>-Eigenschaft erfolgen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-115">The current culture can be accessed from the <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName> property.</span></span>
 
@@ -54,29 +55,29 @@ Razor<span data-ttu-id="eedaf-105">-Komponenten können Benutzern mit verschiede
 * <span data-ttu-id="eedaf-119">können keinen Freiformtext enthalten.</span><span class="sxs-lookup"><span data-stu-id="eedaf-119">Can't contain free-form text.</span></span>
 * <span data-ttu-id="eedaf-120">bieten Benutzerinteraktionsmerkmale basierend auf der Implementierung des Browsers.</span><span class="sxs-lookup"><span data-stu-id="eedaf-120">Provide user interaction characteristics based on the browser's implementation.</span></span>
 
-<span data-ttu-id="eedaf-121">Die folgenden Feldtypen verfügen über spezifische Formatierungsanforderungen und werden derzeit nicht von Blazor unterstützt, weil sie von keinem der gängigen Browser unterstützt werden:</span><span class="sxs-lookup"><span data-stu-id="eedaf-121">The following field types have specific formatting requirements and aren't currently supported by Blazor because they aren't supported by all major browsers:</span></span>
+<span data-ttu-id="eedaf-121">Die folgenden Feldtypen verfügen über spezifische Formatierungsanforderungen und werden derzeit nicht von [Blazor unterstützt, weil sie von keinem der gängigen Browser unterstützt werden:</span><span class="sxs-lookup"><span data-stu-id="eedaf-121">The following field types have specific formatting requirements and aren't currently supported by [Blazor because they aren't supported by all major browsers:</span></span>
 
 * `datetime-local`
 * `month`
 * `week`
 
-<span data-ttu-id="eedaf-122">[`@bind`](xref:mvc/views/razor#bind) unterstützt den Parameter `@bind:culture`, um eine Klasse <xref:System.Globalization.CultureInfo?displayProperty=fullName> für das Analysieren und Formatieren von Werten bereitzustellen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-122">[`@bind`](xref:mvc/views/razor#bind) supports the `@bind:culture` parameter to provide a <xref:System.Globalization.CultureInfo?displayProperty=fullName> for parsing and formatting a value.</span></span> <span data-ttu-id="eedaf-123">Vom Festlegen einer Kultur wird abgeraten, wenn die Feldtypen `date` und `number` verwendet werden.</span><span class="sxs-lookup"><span data-stu-id="eedaf-123">Specifying a culture isn't recommended when using the `date` and `number` field types.</span></span> <span data-ttu-id="eedaf-124">`date` und `number` verfügen über integrierte Blazor-Unterstützung, die die erforderliche Kultur bereitstellt.</span><span class="sxs-lookup"><span data-stu-id="eedaf-124">`date` and `number` have built-in Blazor support that provides the required culture.</span></span>
+<span data-ttu-id="eedaf-122">[`@bind`](xref:mvc/views/razor#bind) unterstützt den Parameter `@bind:culture`, um eine Klasse <xref:System.Globalization.CultureInfo?displayProperty=fullName> für das Analysieren und Formatieren von Werten bereitzustellen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-122">[`@bind`](xref:mvc/views/razor#bind) supports the `@bind:culture` parameter to provide a <xref:System.Globalization.CultureInfo?displayProperty=fullName> for parsing and formatting a value.</span></span> <span data-ttu-id="eedaf-123">Vom Festlegen einer Kultur wird abgeraten, wenn die Feldtypen `date` und `number` verwendet werden.</span><span class="sxs-lookup"><span data-stu-id="eedaf-123">Specifying a culture isn't recommended when using the `date` and `number` field types.</span></span> <span data-ttu-id="eedaf-124">`date` und `number` verfügen über integrierte [Blazor-Unterstützung, die die erforderliche Kultur bereitstellt.</span><span class="sxs-lookup"><span data-stu-id="eedaf-124">`date` and `number` have built-in [Blazor support that provides the required culture.</span></span>
 
 ## <a name="localization"></a><span data-ttu-id="eedaf-125">Lokalisierung</span><span class="sxs-lookup"><span data-stu-id="eedaf-125">Localization</span></span>
 
-### Blazor WebAssembly
+### [Blazor WebAssembly
 
-Blazor WebAssembly<span data-ttu-id="eedaf-126">-Apps legen die Kultur anhand der [Spracheinstellungen](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages) des Benutzers fest.</span><span class="sxs-lookup"><span data-stu-id="eedaf-126"> apps set the culture using the user's [language preference](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages).</span></span>
+<span data-ttu-id="eedaf-126">[Blazor WebAssembly-Apps legen die Kultur anhand der [Spracheinstellungen](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages) des Benutzers fest.</span><span class="sxs-lookup"><span data-stu-id="eedaf-126">[Blazor WebAssembly apps set the culture using the user's [language preference](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages).</span></span>
 
 <span data-ttu-id="eedaf-127">Legen Sie in `Program.Main` <xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture?displayProperty=nameWithType> und <xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture?displayProperty=nameWithType> fest, um die Kultur explizit zu konfigurieren.</span><span class="sxs-lookup"><span data-stu-id="eedaf-127">To explicitly configure the culture, set <xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture?displayProperty=nameWithType> and <xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture?displayProperty=nameWithType> in `Program.Main`.</span></span>
 
-<span data-ttu-id="eedaf-128">Die Blazor-Linkerkonfiguration für Blazor WebAssembly-Apps entfernt standardmäßig Internationalisierungsinformationen, mit Ausnahme von explizit angeforderten Gebietsschemas.</span><span class="sxs-lookup"><span data-stu-id="eedaf-128">By default, Blazor's linker configuration for Blazor WebAssembly apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="eedaf-129">Weitere Informationen und Anleitungen zum Steuern des Verhaltens des Linkers finden Sie unter <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.</span><span class="sxs-lookup"><span data-stu-id="eedaf-129">For more information and guidance on controlling the linker's behavior, see <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.</span></span>
+<span data-ttu-id="eedaf-128">Die [Blazor-Linkerkonfiguration für [Blazor WebAssembly-Apps entfernt standardmäßig Internationalisierungsinformationen, mit Ausnahme von explizit angeforderten Gebietsschemas.</span><span class="sxs-lookup"><span data-stu-id="eedaf-128">By default, [Blazor's linker configuration for [Blazor WebAssembly apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="eedaf-129">Weitere Informationen und Anleitungen zum Steuern des Verhaltens des Linkers finden Sie unter <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.</span><span class="sxs-lookup"><span data-stu-id="eedaf-129">For more information and guidance on controlling the linker's behavior, see <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.</span></span>
 
-<span data-ttu-id="eedaf-130">Auch wenn für die meisten Benutzer die standardmäßig von Blazor ausgewählte Kultur möglicherweise ausreichend ist, ziehen Sie in Betracht, Benutzern die Möglichkeit zu geben, ihr bevorzugtes Gebietsschema anzugeben.</span><span class="sxs-lookup"><span data-stu-id="eedaf-130">While the culture that Blazor selects by default might be sufficient for most users, consider offering a way for users to specify their preferred locale.</span></span> <span data-ttu-id="eedaf-131">Eine Blazor WebAssembly-Beispiel-App mit Kulturauswahl finden Sie in [`LocSample`](https://github.com/pranavkm/LocSample), der Beispiel-App für die Lokalisierung.</span><span class="sxs-lookup"><span data-stu-id="eedaf-131">For a Blazor WebAssembly sample app with a culture picker, see the [`LocSample`](https://github.com/pranavkm/LocSample) localization sample app.</span></span>
+<span data-ttu-id="eedaf-130">Auch wenn für die meisten Benutzer die standardmäßig von [Blazor ausgewählte Kultur möglicherweise ausreichend ist, ziehen Sie in Betracht, Benutzern die Möglichkeit zu geben, ihr bevorzugtes Gebietsschema anzugeben.</span><span class="sxs-lookup"><span data-stu-id="eedaf-130">While the culture that [Blazor selects by default might be sufficient for most users, consider offering a way for users to specify their preferred locale.</span></span> <span data-ttu-id="eedaf-131">Eine [Blazor WebAssembly-Beispiel-App mit Kulturauswahl finden Sie in [`LocSample`](https://github.com/pranavkm/LocSample), der Beispiel-App für die Lokalisierung.</span><span class="sxs-lookup"><span data-stu-id="eedaf-131">For a [Blazor WebAssembly sample app with a culture picker, see the [`LocSample`](https://github.com/pranavkm/LocSample) localization sample app.</span></span>
 
-### Blazor Server
+### [Blazor Server
 
-Blazor Server<span data-ttu-id="eedaf-132">-Apps werden mit [Lokalisierungsmiddleware](xref:fundamentals/localization#localization-middleware) lokalisiert.</span><span class="sxs-lookup"><span data-stu-id="eedaf-132"> apps are localized using [Localization Middleware](xref:fundamentals/localization#localization-middleware).</span></span> <span data-ttu-id="eedaf-133">Die Middleware wählt die entsprechende Kultur für Benutzer aus, die Ressourcen von der App anfordern.</span><span class="sxs-lookup"><span data-stu-id="eedaf-133">The middleware selects the appropriate culture for users requesting resources from the app.</span></span>
+<span data-ttu-id="eedaf-132">[Blazor Server-Apps werden mit [Lokalisierungsmiddleware](xref:fundamentals/localization#localization-middleware) lokalisiert.</span><span class="sxs-lookup"><span data-stu-id="eedaf-132">[Blazor Server apps are localized using [Localization Middleware](xref:fundamentals/localization#localization-middleware).</span></span> <span data-ttu-id="eedaf-133">Die Middleware wählt die entsprechende Kultur für Benutzer aus, die Ressourcen von der App anfordern.</span><span class="sxs-lookup"><span data-stu-id="eedaf-133">The middleware selects the appropriate culture for users requesting resources from the app.</span></span>
 
 <span data-ttu-id="eedaf-134">Die Kultur kann mit einem der folgenden Ansätze festgelegt werden:</span><span class="sxs-lookup"><span data-stu-id="eedaf-134">The culture can be set using one of the following approaches:</span></span>
 
@@ -93,7 +94,7 @@ Blazor Server<span data-ttu-id="eedaf-132">-Apps werden mit [Lokalisierungsmiddl
 
 <span data-ttu-id="eedaf-144">Alle Vorgehensweisen können zum Zuweisen einer Kultur verwendet werden, wenn die Kultur in einem Lokalisierungscookie beibehalten wird.</span><span class="sxs-lookup"><span data-stu-id="eedaf-144">Any technique can be used to assign a culture if the culture is persisted in a localization cookie.</span></span> <span data-ttu-id="eedaf-145">Wenn die App bereits über ein Lokalisierungsschema für serverseitiges ASP.NET Core verfügt, können Sie die vorhandene Lokalisierungsinfrastruktur der App weiterhin verwenden und das Lokalisierungskulturcookie innerhalb des Schemas der App festlegen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-145">If the app already has an established localization scheme for server-side ASP.NET Core, continue to use the app's existing localization infrastructure and set the localization culture cookie within the app's scheme.</span></span>
 
-<span data-ttu-id="eedaf-146">Im folgenden Beispiel wird veranschaulicht, wie die aktuelle Kultur in einem Cookie festgelegt werden kann, das von der Lokalisierungsmiddleware gelesen werden kann.</span><span class="sxs-lookup"><span data-stu-id="eedaf-146">The following example shows how to set the current culture in a cookie that can be read by the Localization Middleware.</span></span> <span data-ttu-id="eedaf-147">Erstellen Sie in der `Pages/_Host.cshtml`-Datei direkt innerhalb des öffnenden `<body>`-Tags einen Razor-Ausdruck:</span><span class="sxs-lookup"><span data-stu-id="eedaf-147">Create a Razor expression in the `Pages/_Host.cshtml` file immediately inside the opening `<body>` tag:</span></span>
+<span data-ttu-id="eedaf-146">Im folgenden Beispiel wird veranschaulicht, wie die aktuelle Kultur in einem Cookie festgelegt werden kann, das von der Lokalisierungsmiddleware gelesen werden kann.</span><span class="sxs-lookup"><span data-stu-id="eedaf-146">The following example shows how to set the current culture in a cookie that can be read by the Localization Middleware.</span></span> <span data-ttu-id="eedaf-147">Erstellen Sie in der `Pages/_Host.cshtml`-Datei direkt innerhalb des öffnenden `<body>`-Tags einen [Razor-Ausdruck:</span><span class="sxs-lookup"><span data-stu-id="eedaf-147">Create a [Razor expression in the `Pages/_Host.cshtml` file immediately inside the opening `<body>` tag:</span></span>
 
 ```cshtml
 @using System.Globalization
@@ -119,10 +120,10 @@ Blazor Server<span data-ttu-id="eedaf-132">-Apps werden mit [Lokalisierungsmiddl
 
 1. <span data-ttu-id="eedaf-149">Der Browser sendet zunächst eine HTTP-Anforderung an die App.</span><span class="sxs-lookup"><span data-stu-id="eedaf-149">The browser sends an initial HTTP request to the app.</span></span>
 1. <span data-ttu-id="eedaf-150">Die Kultur wird von der Lokalisierungsmiddleware zugewiesen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-150">The culture is assigned by the Localization Middleware.</span></span>
-1. <span data-ttu-id="eedaf-151">Der Razor-Ausdruck auf der `_Host`-Seite (`_Host.cshtml`) speichert die Kultur im Rahmen der Reaktion in einem Cookie.</span><span class="sxs-lookup"><span data-stu-id="eedaf-151">The Razor expression in the `_Host` page (`_Host.cshtml`) persists the culture in a cookie as part of the response.</span></span>
-1. <span data-ttu-id="eedaf-152">Der Browser stellt eine WebSocket-Verbindung her, um eine interaktive Blazor Server-Sitzung zu erstellen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-152">The browser opens a WebSocket connection to create an interactive Blazor Server session.</span></span>
+1. <span data-ttu-id="eedaf-151">Der [Razor-Ausdruck auf der `_Host`-Seite (`_Host.cshtml`) speichert die Kultur im Rahmen der Reaktion in einem Cookie.</span><span class="sxs-lookup"><span data-stu-id="eedaf-151">The [Razor expression in the `_Host` page (`_Host.cshtml`) persists the culture in a cookie as part of the response.</span></span>
+1. <span data-ttu-id="eedaf-152">Der Browser stellt eine WebSocket-Verbindung her, um eine interaktive [Blazor Server-Sitzung zu erstellen.</span><span class="sxs-lookup"><span data-stu-id="eedaf-152">The browser opens a WebSocket connection to create an interactive [Blazor Server session.</span></span>
 1. <span data-ttu-id="eedaf-153">Die Lokalisierungsmiddleware liest das Cookie und weist die Kultur zu.</span><span class="sxs-lookup"><span data-stu-id="eedaf-153">The Localization Middleware reads the cookie and assigns the culture.</span></span>
-1. <span data-ttu-id="eedaf-154">Die Blazor Server-Sitzung beginnt mit der richtigen Kultur.</span><span class="sxs-lookup"><span data-stu-id="eedaf-154">The Blazor Server session begins with the correct culture.</span></span>
+1. <span data-ttu-id="eedaf-154">Die [Blazor Server-Sitzung beginnt mit der richtigen Kultur.</span><span class="sxs-lookup"><span data-stu-id="eedaf-154">The [Blazor Server session begins with the correct culture.</span></span>
 
 #### <a name="provide-ui-to-choose-the-culture"></a><span data-ttu-id="eedaf-155">Bereitstellen einer Benutzeroberfläche zum Auswählen der Kultur</span><span class="sxs-lookup"><span data-stu-id="eedaf-155">Provide UI to choose the culture</span></span>
 

@@ -6,16 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: aspnetcore-3.1
 ms.openlocfilehash: 92804d168381526100ddb8a368f71d201bd4cad9
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85407667"
@@ -24,13 +25,13 @@ ms.locfileid: "85407667"
 
 <span data-ttu-id="7f73f-104">In diesem Artikel werden die wichtigsten Änderungen in ASP.NET Core 3.1 aufgezeigt und Links zur relevanten Dokumentation bereitgestellt.</span><span class="sxs-lookup"><span data-stu-id="7f73f-104">This article highlights the most significant changes in ASP.NET Core 3.1 with links to relevant documentation.</span></span>
 
-## <a name="partial-class-support-for-razor-components"></a><span data-ttu-id="7f73f-105">Unterstützung von partiellen Klassen für Razor-Komponenten</span><span class="sxs-lookup"><span data-stu-id="7f73f-105">Partial class support for Razor components</span></span>
+## <a name="partial-class-support-for-razor-components"></a><span data-ttu-id="7f73f-105">Unterstützung von partiellen Klassen für [Razor-Komponenten</span><span class="sxs-lookup"><span data-stu-id="7f73f-105">Partial class support for [Razor components</span></span>
 
-Razor<span data-ttu-id="7f73f-106">-Komponenten werden nun als partielle Klassen generiert.</span><span class="sxs-lookup"><span data-stu-id="7f73f-106"> components are now generated as partial classes.</span></span> <span data-ttu-id="7f73f-107">Der Code für eine Razor-Komponente kann nun mithilfe einer CodeBehind-Datei geschrieben werden, die als eine partielle Klasse definiert ist, anstatt den gesamten Code für die Komponente in einer einzelnen Datei zu definieren.</span><span class="sxs-lookup"><span data-stu-id="7f73f-107">Code for a Razor component can be written using a code-behind file defined as a partial class rather than defining all the code for the component in a single file.</span></span> <span data-ttu-id="7f73f-108">Weitere Informationen finden Sie unter [Unterstützung von partiellen Klassen](xref:blazor/components/index#partial-class-support).</span><span class="sxs-lookup"><span data-stu-id="7f73f-108">For more information, see [Partial class support](xref:blazor/components/index#partial-class-support).</span></span>
+<span data-ttu-id="7f73f-106">[Razor-Komponenten werden nun als partielle Klassen generiert.</span><span class="sxs-lookup"><span data-stu-id="7f73f-106">[Razor components are now generated as partial classes.</span></span> <span data-ttu-id="7f73f-107">Der Code für eine [Razor-Komponente kann nun mithilfe einer CodeBehind-Datei geschrieben werden, die als eine partielle Klasse definiert ist, anstatt den gesamten Code für die Komponente in einer einzelnen Datei zu definieren.</span><span class="sxs-lookup"><span data-stu-id="7f73f-107">Code for a [Razor component can be written using a code-behind file defined as a partial class rather than defining all the code for the component in a single file.</span></span> <span data-ttu-id="7f73f-108">Weitere Informationen finden Sie unter [Unterstützung von partiellen Klassen](xref:blazor/components/index#partial-class-support).</span><span class="sxs-lookup"><span data-stu-id="7f73f-108">For more information, see [Partial class support](xref:blazor/components/index#partial-class-support).</span></span>
 
-## <a name="blazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>Blazor<span data-ttu-id="7f73f-109">-Komponententaghilfsprogramm und Übergeben von Parametern an Komponenten der obersten Ebene</span><span class="sxs-lookup"><span data-stu-id="7f73f-109"> Component Tag Helper and pass parameters to top-level components</span></span>
+## <a name="blazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a><span data-ttu-id="7f73f-109">[Blazor-Komponententaghilfsprogramm und Übergeben von Parametern an Komponenten der obersten Ebene</span><span class="sxs-lookup"><span data-stu-id="7f73f-109">[Blazor Component Tag Helper and pass parameters to top-level components</span></span>
 
-<span data-ttu-id="7f73f-110">In Blazor mit ASP.NET Core 3.0 wurden Komponenten mithilfe eines HTML-Hilfsprogramms (`Html.RenderComponentAsync`) in Seiten und Ansichten gerendert.</span><span class="sxs-lookup"><span data-stu-id="7f73f-110">In Blazor with ASP.NET Core 3.0, components were rendered into pages and views using an HTML Helper (`Html.RenderComponentAsync`).</span></span> <span data-ttu-id="7f73f-111">In ASP.NET Core 3.1 werden Komponenten mithilfe eines neuen Komponententaghilfsprogramms in Seiten oder Ansichten gerendert:</span><span class="sxs-lookup"><span data-stu-id="7f73f-111">In ASP.NET Core 3.1, render a component from a page or view with the new Component Tag Helper:</span></span>
+<span data-ttu-id="7f73f-110">In [Blazor mit ASP.NET Core 3.0 wurden Komponenten mithilfe eines HTML-Hilfsprogramms (`Html.RenderComponentAsync`) in Seiten und Ansichten gerendert.</span><span class="sxs-lookup"><span data-stu-id="7f73f-110">In [Blazor with ASP.NET Core 3.0, components were rendered into pages and views using an HTML Helper (`Html.RenderComponentAsync`).</span></span> <span data-ttu-id="7f73f-111">In ASP.NET Core 3.1 werden Komponenten mithilfe eines neuen Komponententaghilfsprogramms in Seiten oder Ansichten gerendert:</span><span class="sxs-lookup"><span data-stu-id="7f73f-111">In ASP.NET Core 3.1, render a component from a page or view with the new Component Tag Helper:</span></span>
 
 ```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" />
@@ -38,7 +39,7 @@ Razor<span data-ttu-id="7f73f-106">-Komponenten werden nun als partielle Klassen
 
 <span data-ttu-id="7f73f-112">Das HTML-Hilfsprogramm wird in ASP.NET Core 3.1 weiterhin unterstützt, jedoch wird die Verwendung des Komponententaghilfsprogramms empfohlen.</span><span class="sxs-lookup"><span data-stu-id="7f73f-112">The HTML Helper remains supported in ASP.NET Core 3.1, but the Component Tag Helper is recommended.</span></span>
 
-Blazor Server<span data-ttu-id="7f73f-113">-Apps können nun während dem ersten Rendering Parameter an Komponenten der obersten Ebene übergeben.</span><span class="sxs-lookup"><span data-stu-id="7f73f-113"> apps can now pass parameters to top-level components during the initial render.</span></span> <span data-ttu-id="7f73f-114">Zuvor konnten Sie Parameter nur an Komponenten der obersten Ebene mit [RenderMode.Static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static) übergeben.</span><span class="sxs-lookup"><span data-stu-id="7f73f-114">Previously you could only pass parameters to a top-level component with [RenderMode.Static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static).</span></span> <span data-ttu-id="7f73f-115">Ab diesem Release werden sowohl [RenderMode.Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) als auch [RenderMode.ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) unterstützt.</span><span class="sxs-lookup"><span data-stu-id="7f73f-115">With this release, both [RenderMode.Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) and [RenderMode.ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) are supported.</span></span> <span data-ttu-id="7f73f-116">Alle festgelegten Parameterwerte werden als JSON serialisiert und sind in der ersten Antwort enthalten.</span><span class="sxs-lookup"><span data-stu-id="7f73f-116">Any specified parameter values are serialized as JSON and included in the initial response.</span></span>
+<span data-ttu-id="7f73f-113">[Blazor Server-Apps können nun während dem ersten Rendering Parameter an Komponenten der obersten Ebene übergeben.</span><span class="sxs-lookup"><span data-stu-id="7f73f-113">[Blazor Server apps can now pass parameters to top-level components during the initial render.</span></span> <span data-ttu-id="7f73f-114">Zuvor konnten Sie Parameter nur an Komponenten der obersten Ebene mit [RenderMode.Static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static) übergeben.</span><span class="sxs-lookup"><span data-stu-id="7f73f-114">Previously you could only pass parameters to a top-level component with [RenderMode.Static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static).</span></span> <span data-ttu-id="7f73f-115">Ab diesem Release werden sowohl [RenderMode.Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) als auch [RenderMode.ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) unterstützt.</span><span class="sxs-lookup"><span data-stu-id="7f73f-115">With this release, both [RenderMode.Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) and [RenderMode.ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) are supported.</span></span> <span data-ttu-id="7f73f-116">Alle festgelegten Parameterwerte werden als JSON serialisiert und sind in der ersten Antwort enthalten.</span><span class="sxs-lookup"><span data-stu-id="7f73f-116">Any specified parameter values are serialized as JSON and included in the initial response.</span></span>
 
 <span data-ttu-id="7f73f-117">So können Sie eine `Counter`-Komponente beispielsweise mit einem Inkrement vorab rendern (`IncrementAmount`):</span><span class="sxs-lookup"><span data-stu-id="7f73f-117">For example, prerender a `Counter` component with an increment amount (`IncrementAmount`):</span></span>
 
@@ -47,7 +48,7 @@ Blazor Server<span data-ttu-id="7f73f-113">-Apps können nun während dem ersten
     param-IncrementAmount="10" />
 ```
 
-<span data-ttu-id="7f73f-118">Weitere Informationen finden Sie unter [Integrieren von Komponenten in Razor-Seiten und MVC-Apps](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps).</span><span class="sxs-lookup"><span data-stu-id="7f73f-118">For more information, see [Integrate components into Razor Pages and MVC apps](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps).</span></span>
+<span data-ttu-id="7f73f-118">Weitere Informationen finden Sie unter [Integrieren von Komponenten in [Razor-Seiten und MVC-Apps](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps).</span><span class="sxs-lookup"><span data-stu-id="7f73f-118">For more information, see [Integrate components into [Razor Pages and MVC apps](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps).</span></span>
 
 ## <a name="support-for-shared-queues-in-httpsys"></a><span data-ttu-id="7f73f-119">Unterstützung für freigegebene Warteschlangen in HTTP.sys</span><span class="sxs-lookup"><span data-stu-id="7f73f-119">Support for shared queues in HTTP.sys</span></span>
 
@@ -59,7 +60,7 @@ Blazor Server<span data-ttu-id="7f73f-113">-Apps können nun während dem ersten
 
 <span data-ttu-id="7f73f-125">Das Verhalten von SameSite-Cookies wurde gemäß bevorstehender Browseränderungen geändert.</span><span class="sxs-lookup"><span data-stu-id="7f73f-125">The behavior of SameSite cookies has changed to reflect upcoming browser changes.</span></span> <span data-ttu-id="7f73f-126">Dies kann sich auf Authentifizierungsszenarios wie Azure AD, OpenIdConnect oder WsFederation auswirken.</span><span class="sxs-lookup"><span data-stu-id="7f73f-126">This may affect authentication scenarios like AzureAd, OpenIdConnect, or WsFederation.</span></span> <span data-ttu-id="7f73f-127">Weitere Informationen finden Sie unter <xref:security/samesite>.</span><span class="sxs-lookup"><span data-stu-id="7f73f-127">For more information, see <xref:security/samesite>.</span></span>
 
-## <a name="prevent-default-actions-for-events-in-blazor-apps"></a><span data-ttu-id="7f73f-128">Verhindern von Standardaktionen für Ereignisse in Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-128">Prevent default actions for events in Blazor apps</span></span>
+## <a name="prevent-default-actions-for-events-in-blazor-apps"></a><span data-ttu-id="7f73f-128">Verhindern von Standardaktionen für Ereignisse in [Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-128">Prevent default actions for events in [Blazor apps</span></span>
 
 <span data-ttu-id="7f73f-129">Verwenden Sie das Direktivenattribut `@on{EVENT}:preventDefault`, um die Standardaktion für ein Ereignis zu verhindern.</span><span class="sxs-lookup"><span data-stu-id="7f73f-129">Use the `@on{EVENT}:preventDefault` directive attribute to prevent the default action for an event.</span></span> <span data-ttu-id="7f73f-130">Im folgenden Beispiel wird die Standardaktion verhindert, welche das Zeichen eines Schlüssels im Textfeld anzeigt:</span><span class="sxs-lookup"><span data-stu-id="7f73f-130">In the following example, the default action of displaying the key's character in the text box is prevented:</span></span>
 
@@ -69,7 +70,7 @@ Blazor Server<span data-ttu-id="7f73f-113">-Apps können nun während dem ersten
 
 <span data-ttu-id="7f73f-131">Weitere Informationen finden Sie unter [Verhindern von Standardaktionen](xref:blazor/components/event-handling#prevent-default-actions).</span><span class="sxs-lookup"><span data-stu-id="7f73f-131">For more information, see [Prevent default actions](xref:blazor/components/event-handling#prevent-default-actions).</span></span>
 
-## <a name="stop-event-propagation-in-blazor-apps"></a><span data-ttu-id="7f73f-132">Beenden der Ereignisweitergabe in Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-132">Stop event propagation in Blazor apps</span></span>
+## <a name="stop-event-propagation-in-blazor-apps"></a><span data-ttu-id="7f73f-132">Beenden der Ereignisweitergabe in [Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-132">Stop event propagation in [Blazor apps</span></span>
 
 <span data-ttu-id="7f73f-133">Verwenden Sie das Direktivenattribut `@on{EVENT}:stopPropagation`, um die Ereignisweitergabe zu beenden.</span><span class="sxs-lookup"><span data-stu-id="7f73f-133">Use the `@on{EVENT}:stopPropagation` directive attribute to stop event propagation.</span></span> <span data-ttu-id="7f73f-134">Im folgenden Beispiel verhindert das Aktivieren des Kontrollkästchens die Weitergabe von Klickereignissen des untergeordneten `<div>`-Elements an das übergeordnete `<div>`-Element:</span><span class="sxs-lookup"><span data-stu-id="7f73f-134">In the following example, selecting the check box prevents click events from the child `<div>` from propagating to the parent `<div>`:</span></span>
 
@@ -89,9 +90,9 @@ Blazor Server<span data-ttu-id="7f73f-113">-Apps können nun während dem ersten
 
 <span data-ttu-id="7f73f-135">Weitere Informationen finden Sie unter [Beenden der Ereignisweitergabe](xref:blazor/components/event-handling#stop-event-propagation).</span><span class="sxs-lookup"><span data-stu-id="7f73f-135">For more information, see [Stop event propagation](xref:blazor/components/event-handling#stop-event-propagation).</span></span>
 
-## <a name="detailed-errors-during-blazor-app-development"></a><span data-ttu-id="7f73f-136">Ausführliche Fehler bei der Entwicklung von Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-136">Detailed errors during Blazor app development</span></span>
+## <a name="detailed-errors-during-blazor-app-development"></a><span data-ttu-id="7f73f-136">Ausführliche Fehler bei der Entwicklung von [Blazor-Apps</span><span class="sxs-lookup"><span data-stu-id="7f73f-136">Detailed errors during [Blazor app development</span></span>
 
-<span data-ttu-id="7f73f-137">Wenn eine Blazor-App während der Entwicklung nicht ordnungsgemäß funktioniert, erhalten Sie nun ausführliche Fehlerinformationen von der App, die Sie beim Beheben des Problems unterstützen.</span><span class="sxs-lookup"><span data-stu-id="7f73f-137">When a Blazor app isn't functioning properly during development, receiving detailed error information from the app assists in troubleshooting and fixing the issue.</span></span> <span data-ttu-id="7f73f-138">Wenn ein Fehler auftritt, zeigen Blazor-Apps eine goldene Leiste am unteren Rand der Anzeige an:</span><span class="sxs-lookup"><span data-stu-id="7f73f-138">When an error occurs, Blazor apps display a gold bar at the bottom of the screen:</span></span>
+<span data-ttu-id="7f73f-137">Wenn eine [Blazor-App während der Entwicklung nicht ordnungsgemäß funktioniert, erhalten Sie nun ausführliche Fehlerinformationen von der App, die Sie beim Beheben des Problems unterstützen.</span><span class="sxs-lookup"><span data-stu-id="7f73f-137">When a [Blazor app isn't functioning properly during development, receiving detailed error information from the app assists in troubleshooting and fixing the issue.</span></span> <span data-ttu-id="7f73f-138">Wenn ein Fehler auftritt, zeigen [Blazor-Apps eine goldene Leiste am unteren Rand der Anzeige an:</span><span class="sxs-lookup"><span data-stu-id="7f73f-138">When an error occurs, [Blazor apps display a gold bar at the bottom of the screen:</span></span>
 
 * <span data-ttu-id="7f73f-139">Während der Entwicklung leitet die goldene Leiste Sie an die Browserkonsole weiter, in der die Ausnahme angezeigt wird.</span><span class="sxs-lookup"><span data-stu-id="7f73f-139">During development, the gold bar directs you to the browser console, where you can see the exception.</span></span>
 * <span data-ttu-id="7f73f-140">In der Produktion benachrichtigt die goldene Leiste den Benutzer darüber, dass ein Fehler aufgetreten ist, und empfiehlt eine Aktualisierung des Browsers.</span><span class="sxs-lookup"><span data-stu-id="7f73f-140">In production, the gold bar notifies the user that an error has occurred and recommends refreshing the browser.</span></span>
