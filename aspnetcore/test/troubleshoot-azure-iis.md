@@ -7,20 +7,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 65095f3990c72224d95f1f5fe46d320ab8f12040
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 17ada36c40997353528f922bece5acc34ce760d2
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404833"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445384"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Problembehandlung bei ASP.NET Core in Azure App Service und IIS
 
@@ -299,34 +299,24 @@ Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weiter
 
 ### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>stdout-Protokoll im ASP.NET Core-Modul (Azure App Service)
 
-Das stdout-Protokoll des ASP.NET Core-Moduls zeichnet häufig nützliche Fehlermeldungen auf, die nicht im Anwendungsereignisprotokoll enthalten sind. So aktivieren Sie stdout-Protokolle und zeigen diese an:
-
-1. Navigieren Sie zum Blatt **Diagnose und Problembehandlung** im Azure-Portal.
-1. Wählen Sie unter **SELECT PROBLEM CATEGORY** (PROBLEMKATEGORIE WÄHLEN) die Schaltfläche **Web App Down** (Web-App ausgefallen) aus.
-1. Klicken Sie unter **Suggested Solutions** (Vorgeschlagene Lösungen) > **Enable Stdout Log Redirection** (stdout-Protokollumleitung aktivieren) auf **Open Kudu Console to edit Web.Config** (Kudu-Konsole öffnen, um web.config zu bearbeiten).
-1. Öffnen Sie in der **Diagnosekonsole** die Ordner unter dem Pfad **site** > **wwwroot**. Scrollen Sie nach unten, um die Datei *web.config* am Ende der Liste einzublenden.
-1. Klicken Sie auf den Bleistift neben der Datei *web.config*.
-1. Setzen Sie **stdoutLogEnabled** auf `true`, und ändern Sie den Pfad **stdoutLogFile** in: `\\?\%home%\LogFiles\stdout`.
-1. Wählen Sie **Speichern** aus, um die aktualisierte Datei *web.config* zu speichern.
-1. Führen Sie eine Anforderung an die App aus.
-1. Kehren Sie zum Azure-Portal zurück. Wählen Sie das Blatt **Erweiterte Tools** im Bereich **ENTWICKLUNGSTOOLS** aus. Klicken Sie auf **Los&rarr;** . Die Kudu-Konsole wird in einer neuen Browserregisterkarte oder in einem neuen Fenster geöffnet.
-1. Öffnen Sie mithilfe der Navigationsleiste am oberen Rand der Seite die **Debugging-Konsole**, und wählen Sie **CMD** aus.
-1. Wählen Sie den Ordner **LogFiles** aus.
-1. Überprüfen Sie die Spalte **Geändert**, und wählen Sie den Bleistift aus, um das stdout-Protokoll mit dem letzten Änderungsdatum zu bearbeiten.
-1. Wenn die Protokolldatei geöffnet wird, wird der Fehler angezeigt.
-
-Deaktivieren Sie die stdout-Protokollierung, wenn die Problembehandlung abgeschlossen ist:
-
-1. Kehren Sie in der Kudu-**Diagnosekonsole** zum Pfad **site** > **wwwroot** zurück, um die Datei *web.config* einzublenden. Öffnen Sie die Datei **web.config** erneut, indem Sie den Bleistift auswählen.
-1. Legen Sie **stdoutLogEnabled** auf `false` fest.
-1. Wählen Sie **Speichern** aus, um die Datei zu speichern.
-
-Weitere Informationen finden Sie unter <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
-
 > [!WARNING]
 > Wenn das stdout-Protokoll nicht deaktiviert wird, können App- oder Serverfehler auftreten. Für die Protokollgröße oder die Anzahl von erstellten Protokolldateien ist kein Grenzwert festgelegt. Verwenden Sie die stdout-Protokollierung nur für die Behandlung von App-Startproblemen.
 >
 > Verwenden Sie für die allgemeine Protokollierung in einer ASP.NET Core-App nach dem Start eine Protokollierungsbibliothek, die die Protokolldateigröße beschränkt und Protokolle rotiert. Weitere Informationen finden Sie im Artikel zur [Protokollierung von Drittanbietern](xref:fundamentals/logging/index#third-party-logging-providers).
+
+Das stdout-Protokoll des ASP.NET Core-Moduls zeichnet häufig nützliche Fehlermeldungen auf, die nicht im Anwendungsereignisprotokoll enthalten sind. So aktivieren Sie stdout-Protokolle und zeigen diese an:
+
+1. Navigieren Sie im Azure-Portal zur Web-App.
+1. Geben Sie auf dem Blatt **App Service** in das Suchfeld **kudu** ein.
+1. Klicken Sie auf **Erweiterte Tools** > **Los**.
+1. Klicken Sie auf **Debugkonsole > CMD**.
+1. Navigieren Sie zu *site/wwwroot*.
+1. Klicken Sie auf das Bleistiftsymbol, um die Datei *web.config* zu bearbeiten.
+1. Legen Sie im `<aspNetCore />`-Element `stdoutLogEnabled="true"` fest, und klicken Sie dann auf **Speichern**.
+
+Deaktivieren Sie die stdout-Protokollierung, wenn die Problembehandlung abgeschlossen ist, indem Sie `stdoutLogEnabled="false"` festlegen.
+
+Weitere Informationen finden Sie unter <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Debugprotokoll im ASP.NET Core-Modul (Azure App Service)
 
@@ -431,7 +421,7 @@ Viele Startfehler erzeugen keine nützlichen Informationen im Anwendungsereignis
 
 Wenn es sich bei der App um eine [Framework-abhängige Bereitstellung handelt](/dotnet/core/deploying/#framework-dependent-deployments-fdd):
 
-1. Navigieren Sie in einer Eingabeaufforderung zum Bereitstellungsordner und führen Sie die App aus, indem Sie die Assembly der App mit *dotnet.exe* ausführen. Ersetzen Sie im folgenden Befehl den Namen der Assembly der App für \<assembly_name>: `dotnet .\<assembly_name>.dll`.
+1. Navigieren Sie in einer Eingabeaufforderung zum Bereitstellungsordner und führen Sie die App aus, indem Sie die Assembly der App mit *dotnet.exe* ausführen. Ersetzen Sie im folgenden Befehl den Namen der Assembly der App durch \<assembly_name>: `dotnet .\<assembly_name>.dll`.
 1. Die Konsolenausgabe der App, die Fehler anzeigt, wird in das Konsolenfenster geschrieben.
 1. Wenn der Fehler während einer Anforderung an die App auftritt, führen Sie eine Anforderung an den Host und Port aus, auf dem Kestrel empfangsbereit ist. Führen Sie unter Verwendung der Standardhosts und -ports eine Anforderung für `http://localhost:5000/` aus. Wenn die App normalerweise auf die Kestrel-Endpunktadresse reagiert, ist die Problemursache wahrscheinlich die Hostingkonfiguration (anstelle der App).
 
@@ -439,7 +429,7 @@ Wenn es sich bei der App um eine [Framework-abhängige Bereitstellung handelt](/
 
 Wenn es sich bei der App um eine [eigenständige Bereitstellung](/dotnet/core/deploying/#self-contained-deployments-scd) handelt:
 
-1. Navigieren Sie in einer Eingabeaufforderung zum Bereitstellungsordner und führen Sie die ausführbaren Dateien der App aus. Ersetzen Sie im folgenden Befehl den Namen der Assembly der App für \<assembly_name>: `<assembly_name>.exe`.
+1. Navigieren Sie in einer Eingabeaufforderung zum Bereitstellungsordner und führen Sie die ausführbaren Dateien der App aus. Ersetzen Sie im folgenden Befehl den Namen der Assembly der App durch \<assembly_name>: `<assembly_name>.exe`.
 1. Die Konsolenausgabe der App, die Fehler anzeigt, wird in das Konsolenfenster geschrieben.
 1. Wenn der Fehler während einer Anforderung an die App auftritt, führen Sie eine Anforderung an den Host und Port aus, auf dem Kestrel empfangsbereit ist. Führen Sie unter Verwendung der Standardhosts und -ports eine Anforderung für `http://localhost:5000/` aus. Wenn die App normalerweise auf die Kestrel-Endpunktadresse reagiert, ist die Problemursache wahrscheinlich die Hostingkonfiguration (anstelle der App).
 
@@ -764,9 +754,9 @@ Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weiter
 *Erfordert die Installation der Runtimeerweiterung für ASP.NET Core {VERSION} (x86).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` ist die Runtimeversion.)
-1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. Ausführen der App: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
+Die Konsolenausgabe der App, in der alle Fehler angezeigt werden, wird per Pipe an die Kudu-Konsole weitergeleitet.
 
 #### <a name="test-a-64-bit-x64-app"></a>Testen einer 64-Bit-App (x64)
 
@@ -777,16 +767,16 @@ Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weiter
   1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 * Wenn es sich bei der App um eine [eigenständige Bereitstellung](/dotnet/core/deploying/#self-contained-deployments-scd) handelt:
   1. `cd D:\home\site\wwwroot`
-  1. Führen Sie die App aus: `{ASSEMBLY NAME}.exe`
+  1. Ausführen der App: `{ASSEMBLY NAME}.exe`
 
-Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
+Die Konsolenausgabe der App, in der alle Fehler angezeigt werden, wird per Pipe an die Kudu-Konsole weitergeleitet.
 
 **Frameworkabhängige Bereitstellung, die in einem Vorschaurelease ausgeführt wird**
 
 *Erfordert die Installation der Runtimeerweiterung für ASP.NET Core {VERSION} (x64).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` ist die Runtimeversion.)
-1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. Ausführen der App: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
 Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
 
@@ -1242,9 +1232,9 @@ Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weiter
 *Erfordert die Installation der Runtimeerweiterung für ASP.NET Core {VERSION} (x86).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` ist die Runtimeversion.)
-1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. Ausführen der App: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
+Die Konsolenausgabe der App, in der alle Fehler angezeigt werden, wird per Pipe an die Kudu-Konsole weitergeleitet.
 
 #### <a name="test-a-64-bit-x64-app"></a>Testen einer 64-Bit-App (x64)
 
@@ -1255,16 +1245,16 @@ Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weiter
   1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 * Wenn es sich bei der App um eine [eigenständige Bereitstellung](/dotnet/core/deploying/#self-contained-deployments-scd) handelt:
   1. `cd D:\home\site\wwwroot`
-  1. Führen Sie die App aus: `{ASSEMBLY NAME}.exe`
+  1. Ausführen der App: `{ASSEMBLY NAME}.exe`
 
-Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
+Die Konsolenausgabe der App, in der alle Fehler angezeigt werden, wird per Pipe an die Kudu-Konsole weitergeleitet.
 
 **Frameworkabhängige Bereitstellung, die in einem Vorschaurelease ausgeführt wird**
 
 *Erfordert die Installation der Runtimeerweiterung für ASP.NET Core {VERSION} (x64).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` ist die Runtimeversion.)
-1. Führen Sie die App aus: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. Ausführen der App: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
 Die Konsolenausgabe der App, die Fehler anzeigt, wird an die Kudu-Konsole weitergeleitet.
 

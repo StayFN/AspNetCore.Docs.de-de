@@ -1,5 +1,5 @@
 ---
-title: '[Razor Pages: Routen- und App-Konventionen in ASP.NET Core'
+title: 'Razor Pages: Routen- und App-Konventionen in ASP.NET Core'
 author: rick-anderson
 description: Erfahren Sie, wie Konventionen für Routen- und App-Modellanbieter Sie beim Steuern von Seitenrouting, Ermittlung und Verarbeitung unterstützen können.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,26 +7,26 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 308ca4401289a55e5dba8d61de50644cb2a53433
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3cb83d8cfd058c4d0a93ece9a4f19b6407dac384
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405249"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568859"
 ---
-# <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>[Razor Pages: Routen- und App-Konventionen in ASP.NET Core
+# <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Razor Pages: Routen- und App-Konventionen in ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Erfahren Sie, wie Sie in Apps für [Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
+Erfahren Sie, wie Sie in Apps für Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
 
 Wenn Sie für einzelne Seiten benutzerdefinierte Seitenrouten konfigurieren müssen, sollten Sie das Routing zu den Seiten mithilfe der [AddPageRoute-Konvention](#configure-a-page-route) konfigurieren, die weiter unten in diesem Artikel beschrieben wird.
 
@@ -42,28 +42,27 @@ Es gibt reservierte Wörter, die nicht als Routensegmente oder Parameternamen ve
 | [Konventionen für Seitenroutenaktionen](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Das Hinzufügen einer Routenvorlage zu Seiten in einem Ordner und zu einer Einzelseite |
 | [Konventionen für Seitenmodellaktionen](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (Filterklasse, Lambdaausdruck oder Filterzuordnungsinstanz)</li></ul> | Das Hinzufügen eines Headers zu Seiten in einem Ordner, das Hinzufügen eines Headers zu einer einzelnen Seite und das Konfigurieren einer [Filter-Factoy](xref:mvc/controllers/filters#ifilterfactory) zum Hinzufügen eines Headers zu den Seiten einer App. |
 
-Konventionen für [Razor Pages werden mithilfe der Erweiterungsmethode <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> für <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> unter der Dienstsammlung in der Klasse `Startup` hinzugefügt und konfiguriert. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
+Razor Pages-Konventionen werden mithilfe einer <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages%2A>-Überladung konfiguriert, die <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions> in `Startup.ConfigureServices` konfiguriert. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddRazorPages()
-        .AddRazorPagesOptions(options =>
-        {
-            options.Conventions.Add( ... );
-            options.Conventions.AddFolderRouteModelConvention(
-                "/OtherPages", model => { ... });
-            options.Conventions.AddPageRouteModelConvention(
-                "/About", model => { ... });
-            options.Conventions.AddPageRoute(
-                "/Contact", "TheContactPage/{text?}");
-            options.Conventions.AddFolderApplicationModelConvention(
-                "/OtherPages", model => { ... });
-            options.Conventions.AddPageApplicationModelConvention(
-                "/About", model => { ... });
-            options.Conventions.ConfigureFilter(model => { ... });
-            options.Conventions.ConfigureFilter( ... );
-        });
+    services.AddRazorPages(options =>
+    {
+        options.Conventions.Add( ... );
+        options.Conventions.AddFolderRouteModelConvention(
+            "/OtherPages", model => { ... });
+        options.Conventions.AddPageRouteModelConvention(
+            "/About", model => { ... });
+        options.Conventions.AddPageRoute(
+            "/Contact", "TheContactPage/{text?}");
+        options.Conventions.AddFolderApplicationModelConvention(
+            "/OtherPages", model => { ... });
+        options.Conventions.AddPageApplicationModelConvention(
+            "/About", model => { ... });
+        options.Conventions.ConfigureFilter(model => { ... });
+        options.Conventions.ConfigureFilter( ... );
+    });
 }
 ```
 
@@ -85,11 +84,11 @@ Die Routenverarbeitung wird gemäß der Konvention eingerichtet:
 
 Vermeiden Sie nach Möglichkeit die Abhängigkeit von einer festgelegten Verarbeitungsreihenfolge für Routen. Im Allgemeinen wird beim Routing die richtige Route mittels URL-Zuordnung ausgewählt. Wenn Sie zum ordnungsgemäßen Weiterleiten von Anforderungen für die Route `Order`-Eigenschaften festlegen müssen, ist das Routingschema der App für Clients wahrscheinlich irreführend und in Bezug auf die Verwaltung störanfälliger. Versuchen Sie daher, das Routingschema der App zu vereinfachen. Bei der Beispiel-App ist eine explizite Verarbeitungsreihenfolge für Routen erforderlich, um mit einer einzigen App verschiedene Routingszenarios veranschaulichen zu können. In Produktions-Apps sollten Sie jedoch nach Möglichkeit eine Festlegung von `Order` für Routen vermeiden.
 
-[Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Modellkonventionen
 
-Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf [Razor Pages anwendbar sind.
+Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf Razor Pages anwendbar sind.
 
 ### <a name="add-a-route-model-convention-to-all-pages"></a>Hinzufügen einer Routenmodellkonvention zu allen Seiten
 
@@ -107,7 +106,7 @@ Die Eigenschaft <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteM
 
 Legen Sie die `Order` möglichst nicht fest, sodass `Order = 0` gilt. Verlassen Sie sich bei der Auswahl der richtigen Route auf die Routenplanung.
 
-Optionen für [Razor Pages, z. B. das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, werden hinzugefügt, wenn MVC der Dienstauflistung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
+Razor Pages-Optionen wie das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> werden hinzugefügt, wenn Razor Pages zur Dienstsammlung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -183,22 +182,21 @@ Fordern Sie die Seite „Info“ der Beispielanwendung unter `localhost:5000/Abo
 
 Von ASP.NET Core generierte Seitenrouten können mit einem Parametertransformator angepasst werden. Ein Parametertransformator implementiert `IOutboundParameterTransformer` und wandelt den Wert der Parameter um. Beispielsweise ändert ein benutzerdefinierter `SlugifyParameterTransformer`-Parametertransformator den Routenwert `SubscriptionManagement` in `subscription-management`.
 
-Mit der Seitenroutenmodellkonvention `PageRouteTransformerConvention` wird ein Parametertransformator auf die Ordner- und Dateinamenssegmente von automatisch generierten Seitenrouten in einer App angewendet. Für die [Razor Pages-Datei unter */Pages/SubscriptionManagement/ViewAll.cshtml* wird die Route beispielsweise von `/SubscriptionManagement/ViewAll` in `/subscription-management/view-all` umgeschrieben.
+Mit der Seitenroutenmodellkonvention `PageRouteTransformerConvention` wird ein Parametertransformator auf die Ordner- und Dateinamenssegmente von automatisch generierten Seitenrouten in einer App angewendet. Für die Razor Pages-Datei unter */Pages/SubscriptionManagement/ViewAll.cshtml* wird die Route beispielsweise von `/SubscriptionManagement/ViewAll` in `/subscription-management/view-all` umgeschrieben.
 
-Mit `PageRouteTransformerConvention` werden nur die automatisch generierten Segmente einer Seitenroute transformiert, die aus dem Ordner- und Dateinamen von [Razor Pages stammen. Mit der `@page`-Anweisung hinzugefügte Routensegmente werden nicht transformiert. Auch durch <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> hinzugefügte Routen werden mit dieser Konvention nicht transformiert.
+Mit `PageRouteTransformerConvention` werden nur die automatisch generierten Segmente einer Seitenroute transformiert, die aus dem Ordner- und Dateinamen von Razor Pages stammen. Mit der `@page`-Anweisung hinzugefügte Routensegmente werden nicht transformiert. Auch durch <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> hinzugefügte Routen werden mit dieser Konvention nicht transformiert.
 
 Die `PageRouteTransformerConvention` wird als Option in `Startup.ConfigureServices` registriert:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddRazorPages()
-        .AddRazorPagesOptions(options =>
-        {
-            options.Conventions.Add(
-                new PageRouteTransformerConvention(
-                    new SlugifyParameterTransformer()));
-        });
+    services.AddRazorPages(options =>
+    {
+        options.Conventions.Add(
+            new PageRouteTransformerConvention(
+                new SlugifyParameterTransformer()));
+    });
 }
 ```
 
@@ -272,7 +270,7 @@ Der angegebene Filter, der angewendet werden soll, wird mit <xref:Microsoft.Exte
 
 Das Seiten-App-Modell wird verwendet, um den relativen Pfad für Segmente zu überprüfen, die zur Seite „Seite2“ im Ordner *OtherPages* führen. Wenn die Bedingung erfüllt ist, wird ein Header hinzugefügt. Wenn dies nicht der Fall ist, wird der `EmptyFilter` angewendet.
 
-`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von [Razor Pages ignoriert werden.
+`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von Razor Pages ignoriert werden.
 
 Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/OtherPages/Page2` an, und prüfen Sie die Header, um das Ergebnis zu sehen:
 
@@ -280,7 +278,7 @@ Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/O
 
 **Konfigurieren einer Filterzuordnungsinstanz**
 
-Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle [Razor Pages anwendet.
+Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle Razor Pages anwendet.
 
 Die Beispielanwendung bietet Ihnen die Möglichkeit des beispielhaften Verwendens einer [Filterzuordnungsinstanz](xref:mvc/controllers/filters#ifilterfactory) durch Hinzufügen des Headers `FilterFactoryHeader` zu den Seiten der Anwendung, der zwei Werte besitzt:
 
@@ -296,9 +294,9 @@ Fordern Sie die Seite „Info“ der Beispielanwendung unter `localhost:5000/Abo
 
 ## <a name="mvc-filters-and-the-page-filter-ipagefilter"></a>Die MVC-Filter und der Seitenfilter (IPageFilter)
 
-MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von [Razor Pages ignoriert, da [Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
+MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von Razor Pages ignoriert, da Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
 
-Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf [Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für [Razor Pages](xref:razor-pages/filter).
+Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für Razor Pages](xref:razor-pages/filter).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -309,7 +307,7 @@ Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein F
 
 ::: moniker range="= aspnetcore-2.2"
 
-Erfahren Sie, wie Sie in Apps für [Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
+Erfahren Sie, wie Sie in Apps für Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
 
 Wenn Sie für einzelne Seiten benutzerdefinierte Seitenrouten konfigurieren müssen, sollten Sie das Routing zu den Seiten mithilfe der [AddPageRoute-Konvention](#configure-a-page-route) konfigurieren, die weiter unten in diesem Artikel beschrieben wird.
 
@@ -325,7 +323,7 @@ Es gibt reservierte Wörter, die nicht als Routensegmente oder Parameternamen ve
 | [Konventionen für Seitenroutenaktionen](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Das Hinzufügen einer Routenvorlage zu Seiten in einem Ordner und zu einer Einzelseite |
 | [Konventionen für Seitenmodellaktionen](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (Filterklasse, Lambdaausdruck oder Filterzuordnungsinstanz)</li></ul> | Das Hinzufügen eines Headers zu Seiten in einem Ordner, das Hinzufügen eines Headers zu einer einzelnen Seite und das Konfigurieren einer [Filter-Factoy](xref:mvc/controllers/filters#ifilterfactory) zum Hinzufügen eines Headers zu den Seiten einer App. |
 
-Konventionen für [Razor Pages werden <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> mithilfe der Erweiterungsmethode <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> unter der Dienstklasse in der Klasse `Startup` hinzugefügt. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
+Konventionen für Razor Pages werden <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> mithilfe der Erweiterungsmethode <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> unter der Dienstklasse in der Klasse `Startup` hinzugefügt. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -368,11 +366,11 @@ Die Routenverarbeitung wird gemäß der Konvention eingerichtet:
 
 Vermeiden Sie nach Möglichkeit die Abhängigkeit von einer festgelegten Verarbeitungsreihenfolge für Routen. Im Allgemeinen wird beim Routing die richtige Route mittels URL-Zuordnung ausgewählt. Wenn Sie zum ordnungsgemäßen Weiterleiten von Anforderungen für die Route `Order`-Eigenschaften festlegen müssen, ist das Routingschema der App für Clients wahrscheinlich irreführend und in Bezug auf die Verwaltung störanfälliger. Versuchen Sie daher, das Routingschema der App zu vereinfachen. Bei der Beispiel-App ist eine explizite Verarbeitungsreihenfolge für Routen erforderlich, um mit einer einzigen App verschiedene Routingszenarios veranschaulichen zu können. In Produktions-Apps sollten Sie jedoch nach Möglichkeit eine Festlegung von `Order` für Routen vermeiden.
 
-[Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Modellkonventionen
 
-Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf [Razor Pages anwendbar sind.
+Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf Razor Pages anwendbar sind.
 
 ### <a name="add-a-route-model-convention-to-all-pages"></a>Hinzufügen einer Routenmodellkonvention zu allen Seiten
 
@@ -390,7 +388,7 @@ Die Eigenschaft <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteM
 
 Legen Sie die `Order` möglichst nicht fest, sodass `Order = 0` gilt. Verlassen Sie sich bei der Auswahl der richtigen Route auf die Routenplanung.
 
-Optionen für [Razor Pages, z. B. das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, werden hinzugefügt, wenn MVC der Dienstauflistung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
+Optionen für Razor Pages, z. B. das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, werden hinzugefügt, wenn MVC der Dienstauflistung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -466,9 +464,9 @@ Fordern Sie die Seite „Info“ der Beispielanwendung unter `localhost:5000/Abo
 
 Von ASP.NET Core generierte Seitenrouten können mit einem Parametertransformator angepasst werden. Ein Parametertransformator implementiert `IOutboundParameterTransformer` und wandelt den Wert der Parameter um. Beispielsweise ändert ein benutzerdefinierter `SlugifyParameterTransformer`-Parametertransformator den Routenwert `SubscriptionManagement` in `subscription-management`.
 
-Mit der Seitenroutenmodellkonvention `PageRouteTransformerConvention` wird ein Parametertransformator auf die Ordner- und Dateinamenssegmente von automatisch generierten Seitenrouten in einer App angewendet. Für die [Razor Pages-Datei unter */Pages/SubscriptionManagement/ViewAll.cshtml* wird die Route beispielsweise von `/SubscriptionManagement/ViewAll` in `/subscription-management/view-all` umgeschrieben.
+Mit der Seitenroutenmodellkonvention `PageRouteTransformerConvention` wird ein Parametertransformator auf die Ordner- und Dateinamenssegmente von automatisch generierten Seitenrouten in einer App angewendet. Für die Razor Pages-Datei unter */Pages/SubscriptionManagement/ViewAll.cshtml* wird die Route beispielsweise von `/SubscriptionManagement/ViewAll` in `/subscription-management/view-all` umgeschrieben.
 
-Mit `PageRouteTransformerConvention` werden nur die automatisch generierten Segmente einer Seitenroute transformiert, die aus dem Ordner- und Dateinamen von [Razor Pages stammen. Mit der `@page`-Anweisung hinzugefügte Routensegmente werden nicht transformiert. Auch durch <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> hinzugefügte Routen werden mit dieser Konvention nicht transformiert.
+Mit `PageRouteTransformerConvention` werden nur die automatisch generierten Segmente einer Seitenroute transformiert, die aus dem Ordner- und Dateinamen von Razor Pages stammen. Mit der `@page`-Anweisung hinzugefügte Routensegmente werden nicht transformiert. Auch durch <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> hinzugefügte Routen werden mit dieser Konvention nicht transformiert.
 
 Die `PageRouteTransformerConvention` wird als Option in `Startup.ConfigureServices` registriert:
 
@@ -562,7 +560,7 @@ Der angegebene Filter, der angewendet werden soll, wird mit <xref:Microsoft.Exte
 
 Das Seiten-App-Modell wird verwendet, um den relativen Pfad für Segmente zu überprüfen, die zur Seite „Seite2“ im Ordner *OtherPages* führen. Wenn die Bedingung erfüllt ist, wird ein Header hinzugefügt. Wenn dies nicht der Fall ist, wird der `EmptyFilter` angewendet.
 
-`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von [Razor Pages ignoriert werden.
+`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von Razor Pages ignoriert werden.
 
 Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/OtherPages/Page2` an, und prüfen Sie die Header, um das Ergebnis zu sehen:
 
@@ -570,7 +568,7 @@ Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/O
 
 **Konfigurieren einer Filterzuordnungsinstanz**
 
-Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle [Razor Pages anwendet.
+Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle Razor Pages anwendet.
 
 Die Beispielanwendung bietet Ihnen die Möglichkeit des beispielhaften Verwendens einer [Filterzuordnungsinstanz](xref:mvc/controllers/filters#ifilterfactory) durch Hinzufügen des Headers `FilterFactoryHeader` zu den Seiten der Anwendung, der zwei Werte besitzt:
 
@@ -586,9 +584,9 @@ Fordern Sie die Seite „Info“ der Beispielanwendung unter `localhost:5000/Abo
 
 ## <a name="mvc-filters-and-the-page-filter-ipagefilter"></a>Die MVC-Filter und der Seitenfilter (IPageFilter)
 
-MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von [Razor Pages ignoriert, da [Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
+MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von Razor Pages ignoriert, da Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
 
-Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf [Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für [Razor Pages](xref:razor-pages/filter).
+Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für Razor Pages](xref:razor-pages/filter).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -599,7 +597,7 @@ Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein F
 
 ::: moniker range="< aspnetcore-2.2"
 
-Erfahren Sie, wie Sie in Apps für [Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
+Erfahren Sie, wie Sie in Apps für Razor Pages mithilfe von [Konventionen für Seitenrouten und App-Modellanbieter](xref:mvc/controllers/application-model#conventions) das Seitenrouting, die Ermittlung und die Verarbeitung steuern können.
 
 Wenn Sie für einzelne Seiten benutzerdefinierte Seitenrouten konfigurieren müssen, sollten Sie das Routing zu den Seiten mithilfe der [AddPageRoute-Konvention](#configure-a-page-route) konfigurieren, die weiter unten in diesem Artikel beschrieben wird.
 
@@ -615,7 +613,7 @@ Es gibt reservierte Wörter, die nicht als Routensegmente oder Parameternamen ve
 | [Konventionen für Seitenroutenaktionen](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Das Hinzufügen einer Routenvorlage zu Seiten in einem Ordner und zu einer Einzelseite |
 | [Konventionen für Seitenmodellaktionen](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (Filterklasse, Lambdaausdruck oder Filterzuordnungsinstanz)</li></ul> | Das Hinzufügen eines Headers zu Seiten in einem Ordner, das Hinzufügen eines Headers zu einer einzelnen Seite und das Konfigurieren einer [Filter-Factoy](xref:mvc/controllers/filters#ifilterfactory) zum Hinzufügen eines Headers zu den Seiten einer App. |
 
-Konventionen für [Razor Pages werden <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> mithilfe der Erweiterungsmethode <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> unter der Dienstklasse in der Klasse `Startup` hinzugefügt. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
+Konventionen für Razor Pages werden <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> mithilfe der Erweiterungsmethode <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> unter der Dienstklasse in der Klasse `Startup` hinzugefügt. Die folgenden Beispiele der Konvention werden später in diesem Thema erläutert:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -658,11 +656,11 @@ Die Routenverarbeitung wird gemäß der Konvention eingerichtet:
 
 Vermeiden Sie nach Möglichkeit die Abhängigkeit von einer festgelegten Verarbeitungsreihenfolge für Routen. Im Allgemeinen wird beim Routing die richtige Route mittels URL-Zuordnung ausgewählt. Wenn Sie zum ordnungsgemäßen Weiterleiten von Anforderungen für die Route `Order`-Eigenschaften festlegen müssen, ist das Routingschema der App für Clients wahrscheinlich irreführend und in Bezug auf die Verwaltung störanfälliger. Versuchen Sie daher, das Routingschema der App zu vereinfachen. Bei der Beispiel-App ist eine explizite Verarbeitungsreihenfolge für Routen erforderlich, um mit einer einzigen App verschiedene Routingszenarios veranschaulichen zu können. In Produktions-Apps sollten Sie jedoch nach Möglichkeit eine Festlegung von `Order` für Routen vermeiden.
 
-[Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor Pages-Routing und MVC Controller-Routing verwenden eine gemeinsame Implementierung. Informationen zur Reihenfolge von Routen in den MVC-Themen finden Sie unter [Routing zu Controlleraktionen: Ordnen der Attributrouten](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Modellkonventionen
 
-Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf [Razor Pages anwendbar sind.
+Fügen Sie einen Delegaten für <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> hinzu, um [Modellkonventionen](xref:mvc/controllers/application-model#conventions) hinzuzufügen, die auf Razor Pages anwendbar sind.
 
 ### <a name="add-a-route-model-convention-to-all-pages"></a>Hinzufügen einer Routenmodellkonvention zu allen Seiten
 
@@ -680,7 +678,7 @@ Die Eigenschaft <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteM
 
 Legen Sie die `Order` möglichst nicht fest, sodass `Order = 0` gilt. Verlassen Sie sich bei der Auswahl der richtigen Route auf die Routenplanung.
 
-Optionen für [Razor Pages, z. B. das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, werden hinzugefügt, wenn MVC der Dienstauflistung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
+Optionen für Razor Pages, z. B. das Hinzufügen von <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, werden hinzugefügt, wenn MVC der Dienstauflistung in `Startup.ConfigureServices` hinzugefügt wird. In der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) finden Sie ein Beispiel hierfür.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -818,7 +816,7 @@ Der angegebene Filter, der angewendet werden soll, wird mit <xref:Microsoft.Exte
 
 Das Seiten-App-Modell wird verwendet, um den relativen Pfad für Segmente zu überprüfen, die zur Seite „Seite2“ im Ordner *OtherPages* führen. Wenn die Bedingung erfüllt ist, wird ein Header hinzugefügt. Wenn dies nicht der Fall ist, wird der `EmptyFilter` angewendet.
 
-`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von [Razor Pages ignoriert werden.
+`EmptyFilter` ist ein [Aktionsfilter](xref:mvc/controllers/filters#action-filters). Wenn der Pfad `OtherPages/Page2` nicht enthält, hat der `EmptyFilter`, wie vorgesehen, keine Auswirkung, da Aktionsfilter von Razor Pages ignoriert werden.
 
 Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/OtherPages/Page2` an, und prüfen Sie die Header, um das Ergebnis zu sehen:
 
@@ -826,7 +824,7 @@ Fordern Sie die Seite „Seite2“ der Beispielanwendung unter `localhost:5000/O
 
 **Konfigurieren einer Filterzuordnungsinstanz**
 
-Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle [Razor Pages anwendet.
+Mit <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> wird die angegebene Zuordnungsinstanz so konfiguriert, dass sie [Filter](xref:mvc/controllers/filters) auf alle Razor Pages anwendet.
 
 Die Beispielanwendung bietet Ihnen die Möglichkeit des beispielhaften Verwendens einer [Filterzuordnungsinstanz](xref:mvc/controllers/filters#ifilterfactory) durch Hinzufügen des Headers `FilterFactoryHeader` zu den Seiten der Anwendung, der zwei Werte besitzt:
 
@@ -842,9 +840,9 @@ Fordern Sie die Seite „Info“ der Beispielanwendung unter `localhost:5000/Abo
 
 ## <a name="mvc-filters-and-the-page-filter-ipagefilter"></a>Die MVC-Filter und der Seitenfilter (IPageFilter)
 
-MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von [Razor Pages ignoriert, da [Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
+MVC-[Aktionsfilter](xref:mvc/controllers/filters#action-filters) werden von Razor Pages ignoriert, da Razor Pages Handlermethoden verwenden. Darüber hinaus stehen die folgenden MVC-Filtertypen zur Verfügung: [Autorisierung](xref:mvc/controllers/filters#authorization-filters), [Ausnahme](xref:mvc/controllers/filters#exception-filters), [Ressource](xref:mvc/controllers/filters#resource-filters) und [Ergebnis](xref:mvc/controllers/filters#result-filters). Weitere Informationen finden Sie im Thema [Filter](xref:mvc/controllers/filters).
 
-Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf [Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für [Razor Pages](xref:razor-pages/filter).
+Der Seitenfilter (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) ist ein Filter, der auf Razor Pages anwendbar ist. Weitere Informationen finden Sie unter [Filtermethoden für Razor Pages](xref:razor-pages/filter).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

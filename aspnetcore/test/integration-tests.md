@@ -5,7 +5,7 @@ description: In diesem Artikel erfahren Sie, wie Integrationstests sicherstellen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 07/14/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: 6e4a0065486f6d9d6744dcd21de10ec76782f210
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c050665f630c0973abe6c9d08a4652597441639f
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405873"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445280"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Integrationstests in ASP.NET Core
 
@@ -114,7 +114,7 @@ Für das Testprojekt muss Folgendes erfüllt sein:
 * Verweisen Sie auf das [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)-Paket.
 * Geben Sie das Web SDK in der Projektdatei an (`<Project Sdk="Microsoft.NET.Sdk.Web">`).
 
-Diese Voraussetzungen können Sie in der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) sehen. Beachten Sie die Datei *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Die Beispiel-App verwendet das [xUnit](https://xunit.github.io/)-Testframework und die [AngleSharp](https://anglesharp.github.io/)-Parserbibliothek, sodass die Beispiel-APP auch auf Folgendes verweist:
+Diese Voraussetzungen können Sie in der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) sehen. Untersuchen Sie die Datei *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Die Beispiel-App verwendet das [xUnit](https://xunit.github.io/)-Testframework und die [AngleSharp](https://anglesharp.github.io/)-Parserbibliothek, sodass die Beispiel-APP auch auf Folgendes verweist:
 
 * [xunit](https://www.nuget.org/packages/xunit)
 * [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
@@ -310,7 +310,7 @@ Die Test-App kann einen <xref:Microsoft.AspNetCore.Authentication.Authentication
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet4&highlight=11-18)]
 
-Der `TestAuthHandler` wird aufgerufen, um einen Benutzer zu authentifizieren, wenn das Authentifizierungsschema auf `Test` festgelegt ist, in dem `AddAuthentication` für `ConfigureTestServices` registriert ist:
+`TestAuthHandler` wird aufgerufen, um einen Benutzer zu authentifizieren, wenn das Authentifizierungsschema auf `Test` festgelegt wird, in dem `AddAuthentication` für `ConfigureTestServices` registriert ist. Es ist wichtig, dass das `Test`-Schema mit dem Schema übereinstimmt, das Ihre App erwartet. Andernfalls funktioniert die Authentifizierung nicht.
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet3&highlight=7-12)]
 
@@ -366,7 +366,7 @@ Die [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetc
 | Nachrichten-App (das GS) | *src/RazorPagesProject* | Ermöglicht einem Benutzer, Nachrichten hinzuzufügen, eine oder alle Nachrichten zu löschen und Nachrichten zu analysieren. |
 | Testen der App | *tests/RazorPagesProject.Tests* | Wird für den Integrationstest des GS verwendet. |
 
-Die Tests können mit den integrierten Testfunktionen einer IDE, wie z. B. [Visual Studio](https://visualstudio.microsoft.com) ausgeführt werden. Wenn Sie [Visual Studio Code](https://code.visualstudio.com/) oder die Befehlszeile verwenden, führen Sie den folgenden Befehl an einer Eingabeaufforderung im Verzeichnis *tests/RazorPagesProject.Tests* aus:
+Die Tests können mit den integrierten Testfunktionen einer IDE, wie z. B. [Visual Studio](https://visualstudio.microsoft.com) ausgeführt werden. Wenn Sie [Visual Studio Code](https://code.visualstudio.com/) oder die Befehlszeile verwenden, führen Sie den folgenden Befehl über eine Eingabeaufforderung im Verzeichnis *tests/RazorPagesProject.Tests* aus:
 
 ```console
 dotnet test
@@ -504,7 +504,7 @@ Für das Testprojekt muss Folgendes erfüllt sein:
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Geben Sie das Web SDK in der Projektdatei an (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Das Web SDK ist bei Verweis auf das [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) erforderlich.
 
-Diese Voraussetzungen können Sie in der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) sehen. Beachten Sie die Datei *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Die Beispiel-App verwendet das [xUnit](https://xunit.github.io/)-Testframework und die [AngleSharp](https://anglesharp.github.io/)-Parserbibliothek, sodass die Beispiel-APP auch auf Folgendes verweist:
+Diese Voraussetzungen können Sie in der [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) sehen. Untersuchen Sie die Datei *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Die Beispiel-App verwendet das [xUnit](https://xunit.github.io/)-Testframework und die [AngleSharp](https://anglesharp.github.io/)-Parserbibliothek, sodass die Beispiel-APP auch auf Folgendes verweist:
 
 * [xunit](https://www.nuget.org/packages/xunit/)
 * [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -579,7 +579,7 @@ Da ein anderer Test in der `IndexPageTests`-Klasse einen Vorgang durchführt, de
 
 In der folgenden Tabelle werden die Standard-[WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) gezeigt, die bei der Erstellung von `HttpClient`-Instanzen verfügbar sind.
 
-| Option | Beschreibung | Standard |
+| Option | BESCHREIBUNG | Standard |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Ruft ab oder legt fest, ob `HttpClient`-Instanzen automatisch Umleitungsantworten befolgen sollen. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Ruft die Basisadresse der `HttpClient`-Instanzen ab oder legt sie fest. | `http://localhost` |
@@ -757,7 +757,7 @@ Die [Beispiel-App](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetc
 | Nachrichten-App (das GS) | *src/RazorPagesProject* | Ermöglicht einem Benutzer, Nachrichten hinzuzufügen, eine oder alle Nachrichten zu löschen und Nachrichten zu analysieren. |
 | Testen der App | *tests/RazorPagesProject.Tests* | Wird für den Integrationstest des GS verwendet. |
 
-Die Tests können mit den integrierten Testfunktionen einer IDE, wie z. B. [Visual Studio](https://visualstudio.microsoft.com) ausgeführt werden. Wenn Sie [Visual Studio Code](https://code.visualstudio.com/) oder die Befehlszeile verwenden, führen Sie den folgenden Befehl an einer Eingabeaufforderung im Verzeichnis *tests/RazorPagesProject.Tests* aus:
+Die Tests können mit den integrierten Testfunktionen einer IDE, wie z. B. [Visual Studio](https://visualstudio.microsoft.com) ausgeführt werden. Wenn Sie [Visual Studio Code](https://code.visualstudio.com/) oder die Befehlszeile verwenden, führen Sie den folgenden Befehl über eine Eingabeaufforderung im Verzeichnis *tests/RazorPagesProject.Tests* aus:
 
 ```dotnetcli
 dotnet test
