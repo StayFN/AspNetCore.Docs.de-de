@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 124f2a629ebd14210cb21351a720e007bba48f02
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85404014"
@@ -61,7 +62,7 @@ Die Tabelle enthält native IIS-Module, die mit ASP.NET Core-Apps und dem ASP.NE
 | **Statischer Inhalt**<br>`StaticFileModule`                                                         | Nein  | [Middleware für statische Dateien](xref:fundamentals/static-files) |
 | **Token-Zwischenspeicherung**<br>`TokenCacheModule`                                                          | Ja | |
 | **URI-Zwischenspeicherung**<br>`UriCacheModule`                                                              | Ja | |
-| **URL-Autorisierung**<br>`UrlAuthorizationModule`                                                | Ja | [ASP.NET Core Identity](xref:security/authentication/identity) |
+| **URL-Autorisierung**<br>`UrlAuthorizationModule`                                                | Ja | [ASP.NET Core [Identity](xref:security/authentication/identity) |
 | **Windows-Authentifizierung**<br>`WindowsAuthenticationModule`                                      | Ja | |
 
 &#8224;Die Übereinstimmungstypen `isFile` und `isDirectory` des URL-Rewrite-Moduls können aufgrund der Änderungen in der [Verzeichnisstruktur](xref:host-and-deploy/directory-structure) nicht in ASP.NET Core-Apps ausgeführt werden.
@@ -83,7 +84,7 @@ Verwaltete Module sind mit gehosteten ASP.NET Core-Apps *nicht* funktionsfähig,
 | Sitzung                 | [Middleware für Sitzungen](xref:fundamentals/app-state) |
 | UrlAuthorization        | |
 | UrlMappingsModule       | [URL-umschreibende Middleware](xref:fundamentals/url-rewriting) |
-| UrlRoutingModule-4.0    | [ASP.NET Core Identity](xref:security/authentication/identity) |
+| UrlRoutingModule-4.0    | [ASP.NET Core [Identity](xref:security/authentication/identity) |
 | WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>IIS Manager-Anwendungsänderungen

@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/startup
 ms.openlocfilehash: 0d1bf0dd23b7f3b99d6e9383ffc72291c1b138ec
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85400712"
@@ -40,7 +41,7 @@ ASP.NET Core-Apps verwenden eine `Startup`-Klasse, die standardmäßig `Startup`
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-Das Beispiel oben bezieht sich auf [Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.
+Das Beispiel oben bezieht sich auf [[Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.
 
 
 Die `Startup`-Klasse wird angegeben, wenn der [Host](xref:fundamentals/index#host) der App erstellt wird. Die `Startup`-Klasse wird in der Regel durch Aufruf der [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)-Methode im Hostgenerator angegeben:
@@ -92,12 +93,12 @@ Die [ASP.NET Core-Vorlagen](/dotnet/core/tools/dotnet-new) konfigurieren die Pip
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS-Umleitung](xref:security/enforcing-ssl)
 * [Statische Dateien](xref:fundamentals/static-files)
-* ASP.NET Core-[MVC](xref:mvc/overview) und [Razor Pages](xref:razor-pages/index)
+* ASP.NET Core-[MVC](xref:mvc/overview) und [[Razor Pages](xref:razor-pages/index)
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-Das Beispiel oben bezieht sich auf [Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.
+Das Beispiel oben bezieht sich auf [[Razor Pages](xref:razor-pages/index). Die MVC-Version ist aber ähnlich.
 
 Jede `Use`-Erweiterungsmethode fügt mindestens eine Middlewarekomponente zu der Anforderungspipeline hinzu. Beispielsweise konfiguriert <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>[Middleware](xref:fundamentals/middleware/index) für die Bereitstellung [statischer Dateien](xref:fundamentals/static-files).
 
@@ -226,7 +227,7 @@ Die [ASP.NET Core-Vorlagen](/dotnet/core/tools/dotnet-new) konfigurieren die Pip
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS-Umleitung](xref:security/enforcing-ssl)
 * [Statische Dateien](xref:fundamentals/static-files)
-* ASP.NET Core-[MVC](xref:mvc/overview) und [Razor Pages](xref:razor-pages/index)
+* ASP.NET Core-[MVC](xref:mvc/overview) und [[Razor Pages](xref:razor-pages/index)
 * [die Datenschutzgrundverordnung (DSGVO)](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

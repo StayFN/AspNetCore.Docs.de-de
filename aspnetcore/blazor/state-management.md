@@ -1,31 +1,32 @@
 ---
-title: Blazor-Zustandsverwaltung in ASP.NET Core
+title: '[Blazor-Zustandsverwaltung in ASP.NET Core'
 author: guardrex
-description: Erfahren Sie, wie Sie den Zustand in Blazor Server-Apps beibehalten.
+description: Erfahren Sie, wie Sie den Zustand in [Blazor Server-Apps beibehalten.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/state-management
 ms.openlocfilehash: a6c646425145855538f408ec6cafdb151cd24b86
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85401947"
 ---
-# <a name="aspnet-core-blazor-state-management"></a>Blazor-Zustandsverwaltung in ASP.NET Core
+# <a name="aspnet-core-blazor-state-management"></a>[Blazor-Zustandsverwaltung in ASP.NET Core
 
 Von [Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Blazor Server ist ein zustandsbehaftetes App-Framework. In den meisten Fällen behält die App eine laufende Verbindung mit dem Server bei. Der Benutzerzustand wird in einer *Verbindung* im Speicher des Servers gespeichert. 
+[Blazor Server ist ein zustandsbehaftetes App-Framework. In den meisten Fällen behält die App eine laufende Verbindung mit dem Server bei. Der Benutzerzustand wird in einer *Verbindung* im Speicher des Servers gespeichert. 
 
 Beispiele für den Zustand einer Benutzerverbindung sind:
 
@@ -34,11 +35,11 @@ Beispiele für den Zustand einer Benutzerverbindung sind:
 * Daten, die in [-Abhängigkeitsinjektion (DI)](xref:fundamentals/dependency-injection)-Dienstinstanzen gespeichert sind, die auf die Verbindung beschränkt sind.
 
 > [!NOTE]
-> In diesem Artikel wird die Zustandspersistenz in Blazor Server-Apps behandelt. Blazor WebAssembly-Apps können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.
+> In diesem Artikel wird die Zustandspersistenz in [Blazor Server-Apps behandelt. [Blazor WebAssembly-Apps können [clientseitige Zustandspersistenz im Browser nutzen](#client-side-in-the-browser), erfordern jedoch benutzerdefinierte Lösungen oder Drittanbieterpakete, die den Rahmen dieses Artikels sprengen würden.
 
-## <a name="blazor-circuits"></a>Blazor-Verbindungen
+## <a name="blazor-circuits"></a>[Blazor-Verbindungen
 
-Wenn die Netzwerkverbindung vorübergehend getrennt wird, versucht Blazor, den Benutzer nochmals mit der ursprünglichen Verbindung zu verbinden, damit er die mit der Verwendung der App fortfahren kann. Es ist jedoch nicht immer möglich, einen Benutzer noch mal mit der ursprünglichen Verbindung im Arbeitsspeicher des Servers zu verbinden:
+Wenn die Netzwerkverbindung vorübergehend getrennt wird, versucht [Blazor, den Benutzer nochmals mit der ursprünglichen Verbindung zu verbinden, damit er die mit der Verwendung der App fortfahren kann. Es ist jedoch nicht immer möglich, einen Benutzer noch mal mit der ursprünglichen Verbindung im Arbeitsspeicher des Servers zu verbinden:
 
 * Der Server kann eine getrennte Verbindung nicht dauerhaft beibehalten. Der Server muss eine getrennte Verbindung nach einem Timeout freigeben, oder wenn der Server nicht über genügend Arbeitsspeicher verfügt.
 * In Bereitstellungsumgebungen mit mehreren Servern und Lastenausgleich kann es vorkommen, dass ein Server, der Anforderungen verarbeitet, zu einem bestimmten Zeitpunkt nicht mehr verfügbar ist. Bei einzelnen Servern tritt möglicherweise ein Fehler auf, oder sie werden automatisch entfernt, wenn nicht mehr das gesamte Anforderungsvolumen verarbeitet werden muss. Der ursprüngliche Server ist möglicherweise nicht verfügbar, wenn der Benutzer versucht, noch mal eine Verbindung herzustellen.
@@ -69,7 +70,7 @@ Es ist in der Regel nicht notwendig, einen Zustand beizubehalten, der einfach er
 
 ## <a name="where-to-persist-state"></a>Speicherort des Zustands
 
-Es gibt drei allgemeine Speicherorte für die Beibehaltung des Zustands in einer Blazor Server-App. Die Ansätze eignen sich jeweils für verschiedene Szenarios und weisen unterschiedliche Einschränkungen auf:
+Es gibt drei allgemeine Speicherorte für die Beibehaltung des Zustands in einer [Blazor Server-App. Die Ansätze eignen sich jeweils für verschiedene Szenarios und weisen unterschiedliche Einschränkungen auf:
 
 * [Serverseitig in einer Datenbank](#server-side-in-a-database)
 * [URL](#url)
@@ -107,7 +108,7 @@ Weitere Informationen zum Definieren von URL-Mustern mit der `@page`-Direktive f
 Für vorübergehende Daten, die der Benutzer aktiv erstellt, sind die `localStorage`- und `sessionStorage`-Sammlungen des Browsers ein häufig verwendeter Sicherungsspeicher. Die App muss den gespeicherten Zustand nicht verwalten oder löschen, wenn die Verbindung abgebrochen wird. Dies ist ein Vorteil gegenüber serverseitigem Speicher.
 
 > [!NOTE]
-> „Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [Blazor WebAssembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly). `localStorage` und `sessionStorage` können in Blazor WebAssembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.
+> „Clientseitig“ bezieht sich in diesem Abschnitt auf clientseitige Szenarios im Browser, nicht auf das [[Blazor WebAssembly-Hostingmodell](xref:blazor/hosting-models#blazor-webassembly). `localStorage` und `sessionStorage` können in [Blazor WebAssembly-Apps verwendet werden, jedoch nur durch Schreiben von benutzerdefiniertem Code oder Verwenden eines Drittanbieterpakets.
 
 `localStorage` und `sessionStorage` unterscheiden sich wie folgt:
 
@@ -125,7 +126,7 @@ Einschränkungen bei der Verwendung des Browserspeichers:
 
 * Ähnlich wie bei der Verwendung einer serverseitigen Datenbank erfolgt das Laden und Speichern von Daten asynchron.
 * Im Gegensatz zu einer serverseitigen Datenbank ist der Speicher während des Prerenderings nicht verfügbar, da die angeforderte Seite im Browser während der Prerenderingphase nicht vorhanden ist.
-* Es ist ohne Weiteres möglich, einige wenige Kilobyte Daten für Blazor Server-Apps zu speichern. Bei mehr Kilobyte müssen Beeinträchtigungen der Leistung berücksichtigt werden, da die Daten über das Netzwerk geladen und gespeichert werden.
+* Es ist ohne Weiteres möglich, einige wenige Kilobyte Daten für [Blazor Server-Apps zu speichern. Bei mehr Kilobyte müssen Beeinträchtigungen der Leistung berücksichtigt werden, da die Daten über das Netzwerk geladen und gespeichert werden.
 * Benutzer können die Daten anzeigen oder manipulieren. Die [Datenschutzlösung](xref:security/data-protection/introduction) von ASP.NET Core reduziert die damit verbundenen Risiken.
 
 ## <a name="third-party-browser-storage-solutions"></a>Browserspeicherlösungen von Drittanbietern
@@ -145,7 +146,7 @@ Ein Beispiel für ein NuGet-Paket, das [Datenschutz](xref:security/data-protecti
 
 So installieren Sie das `Microsoft.AspNetCore.ProtectedBrowserStorage`-Paket
 
-1. Fügen Sie im Blazor Server-App-Projekt einen Paketverweis zu [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) hinzu.
+1. Fügen Sie im [Blazor Server-App-Projekt einen Paketverweis zu [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) hinzu.
 1. Fügen Sie im HTML-Code der obersten Ebene (z. B. in der Datei `Pages/_Host.cshtml` in der Standardprojektvorlage) das folgende `<script>`-Tag hinzu:
 
    ```html

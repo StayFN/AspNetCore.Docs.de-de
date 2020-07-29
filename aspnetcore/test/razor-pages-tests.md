@@ -1,38 +1,39 @@
 ---
-title: Komponententests für Razor Pages in ASP.NET Core
+title: Komponententests für [Razor Pages in ASP.NET Core
 author: rick-anderson
-description: Erfahren Sie, wie Sie Komponententests für Razor Pages-Apps erstellen.
+description: Erfahren Sie, wie Sie Komponententests für [Razor Pages-Apps erstellen.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: test/razor-pages-tests
 ms.openlocfilehash: 756af7f2b14512bd43aefd1a4e63e195c2daa138
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85407758"
 ---
-# <a name="razor-pages-unit-tests-in-aspnet-core"></a>Komponententests für Razor Pages in ASP.NET Core
+# <a name="razor-pages-unit-tests-in-aspnet-core"></a>Komponententests für [Razor Pages in ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core unterstützt Komponententests von Razor Pages-Apps. Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:
+ASP.NET Core unterstützt Komponententests von [Razor Pages-Apps. Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:
 
-* Teile einer Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.
+* Teile einer [Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.
 * Klassen und Methoden weisen eingeschränkte Zuständigkeitsbereiche auf.
 * Es gibt zusätzliche Dokumentation zum Verhalten der App.
 * Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.
 
-In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
+In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über [Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit [Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -55,7 +56,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a>Organisation der Nachrichten-App
 
-Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit folgenden Merkmalen:
+Bei der Nachrichten-App handelt es sich um ein [Razor Pages-Nachrichtensystem mit folgenden Merkmalen:
 
 * Die Indexseite der App (*Pages/Index.cshtml* und *Pages/Index.cshtml.cs*) stellt eine Benutzeroberfläche und Seitenmodellmethoden bereit, mit der Sie das Hinzufügen, Löschen und Analysieren von Nachrichten (durch Ermitteln der durchschnittlichen Anzahl von Wörtern pro Nachricht) steuern können.
 * Eine Nachricht wird von der `Message`-Klasse (*Data/Message.cs*) mit zwei Eigenschaften beschrieben: `Id` (Schlüssel) und `Text` (Nachricht). Die `Text`-Eigenschaft ist erforderlich und auf 200 Zeichen beschränkt.
@@ -65,7 +66,7 @@ Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit
 
 &#8224;Im Entity Framework-Thema [Testen mit InMemory](/ef/core/miscellaneous/testing/in-memory) wird die Verwendung einer In-Memory-Datenbank für Tests mit MSTest erläutert. In diesem Thema wird das Testframework [xUnit](https://xunit.github.io/) verwendet. Testkonzepte und Testimplementierungen in verschiedenen Testframeworks sind ähnlich, jedoch nicht identisch.
 
-Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt Razor Pages diese Entwicklungsmuster. Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).
+Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt [Razor Pages diese Entwicklungsmuster. Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).
 
 ## <a name="test-app-organization"></a>Organisation der Test-App
 
@@ -209,14 +210,14 @@ Bei anderen Tests in dieser Gruppe werden Seitenmodellobjekte erstellt, die den 
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core unterstützt Komponententests von Razor Pages-Apps. Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:
+ASP.NET Core unterstützt Komponententests von [Razor Pages-Apps. Tests der Datenzugriffsebene (Data Access Layer, DAL) und Seitenmodelle helfen dabei, Folgendes sicherzustellen:
 
-* Teile einer Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.
+* Teile einer [Razor Pages-App funktionieren während der App-Erstellung unabhängig und zusammen als Einheit.
 * Klassen und Methoden weisen eingeschränkte Zuständigkeitsbereiche auf.
 * Es gibt zusätzliche Dokumentation zum Verhalten der App.
 * Regressionen, bei denen es sich um Fehler bei Aktualisierungen des Codes handelt, werden während der automatisierten Erstellung und Bereitstellung gefunden.
 
-In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
+In diesem Thema wird davon ausgegangen, dass Sie über grundlegende Kenntnisse über [Razor Pages-Apps und -Komponententests verfügen. Wenn Sie mit [Razor Pages-Apps oder Testkonzepten nicht vertraut sind, finden Sie weitere Informationen in den folgenden Themen:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -239,7 +240,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a>Organisation der Nachrichten-App
 
-Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit folgenden Merkmalen:
+Bei der Nachrichten-App handelt es sich um ein [Razor Pages-Nachrichtensystem mit folgenden Merkmalen:
 
 * Die Indexseite der App (*Pages/Index.cshtml* und *Pages/Index.cshtml.cs*) stellt eine Benutzeroberfläche und Seitenmodellmethoden bereit, mit der Sie das Hinzufügen, Löschen und Analysieren von Nachrichten (durch Ermitteln der durchschnittlichen Anzahl von Wörtern pro Nachricht) steuern können.
 * Eine Nachricht wird von der `Message`-Klasse (*Data/Message.cs*) mit zwei Eigenschaften beschrieben: `Id` (Schlüssel) und `Text` (Nachricht). Die `Text`-Eigenschaft ist erforderlich und auf 200 Zeichen beschränkt.
@@ -249,7 +250,7 @@ Bei der Nachrichten-App handelt es sich um ein Razor Pages-Nachrichtensystem mit
 
 &#8224;Im Entity Framework-Thema [Testen mit InMemory](/ef/core/miscellaneous/testing/in-memory) wird die Verwendung einer In-Memory-Datenbank für Tests mit MSTest erläutert. In diesem Thema wird das Testframework [xUnit](https://xunit.github.io/) verwendet. Testkonzepte und Testimplementierungen in verschiedenen Testframeworks sind ähnlich, jedoch nicht identisch.
 
-Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt Razor Pages diese Entwicklungsmuster. Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).
+Obwohl die Beispiel-App nicht das Repositorymuster verwendet und kein effektives Beispiel für das [Arbeitseinheitsmuster](https://martinfowler.com/eaaCatalog/unitOfWork.html) ist, unterstützt [Razor Pages diese Entwicklungsmuster. Weitere Informationen finden Sie unter [Entwerfen der Persistenzebene der Infrastruktur](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) und <xref:mvc/controllers/testing> (im Beispiel wird das Repositorymuster implementiert).
 
 ## <a name="test-app-organization"></a>Organisation der Test-App
 

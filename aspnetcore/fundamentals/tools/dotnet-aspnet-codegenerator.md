@@ -6,16 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85405600"
@@ -63,8 +64,8 @@ Der auszuführende Codegenerator. Folgende Generatoren sind verfügbar:
 | ----------------- | ------------ | 
 | area      | [Gerüstbau für einen Bereich](/aspnet/core/mvc/controllers/areas) |
   Controller| [Gerüstbau für einen Controller](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  Identität  | [Gerüstbau Identity](/aspnet/core/security/authentication/scaffold-identity) |
-  razorpage | [Gerüstbau für Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
+  Identität  | [Gerüstbau [Identity](/aspnet/core/security/authentication/scaffold-identity) |
+  razorpage | [Gerüstbau für [Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   Sicht      | [Gerüstbau für eine Ansicht](/aspnet/core/mvc/views/overview) |
 
 ## <a name="options"></a>Optionen
@@ -103,7 +104,7 @@ In den folgenden Abschnitte werden die verfügbaren Optionen für die unterstüt
 
 * Bereich
 * Controller
-* Identity  
+* [Identity  
 * Razor Pages
 * Ansicht
 
@@ -111,7 +112,7 @@ In den folgenden Abschnitte werden die verfügbaren Optionen für die unterstüt
 
 ### <a name="area-options"></a>Bereichsoptionen
 
-Dieses Tool ist für ASP.NET Core-Webprojekte mit Controllern und Ansichten vorgesehen. Es ist nicht für Razor Pages-Apps gedacht.
+Dieses Tool ist für ASP.NET Core-Webprojekte mit Controllern und Ansichten vorgesehen. Es ist nicht für [Razor Pages-Apps gedacht.
 
 Verwendung: `dotnet aspnet-codegenerator area AreaNameToGenerate`
 
@@ -154,7 +155,7 @@ Unter [Erstellen des Gerüsts für das Filmmodell](/aspnet/core/tutorials/razor-
 
 <a name="rp"></a>
 
-Für Razor Pages können jeweils einzelne Gerüste erstellt werden, indem der Name der neuen Seite und der zu verwendenden Vorlage angegeben wird. Folgende Vorlagen werden unterstützt:
+Für [Razor Pages können jeweils einzelne Gerüste erstellt werden, indem der Name der neuen Seite und der zu verwendenden Vorlage angegeben wird. Folgende Vorlagen werden unterstützt:
 
 * `Empty`
 * `Create`
@@ -197,6 +198,6 @@ dotnet aspnet-codegenerator razorpage -h
 
 Unter [Erstellen des Gerüsts für das Filmmodell](/aspnet/core/tutorials/razor-pages/model) finden Sie ein Beispiel für `dotnet aspnet-codegenerator razorpage`.
 
-### Identity
+### [Identity
 
-Siehe [Gerüst Identity](/aspnet/core/security/authentication/scaffold-identity)
+Siehe [Gerüst [Identity](/aspnet/core/security/authentication/scaffold-identity)

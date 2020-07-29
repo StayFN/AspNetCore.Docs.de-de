@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: host-and-deploy/linux-nginx
 ms.openlocfilehash: c936ff9a7aadd21ce99a0c37184ae8cf911c3070
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85403975"
@@ -157,7 +158,7 @@ server {
 }
 ```
 
-Wenn es sich bei der App um eine Blazor Server-App handelt, die auf SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen dazu, wie Sie den `Connection`-Header festlegen.
+Wenn es sich bei der App um eine [Blazor Server-App handelt, die auf [SignalR-Websockets basiert, finden Sie unter <xref:blazor/host-and-deploy/server#linux-with-nginx> weitere Informationen dazu, wie Sie den `Connection`-Header festlegen.
 
 Wenn keine Übereinstimmung mit `server_name` gefunden wird, verwendet Nginx den Standardserver. Wenn kein Server definiert ist, ist der erste Server in der Konfigurationsdatei der Standardserver. Als bewährte Methode gilt, einen bestimmten Standardserver hinzuzufügen, der den Statuscode 444 in Ihrer Konfigurationsdatei zurückgibt. Im Folgenden wird ein Beispiel für eine Standardserverkonfiguration aufgeführt:
 

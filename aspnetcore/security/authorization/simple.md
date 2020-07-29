@@ -5,13 +5,13 @@ description: Erfahren Sie, wie Sie das Attribut "autorisieren" verwenden, um den
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/simple
 ms.openlocfilehash: 09514032349d489b73d5bb785f11e44ca18b169c
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -24,7 +24,7 @@ ms.locfileid: "87160234"
 
 <a name="security-authorization-simple"></a>
 
-Die Autorisierung in ASP.net Core wird mit <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> und den verschiedenen Parametern gesteuert. In seiner einfachsten Form schränkt das Anwenden des- `[Authorize]` Attributs auf einen Controller, eine Aktion oder eine :::no-loc(Razor)::: Seite den Zugriff auf diese Komponente auf einen beliebigen authentifizierten Benutzer ein.
+Die Autorisierung in ASP.net Core wird mit <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> und den verschiedenen Parametern gesteuert. In seiner einfachsten Form schränkt das Anwenden des- `[Authorize]` Attributs auf einen Controller, eine Aktion oder eine Razor Seite den Zugriff auf diese Komponente auf einen beliebigen authentifizierten Benutzer ein.
 
 Der folgende Code schränkt z. b. den Zugriff auf `AccountController` alle authentifizierten Benutzer ein.
 
@@ -86,11 +86,11 @@ Dies erlaubt nur authentifizierte Benutzer, `AccountController` außer bei der `
 
 <a name="aarp"></a>
 
-## <a name="authorize-attribute-and-no-locrazor-pages"></a>Authorize-Attribut und :::no-loc(Razor)::: Pages
+## <a name="authorize-attribute-and-no-locrazor-pages"></a>Authorize-Attribut und Razor Pages
 
-<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>Kann ***nicht*** auf :::no-loc(Razor)::: Seiten Handler angewendet werden. `[Authorize]`Kann z. b. nicht auf `OnGet` , `OnPost` oder einen anderen Seiten Handler angewendet werden. Verwenden Sie ggf. einen ASP.net Core MVC-Controller für Seiten mit unterschiedlichen Autorisierungs Anforderungen für verschiedene Handler.
+<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>Kann ***nicht*** auf Razor Seiten Handler angewendet werden. `[Authorize]`Kann z. b. nicht auf `OnGet` , `OnPost` oder einen anderen Seiten Handler angewendet werden. Verwenden Sie ggf. einen ASP.net Core MVC-Controller für Seiten mit unterschiedlichen Autorisierungs Anforderungen für verschiedene Handler.
 
-Die folgenden zwei Ansätze können verwendet werden, um die Autorisierung auf :::no-loc(Razor)::: seitenhandlermethoden anzuwenden:
+Die folgenden zwei Ansätze können verwendet werden, um die Autorisierung auf Razor seitenhandlermethoden anzuwenden:
 
 * Verwenden Sie separate Seiten für Seiten Handler, die eine unterschiedliche Autorisierung erfordern. Freigegebenen Inhalt in eine oder mehrere [Teilansichten](xref:mvc/views/partial)verschoben. Wenn möglich, ist dies die empfohlene Vorgehensweise.
 * Für Inhalte, die eine gemeinsame Seite freigeben müssen, schreiben Sie einen Filter, der eine Autorisierung als Teil von [iasyncpagefilter. onpagehandlerselectionasync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A)ausführt. Das [pagehandlerauth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) -GitHub-Projekt veranschaulicht diesen Ansatz:
@@ -103,4 +103,4 @@ Die folgenden zwei Ansätze können verwendet werden, um die Autorisierung auf :
 > * Verfassen Sie mit Autorisierungs Attributen, die auf die Seite, das Seiten Modell oder Global angewendet werden. Das Verfassen von Autorisierungs Attributen führt dazu, dass die Authentifizierung und Autorisierung mehrmals durchgeführt `AuthorizeAttribute` wird, wenn eine oder mehrere `AuthorizeFilter` Instanzen auch auf die Seite angewendet werden.
 > * Arbeiten Sie in Verbindung mit dem Rest ASP.net Core Authentifizierungs-und Autorisierungssystem. Sie müssen überprüfen, ob dieser Ansatz für Ihre Anwendung ordnungsgemäß funktioniert.
 
-Es ist nicht geplant, den `AuthorizeAttribute` auf :::no-loc(Razor)::: Seiten Handlern zu unterstützen. 
+Es ist nicht geplant, den `AuthorizeAttribute` auf Razor Seiten Handlern zu unterstützen. 
