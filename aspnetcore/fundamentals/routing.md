@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 18f1aee5ac33b17914bd182e46453120e14b31ab
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: fcf79966abf7a023773ef892636530278b668c44
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87303611"
 ---
 # <a name="routing-in-aspnet-core"></a>Routing in ASP.NET Core
 
@@ -831,7 +831,7 @@ Im vorangehenden Code wird der `culture`-Routenparameter für die Lokalisierung 
 Die folgenden Links enthalten Informationen zum Konfigurieren von Endpunktmetadaten:
 
 * [Aktivieren von Cors mit Endpunktrouting](xref:security/cors#enable-cors-with-endpoint-routing)
-* [IAuthorizationPolicyProvider-Beispiel](https://github.com/dotnet/AspNetCore/tree/release/3.0/src/Security/samples/CustomPolicyProvider) mit einem benutzerdefinierten `[MinimumAgeAuthorize]`-Attribut
+* [IAuthorizationPolicyProvider-Beispiel](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/CustomPolicyProvider) mit einem benutzerdefinierten `[MinimumAgeAuthorize]`-Attribut
 * [Testen der Authentifizierung mit dem [Authorize]-Attribut](xref:security/authentication/identity#test-identity)
 * <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*>
 * [Auswählen des Schemas mit dem [Authorize]-Attribut](xref:security/authorization/limitingidentitybyscheme#selecting-the-scheme-with-the-authorize-attribute)

@@ -960,11 +960,11 @@ Eine Aufgabe wird folgendermaßen gelöscht: im AJAX-Aufruf wird `type` auf `DEL
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>[!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[Sie können den Beispielcode für dieses Tutorial anzeigen oder herunterladen.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples) [Informationen zum Herunterladen](xref:index#how-to-download-a-sample) finden Sie hier.
+Zusätzliche Ressourcen [Sie können den Beispielcode für dieses Tutorial anzeigen oder herunterladen.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples)
 
-Weitere Informationen finden Sie in den folgenden Ressourcen:
+[Informationen zum Herunterladen](xref:index#how-to-download-a-sample) finden Sie hier.
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
@@ -973,4 +973,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
-* [Dieses Tutorial auf YouTube](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* Weitere Informationen finden Sie in den folgenden Ressourcen:
