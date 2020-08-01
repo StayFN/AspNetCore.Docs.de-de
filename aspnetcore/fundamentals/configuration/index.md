@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 6e47e627915bd8988d161f7d5af4a89f3671c0a7
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: a08993a7909d67be34446815b10d32089d9e0629
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445449"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444150"
 ---
 # <a name="configuration-in-aspnet-core"></a>Konfiguration in ASP.NET Core
 
@@ -675,7 +675,7 @@ Mit einer `AddEFConfiguration`-Erweiterungsmethode kann die Konfigurationsquelle
 
 Der folgende Code veranschaulicht die Verwendung des benutzerdefinierten Anbieters `EFConfigurationProvider` in *Program.cs*:
 
-[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
+[!code-csharp[](index/samples_snippets/3.x/ConfigurationSample/Program.cs?highlight=7-8)]
 
 <a name="acs"></a>
 
@@ -687,7 +687,7 @@ Der folgende Code zeigt Konfigurationsdaten in `Startup`-Methoden an:
 
 Ein Beispiel für den Zugriff auf die Konfiguration mit den Starthilfsmethoden finden Sie unter [Anwendungsstart: Hilfsmethoden](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-razor-pages"></a>Zugriffskonfiguration in Razor Pages
+## <a name="access-configuration-in-no-locrazor-pages"></a>Zugriffskonfiguration in Razor Pages
 
 Der folgende Code zeigt Konfigurationsdaten auf einer Razor-Seite an:
 
@@ -1108,7 +1108,7 @@ Bei Apps, die Switchmappings verwenden, sollten im `CreateDefaultBuilder`-Aufruf
 
 Das erstellte Switchmappingwörterbuch enthält die in der folgenden Tabelle gezeigten Daten.
 
-| Key       | Wert             |
+| Schlüssel       | Wert             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1685,7 +1685,7 @@ config.AddJsonFile(
 
 Das Schlüssel-Wert-Paar in der Tabelle wird in die Konfiguration geladen.
 
-| Key             | Wert  |
+| Schlüssel             | Wert  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1799,7 +1799,7 @@ public class Startup
 
 Ein Beispiel für den Zugriff auf die Konfiguration mit den Starthilfsmethoden finden Sie unter [Anwendungsstart: Hilfsmethoden](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Zugreifen auf die Konfiguration auf einer Razor Pages-Seite oder in einer MVC-Ansicht
+## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a>Zugreifen auf die Konfiguration auf einer Razor Pages-Seite oder in einer MVC-Ansicht
 
 Um auf die Konfigurationseinstellungen auf einer Razor Pages-Seite oder in einer MVC-Ansicht zuzugreifen, fügen Sie eine [using-Anweisung](xref:mvc/views/razor#using) ([C#-Referenz: using-Anweisung](/dotnet/csharp/language-reference/keywords/using-directive)) für den [Microsoft.Extensions.Configuration-Namespace](xref:Microsoft.Extensions.Configuration) hinzu, und fügen Sie <xref:Microsoft.Extensions.Configuration.IConfiguration> auf der Seite bzw. in der Ansicht ein.
 
