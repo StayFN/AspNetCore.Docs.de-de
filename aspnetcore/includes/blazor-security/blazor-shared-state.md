@@ -5,7 +5,7 @@ Blazor-Server-Apps befinden sich im Arbeitsspeicher des Servers. Das bedeutet, d
 
 Sie können zustandsbehaftete Singletondienste in Blazor-Apps verwenden, sofern sie speziell dafür konzipiert sind. Beispielsweise ist es in Ordnung, einen Arbeitsspeichercache als Singleton zu verwenden, da ein Schlüssel für den Zugriff auf einen bestimmten Eintrag erforderlich ist, vorausgesetzt, Benutzer haben keine Kontrolle darüber, welche Cacheschlüssel verwendet werden.
 
-**Außerdem dürfen Sie wiederum aus Sicherheitsgründen <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> nicht in Blazor-Apps verwenden.** Blazor-Apps werden außerhalb des Kontexts der ASP.NET Core-Pipeline ausgeführt. Es ist nicht garantiert, dass <xref:Microsoft.AspNetCore.Http.HttpContext> innerhalb von <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> verfügbar ist. Es ist auch nicht garantiert, dass der Kontext enthalten ist, der die Blazor-App gestartet hat.
+**Außerdem dürfen Sie wiederum aus Sicherheitsgründen <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> nicht in Blazor-Apps verwenden.** Blazor-Apps werden außerhalb des Kontexts der ASP.NET Core-Pipeline ausgeführt. Die Verfügbarkeit von <xref:Microsoft.AspNetCore.Http.HttpContext> in <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> ist nicht sichergestellt, und es ist auch nicht gewährleistet, dass die Klasse den Kontext zum Starten der Blazor-App enthält.
 
 Der empfohlene Weg der Übergabe des Anforderungszustands an die Blazor-Anwendung ist über Parameter an die Stammkomponente beim ersten Rendern der Anwendung:
 

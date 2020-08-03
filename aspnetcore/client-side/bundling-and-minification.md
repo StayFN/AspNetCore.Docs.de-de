@@ -4,22 +4,22 @@ author: scottaddie
 description: Hier erfahren Sie, wie Sie statische Ressourcen in einer ASP.NET Core-Webanwendung mithilfe von Bündelungs- und Minimierungsverfahren optimieren.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/15/2020
+ms.date: 07/23/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
+ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401908"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87159725"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Bündelung und Minimierung statischer Ressourcen in ASP.NET Core
 
@@ -71,19 +71,19 @@ Browser arbeiten in Bezug auf HTTP-Anforderungsheader ziemlich ausführlich. Die
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Auswählen einer Bündelungs- und Minimierungsstrategie
 
-Die MVC- und [Razor Pages-Projektvorlagen enthalten eine Bündelungs- und Minimierungslösung, bestehend aus einer JSON-Konfigurationsdatei. Drittanbietertools, wie die [Grunt](xref:client-side/using-grunt)-Aufgabenausführung, führen dieselben Aufgaben auf etwas komplexere Weise aus. Ein Drittanbietertool eignet sich hervorragend in Fällen, in denen Ihr Entwicklungsworkflow Verarbeitungsschritte erfordert, die über die Bündelung und Minimierung hinausgehen, wie etwa Linting und Bildoptimierung. Bei der Bündelung und Minimierung zur Entwurfszeit werden die minimierten Dateien vor Bereitstellung der App erstellt. Werden die Bündelung und Minimierung vor der Bereitstellung durchgeführt, kann die Serverauslastung reduziert werden. Beachten Sie jedoch, dass eine Bündelung und Minimierung zur Entwurfszeit die Komplexität des Builds erhöht und auch nur mit statischen Dateien ausgeführt werden kann.
+Die MVC- und Razor Pages-Projektvorlagen enthalten eine Bündelungs- und Minimierungslösung, bestehend aus einer JSON-Konfigurationsdatei. Drittanbietertools, wie die [Grunt](xref:client-side/using-grunt)-Aufgabenausführung, führen dieselben Aufgaben auf etwas komplexere Weise aus. Ein Drittanbietertool eignet sich hervorragend in Fällen, in denen Ihr Entwicklungsworkflow Verarbeitungsschritte erfordert, die über die Bündelung und Minimierung hinausgehen, wie etwa Linting und Bildoptimierung. Bei der Bündelung und Minimierung zur Entwurfszeit werden die minimierten Dateien vor Bereitstellung der App erstellt. Werden die Bündelung und Minimierung vor der Bereitstellung durchgeführt, kann die Serverauslastung reduziert werden. Beachten Sie jedoch, dass eine Bündelung und Minimierung zur Entwurfszeit die Komplexität des Builds erhöht und auch nur mit statischen Dateien ausgeführt werden kann.
 
 ## <a name="configure-bundling-and-minification"></a>Konfigurieren der Bündelung und Minimierung
 
 ::: moniker range="<= aspnetcore-2.0"
 
-In ASP.NET Core 2.0 oder früher enthalten die MVC- und [Razor Pages-Projektvorlagen eine Konfigurationsdatei mit dem Namen *bundleconfig.json*, in der die Optionen für jedes Bündel definiert werden:
+In ASP.NET Core 2.0 oder früher enthalten die MVC- und Razor Pages-Projektvorlagen eine Konfigurationsdatei mit dem Namen *bundleconfig.json*, in der die Optionen für jedes Bündel definiert werden:
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Fügen Sie ab ASP.NET Core 2.1 dem MVC- oder [Razor Pages-Projektstamm eine neue JSON-Datei mit dem Namen *bundleconfig.json* hinzu. Fügen Sie dieser Datei als Startpunkt den folgenden JSON-Code hinzu:
+Fügen Sie ab ASP.NET Core 2.1 dem MVC- oder Razor Pages-Projektstamm eine neue JSON-Datei mit dem Namen *bundleconfig.json* hinzu. Fügen Sie dieser Datei als Startpunkt den folgenden JSON-Code hinzu:
 
 ::: moniker-end
 
@@ -174,13 +174,13 @@ Fügen Sie dem Projektstamm eine *package.json*-Datei mit den folgenden `devDepe
 
 Installieren Sie die Abhängigkeiten, indem Sie den folgenden Befehl auf der Ebene von *package.json* ausführen:
 
-```console
+```bash
 npm i
 ```
 
 Installieren Sie die Gulp-CLI als globale Abhängigkeit:
 
-```console
+```bash
 npm i -g gulp-cli
 ```
 
@@ -190,9 +190,12 @@ Kopieren Sie die folgende *gulpfile.js*-Datei in den Projektstamm:
 
 ### <a name="run-gulp-tasks"></a>Ausführen von Gulp-Aufgaben
 
-Fügen Sie der Datei „*.csproj“ das folgende [MSBuild-Ziel](/visualstudio/msbuild/msbuild-targets) hinzu, um die Minimierungsaufgabe in Gulp vor dem Erstellen des Projekts in Visual Studio auszulösen:
+Führen Sie die folgenden Schritte aus, um die Minimierungsaufgabe in Gulp vor dem Erstellen des Projekts in Visual Studio auszulösen:
 
-[!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
+1. Installieren Sie das NuGet-Paket [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier).
+1. Fügen Sie der Projektdatei das folgende [MSBuild Target](/visualstudio/msbuild/msbuild-targets)-Element hinzu:
+
+    [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
 In diesem Beispiel werden alle im Ziel `MyPreCompileTarget` definierten Aufgaben vor dem vordefinierten `Build`-Ziel ausgeführt. Etwa folgende Ausgabe wird im Visual Studio-Ausgabefenster angezeigt:
 
