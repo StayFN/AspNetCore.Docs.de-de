@@ -6,20 +6,20 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: af151b65d3fefb5863529de1cd97c6315f11ca82
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405600"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444132"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -60,13 +60,13 @@ Der globale Befehl `dotnet aspnet-codegenerator` führt den ASP.NET Code-Codegen
 
 Der auszuführende Codegenerator. Folgende Generatoren sind verfügbar:
 
-| Generator | Vorgang |
-| ----------------- | ------------ | 
-| area      | [Gerüstbau für einen Bereich](/aspnet/core/mvc/controllers/areas) |
-  Controller| [Gerüstbau für einen Controller](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  Identität  | [Gerüstbau [Identity](/aspnet/core/security/authentication/scaffold-identity) |
-  razorpage | [Gerüstbau für [Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
-  Sicht      | [Gerüstbau für eine Ansicht](/aspnet/core/mvc/views/overview) |
+| Generator  | Vorgang                                                            |
+| ---------- | -------------------------------------------------------------------- |
+| area       | [Gerüstbau für einen Bereich](xref:mvc/controllers/areas)                      |
+| Controller | [Gerüstbau für einen Controller](xref:tutorials/first-mvc-app/adding-model)  |
+| Identität   | [Gerüstbau Identity](xref:security/authentication/scaffold-identity) |
+| razorpage  | [Gerüstbau für Razor Pages](xref:tutorials/razor-pages/model)            |
+| Sicht       | [Gerüstbau für eine Ansicht](xref:mvc/views/overview)                          |
 
 ## <a name="options"></a>Optionen
 
@@ -104,15 +104,15 @@ In den folgenden Abschnitte werden die verfügbaren Optionen für die unterstüt
 
 * Bereich
 * Controller
-* [Identity  
-* Razor Pages
+* Identity  
+* Razorpage
 * Ansicht
 
 <a name="area"></a>
 
 ### <a name="area-options"></a>Bereichsoptionen
 
-Dieses Tool ist für ASP.NET Core-Webprojekte mit Controllern und Ansichten vorgesehen. Es ist nicht für [Razor Pages-Apps gedacht.
+Dieses Tool ist für ASP.NET Core-Webprojekte mit Controllern und Ansichten vorgesehen. Es ist nicht für Razor Pages-Apps gedacht.
 
 Verwendung: `dotnet aspnet-codegenerator area AreaNameToGenerate`
 
@@ -135,13 +135,13 @@ Die folgende Tabelle zeigt die Optionen für `aspnet-codegenerator` `controller`
 
 Die folgende Tabelle zeigt die Optionen für `aspnet-codegenerator controller`:
 
-| Option               | Beschreibung|
-| ----------------- | ------------ |
-| --controllerName oder -name | Der Name des Controllers. |
-| --useAsyncActions oder -async | Generiert asynchrone Controlleraktionen. |
-| --noViews oder -nv | Generiert **keine** Ansichten. |
-| --restWithNoViews oder -api  | Generiert einen Controller mit einer API im REST-Stil. `noViews` wird vorausgesetzt, und ansichtsbezogene Optionen werden ignoriert. |
-| --readWriteActions oder -actions | Generiert einen Controller mit Lese-/Schreibaktionen ohne Modell. |
+| Option                         | Beschreibung                                                                                               |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| --controllerName oder -name      | Der Name des Controllers.                                                                                   |
+| --useAsyncActions oder -async    | Generiert asynchrone Controlleraktionen.                                                                        |
+| --noViews oder -nv               | Generiert **keine** Ansichten.                                                                                    |
+| --restWithNoViews oder -api      | Generiert einen Controller mit einer API im REST-Stil. `noViews` wird vorausgesetzt, und ansichtsbezogene Optionen werden ignoriert. |
+| --readWriteActions oder -actions | Generiert einen Controller mit Lese-/Schreibaktionen ohne Modell.                                              |
 
 Verwenden Sie den Schalter `-h`, um Hilfe zum `aspnet-codegenerator controller`-Befehl zu erhalten:
 
@@ -149,13 +149,13 @@ Verwenden Sie den Schalter `-h`, um Hilfe zum `aspnet-codegenerator controller`-
 dotnet aspnet-codegenerator controller -h
 ```
 
-Unter [Erstellen des Gerüsts für das Filmmodell](/aspnet/core/tutorials/razor-pages/model) finden Sie ein Beispiel für `dotnet aspnet-codegenerator controller`.
+Unter [Erstellen des Gerüsts für das Filmmodell](xref:tutorials/first-mvc-app/adding-model) finden Sie ein Beispiel für `dotnet aspnet-codegenerator controller`.
 
-### <a name="razorpage"></a>Razor Pages
+### <a name="no-locrazorpage"></a>Razorpage
 
 <a name="rp"></a>
 
-Für [Razor Pages können jeweils einzelne Gerüste erstellt werden, indem der Name der neuen Seite und der zu verwendenden Vorlage angegeben wird. Folgende Vorlagen werden unterstützt:
+Für Razor Pages können jeweils einzelne Gerüste erstellt werden, indem der Name der neuen Seite und der zu verwendenden Vorlage angegeben wird. Folgende Vorlagen werden unterstützt:
 
 * `Empty`
 * `Create`
@@ -184,11 +184,11 @@ Die folgende Tabelle zeigt die Optionen für `aspnet-codegenerator` `razorpage` 
 
 Die folgende Tabelle zeigt die Optionen für `aspnet-codegenerator razorpage`:
 
-| Option               | Beschreibung|
-| ----------------- | ------------ |
-|   --namespaceName oder -namespace | Der Name des Namespace, der für das generierte PageModel verwendet wird. |
-| --partialView oder -partial | Generiert eine Teilansicht. Die Layoutoptionen -l und -udl werden ignoriert, wenn diese Option angegeben wird. |
-| --noPageModel oder -npm | Schalter, um keine PageModel-Klasse für eine leere Vorlage zu generieren. |
+| Option                        | Beschreibung                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------- |
+| --namespaceName oder -namespace | Der Name des Namespace, der für das generierte PageModel verwendet wird.                          |
+| --partialView oder -partial     | Generiert eine Teilansicht. Die Layoutoptionen -l und -udl werden ignoriert, wenn diese Option angegeben wird. |
+| --noPageModel oder -npm         | Schalter, um keine PageModel-Klasse für eine leere Vorlage zu generieren.                           |
 
 Verwenden Sie den Schalter `-h`, um Hilfe zum `aspnet-codegenerator razorpage`-Befehl zu erhalten:
 
@@ -196,8 +196,8 @@ Verwenden Sie den Schalter `-h`, um Hilfe zum `aspnet-codegenerator razorpage`-B
 dotnet aspnet-codegenerator razorpage -h
 ```
 
-Unter [Erstellen des Gerüsts für das Filmmodell](/aspnet/core/tutorials/razor-pages/model) finden Sie ein Beispiel für `dotnet aspnet-codegenerator razorpage`.
+Unter [Erstellen des Gerüsts für das Filmmodell](xref:tutorials/razor-pages/model) finden Sie ein Beispiel für `dotnet aspnet-codegenerator razorpage`.
 
-### [Identity
+### Identity
 
-Siehe [Gerüst [Identity](/aspnet/core/security/authentication/scaffold-identity)
+Siehe [Gerüst Identity](xref:security/authentication/scaffold-identity)

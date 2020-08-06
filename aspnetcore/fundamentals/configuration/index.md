@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: a08993a7909d67be34446815b10d32089d9e0629
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: 9f143523a6d02ac018ad2a869cc9d768ee25681f
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444150"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819262"
 ---
 # <a name="configuration-in-aspnet-core"></a>Konfiguration in ASP.NET Core
 
@@ -356,6 +356,35 @@ Wenn eine Umgebungsvariable entdeckt und mit einem der vier Präfixe aus der Tab
 | `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | Schlüssel: `ConnectionStrings:{KEY}_ProviderName`:<br>Wert: `System.Data.SqlClient`  |
 | `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | Schlüssel: `ConnectionStrings:{KEY}_ProviderName`:<br>Wert: `System.Data.SqlClient`  |
 
+## <a name="file-configuration-provider"></a>Dateikonfigurationsanbieter
+
+<xref:Microsoft.Extensions.Configuration.FileConfigurationProvider> ist die Basisklasse für das Laden einer Konfiguration aus dem Dateisystem. Die folgenden Konfigurationsanbieter leiten sich vom `FileConfigurationProvider` ab:
+
+* [INI-Konfigurationsanbieter](#ini-configuration-provider)
+* [JSON-Konfigurationsanbieter](#jcp)
+* [XML-Konfigurationsanbieter](#xml-configuration-provider)
+
+### <a name="ini-configuration-provider"></a>INI-Konfigurationsanbieter
+
+<xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> lädt während der Laufzeit die Konfiguration aus den Schlüssel-Wert-Paaren der INI-Datei.
+
+Mit dem folgenden Code werden alle Konfigurationsanbieter gelöscht und mehrere Konfigurationsanbieter hinzugefügt:
+
+[!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
+
+Im obigen Code werden Einstellungen in den Dateien *MyIniConfig.ini* und *MyIniConfig*.`Environment`.*ini* überschrieben durch Einstellungen im:
+
+* [Umgebungsvariablen-Konfigurationsanbieter](#evcp)
+* [Befehlszeilen-Konfigurationsanbieter](#clcp)
+
+Der [Beispieldownload](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) enthält die folgende Datei *MyIniConfig.ini*:
+
+[!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
+
+Im folgenden Code aus dem [Beispieldownload](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) sind mehrere der vorherigen Konfigurationseinstellungen zu sehen:
+
+[!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
+
 <a name="jcp"></a>
 
 ### <a name="json-configuration-provider"></a>JSON-Konfigurationsanbieter
@@ -398,35 +427,6 @@ Im folgenden Code aus dem [Beispieldownload](https://github.com/dotnet/AspNetCor
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
 <a name="fcp"></a>
-
-## <a name="file-configuration-provider"></a>Dateikonfigurationsanbieter
-
-<xref:Microsoft.Extensions.Configuration.FileConfigurationProvider> ist die Basisklasse für das Laden einer Konfiguration aus dem Dateisystem. Die folgenden Konfigurationsanbieter leiten sich vom `FileConfigurationProvider` ab:
-
-* [INI-Konfigurationsanbieter](#ini-configuration-provider)
-* [JSON-Konfigurationsanbieter](#jcp)
-* [XML-Konfigurationsanbieter](#xml-configuration-provider)
-
-### <a name="ini-configuration-provider"></a>INI-Konfigurationsanbieter
-
-<xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> lädt während der Laufzeit die Konfiguration aus den Schlüssel-Wert-Paaren der INI-Datei.
-
-Mit dem folgenden Code werden alle Konfigurationsanbieter gelöscht und mehrere Konfigurationsanbieter hinzugefügt:
-
-[!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
-
-Im obigen Code werden Einstellungen in den Dateien *MyIniConfig.ini* und *MyIniConfig*.`Environment`.*ini* überschrieben durch Einstellungen im:
-
-* [Umgebungsvariablen-Konfigurationsanbieter](#evcp)
-* [Befehlszeilen-Konfigurationsanbieter](#clcp)
-
-Der [Beispieldownload](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) enthält die folgende Datei *MyIniConfig.ini*:
-
-[!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
-
-Im folgenden Code aus dem [Beispieldownload](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) sind mehrere der vorherigen Konfigurationseinstellungen zu sehen:
-
-[!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
 ### <a name="xml-configuration-provider"></a>XML-Konfigurationsanbieter
 
