@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 4f85c4a9803482f39446dda599f10829c9879f27
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: f7110688a7a03dd0cf533fa5f9759af3363169f8
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407761"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818936"
 ---
-# <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor-Routing
+# <a name="aspnet-core-no-locblazor-routing"></a>ASP.NET Core Blazor-Routing
 
 Von [Luke Latham](https://github.com/guardrex)
 
@@ -43,7 +43,7 @@ Informationen zum Konfigurieren von <xref:Microsoft.AspNetCore.Builder.RazorPage
 Die <xref:Microsoft.AspNetCore.Components.Routing.Router>-Komponente ermöglicht das Routing zu jeder Komponente mit einer bestimmten Route. Die <xref:Microsoft.AspNetCore.Components.Routing.Router>-Komponente wird in der `App.razor`-Datei angezeigt:
 
 ```razor
-<Router AppAssembly="typeof(Startup).Assembly">
+<Router AppAssembly="@typeof(Startup).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>
@@ -100,7 +100,7 @@ Verwenden Sie den <xref:Microsoft.AspNetCore.Components.Routing.Router.Additiona
 
 ```razor
 <Router
-    AppAssembly="typeof(Program).Assembly"
+    AppAssembly="@typeof(Program).Assembly"
     AdditionalAssemblies="new[] { typeof(Component1).Assembly }">
     ...
 </Router>

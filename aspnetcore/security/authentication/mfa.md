@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/mfa
-ms.openlocfilehash: cb7d63aa2f04b0c53fd403dfa6e4885b2d94da0b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1ab6e5802e177aeaf77584838feea09a7ff79db7
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408993"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819177"
 ---
 # <a name="multi-factor-authentication-in-aspnet-core"></a>Multi-Factor Authentication in ASP.net Core
 
@@ -69,7 +69,7 @@ MFA mit SMS erhöht die Sicherheit im Vergleich zur Kenn Wort Authentifizierung 
 
 [NIST-Richtlinien](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
-## <a name="configure-mfa-for-administration-pages-using-aspnet-core-identity"></a>Konfigurieren von MFA für Verwaltungs Seiten mithilfe von ASP.net CoreIdentity
+## <a name="configure-mfa-for-administration-pages-using-aspnet-core-no-locidentity"></a>Konfigurieren von MFA für Verwaltungs Seiten mithilfe von ASP.net CoreIdentity
 
 MFA kann für Benutzer erzwungen werden, um auf sensible Seiten innerhalb einer ASP.net Core- Identity App zuzugreifen. Dies kann bei apps nützlich sein, bei denen unterschiedliche Zugriffsebenen für die unterschiedlichen Identitäten vorhanden sind. Beispielsweise können Benutzer die Profildaten möglicherweise mithilfe einer Kenn Wort Anmeldung anzeigen, aber ein Administrator muss MFA verwenden, um auf die Verwaltungs Seiten zuzugreifen.
 
@@ -259,11 +259,11 @@ Wenn Sie auf den Link **Admin** klicken, wird der Benutzer zur MFA-Aktivierungs 
 Der- `acr_values` Parameter kann verwendet werden, um den `mfa` erforderlichen Wert vom Client in einer Authentifizierungsanforderung an den Server zu übergeben.
 
 > [!NOTE]
-> Der- `acr_values` Parameter muss auf dem Open ID Connect-Server behandelt werden, damit dies funktioniert.
+> Der- `acr_values` Parameter muss auf dem OpenID Connect-Server behandelt werden, damit dies funktioniert.
 
 ### <a name="openid-connect-aspnet-core-client"></a>OpenID Connect-ASP.net Core Client
 
-Die ASP.net Core Razor Seiten Open ID Connect-Client-App verwendet die- `AddOpenIdConnect` Methode, um sich beim Open ID Connect-Server anzumelden. Der `acr_values` -Parameter wird mit dem `mfa` -Wert festgelegt und mit der Authentifizierungsanforderung gesendet. `OpenIdConnectEvents`Wird verwendet, um diese hinzuzufügen.
+Die ASP.net Core Razor pages OpenID Connect-Client-App verwendet die- `AddOpenIdConnect` Methode, um sich beim OpenID Connect-Server anzumelden. Der `acr_values` -Parameter wird mit dem `mfa` -Wert festgelegt und mit der Authentifizierungsanforderung gesendet. `OpenIdConnectEvents`Wird verwendet, um diese hinzuzufügen.
 
 Empfohlene `acr_values` Parameterwerte finden Sie unter [Referenzwerte für die Authentifizierungsmethode](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08).
 
@@ -302,7 +302,7 @@ public void ConfigureServices(IServiceCollection services)
     });
 ```
 
-### <a name="example-openid-connect-identityserver-4-server-with-aspnet-core-identity"></a>Beispiel für einen OpenID Connect identityserver 4-Server mit ASP.net CoreIdentity
+### <a name="example-openid-connect-no-locidentityserver-4-server-with-aspnet-core-no-locidentity"></a>Beispiel für einen OpenID Connect Identity Server 4-Server mit ASP.net CoreIdentity
 
 Auf dem OpenID Connect-Server, der mithilfe von ASP.net Core Identity mit MVC-Ansichten implementiert wird, wird eine neue Ansicht mit dem Namen " *ErrorEnable2FA. cshtml* " erstellt. Die Ansicht:
 
@@ -325,7 +325,7 @@ You can enable MFA to login here:
 <a asp-controller="Manage" asp-action="TwoFactorAuthentication">Enable MFA</a>
 ```
 
-In der- `Login` Methode wird die Implementierung der- `IIdentityServerInteractionService` Schnittstelle `_interaction` verwendet, um auf die Open ID Connect-Anforderungs Parameter zuzugreifen. Der Zugriff auf den- `acr_values` Parameter erfolgt mithilfe der- `AcrValues` Eigenschaft. Da der Client diese mit `mfa` Set gesendet hat, kann dies aktiviert werden.
+In der- `Login` Methode wird die Implementierung der- `IIdentityServerInteractionService` Schnittstelle `_interaction` verwendet, um auf die OpenID Connect-Anforderungs Parameter zuzugreifen. Der Zugriff auf den- `acr_values` Parameter erfolgt mithilfe der- `AcrValues` Eigenschaft. Da der Client diese mit `mfa` Set gesendet hat, kann dies aktiviert werden.
 
 Wenn MFA erforderlich ist und für den Benutzer in ASP.net Core Identity MFA aktiviert ist, wird die Anmeldung fortgesetzt. Wenn für den Benutzer keine MFA aktiviert ist, wird der Benutzer zur benutzerdefinierten Ansicht *ErrorEnable2FA. cshtml*umgeleitet. Anschließend ASP.net Core Identity den Benutzer signiert.
 
@@ -429,9 +429,9 @@ namespace AspNetCoreRequireMfaOidc
 
 Ein `AuthorizationHandler` ist implementiert, das den `amr` -Anspruch verwendet und den Wert überprüft `mfa` . Der `amr` wird im einer `id_token` erfolgreichen Authentifizierung zurückgegeben und kann viele verschiedene Werte aufweisen, wie in der Spezifikation der [Referenzwerte der Authentifizierungsmethode](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08) definiert.
 
-Der zurückgegebene Wert hängt von der Authentifizierung der Identität und der Open ID Connect-Server Implementierung ab.
+Der zurückgegebene Wert hängt von der Authentifizierung der Identität und der OpenID Connect-Server Implementierung ab.
 
-Der `AuthorizationHandler` verwendet die `RequireMfa` Anforderung und überprüft den `amr` Anspruch. Der OpenID Connect-Server kann mit IdentityServer4 mit ASP.net Core implementiert werden Identity . Wenn ein Benutzer sich mit TOTP anmeldet, `amr` wird der Anspruch mit einem MFA-Wert zurückgegeben. Wenn eine andere OpenID Connect-Server Implementierung oder ein anderer MFA-Typ verwendet wird, `amr` kann der Anspruch einen anderen Wert aufweisen. Der Code muss erweitert werden, um dies ebenfalls zu akzeptieren.
+Der `AuthorizationHandler` verwendet die `RequireMfa` Anforderung und überprüft den `amr` Anspruch. Der OpenID Connect-Server kann Identity mit Server4 mit ASP.net Core implementiert werden Identity . Wenn ein Benutzer sich mit TOTP anmeldet, `amr` wird der Anspruch mit einem MFA-Wert zurückgegeben. Wenn eine andere OpenID Connect-Server Implementierung oder ein anderer MFA-Typ verwendet wird, `amr` kann der Anspruch einen anderen Wert aufweisen. Der Code muss erweitert werden, um dies ebenfalls zu akzeptieren.
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -559,7 +559,7 @@ You require MFA to login here
 <a href="https://localhost:44352/Manage/TwoFactorAuthentication">Enable MFA</a>
 ```
 
-Jetzt können nur Benutzer, die sich mit MFA authentifizieren, auf die Seite oder Website zugreifen. Wenn verschiedene MFA-Typen verwendet werden oder wenn 2FA okay ist, `amr` weist der Anspruch unterschiedliche Werte auf und muss ordnungsgemäß verarbeitet werden. Verschiedene Open ID Connect-Server geben auch andere Werte für diesen Anspruch zurück und folgen möglicherweise nicht der Spezifikation der [Referenzwerte der Authentifizierungsmethode](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08) .
+Jetzt können nur Benutzer, die sich mit MFA authentifizieren, auf die Seite oder Website zugreifen. Wenn verschiedene MFA-Typen verwendet werden oder wenn 2FA okay ist, `amr` weist der Anspruch unterschiedliche Werte auf und muss ordnungsgemäß verarbeitet werden. Verschiedene OpenID Connect-Server geben auch andere Werte für diesen Anspruch zurück und folgen möglicherweise nicht der Spezifikation der [Referenzwerte der Authentifizierungsmethode](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08) .
 
 Bei der Anmeldung ohne MFA (z. b. nur mit einem Kennwort):
 
@@ -575,7 +575,7 @@ Alternativ können Sie sich mit OTP anmelden, indem Sie Folgendes verwenden Iden
 
 ![require_mfa_oidc_01.png](mfa/_static/require_mfa_oidc_01.png)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
 * [Aktivieren der QR-Code Generierung für TOTP Authenticator-apps in ASP.net Core](xref:security/authentication/identity-enable-qrcodes)
 * [Optionen für die kennwortlose Authentifizierung für Azure Active Directory](/azure/active-directory/authentication/concept-authentication-passwordless)
