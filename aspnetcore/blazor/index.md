@@ -35,7 +35,7 @@ Blazor ist ein Framework zum Erstellen einer interaktiven clientseitigen Webbenu
 * Rendern der Benutzeroberfläche als HTML und CSS für umfassende Browserunterstützung (einschließlich mobiler Browser).
 * Integrieren mit modernen Hostingplattformen, z. B. [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/index)
 
-Die Verwendung von .NET im für die clientseitige Webentwicklung bietet die folgenden Vorteile:
+Die Verwendung von .NET für die clientseitige Webentwicklung bietet die folgenden Vorteile:
 
 * Schreiben Sie Code in C# anstatt in JavaScript.
 * Nutzen Sie das vorhandene .NET-Ökosystem von .NET-Bibliotheken.
