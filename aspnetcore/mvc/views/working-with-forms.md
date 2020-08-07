@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 7a92f2b5bc791f268b897878db08a9f9f4f7bf0c
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 833939417c4973c61eca4d41aaeabe7856680190
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212408"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913856"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Taghilfsprogramme in Formularen in ASP.NET Core
 
@@ -81,7 +81,7 @@ Das Hilfsprogramm für Formularaktionen generiert das `formaction`-Attribut auf 
 
 Folgende [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)-Attribute werden zum Steuern des Werts von `formaction` unterstützt:
 
-|attribute|Beschreibung|
+|attribute|BESCHREIBUNG|
 |---|---|
 |[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|Der Name des Controllers.|
 |[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|Der Name der Aktionsmethode.|
@@ -89,7 +89,7 @@ Folgende [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-help
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Der Name der Razor Seite.|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Der Name des Razor Seiten Handlers.|
 |[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Der Name der Route.|
-|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Ein einzelner URL-Routenwert. Beispiel: `asp-route-id="1234"`.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Ein einzelner URL-Routenwert. Beispielsweise `asp-route-id="1234"`.|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Alle Routenwerte.|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|Das URL-Fragment.|
 
@@ -191,23 +191,23 @@ Das Taghilfsprogramm für die Eingabe:
 
 * Stellt die starke Typisierung bereit Wenn der Name der Eigenschaft geändert wird und Sie das Taghilfsprogramm nicht aktualisieren, wird Ihnen eine Fehlermeldung ähnlich der Folgenden angezeigt:
 
-```
-An error occurred during the compilation of a resource required to process
-this request. Please review the following specific error details and modify
-your source code appropriately.
+  ```
+  An error occurred during the compilation of a resource required to process
+  this request. Please review the following specific error details and modify
+  your source code appropriately.
 
-Type expected
- 'RegisterViewModel' does not contain a definition for 'Email' and no
- extension method 'Email' accepting a first argument of type 'RegisterViewModel'
- could be found (are you missing a using directive or an assembly reference?)
-```
+  Type expected
+   'RegisterViewModel' does not contain a definition for 'Email' and no
+   extension method 'Email' accepting a first argument of type 'RegisterViewModel'
+   could be found (are you missing a using directive or an assembly reference?)
+  ```
 
 Das `Input`-Taghilfsprogramm legt das HTML-Attribut `type` basierend auf dem .NET-Typ fest. In der folgenden Tabelle werden einige (jedoch nicht alle) allgemeine .NET-Typen sowie generierte HTML-Typen aufgeführt.
 
 |.NET-Typ|Eingabetyp|
 |---|---|
 |Bool|type="checkbox"|
-|Zeichenfolge|type="text"|
+|String|type="text"|
 |Datetime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
 |Int|type="number"|

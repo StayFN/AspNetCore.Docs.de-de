@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: 60cf659c720012d05bb2a6f1433c18d347469462
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: bf41d5a756c988b239824c19ef7a9d177a93a4a1
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399529"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913820"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.net Core Datenschutz
 
@@ -53,7 +53,7 @@ Wir haben damit begonnen, Probleme mit dem vorhandenen Stapel zu identifizieren.
 
 Mit diesen Prinzipien haben wir einen einfachen, [leicht zu verwendenden](xref:security/data-protection/using-data-protection) Datenschutz Stapel entwickelt.
 
-Die ASP.net Core-Datenschutz-APIs sind nicht in erster Linie für die unbegrenzte Persistenz von vertraulichen Nutzlasten vorgesehen. Andere Technologien wie [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) und [Azure Rights Management](/rights-management/) sind besser für das Szenario der unbegrenzten Speicherung geeignet und verfügen über die entsprechenden leistungsstarken Schlüssel Verwaltungsfunktionen. Dies bedeutet, dass ein Entwickler nicht daran hindert, die ASP.net Core Datenschutz-APIs für den langfristigen Schutz vertraulicher Daten zu verwenden.
+Die ASP.net Core-Datenschutz-APIs sind nicht in erster Linie für die unbegrenzte Persistenz von vertraulichen Nutzlasten vorgesehen. Andere Technologien wie [Windows CNG DPAPI](/windows/win32/seccng/cng-dpapi) und [Azure Rights Management](/rights-management/) sind besser für das Szenario der unbegrenzten Speicherung geeignet und verfügen über die entsprechenden leistungsstarken Schlüssel Verwaltungsfunktionen. Dies bedeutet, dass ein Entwickler nicht daran hindert, die ASP.net Core Datenschutz-APIs für den langfristigen Schutz vertraulicher Daten zu verwenden.
 
 ## <a name="audience"></a>Zielgruppe
 

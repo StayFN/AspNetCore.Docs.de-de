@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 65ef506d5857afb71113a0309613a2cbd82893be
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 096862b7149679c14e3d1ca17d38468a14e438a2
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399542"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913880"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Konfigurieren des Schutzes von Daten in ASP.NET Core
 
@@ -357,7 +357,7 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> Der Algorithmus für symmetrische Blockchiffre muss eine Schlüssellänge von >= 128 Bits, eine Blockgröße von >= 64 Bits aufweisen und muss die Verschlüsselung im CBC-Modus mit PKCS #7 Padding unterstützen. Der Hash Algorithmus muss eine Hashgröße von >= 128 Bits aufweisen und muss das Öffnen mit dem Flag bcrypt \_ ALG \_ handle \_ HMAC \_ Flag unterstützen. Die \* Anbieter Eigenschaften können auf NULL festgelegt werden, um den Standardanbieter für den angegebenen Algorithmus zu verwenden. Weitere Informationen finden Sie in der Dokumentation zu [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) .
+> Der Algorithmus für symmetrische Blockchiffre muss eine Schlüssellänge von >= 128 Bits, eine Blockgröße von >= 64 Bits aufweisen und muss die Verschlüsselung im CBC-Modus mit PKCS #7 Padding unterstützen. Der Hash Algorithmus muss eine Hashgröße von >= 128 Bits aufweisen und muss das Öffnen mit dem Flag bcrypt \_ ALG \_ handle \_ HMAC \_ Flag unterstützen. Die \* Anbieter Eigenschaften können auf NULL festgelegt werden, um den Standardanbieter für den angegebenen Algorithmus zu verwenden. Weitere Informationen finden Sie in der Dokumentation zu [BCryptOpenAlgorithmProvider](/windows/win32/api/bcrypt/nf-bcrypt-bcryptopenalgorithmprovider) .
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -400,7 +400,7 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> Der Algorithmus für symmetrische Blockchiffre muss eine Schlüssellänge von >= 128 Bits, eine Blockgröße von genau 128 Bits und eine GCM-Verschlüsselung unterstützen. Sie können die Eigenschaft " [verschlüsselungalgorithmprovider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) " auf NULL festlegen, um den Standardanbieter für den angegebenen Algorithmus zu verwenden. Weitere Informationen finden Sie in der Dokumentation zu [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) .
+> Der Algorithmus für symmetrische Blockchiffre muss eine Schlüssellänge von >= 128 Bits, eine Blockgröße von genau 128 Bits und eine GCM-Verschlüsselung unterstützen. Sie können die Eigenschaft " [verschlüsselungalgorithmprovider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) " auf NULL festlegen, um den Standardanbieter für den angegebenen Algorithmus zu verwenden. Weitere Informationen finden Sie in der Dokumentation zu [BCryptOpenAlgorithmProvider](/windows/win32/api/bcrypt/nf-bcrypt-bcryptopenalgorithmprovider) .
 
 ### <a name="specifying-other-custom-algorithms"></a>Angeben anderer benutzerdefinierter Algorithmen
 
@@ -415,7 +415,7 @@ Beim Hosting in einem [docker](/dotnet/standard/microservices-architecture/conta
 
 ## <a name="persisting-keys-with-redis"></a>Beibehalten von Schlüsseln mit redis
 
-Zum Speichern von Schlüsseln sollten nur redis-Versionen verwendet werden, die [redis-Daten Persistenz](/azure/azure-cache-for-redis/cache-how-to-premium-persistence) unterstützen. [Azure BLOB Storage](/azure/storage/blobs/storage-blobs-introduction) ist persistent und kann zum Speichern von Schlüsseln verwendet werden. Weitere Informationen finden Sie in [diesem GitHub-Issue](https://github.com/dotnet/AspNetCore/issues/13476).
+Zum Speichern von Schlüsseln sollten nur redis-Versionen verwendet werden, die [redis-Daten Persistenz](/azure/azure-cache-for-redis/cache-how-to-premium-persistence) unterstützen. [Azure BLOB Storage](/azure/storage/blobs/storage-blobs-introduction) ist persistent und kann zum Speichern von Schlüsseln verwendet werden. Weitere Informationen finden Sie in [diesem GitHub-Problem](https://github.com/dotnet/AspNetCore/issues/13476).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

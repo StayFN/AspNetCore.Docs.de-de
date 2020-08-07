@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 15f3ce5a8e8d47ac567acaadcdc4bf8ba738b2ff
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f74f6ce93093adbc931dd90b32a14de5d4f89096
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408174"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913881"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Bewährte Methoden für die ASP.net Core Leistung
 
@@ -50,7 +50,7 @@ Ein häufiges Leistungsproblem bei ASP.net Core-Apps ist das Blockieren von aufr
 **Do**Ausführen:
 
 * Asynchrone [Hot-Codepfade](#understand-hot-code-paths) .
-* Aufrufen von Datenzugriff, e/a und langfristigen Operations-APIs, wenn eine asynchrone API verfügbar ist. Verwenden Sie " [Task. Run](/dotnet/api/system.threading.tasks.task.run) " **nicht** , um eine synchrone synchrone API zu erstellen.
+* Aufrufen von Datenzugriff, e/a und langfristigen Operations-APIs, wenn eine asynchrone API verfügbar ist. Verwenden Sie " [Task. Run](/dotnet/api/system.threading.tasks.task.run) " **nicht** , um eine synchrone API asynchron zu machen.
 * Aktionen für Controller/ Razor Seite asynchron durchführen. Die gesamte-aufrufsstapel ist asynchron, um von [Async/](/dotnet/csharp/programming-guide/concepts/async/) Erwartungs Mustern zu profitieren.
 
 Ein Profiler, z. b. [perfview](https://github.com/Microsoft/perfview), kann verwendet werden, um häufig dem [Thread Pool](/windows/desktop/procthread/thread-pools)hinzugefügte Threads zu suchen. Das `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` Ereignis gibt einen Thread an, der dem Thread Pool hinzugefügt wurde. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
@@ -146,7 +146,7 @@ Empfehlungen:
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Neueste ASP.net Core Release verwenden
 
-Jede neue Version von ASP.net Core umfasst Leistungsverbesserungen. Optimierungen in .net Core und ASP.net Core bedeuten, dass neuere Versionen in der Regel ältere Versionen übersteigen. .Net Core 2,1 hat z. b. Unterstützung für kompilierte reguläre Ausdrücke hinzugefügt und von der [Spanne \<T> ](https://msdn.microsoft.com/magazine/mt814808.aspx)profitiert. ASP.net Core 2,2 hat Unterstützung für http/2 hinzugefügt. [ASP.net Core 3,0 bietet viele Verbesserungen](xref:aspnetcore-3.0) , die die Speicherauslastung reduzieren und den Durchsatz verbessern. Wenn Leistung eine Priorität ist, sollten Sie ein Upgrade auf die aktuelle Version von ASP.net Core durchführen.
+Jede neue Version von ASP.net Core umfasst Leistungsverbesserungen. Optimierungen in .net Core und ASP.net Core bedeuten, dass neuere Versionen in der Regel ältere Versionen übersteigen. .Net Core 2,1 hat z. b. Unterstützung für kompilierte reguläre Ausdrücke hinzugefügt und von der [Spanne \<T> ](/archive/msdn-magazine/2018/january/csharp-all-about-span-exploring-a-new-net-mainstay)profitiert. ASP.net Core 2,2 hat Unterstützung für http/2 hinzugefügt. [ASP.net Core 3,0 bietet viele Verbesserungen](xref:aspnetcore-3.0) , die die Speicherauslastung reduzieren und den Durchsatz verbessern. Wenn Leistung eine Priorität ist, sollten Sie ein Upgrade auf die aktuelle Version von ASP.net Core durchführen.
 
 ## <a name="minimize-exceptions"></a>Minimieren von Ausnahmen
 
